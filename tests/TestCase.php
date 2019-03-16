@@ -7,7 +7,6 @@ use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class TestCase extends Orchestra
 {
-
     /**
      * Setup test environment.
      */
@@ -17,7 +16,7 @@ abstract class TestCase extends Orchestra
     }
 
     /**
-     * Add package service provider
+     * Add package service provider.
      *
      * @param $app
      * @return array
@@ -25,7 +24,7 @@ abstract class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            MtnMomoServiceProvider::class
+            MtnMomoServiceProvider::class,
         ];
     }
 
@@ -44,5 +43,4 @@ abstract class TestCase extends Orchestra
             'prefix' => '',
         ]);
     }
-
 }
