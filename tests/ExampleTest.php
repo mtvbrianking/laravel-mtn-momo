@@ -1,6 +1,6 @@
 <?php
 
-namespace Bmatovu\LaravelMtnMomo\Test;
+namespace Bmatovu\MtnMomo\Test;
 
 class ExampleTest extends TestCase
 {

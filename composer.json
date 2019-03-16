@@ -28,21 +28,14 @@
     },
     "autoload": {
         "psr-4": {
-            "Bmatovu\\LaravelMtnMomo\\": "src/"
+            "Bmatovu\\MtnMomo\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Bmatovu\\LaravelMtnMomo\\Test\\": "tests/"
+            "Bmatovu\\MtnMomo\\Test\\": "tests/"
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Bmatovu\\LaravelMtnMomo\\LaravelMtnMomoServiceProvider"
-            ]
-        }
-    }
+    "prefer-stable": true
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace Bmatovu\LaravelMtnMomo\Test;
+namespace Bmatovu\MtnMomo\Test;
 
-use Bmatovu\LaravelMtnMomo\LaravelMtnMomoServiceProvider;
+use Bmatovu\MtnMomo\MtnMomoServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class TestCase extends Orchestra
@@ -25,7 +25,7 @@ abstract class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            LaravelMtnMomoServiceProvider::class
+            MtnMomoServiceProvider::class
         ];
     }
 

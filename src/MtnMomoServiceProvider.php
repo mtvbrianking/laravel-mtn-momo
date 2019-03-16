@@ -1,10 +1,10 @@
 <?php
 
-namespace Bmatovu\LaravelMtnMomo;
+namespace Bmatovu\MtnMomo;
 
 use Illuminate\Support\ServiceProvider;
 
-class LaravelMtnMomoServiceProvider extends ServiceProvider
+class MtnMomoServiceProvider extends ServiceProvider
 {
 
     /**
