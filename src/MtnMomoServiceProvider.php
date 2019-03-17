@@ -7,7 +7,6 @@ use Bmatovu\MtnMomo\Console\Commands\Bootstrap;
 
 class MtnMomoServiceProvider extends ServiceProvider
 {
-
     /**
      * Bootstrap the application services.
      *
@@ -33,7 +32,6 @@ class MtnMomoServiceProvider extends ServiceProvider
      */
     public function register()
     {
-         $this->mergeConfigFrom(__DIR__.'/../config/mtn-momo.php', 'mtn-momo');
+        $this->mergeConfigFrom(__DIR__.'/../config/mtn-momo.php', 'mtn-momo');
     }
-
 }
