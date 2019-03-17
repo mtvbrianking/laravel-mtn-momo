@@ -3,6 +3,7 @@
 namespace Bmatovu\MtnMomo;
 
 use Illuminate\Support\ServiceProvider;
+use Bmatovu\MtnMomo\Console\Commands\Bootstrap;
 
 class MtnMomoServiceProvider extends ServiceProvider
 {
@@ -17,6 +18,12 @@ class MtnMomoServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../config/mtn-momo.php' => base_path('config/mtn-momo.php'),
         ], 'config');
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                Bootstrap::class,
+            ]);
+        }
     }
 
     /**

@@ -4,7 +4,7 @@ return [
     /*
      * Momo API application name.
      *
-     * This will be indicated in the message sent to the payee.
+     * This could be indicated in the message sent to the payee.
      */
     'app' => env('MOMO_APP_NAME', 'Laravel'),
 
