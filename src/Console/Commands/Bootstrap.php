@@ -6,7 +6,6 @@ use Illuminate\Console\Command;
 
 class Bootstrap extends Command
 {
-
     protected $dotenv;
 
     /**
@@ -42,9 +41,9 @@ class Bootstrap extends Command
      */
     public function handle()
     {
-        $this->line("<options=bold>Welcome to MTN momo bootstrap.</>".PHP_EOL);
+        $this->line('<options=bold>Welcome to MTN momo bootstrap.</>'.PHP_EOL);
 
-        $this->line("Please enter the values for the following settings,");
+        $this->line('Please enter the values for the following settings,');
         $this->line("Or press 'Enter' to accept the given default values in square brackets.".PHP_EOL);
 
         $this->dotenv = $this->laravel->environmentFilePath();
@@ -53,7 +52,6 @@ class Bootstrap extends Command
 
         // App name
         $this->envSetAppName();
-
     }
 
     /**
@@ -63,10 +61,10 @@ class Bootstrap extends Command
      */
     protected function envSetAppName()
     {
-        $this->line("<options=bold>Momo API client application name.</>");
-        $this->line("This could be indicated in the message sent to the payee.");
+        $this->line('<options=bold>Momo API client application name.</>');
+        $this->line('This could be indicated in the message sent to the payee.');
         $app_name = $this->laravel['config']['mtn-momo.app'];
-        $app_name = $this->ask("MOMO_APP_NAME", $app_name);
+        $app_name = $this->ask('MOMO_APP_NAME', $app_name);
 
         $pattern = $this->keyAppNameReplacementPattern();
 
