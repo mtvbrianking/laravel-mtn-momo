@@ -9,12 +9,12 @@ return [
     'app' => env('MOMO_APP_NAME', 'Laravel'),
 
     /*
-     * Transaction currency code
+     * Transaction currency code.
      */
     'currency' => env('MOMO_CURRENCY', 'EUR'),
 
     /*
-     * Target environment
+     * Target environment.
      *
      * Also called; targetEnvironment
      */
@@ -25,7 +25,7 @@ return [
      *
      * The product you subscribed too.
      *
-     * @see https://momodeveloper.mtn.com/products Products
+     * @see https://momodeveloper.mtn.com/products
      */
     'product' => env('MOMO_PRODUCT', 'collection'),
 
