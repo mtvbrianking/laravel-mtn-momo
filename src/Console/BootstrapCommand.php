@@ -1,10 +1,10 @@
 <?php
 
-namespace Bmatovu\MtnMomo\Console\Commands;
+namespace Bmatovu\MtnMomo\Console;
 
 use Illuminate\Console\Command;
 
-class Bootstrap extends Command
+class BootstrapCommand extends Command
 {
     protected $dotenv;
 
@@ -52,6 +52,7 @@ class Bootstrap extends Command
 
         // App name
         $this->envSetAppName();
+
     }
 
     /**

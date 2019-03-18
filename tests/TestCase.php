@@ -8,11 +8,25 @@ use Orchestra\Testbench\TestCase as Orchestra;
 abstract class TestCase extends Orchestra
 {
     /**
-     * Setup test environment.
+     * {@inheritdoc}
      */
     public function setUp()
     {
         parent::setUp();
+
+        // Create .env in test env
+        touch($this->app->environmentFilePath());
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function tearDown()
+    {
+        // Remove .env in test env
+        unlink($this->app->environmentFilePath());
+
+        parent::tearDown();
     }
 
     /**

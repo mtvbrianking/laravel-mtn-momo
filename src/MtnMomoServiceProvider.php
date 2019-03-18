@@ -3,7 +3,7 @@
 namespace Bmatovu\MtnMomo;
 
 use Illuminate\Support\ServiceProvider;
-use Bmatovu\MtnMomo\Console\Commands\Bootstrap;
+use Bmatovu\MtnMomo\Console\BootstrapCommand;
 
 class MtnMomoServiceProvider extends ServiceProvider
 {
@@ -20,7 +20,7 @@ class MtnMomoServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->commands([
-                Bootstrap::class,
+                BootstrapCommand::class,
             ]);
         }
     }
