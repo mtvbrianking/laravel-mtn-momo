@@ -4,9 +4,7 @@ namespace Bmatovu\MtnMomo\Console;
 
 use Ramsey\Uuid\Uuid;
 use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Request;
 use Illuminate\Console\Command;
-use GuzzleHttp\Event\ProgressEvent;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
 use GuzzleHttp\Exception\ConnectException;
@@ -386,7 +384,7 @@ class BootstrapCommand extends Command
 
         $redirect_uri = $this->ask('MOMO_REDIRECT_URI', $redirect_uri);
 
-        while($redirect_uri && !filter_var($redirect_uri, FILTER_VALIDATE_URL)) {
+        while ($redirect_uri && ! filter_var($redirect_uri, FILTER_VALIDATE_URL)) {
             $this->info(' Invalid URI. #IETF RFC3986');
             $redirect_uri = $this->ask('MOMO_REDIRECT_URI', false);
         }
@@ -436,13 +434,12 @@ class BootstrapCommand extends Command
         $this->line('It\'s required to generate a <options=bold>Client app secret</>.');
 
         try {
-
             $client = new Client(['base_uri' => 'https://ericssonbasicapi2.azure-api.net/v1_0/']);
 
             $response = $client->request('POST', 'apiuser', [
                 'debug' => false,
-                'progress' => function($downloadTotal, $downloadedBytes, $uploadTotal, $uploadedBytes) {
-                    print('* ');
+                'progress' => function ($downloadTotal, $downloadedBytes, $uploadTotal, $uploadedBytes) {
+                    echo '* ';
                 },
                 'headers' => [
                     'Content-Type' => 'application/json',
@@ -457,18 +454,16 @@ class BootstrapCommand extends Command
             $this->line('\r\nStatus: <fg=green>'.$response->getStatusCode().' '.$response->getReasonPhrase().'</>');
 
             $this->line('\r\nBody: <fg=green>'.$response->getBody().'</>');
-
-        } catch(ConnectException $ex) {
+        } catch (ConnectException $ex) {
             $this->line('\r\n<fg=red>'.$ex->getMessage().'</>');
-        } catch(ClientException $ex) {
+        } catch (ClientException $ex) {
             $response = $ex->getResponse();
             $this->line('\r\nStatus: <fg=yellow>'.$response->getStatusCode().' '.$response->getReasonPhrase().'</>');
             $this->line('\r\nBody: <fg=yellow>'.$response->getBody().'</>');
-        } catch(ServerException $ex) {
+        } catch (ServerException $ex) {
             $response = $ex->getResponse();
             $this->line('\r\nStatus: <fg=red>'.$response->getStatusCode().' '.$response->getReasonPhrase().'</>');
             $this->line('\r\nBody: <fg=red>'.$response->getBody().'</>');
         }
     }
-
 }
