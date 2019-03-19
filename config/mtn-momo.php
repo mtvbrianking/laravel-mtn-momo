@@ -56,36 +56,41 @@ return [
 
     'uri' => [
         /*
+         * API base URI.
+         */
+        'base' => env('MOMO_BASE', 'https://ericssonbasicapi2.azure-api.net/'),
+
+        /*
          * Register client ID URI
          */
-        'client_id' => env('MOMO_CLIENT_ID_URI'),
+        'client_id' => env('MOMO_CLIENT_ID_URI', 'v1_0/apiuser'),
 
         /*
          * Validate client ID URI
          */
-        'val_client_id' => env('MOMO_CLIENT_ID_VALIDATE_URI'),
+        'val_client_id' => env('MOMO_CLIENT_ID_VALIDATE_URI', 'v1_0/apiuser/'.env('MOMO_CLIENT_ID')),
 
         /*
          * Generate client secret URI
          */
-        'client_secret' => env('MOMO_CLIENT_SECRET_URI'),
+        'client_secret' => env('MOMO_CLIENT_SECRET_URI', 'v1_0/apiuser/'.env('MOMO_CLIENT_ID').'/apiKey'),
 
         /*
          * Redirect URI.
          *
          * Also called; providerCallbackHost
          */
-        'redirect' => env('MOMO_REDIRECT_URI'),
+        'redirect' => env('MOMO_REDIRECT_URI', ''),
 
         /*
          * Token uri
          */
-        'token' => env('MOMO_TOKEN_URI'),
+        'token' => env('MOMO_TOKEN_URI', env('MOMO_PRODUCT', 'collection').'/token'),
 
         /*
          * Refresh token uri
          */
-        'refresh_token' => env('MOMO_REFRESH_TOKEN_URI'),
+        'refresh_token' => env('MOMO_REFRESH_TOKEN_URI', env('MOMO_PRODUCT', 'collection').'/token'),
     ],
 
 ];

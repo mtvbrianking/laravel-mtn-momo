@@ -400,7 +400,7 @@ class BootstrapCommand extends Command
         } else {
             $redirect_uri = "\r\nMOMO_REDIRECT_URI=\"{$redirect_uri}\"\r\n";
 
-            file_put_contents($this->dotenv, file_get_contents($this->dotenv).$client_id);
+            file_put_contents($this->dotenv, file_get_contents($this->dotenv).$redirect_uri);
         }
     }
 
@@ -434,11 +434,11 @@ class BootstrapCommand extends Command
         $this->line('It\'s required to generate a <options=bold>Client app secret</>.');
 
         try {
-            $client = new Client(['base_uri' => 'https://ericssonbasicapi2.azure-api.net/v1_0/']);
+            $client = new Client(['base_uri' => 'https://ericssonbasicapi2.azure-api.net/']);
 
-            $response = $client->request('POST', 'apiuser', [
+            $response = $client->request('POST', 'v1_0/apiuser', [
                 'debug' => false,
-                'progress' => function ($downloadTotal, $downloadedBytes, $uploadTotal, $uploadedBytes) {
+                'progress' => function () {
                     echo '* ';
                 },
                 'headers' => [
@@ -451,19 +451,19 @@ class BootstrapCommand extends Command
                 ],
             ]);
 
-            $this->line('\r\nStatus: <fg=green>'.$response->getStatusCode().' '.$response->getReasonPhrase().'</>');
+            $this->line("\r\nStatus: <fg=green>".$response->getStatusCode().' '.$response->getReasonPhrase().'</>');
 
-            $this->line('\r\nBody: <fg=green>'.$response->getBody().'</>');
+            $this->line("\r\nBody: <fg=green>".$response->getBody().'</>');
         } catch (ConnectException $ex) {
-            $this->line('\r\n<fg=red>'.$ex->getMessage().'</>');
+            $this->line("\r\n<fg=red>".$ex->getMessage().'</>');
         } catch (ClientException $ex) {
             $response = $ex->getResponse();
-            $this->line('\r\nStatus: <fg=yellow>'.$response->getStatusCode().' '.$response->getReasonPhrase().'</>');
-            $this->line('\r\nBody: <fg=yellow>'.$response->getBody().'</>');
+            $this->line("\r\nStatus: <fg=yellow>".$response->getStatusCode().' '.$response->getReasonPhrase().'</>');
+            $this->line("\r\nBody: <fg=yellow>".$response->getBody().'</>');
         } catch (ServerException $ex) {
             $response = $ex->getResponse();
-            $this->line('\r\nStatus: <fg=red>'.$response->getStatusCode().' '.$response->getReasonPhrase().'</>');
-            $this->line('\r\nBody: <fg=red>'.$response->getBody().'</>');
+            $this->line("\r\nStatus: <fg=red>".$response->getStatusCode().' '.$response->getReasonPhrase().'</>');
+            $this->line("\r\nBody: <fg=red>".$response->getBody().'</>');
         }
     }
 }
