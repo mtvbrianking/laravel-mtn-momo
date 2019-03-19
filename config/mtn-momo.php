@@ -50,7 +50,7 @@ return [
      *
      * Also called; apiKey
      *
-     * Generate from the API.
+     * Request for secret from the API.
      */
     'client_secret' => env('MOMO_CLIENT_SECRET'),
 

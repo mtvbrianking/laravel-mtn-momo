@@ -77,7 +77,10 @@ class BootstrapCommand extends Command
         // $this->envSetRedirectUri();
 
         // Register App ID
-        $this->registerAppId();
+        // $this->registerAppId();
+
+        // Request App Secrey
+        // $this->requestClientSecret();
     }
 
     /*
@@ -331,6 +334,11 @@ class BootstrapCommand extends Command
         $this->line('Also called; X-Reference-Id and api_user_id interchangeably.');
         $client_id = $this->laravel['config']['mtn-momo.client_id'];
 
+        if (! $client_id) {
+            $this->line('Generating random UUID.');
+            $client_id = uuid4()->toString();
+        }
+
         $client_id = $this->ask('MOMO_CLIENT_ID', $client_id);
 
         while (! Uuid::isValid($client_id)) {
@@ -418,7 +426,7 @@ class BootstrapCommand extends Command
 
     /*
     |--------------------------------------------------------------------------
-    | MOMO_CLIENT_ID
+    | Register MOMO_CLIENT_ID
     |--------------------------------------------------------------------------
     */
 
@@ -465,5 +473,93 @@ class BootstrapCommand extends Command
             $this->line("\r\nStatus: <fg=red>".$response->getStatusCode().' '.$response->getReasonPhrase().'</>');
             $this->line("\r\nBody: <fg=red>".$response->getBody().'</>');
         }
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Request MOMO_CLIENT_SECRET
+    |--------------------------------------------------------------------------
+    */
+
+    /**
+     * Request client secret.
+     *
+     * @return void
+     */
+    protected function requestClientSecret()
+    {
+        $this->line('<options=bold>Request -> Client APP secret.</>');
+        $this->line("Also called; 'apiKey'.");
+
+        $client_secret = $this->laravel['config']['mtn-momo.client_secret'];
+
+        if($client_secret) {
+            if (!$this->confirm('Do you wish to refresh the client app secret?')) {
+                return;
+            }
+        }
+
+        try {
+            $client = new Client(['base_uri' => 'https://ericssonbasicapi2.azure-api.net/']);
+
+            $response = $client->request('POST', $this->laravel['config']['mtn-momo.uri.client_secret'], [
+                'debug' => false,
+                'progress' => function () {
+                    echo '* ';
+                },
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                    'Ocp-Apim-Subscription-Key' => $this->laravel['config']['mtn-momo.product_key'],
+                ],
+                'json' => [
+                    'body',
+                ],
+            ]);
+
+            $this->line("\r\nStatus: <fg=green>".$response->getStatusCode().' '.$response->getReasonPhrase().'</>');
+
+            $this->line("\r\nBody: <fg=green>".$response->getBody().'</>');
+
+            $api_response = json_decode($response->getBody(), true);
+
+            $client_secret = $api_response['apiKey'];
+
+            $pattern = $this->regexAppSecretReplacementPattern();
+
+            if (preg_match($pattern, file_get_contents($this->dotenv))) {
+                file_put_contents($this->dotenv, preg_replace(
+                    $this->regexAppSecretReplacementPattern(),
+                    "MOMO_CLIENT_SECRET=\"{$client_secret}\"",
+                    file_get_contents($this->dotenv)
+                ));
+            } else {
+                $client_secret = "\r\nMOMO_CLIENT_SECRET=\"{$client_secret}\"\r\n";
+
+                file_put_contents($this->dotenv, file_get_contents($this->dotenv).$client_secret);
+            }
+
+        } catch (ConnectException $ex) {
+            $this->line("\r\n<fg=red>".$ex->getMessage().'</>');
+        } catch (ClientException $ex) {
+            $response = $ex->getResponse();
+            $this->line("\r\nStatus: <fg=yellow>".$response->getStatusCode().' '.$response->getReasonPhrase().'</>');
+            $this->line("\r\nBody: <fg=yellow>".$response->getBody().'</>');
+        } catch (ServerException $ex) {
+            $response = $ex->getResponse();
+            $this->line("\r\nStatus: <fg=red>".$response->getStatusCode().' '.$response->getReasonPhrase().'</>');
+            $this->line("\r\nBody: <fg=red>".$response->getBody().'</>');
+        }
+    }
+
+    /**
+     * Get a regex pattern that will match env MOMO_CLIENT_SECRET with any random name.
+     *
+     * @return string
+     */
+    protected function regexAppSecretReplacementPattern()
+    {
+        $escaped = preg_quote($this->laravel['config']['mtn-momo.client_secret'], '/');
+
+        return "/^MOMO_CLIENT_SECRET=[\"']?{$escaped}[\"']?/m";
     }
 }
