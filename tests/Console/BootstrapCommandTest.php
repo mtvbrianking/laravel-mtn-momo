@@ -2,9 +2,7 @@
 
 namespace Bmatovu\MtnMomo\Test\Console;
 
-use Artisan;
 use Bmatovu\MtnMomo\Test\TestCase;
-use Mockery;
 
 class BootstrapCommandTest extends TestCase
 {

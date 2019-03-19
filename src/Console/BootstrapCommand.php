@@ -187,7 +187,7 @@ class BootstrapCommand extends Command
     protected function envSetEnvironment()
     {
         $this->line('<options=bold>Momo API client application environment.</>');
-        $this->line("The environment your testing your application.");
+        $this->line('The environment your testing your application.');
         $environment = $this->laravel['config']['mtn-momo.environment'];
 
         $environments = ['sandbox', 'live'];
@@ -236,7 +236,7 @@ class BootstrapCommand extends Command
     protected function envSetProduct()
     {
         $this->line('<options=bold>Momo API production.</>');
-        $this->line("The product you subscribed too.");
+        $this->line('The product you subscribed too.');
         $product = $this->laravel['config']['mtn-momo.product'];
 
         $products = ['collections', 'disbursement', 'remittance'];
@@ -330,12 +330,12 @@ class BootstrapCommand extends Command
     protected function envSetAppId()
     {
         $this->line('<options=bold>Momo client app ID.</>');
-        $this->line("Also called; X-Reference-Id and api_user_id interchangeably.");
+        $this->line('Also called; X-Reference-Id and api_user_id interchangeably.');
         $client_id = $this->laravel['config']['mtn-momo.client_id'];
 
         $client_id = $this->ask('MOMO_CLIENT_ID', $client_id);
 
-        while(!Uuid::isValid($client_id)) {
+        while (! Uuid::isValid($client_id)) {
             $this->info(' Invalid UUID (Format: 4). #IETF RFC4122');
             $client_id = $this->ask('MOMO_CLIENT_ID');
         }
@@ -381,7 +381,7 @@ class BootstrapCommand extends Command
     protected function envSetRedirectUri()
     {
         $this->line('<options=bold>Momo client app redirect URI.</>');
-        $this->line("Also called; providerCallbackHost.");
+        $this->line('Also called; providerCallbackHost.');
         $redirect_uri = $this->laravel['config']['mtn-momo.uri.redirect'];
 
         $redirect_uri = $this->ask('MOMO_REDIRECT_URI', $redirect_uri);
@@ -424,11 +424,6 @@ class BootstrapCommand extends Command
     |--------------------------------------------------------------------------
     */
 
-    protected function showProgress($downloadTotal, $downloadedBytes, $uploadTotal, $uploadedBytes) {
-        echo 'Downloaded ' . $downloadedBytes . ' of ' . $downloadTotal . ' '
-        . 'Uploaded ' . $uploadedBytes . ' of ' . $uploadTotal . "\r";
-    }
-
     /**
      * Set the momo client app ID.
      *
@@ -438,7 +433,7 @@ class BootstrapCommand extends Command
     {
         $this->line('<options=bold>Register -> Client APP ID.</>');
         $this->line('The client app ID has to be registered with MOMO API.');
-        $this->line('It's required to generate a <options=bold>Client app secret</>.');
+        $this->line('It\'s required to generate a <options=bold>Client app secret</>.');
 
         try {
 
