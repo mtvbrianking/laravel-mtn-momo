@@ -2,8 +2,14 @@
 
 namespace Bmatovu\MtnMomo\Console;
 
-use Illuminate\Console\Command;
 use Ramsey\Uuid\Uuid;
+use GuzzleHttp\Client;
+use GuzzleHttp\Psr7\Request;
+use Illuminate\Console\Command;
+use GuzzleHttp\Event\ProgressEvent;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ServerException;
+use GuzzleHttp\Exception\ConnectException;
 
 class BootstrapCommand extends Command
 {
@@ -68,6 +74,12 @@ class BootstrapCommand extends Command
 
         // Client App ID
         // $this->envSetAppId();
+
+        // Client App Redirect URI
+        // $this->envSetRedirectUri();
+
+        // Register App ID
+        $this->registerAppId();
     }
 
     /*
@@ -324,7 +336,7 @@ class BootstrapCommand extends Command
         $client_id = $this->ask('MOMO_CLIENT_ID', $client_id);
 
         while(!Uuid::isValid($client_id)) {
-            $this->info(' Client ID must be a UUID of format 4. #IETF RFC4122');
+            $this->info(' Invalid UUID (Format: 4). #IETF RFC4122');
             $client_id = $this->ask('MOMO_CLIENT_ID');
         }
 
@@ -353,6 +365,115 @@ class BootstrapCommand extends Command
         $escaped = preg_quote($this->laravel['config']['mtn-momo.client_id'], '/');
 
         return "/^MOMO_CLIENT_ID=[\"']?{$escaped}[\"']?/m";
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | MOMO_REDIRECT_URI
+    |--------------------------------------------------------------------------
+    */
+
+    /**
+     * Set the momo client app ID.
+     *
+     * @return void
+     */
+    protected function envSetRedirectUri()
+    {
+        $this->line('<options=bold>Momo client app redirect URI.</>');
+        $this->line("Also called; providerCallbackHost.");
+        $redirect_uri = $this->laravel['config']['mtn-momo.uri.redirect'];
+
+        $redirect_uri = $this->ask('MOMO_REDIRECT_URI', $redirect_uri);
+
+        while($redirect_uri && !filter_var($redirect_uri, FILTER_VALIDATE_URL)) {
+            $this->info(' Invalid URI. #IETF RFC3986');
+            $redirect_uri = $this->ask('MOMO_REDIRECT_URI', false);
+        }
+
+        $pattern = $this->regexRedirectUriReplacementPattern();
+
+        if (preg_match($pattern, file_get_contents($this->dotenv))) {
+            file_put_contents($this->dotenv, preg_replace(
+                $this->regexRedirectUriReplacementPattern(),
+                "MOMO_REDIRECT_URI=\"{$redirect_uri}\"",
+                file_get_contents($this->dotenv)
+            ));
+        } else {
+            $redirect_uri = "\r\nMOMO_REDIRECT_URI=\"{$redirect_uri}\"\r\n";
+
+            file_put_contents($this->dotenv, file_get_contents($this->dotenv).$client_id);
+        }
+    }
+
+    /**
+     * Get a regex pattern that will match env MOMO_REDIRECT_URI with any random name.
+     *
+     * @return string
+     */
+    protected function regexRedirectUriReplacementPattern()
+    {
+        $escaped = preg_quote($this->laravel['config']['mtn-momo.uri.redirect'], '/');
+
+        return "/^MOMO_REDIRECT_URI=[\"']?{$escaped}[\"']?/m";
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | MOMO_CLIENT_ID
+    |--------------------------------------------------------------------------
+    */
+
+    protected function showProgress($downloadTotal, $downloadedBytes, $uploadTotal, $uploadedBytes) {
+        echo 'Downloaded ' . $downloadedBytes . ' of ' . $downloadTotal . ' '
+        . 'Uploaded ' . $uploadedBytes . ' of ' . $uploadTotal . "\r";
+    }
+
+    /**
+     * Set the momo client app ID.
+     *
+     * @return void
+     */
+    protected function registerAppId()
+    {
+        $this->line('<options=bold>Register -> Client APP ID.</>');
+        $this->line('The client app ID has to be registered with MOMO API.');
+        $this->line('It's required to generate a <options=bold>Client app secret</>.');
+
+        try {
+
+            $client = new Client(['base_uri' => 'https://ericssonbasicapi2.azure-api.net/v1_0/']);
+
+            $response = $client->request('POST', 'apiuser', [
+                'debug' => false,
+                'progress' => function($downloadTotal, $downloadedBytes, $uploadTotal, $uploadedBytes) {
+                    print('* ');
+                },
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                    'Ocp-Apim-Subscription-Key' => $this->laravel['config']['mtn-momo.product_key'],
+                    'X-Reference-Id' => $this->laravel['config']['mtn-momo.client_id'],
+                ],
+                'json' => [
+                    'providerCallbackHost' => $this->laravel['config']['mtn-momo.uri.redirect'],
+                ],
+            ]);
+
+            $this->line('\r\nStatus: <fg=green>'.$response->getStatusCode().' '.$response->getReasonPhrase().'</>');
+
+            $this->line('\r\nBody: <fg=green>'.$response->getBody().'</>');
+
+        } catch(ConnectException $ex) {
+            $this->line('\r\n<fg=red>'.$ex->getMessage().'</>');
+        } catch(ClientException $ex) {
+            $response = $ex->getResponse();
+            $this->line('\r\nStatus: <fg=yellow>'.$response->getStatusCode().' '.$response->getReasonPhrase().'</>');
+            $this->line('\r\nBody: <fg=yellow>'.$response->getBody().'</>');
+        } catch(ServerException $ex) {
+            $response = $ex->getResponse();
+            $this->line('\r\nStatus: <fg=red>'.$response->getStatusCode().' '.$response->getReasonPhrase().'</>');
+            $this->line('\r\nBody: <fg=red>'.$response->getBody().'</>');
+        }
     }
 
 }
