@@ -6,7 +6,6 @@ use Monolog\Logger;
 use Ramsey\Uuid\Uuid;
 use GuzzleHttp\Client;
 use GuzzleHttp\Middleware;
-use Illuminate\Support\Arr;
 use GuzzleHttp\HandlerStack;
 use Illuminate\Console\Command;
 use GuzzleHttp\MessageFormatter;
@@ -26,31 +25,31 @@ class BootstrapCommand extends Command
 
     /**
      * `.env` file path.
-     * @var String
+     * @var string
      */
     protected $env;
 
     /**
      * Changed product flag.
-     * @var boolean
+     * @var bool
      */
     protected $has_new_product = false;
 
     /**
      * Changed product key flag.
-     * @var boolean
+     * @var bool
      */
     protected $has_new_product_key = false;
 
     /**
      * Changed client app ID flag.
-     * @var boolean
+     * @var bool
      */
     protected $has_new_client_id = false;
 
     /**
      * Changed client app redirect URI flag.
-     * @var boolean
+     * @var bool
      */
     protected $has_new_client_redirect_uri = false;
 
@@ -202,7 +201,7 @@ class BootstrapCommand extends Command
      */
     protected function cleanUri($uri, $uuid = null)
     {
-        if(is_null($uuid)) {
+        if (is_null($uuid)) {
             $uuid = $this->laravel['config']['mtn-momo.client.id'];
         }
 
@@ -298,7 +297,7 @@ class BootstrapCommand extends Command
     protected function setProduct()
     {
         $this->line('<options=bold>Product.</>');
-        $this->line("The product you subscribed too.");
+        $this->line('The product you subscribed too.');
 
         $product = $this->laravel['config']->get('mtn-momo.product');
         $products = ['collections', 'disbursement', 'remittance'];
@@ -328,7 +327,7 @@ class BootstrapCommand extends Command
         $this->line('<options=bold>Product key.</>');
         $this->line("Product subscription key. Also called: 'Ocp-Apim-Subscription-Key'.");
 
-        if (!$this->has_new_product && !$this->confirm("Do you wish to change the 'product_key'?", true)) {
+        if (! $this->has_new_product && ! $this->confirm("Do you wish to change the 'product_key'?", true)) {
             return;
         }
 
@@ -359,7 +358,7 @@ class BootstrapCommand extends Command
 
         $default = $client_id = $this->laravel['config']->get('mtn-momo.client.id');
 
-        if ($this->has_new_product_key || $this->has_new_client_redirect_uri || !$default) {
+        if ($this->has_new_product_key || $this->has_new_client_redirect_uri || ! $default) {
             $this->line('* Generating new client ID...');
             $default = Uuid::uuid4()->toString();
         }
@@ -501,7 +500,6 @@ class BootstrapCommand extends Command
             $client_secret = $api_response['apiKey'];
 
             $this->updateSetting('MOMO_CLIENT_SECRET', 'mtn-momo.client.secret', $client_secret);
-
         } catch (ConnectException $ex) {
             $this->line("\r\n<fg=red>".$ex->getMessage().'</>');
         } catch (ClientException $ex) {
@@ -514,5 +512,4 @@ class BootstrapCommand extends Command
             $this->line("\r\nBody: <fg=red>".$response->getBody()."\r\n</>");
         }
     }
-
 }
