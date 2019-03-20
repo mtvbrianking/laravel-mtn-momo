@@ -4,6 +4,7 @@ namespace Bmatovu\MtnMomo\Console;
 
 use Ramsey\Uuid\Uuid;
 use GuzzleHttp\Client;
+use Illuminate\Support\Arr;
 use Illuminate\Console\Command;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
@@ -11,7 +12,7 @@ use GuzzleHttp\Exception\ConnectException;
 
 class BootstrapCommand extends Command
 {
-    protected $dotenv;
+    protected $env;
 
     /**
      * The name and signature of the console command.
@@ -25,7 +26,7 @@ class BootstrapCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Bootstrap MTN momo API integration.';
+    protected $description = 'Bootstrap MTN MOMO API integration.';
 
     /**
      * Create a new command instance.
@@ -46,119 +47,132 @@ class BootstrapCommand extends Command
      */
     public function handle()
     {
-        $this->line('<options=bold>Welcome to MTN momo bootstrap.</>'.PHP_EOL);
+        $this->line('<options=bold>MTN MOMO API integration.</>'.PHP_EOL);
 
         $this->line('Please enter the values for the following settings,');
         $this->line("Or press 'Enter' to accept the given default values in square brackets.".PHP_EOL);
 
-        $this->dotenv = $this->laravel->environmentFilePath();
+        $this->env = $this->laravel->environmentFilePath();
 
-        $this->line("These settings will be written to your .env [{$this->dotenv}]".PHP_EOL);
+        $this->line("These settings will be written to your .env [{$this->env}]".PHP_EOL);
 
-        // Client App Name
-        // $this->envSetAppName();
+        // // Client App Name
+        // $this->setClientName();
 
-        // Currency
-        // $this->envSetCurrency();
+        // // Currency
+        // $this->setCurrency();
 
-        // Environment
-        // $this->envSetEnvironment();
+        // // Environment
+        // $this->setEnvironment();
 
-        // Product
-        // $this->envSetProduct();
+        // // Product
+        // $this->setProduct();
 
-        // Product Key
-        // $this->envSetProductKey();
+        // // Product key
+        // $this->setProductKey();
 
-        // Client App ID
-        // $this->envSetAppId();
+        // // Client app ID
+        // $this->setClientId();
 
-        // Client App Redirect URI
-        // $this->envSetRedirectUri();
+        // // Client app redirect URI
+        // $this->setClientRedirectUri();
 
-        // Register App ID
-        // $this->registerAppId();
+        // // Register client app ID
+        // $this->registerClientId();
 
-        // Request App Secrey
+        // // Request client app Secret
         // $this->requestClientSecret();
+
+    }
+
+    /**
+     * Get the specified configuration value.
+     *
+     * @param  string  $setting
+     * @param  mixed  $default
+     * @return mixed
+     */
+    private function config($setting, $default = null)
+    {
+        return Arr::get($this->laravel['config'], $setting, $default);
     }
 
     /*
     |--------------------------------------------------------------------------
-    | Momo API application name.
+    | MOMO_CLIENT_NAME
     |--------------------------------------------------------------------------
     */
 
     /**
-     * Set the momo client app name in the environment file.
+     * Set/replace client app name.
      *
      * @return void
      */
-    protected function envSetAppName()
+    protected function setClientName()
     {
-        $this->line('<options=bold>Momo API client application name.</>');
+        $this->line('<options=bold>Client app name.</>');
         $this->line('This could be indicated in the message sent to the payee.');
-        $app_name = $this->laravel['config']['mtn-momo.app'];
-        $app_name = $this->ask('MOMO_APP_NAME', $app_name);
+        $client_name = $this->config('mtn-momo.client.name');
+        $client_name = $this->ask('MOMO_CLIENT_NAME', $client_name);
 
-        $pattern = $this->regexAppNameReplacementPattern();
+        $pattern = $this->getClientNameRegex();
 
-        if (preg_match($pattern, file_get_contents($this->dotenv))) {
-            file_put_contents($this->dotenv, preg_replace(
-                $this->regexAppNameReplacementPattern(),
-                "MOMO_APP_NAME=\"{$app_name}\"",
-                file_get_contents($this->dotenv)
+        if (preg_match($pattern, file_get_contents($this->env))) {
+            file_put_contents($this->env, preg_replace(
+                $this->getClientNameRegex(),
+                "MOMO_CLIENT_NAME=\"{$client_name}\"",
+                file_get_contents($this->env)
             ));
         } else {
-            $app_name = "\r\nMOMO_APP_NAME=\"{$app_name}\"\r\n";
+            $client_name = "\r\nMOMO_CLIENT_NAME=\"{$client_name}\"\r\n";
 
-            file_put_contents($this->dotenv, file_get_contents($this->dotenv).$app_name);
+            file_put_contents($this->env, file_get_contents($this->env).$client_name);
         }
     }
 
     /**
-     * Get a regex pattern that will match env MOMO_APP_NAME with any random name.
+     * Determine client app name regex pattern.
      *
-     * @return string
+     * @return string Regex
      */
-    protected function regexAppNameReplacementPattern()
+    protected function getClientNameRegex()
     {
-        $escaped = preg_quote($this->laravel['config']['mtn-momo.app'], '/');
+        $escaped = preg_quote($this->config('mtn-momo.client.name'), '/');
 
-        return "/^MOMO_APP_NAME=[\"']?{$escaped}[\"']?/m";
+        return "/^MOMO_CLIENT_NAME=[\"']?{$escaped}[\"']?/m";
     }
 
     /*
     |--------------------------------------------------------------------------
-    | Transaction currency code.
+    | MOMO_CURRENCY
     |--------------------------------------------------------------------------
     */
 
     /**
-     * Set the momo client app name in the environment file.
+     * Set/replace currency.
      *
      * @return void
      */
-    protected function envSetCurrency()
+    protected function setCurrency()
     {
-        $this->line('<options=bold>Momo API client application currency.</>');
+        $this->line('<options=bold>Currency.</>');
         $this->line("The currency to be used for transactions. Use 'EUR' for sandbox env.");
-        $currency = $this->laravel['config']['mtn-momo.currency'];
+        $currency = $this->config('mtn-momo.currency');
 
         $currency = strtoupper($this->ask('MOMO_CURRENCY', $currency));
 
-        $pattern = $this->regexCurrencyReplacementPattern();
+        $pattern = $this->getCurrencyRegex();
 
-        if (preg_match($pattern, file_get_contents($this->dotenv))) {
-            file_put_contents($this->dotenv, preg_replace(
-                $this->regexCurrencyReplacementPattern(),
+        if (preg_match($pattern, file_get_contents($this->env))) {
+            file_put_contents($this->env, preg_replace(
+                $this->getCurrencyRegex(),
                 "MOMO_CURRENCY=\"{$currency}\"",
-                file_get_contents($this->dotenv)
+                file_get_contents($this->env)
             ));
         } else {
             $currency = "\r\nMOMO_CURRENCY=\"{$currency}\"\r\n";
 
-            file_put_contents($this->dotenv, file_get_contents($this->dotenv).$currency);
+            file_put_contents($this->env, file_get_contents($this->env).$currency);
         }
     }
 
@@ -167,47 +181,47 @@ class BootstrapCommand extends Command
      *
      * @return string
      */
-    protected function regexCurrencyReplacementPattern()
+    protected function getCurrencyRegex()
     {
-        $escaped = preg_quote($this->laravel['config']['mtn-momo.currency'], '/');
+        $escaped = preg_quote($this->config('mtn-momo.currency'), '/');
 
         return "/^MOMO_CURRENCY=[\"']?{$escaped}[\"']?/m";
     }
 
     /*
     |--------------------------------------------------------------------------
-    | Target environment.
+    | MOMO_ENVIRONMENT
     |--------------------------------------------------------------------------
     */
 
     /**
-     * Set the momo client app name in the environment file.
+     * Set/replace target environment.
      *
      * @return void
      */
-    protected function envSetEnvironment()
+    protected function setEnvironment()
     {
-        $this->line('<options=bold>Momo API client application environment.</>');
-        $this->line('The environment your testing your application.');
-        $environment = $this->laravel['config']['mtn-momo.environment'];
+        $this->line('<options=bold>Environment.</>');
+        $this->line("The environment your testing your application. Also called: 'targetEnvironment'");
+        $environment = $this->config('mtn-momo.environment');
 
         $environments = ['sandbox', 'live'];
         $index = array_search($environment, $environments);
         $default = ($index === false) ? null : $index;
         $environment = $this->choice('MOMO_ENVIRONMENT', $environments, $default);
 
-        $pattern = $this->regexEnvironmentReplacementPattern();
+        $pattern = $this->getEnvironmentRegex();
 
-        if (preg_match($pattern, file_get_contents($this->dotenv))) {
-            file_put_contents($this->dotenv, preg_replace(
-                $this->regexEnvironmentReplacementPattern(),
+        if (preg_match($pattern, file_get_contents($this->env))) {
+            file_put_contents($this->env, preg_replace(
+                $this->getEnvironmentRegex(),
                 "MOMO_ENVIRONMENT=\"{$environment}\"",
-                file_get_contents($this->dotenv)
+                file_get_contents($this->env)
             ));
         } else {
             $environment = "\r\nMOMO_ENVIRONMENT=\"{$environment}\"\r\n";
 
-            file_put_contents($this->dotenv, file_get_contents($this->dotenv).$environment);
+            file_put_contents($this->env, file_get_contents($this->env).$environment);
         }
     }
 
@@ -216,47 +230,47 @@ class BootstrapCommand extends Command
      *
      * @return string
      */
-    protected function regexEnvironmentReplacementPattern()
+    protected function getEnvironmentRegex()
     {
-        $escaped = preg_quote($this->laravel['config']['mtn-momo.environment'], '/');
+        $escaped = preg_quote($this->config('mtn-momo.environment'), '/');
 
         return "/^MOMO_ENVIRONMENT=[\"']?{$escaped}[\"']?/m";
     }
 
     /*
     |--------------------------------------------------------------------------
-    | Target environment.
+    | MOMO_PRODUCT
     |--------------------------------------------------------------------------
     */
 
     /**
-     * Set the momo client app name in the environment file.
+     * Set/replace target product subscribed too.
      *
      * @return void
      */
-    protected function envSetProduct()
+    protected function setProduct()
     {
-        $this->line('<options=bold>Momo API production.</>');
-        $this->line('The product you subscribed too.');
-        $product = $this->laravel['config']['mtn-momo.product'];
+        $this->line('<options=bold>Product.</>');
+        $this->line("The product you subscribed too.");
+        $product = $this->config('mtn-momo.product');
 
         $products = ['collections', 'disbursement', 'remittance'];
         $index = array_search($product, $products);
         $default = ($index === false) ? null : $index;
         $product = $this->choice('MOMO_PRODUCT', $products, $default);
 
-        $pattern = $this->regexProductReplacementPattern();
+        $pattern = $this->getProductRegex();
 
-        if (preg_match($pattern, file_get_contents($this->dotenv))) {
-            file_put_contents($this->dotenv, preg_replace(
-                $this->regexProductReplacementPattern(),
+        if (preg_match($pattern, file_get_contents($this->env))) {
+            file_put_contents($this->env, preg_replace(
+                $this->getProductRegex(),
                 "MOMO_PRODUCT=\"{$product}\"",
-                file_get_contents($this->dotenv)
+                file_get_contents($this->env)
             ));
         } else {
             $product = "\r\nMOMO_PRODUCT=\"{$product}\"\r\n";
 
-            file_put_contents($this->dotenv, file_get_contents($this->dotenv).$product);
+            file_put_contents($this->env, file_get_contents($this->env).$product);
         }
     }
 
@@ -265,9 +279,9 @@ class BootstrapCommand extends Command
      *
      * @return string
      */
-    protected function regexProductReplacementPattern()
+    protected function getProductRegex()
     {
-        $escaped = preg_quote($this->laravel['config']['mtn-momo.product'], '/');
+        $escaped = preg_quote($this->config('mtn-momo.product'), '/');
 
         return "/^MOMO_PRODUCT=[\"']?{$escaped}[\"']?/m";
     }
@@ -279,29 +293,29 @@ class BootstrapCommand extends Command
     */
 
     /**
-     * Set the momo product subscription key in the environment file.
+     * Set/replace product subscription key.
      *
      * @return void
      */
-    protected function envSetProductKey()
+    protected function setProductKey()
     {
-        $this->line('<options=bold>Momo product key.</>');
+        $this->line('<options=bold>Product key.</>');
         $this->line("Product subscription key. Also called: 'Ocp-Apim-Subscription-Key'.");
-        $product_key = $this->laravel['config']['mtn-momo.product_key'];
+        $product_key = $this->config('mtn-momo.product_key');
         $product_key = $this->ask('MOMO_PRODUCT_KEY', $product_key);
 
-        $pattern = $this->regexProductKeyReplacementPattern();
+        $pattern = $this->getProductKeyRegex();
 
-        if (preg_match($pattern, file_get_contents($this->dotenv))) {
-            file_put_contents($this->dotenv, preg_replace(
-                $this->regexProductKeyReplacementPattern(),
+        if (preg_match($pattern, file_get_contents($this->env))) {
+            file_put_contents($this->env, preg_replace(
+                $this->getProductKeyRegex(),
                 "MOMO_PRODUCT_KEY=\"{$product_key}\"",
-                file_get_contents($this->dotenv)
+                file_get_contents($this->env)
             ));
         } else {
             $product_key = "\r\nMOMO_PRODUCT_KEY=\"{$product_key}\"\r\n";
 
-            file_put_contents($this->dotenv, file_get_contents($this->dotenv).$product_key);
+            file_put_contents($this->env, file_get_contents($this->env).$product_key);
         }
     }
 
@@ -310,9 +324,9 @@ class BootstrapCommand extends Command
      *
      * @return string
      */
-    protected function regexProductKeyReplacementPattern()
+    protected function getProductKeyRegex()
     {
-        $escaped = preg_quote($this->laravel['config']['mtn-momo.product_key'], '/');
+        $escaped = preg_quote($this->config('mtn-momo.product_key'), '/');
 
         return "/^MOMO_PRODUCT_KEY=[\"']?{$escaped}[\"']?/m";
     }
@@ -324,15 +338,15 @@ class BootstrapCommand extends Command
     */
 
     /**
-     * Set the momo client app ID.
+     * Set/replace client app ID.
      *
      * @return void
      */
-    protected function envSetAppId()
+    protected function setClientId()
     {
-        $this->line('<options=bold>Momo client app ID.</>');
+        $this->line('<options=bold>Client app ID.</>');
         $this->line('Also called; X-Reference-Id and api_user_id interchangeably.');
-        $client_id = $this->laravel['config']['mtn-momo.client_id'];
+        $client_id = $this->config('mtn-momo.client.id');
 
         if (! $client_id) {
             $this->line('Generating random UUID.');
@@ -346,18 +360,18 @@ class BootstrapCommand extends Command
             $client_id = $this->ask('MOMO_CLIENT_ID');
         }
 
-        $pattern = $this->regexAppIdReplacementPattern();
+        $pattern = $this->getClientIdRegex();
 
-        if (preg_match($pattern, file_get_contents($this->dotenv))) {
-            file_put_contents($this->dotenv, preg_replace(
-                $this->regexAppIdReplacementPattern(),
+        if (preg_match($pattern, file_get_contents($this->env))) {
+            file_put_contents($this->env, preg_replace(
+                $this->getClientIdRegex(),
                 "MOMO_CLIENT_ID=\"{$client_id}\"",
-                file_get_contents($this->dotenv)
+                file_get_contents($this->env)
             ));
         } else {
             $client_id = "\r\nMOMO_CLIENT_ID=\"{$client_id}\"\r\n";
 
-            file_put_contents($this->dotenv, file_get_contents($this->dotenv).$client_id);
+            file_put_contents($this->env, file_get_contents($this->env).$client_id);
         }
     }
 
@@ -366,78 +380,78 @@ class BootstrapCommand extends Command
      *
      * @return string
      */
-    protected function regexAppIdReplacementPattern()
+    protected function getClientIdRegex()
     {
-        $escaped = preg_quote($this->laravel['config']['mtn-momo.client_id'], '/');
+        $escaped = preg_quote($this->config('mtn-momo.client.id'), '/');
 
         return "/^MOMO_CLIENT_ID=[\"']?{$escaped}[\"']?/m";
     }
 
     /*
     |--------------------------------------------------------------------------
-    | MOMO_REDIRECT_URI
+    | MOMO_CLIENT_REDIRECT_URI
     |--------------------------------------------------------------------------
     */
 
     /**
-     * Set the momo client app ID.
+     * Set/replace the client app redirect URI.
      *
      * @return void
      */
-    protected function envSetRedirectUri()
+    protected function setClientRedirectUri()
     {
-        $this->line('<options=bold>Momo client app redirect URI.</>');
+        $this->line('<options=bold>Client app redirect URI.</>');
         $this->line('Also called; providerCallbackHost.');
-        $redirect_uri = $this->laravel['config']['mtn-momo.uri.redirect'];
+        $redirect_uri = $this->config('mtn-momo.client.redirect_uri');
 
-        $redirect_uri = $this->ask('MOMO_REDIRECT_URI', $redirect_uri);
+        $redirect_uri = $this->ask('MOMO_CLIENT_REDIRECT_URI', $redirect_uri);
 
         while ($redirect_uri && ! filter_var($redirect_uri, FILTER_VALIDATE_URL)) {
             $this->info(' Invalid URI. #IETF RFC3986');
-            $redirect_uri = $this->ask('MOMO_REDIRECT_URI', false);
+            $redirect_uri = $this->ask('MOMO_CLIENT_REDIRECT_URI', false);
         }
 
-        $pattern = $this->regexRedirectUriReplacementPattern();
+        $pattern = $this->getClientRedirectUriRegex();
 
-        if (preg_match($pattern, file_get_contents($this->dotenv))) {
-            file_put_contents($this->dotenv, preg_replace(
-                $this->regexRedirectUriReplacementPattern(),
-                "MOMO_REDIRECT_URI=\"{$redirect_uri}\"",
-                file_get_contents($this->dotenv)
+        if (preg_match($pattern, file_get_contents($this->env))) {
+            file_put_contents($this->env, preg_replace(
+                $this->getClientRedirectUriRegex(),
+                "MOMO_CLIENT_REDIRECT_URI=\"{$redirect_uri}\"",
+                file_get_contents($this->env)
             ));
         } else {
-            $redirect_uri = "\r\nMOMO_REDIRECT_URI=\"{$redirect_uri}\"\r\n";
+            $redirect_uri = "\r\nMOMO_CLIENT_REDIRECT_URI=\"{$redirect_uri}\"\r\n";
 
-            file_put_contents($this->dotenv, file_get_contents($this->dotenv).$redirect_uri);
+            file_put_contents($this->env, file_get_contents($this->env).$redirect_uri);
         }
     }
 
     /**
-     * Get a regex pattern that will match env MOMO_REDIRECT_URI with any random name.
+     * Get a regex pattern that will match env MOMO_CLIENT_REDIRECT_URI with any random name.
      *
      * @return string
      */
-    protected function regexRedirectUriReplacementPattern()
+    protected function getClientRedirectUriRegex()
     {
-        $escaped = preg_quote($this->laravel['config']['mtn-momo.uri.redirect'], '/');
+        $escaped = preg_quote($this->config('mtn-momo.client.redirect_uri'), '/');
 
-        return "/^MOMO_REDIRECT_URI=[\"']?{$escaped}[\"']?/m";
+        return "/^MOMO_CLIENT_REDIRECT_URI=[\"']?{$escaped}[\"']?/m";
     }
 
     /*
     |--------------------------------------------------------------------------
-    | Register MOMO_CLIENT_ID
+    | MOMO_CLIENT_ID - Registration
     |--------------------------------------------------------------------------
     */
 
     /**
-     * Set the momo client app ID.
+     * Regitster client app ID.
      *
      * @return void
      */
-    protected function registerAppId()
+    protected function registerClientId()
     {
-        $this->line('<options=bold>Register -> Client APP ID.</>');
+        $this->line('<options=bold>Register -> Client app ID.</>');
         $this->line('The client app ID has to be registered with MOMO API.');
         $this->line('It\'s required to generate a <options=bold>Client app secret</>.');
 
@@ -451,11 +465,11 @@ class BootstrapCommand extends Command
                 },
                 'headers' => [
                     'Content-Type' => 'application/json',
-                    'Ocp-Apim-Subscription-Key' => $this->laravel['config']['mtn-momo.product_key'],
-                    'X-Reference-Id' => $this->laravel['config']['mtn-momo.client_id'],
+                    'Ocp-Apim-Subscription-Key' => $this->config('mtn-momo.product_key'),
+                    'X-Reference-Id' => $this->config('mtn-momo.client.id'),
                 ],
                 'json' => [
-                    'providerCallbackHost' => $this->laravel['config']['mtn-momo.uri.redirect'],
+                    'providerCallbackHost' => $this->config('mtn-momo.client.redirect_uri'),
                 ],
             ]);
 
@@ -491,7 +505,7 @@ class BootstrapCommand extends Command
         $this->line('<options=bold>Request -> Client APP secret.</>');
         $this->line("Also called; 'apiKey'.");
 
-        $client_secret = $this->laravel['config']['mtn-momo.client_secret'];
+        $client_secret = $this->config('mtn-momo.client.secret');
 
         if($client_secret) {
             if (!$this->confirm('Do you wish to refresh the client app secret?')) {
@@ -502,14 +516,14 @@ class BootstrapCommand extends Command
         try {
             $client = new Client(['base_uri' => 'https://ericssonbasicapi2.azure-api.net/']);
 
-            $response = $client->request('POST', $this->laravel['config']['mtn-momo.uri.client_secret'], [
+            $response = $client->request('POST', $this->config('mtn-momo.uri.client_secret'), [
                 'debug' => false,
                 'progress' => function () {
                     echo '* ';
                 },
                 'headers' => [
                     'Content-Type' => 'application/json',
-                    'Ocp-Apim-Subscription-Key' => $this->laravel['config']['mtn-momo.product_key'],
+                    'Ocp-Apim-Subscription-Key' => $this->config('mtn-momo.product_key'),
                 ],
                 'json' => [
                     'body',
@@ -524,18 +538,18 @@ class BootstrapCommand extends Command
 
             $client_secret = $api_response['apiKey'];
 
-            $pattern = $this->regexAppSecretReplacementPattern();
+            $pattern = $this->getClientSecretRegex();
 
-            if (preg_match($pattern, file_get_contents($this->dotenv))) {
-                file_put_contents($this->dotenv, preg_replace(
-                    $this->regexAppSecretReplacementPattern(),
+            if (preg_match($pattern, file_get_contents($this->env))) {
+                file_put_contents($this->env, preg_replace(
+                    $this->getClientSecretRegex(),
                     "MOMO_CLIENT_SECRET=\"{$client_secret}\"",
-                    file_get_contents($this->dotenv)
+                    file_get_contents($this->env)
                 ));
             } else {
                 $client_secret = "\r\nMOMO_CLIENT_SECRET=\"{$client_secret}\"\r\n";
 
-                file_put_contents($this->dotenv, file_get_contents($this->dotenv).$client_secret);
+                file_put_contents($this->env, file_get_contents($this->env).$client_secret);
             }
 
         } catch (ConnectException $ex) {
@@ -556,9 +570,9 @@ class BootstrapCommand extends Command
      *
      * @return string
      */
-    protected function regexAppSecretReplacementPattern()
+    protected function getClientSecretRegex()
     {
-        $escaped = preg_quote($this->laravel['config']['mtn-momo.client_secret'], '/');
+        $escaped = preg_quote($this->config('mtn-momo.client.secret'), '/');
 
         return "/^MOMO_CLIENT_SECRET=[\"']?{$escaped}[\"']?/m";
     }

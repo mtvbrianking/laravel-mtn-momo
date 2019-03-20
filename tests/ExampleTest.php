@@ -1,6 +1,6 @@
 <?php
 
-namespace Bmatovu\MtnMomo\Test;
+namespace Bmatovu\MtnMomo\Tests;
 
 class ExampleTest extends TestCase
 {

@@ -1,6 +1,6 @@
 {
     "name": "bmatovu/laravel-mtn-momo",
-    "description": "Laravel MTN Momo",
+    "description": "Laravel MTN MOMO integration.",
     "homepage": "https://github.com/mtvbrianking/laravel-mtn-momo",
     "type": "library",
     "license": "MIT",
@@ -37,7 +37,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Bmatovu\\MtnMomo\\Test\\": "tests/"
+            "Bmatovu\\MtnMomo\\Tests\\": "tests/"
         }
     },
     "minimum-stability": "dev",

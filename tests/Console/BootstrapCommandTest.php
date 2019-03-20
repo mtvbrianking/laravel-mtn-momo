@@ -1,24 +1,24 @@
 <?php
 
-namespace Bmatovu\MtnMomo\Test\Console;
+namespace Bmatovu\MtnMomo\Tests\Console;
 
-use Bmatovu\MtnMomo\Test\TestCase;
+use Bmatovu\MtnMomo\Tests\TestCase;
 
 class BootstrapCommandTest extends TestCase
 {
     public function testCanCreateAppName()
     {
-        // Run mtn-momo:init
-        // Question: "MOMO_APP_NAME?"
+        // Run momo:init
+        // Question: "MOMO_CLIENT_NAME?"
         // Answer: "Test Momo App"
-        // Assert MOMO_APP_NAME is created in .env
+        // Assert MOMO_CLIENT_NAME is created in .env
     }
 
     public function testCanUpdateAppName()
     {
-        // Run mtn-momo:init
+        // Run momo:init
         // Question: "MOMO_APP_NAME?"
         // Answer: "Test Momo App"
-        // Assert MOMO_APP_NAME is updated in .env
+        // Assert MOMO_CLIENT_NAME is updated in .env
     }
 }

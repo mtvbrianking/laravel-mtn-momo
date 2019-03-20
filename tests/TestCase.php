@@ -1,6 +1,6 @@
 <?php
 
-namespace Bmatovu\MtnMomo\Test;
+namespace Bmatovu\MtnMomo\Tests;
 
 use Bmatovu\MtnMomo\MtnMomoServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
