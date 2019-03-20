@@ -82,7 +82,7 @@ return [
         /*
          * Generate client secret URI
          */
-        'client_secret' => env('MOMO_CLIENT_SECRET_URI', 'v1_0/apiuser/'.env('MOMO_CLIENT_ID').'/apiKey'),
+        'client_secret' => env('MOMO_CLIENT_SECRET_URI', 'v1_0/apiuser/'.env('MOMO_CLIENT_ID').'/apikey'),
 
         /*
          * Token uri
