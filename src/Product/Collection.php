@@ -3,22 +3,19 @@
 namespace Bmatovu\MtnMomo\Product;
 
 use Monolog\Logger;
-use Ramsey\Uuid\Uuid;
 use GuzzleHttp\Client;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\HandlerStack;
-use Illuminate\Console\Command;
-use GuzzleHttp\MessageFormatter;
 use Bmatovu\MtnMomo\Model\Token;
+use GuzzleHttp\MessageFormatter;
 use Monolog\Handler\StreamHandler;
 use Illuminate\Container\Container;
 use Illuminate\Support\Facades\Log;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
+use Bmatovu\MtnMomo\Http\OAuth2Middleware;
 use GuzzleHttp\Exception\ConnectException;
 use Illuminate\Contracts\Config\Repository;
-
-use Bmatovu\MtnMomo\Http\OAuth2Middleware;
 use Bmatovu\MtnMomo\Http\GrantType\ClientCredentials;
 
 class Collection
@@ -145,13 +142,13 @@ class Collection
             ]);
 
             return json_decode($response->getBody(), true);
-
         } catch (ConnectException $ex) {
             return [
                 'message' => $ex->getMessage(),
             ];
         } catch (ClientException $ex) {
             $response = $ex->getResponse();
+
             return [
                 'status' => $response->getStatusCode(),
                 'reason' => $response->getReasonPhrase(),
@@ -159,6 +156,7 @@ class Collection
             ];
         } catch (ServerException $ex) {
             $response = $ex->getResponse();
+
             return [
                 'status' => $response->getStatusCode(),
                 'reason' => $response->getReasonPhrase(),
@@ -169,7 +167,7 @@ class Collection
 
     public function getTransactionStatus()
     {
-        print("Transact/collect what?");
+        echo 'Transact/collect what?';
     }
 
     /**
@@ -178,7 +176,6 @@ class Collection
      */
     public function token()
     {
-
     }
 
     /**
@@ -187,7 +184,6 @@ class Collection
      */
     public function getAccountBalance()
     {
-
     }
 
     /**
@@ -196,7 +192,5 @@ class Collection
      */
     public function getUserAccountInfo()
     {
-
     }
-
 }

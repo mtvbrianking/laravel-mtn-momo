@@ -60,7 +60,7 @@ class OAuth2Middleware
             return $request;
         }
 
-        $request->withHeader('Authorization', 'Bearer ' . $token->access_token);
+        $request->withHeader('Authorization', 'Bearer '.$token->access_token);
     }
 
     /**
@@ -131,10 +131,8 @@ class OAuth2Middleware
             $token->save();
 
             return $token;
-
         } catch (BadResponseException $ex) {
             throw new AccessTokenRequestException('Unable to request a new access token', $ex->getPrevious());
         }
     }
-
 }
