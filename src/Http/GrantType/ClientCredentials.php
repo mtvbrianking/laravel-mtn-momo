@@ -2,14 +2,12 @@
 
 namespace Bmatovu\MtnMomo\Http\GrantType;
 
-use GuzzleHttp\ClientInterface;
-use Bmatovu\MtnMomo\Http\GrantTypeInterface;
-
 use Monolog\Logger;
 use GuzzleHttp\Middleware;
-use GuzzleHttp\HandlerStack;
+use GuzzleHttp\ClientInterface;
 use GuzzleHttp\MessageFormatter;
 use Monolog\Handler\StreamHandler;
+use Bmatovu\MtnMomo\Http\GrantTypeInterface;
 
 class ClientCredentials implements GrantTypeInterface
 {
@@ -72,5 +70,4 @@ class ClientCredentials implements GrantTypeInterface
 
         return json_decode($response->getBody());
     }
-
 }

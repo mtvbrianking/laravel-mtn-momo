@@ -6,5 +6,4 @@ use Bmatovu\MtnMomo\Http\GrantTypeInterface;
 
 class RefreshToken implements GrantTypeInterface
 {
-
 }

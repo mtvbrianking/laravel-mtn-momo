@@ -19,6 +19,7 @@ class CreateMtnMomoTokensTable extends Migration
             $table->dateTime('expires_at')->nullable();
         });
     }
+
     /**
      * Reverse the migrations.
      */
