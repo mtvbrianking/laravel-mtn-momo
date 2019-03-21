@@ -23,6 +23,14 @@ class MtnMomoServiceProvider extends ServiceProvider
                 BootstrapCommand::class,
             ]);
         }
+
+        // if (! class_exists('CreateMtnMomoTokensTable')) {
+        //     $this->publishes([
+        //         __DIR__.'/../database/migrations/create_mtn_momo_tokens_table.php' => database_path('migrations/'.date('Y_m_d_His', time()).'_create_mtn_momo_tokens_table.php'),
+        //     ], 'migrations');
+        // }
+
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
     }
 
     /**

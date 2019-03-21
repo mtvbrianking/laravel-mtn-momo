@@ -20,15 +20,23 @@
         }
     ],
     "require": {
+        "ext-json": "*",
         "php": ">=5.6.4",
+        "ramsey/uuid": "~3.0",
+        "nesbot/carbon": "~1.20",
         "guzzlehttp/guzzle": "^6.3",
         "illuminate/console": "~5.3",
+        "illuminate/container": "~5.3",
+        "illuminate/contracts": "~5.3",
+        "illuminate/dataabse": "~5.3",
         "illuminate/support": "~5.3"
     },
     "require-dev": {
         "phpunit/phpunit": "~5.0",
-        "orchestra/testbench": "~3.3.0",
-        "mockery/mockery": "0.9.*"
+        "orchestra/testbench": "~3.3.0"
+    },
+    "suggest": {
+        "monolog/monolog": "For more comprehesive logging."
     },
     "autoload": {
         "psr-4": {

@@ -300,7 +300,7 @@ class BootstrapCommand extends Command
         $this->line('The product you subscribed too.');
 
         $product = $this->laravel['config']->get('mtn-momo.product');
-        $products = ['collections', 'disbursement', 'remittance'];
+        $products = ['collection', 'disbursement', 'remittance'];
         $index = array_search($product, $products);
         $default = ($index === false) ? null : $index;
         $new_product = $this->choice('MOMO_PRODUCT', $products, $default);
