@@ -28,7 +28,7 @@
         "illuminate/console": "~5.3",
         "illuminate/container": "~5.3",
         "illuminate/contracts": "~5.3",
-        "illuminate/dataabse": "~5.3",
+        "illuminate/database": "~5.3",
         "illuminate/support": "~5.3"
     },
     "require-dev": {
