@@ -10,7 +10,6 @@ use GuzzleHttp\HandlerStack;
 use Illuminate\Console\Command;
 use GuzzleHttp\MessageFormatter;
 use Monolog\Handler\StreamHandler;
-use Illuminate\Support\Facades\Log;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
 use GuzzleHttp\Exception\ConnectException;

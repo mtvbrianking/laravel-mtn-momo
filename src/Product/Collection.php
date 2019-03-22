@@ -2,22 +2,15 @@
 
 namespace Bmatovu\MtnMomo\Product;
 
-use Monolog\Logger;
 use Ramsey\Uuid\Uuid;
 use GuzzleHttp\Client;
-use GuzzleHttp\Middleware;
 use GuzzleHttp\HandlerStack;
-use Bmatovu\MtnMomo\Model\Token;
-use GuzzleHttp\MessageFormatter;
-use Monolog\Handler\StreamHandler;
 use Illuminate\Container\Container;
-use Illuminate\Support\Facades\Log;
-use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Exception\ServerException;
 use Bmatovu\MtnMomo\Http\OAuth2Middleware;
-use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Exception\RequestException;
 use Illuminate\Contracts\Config\Repository;
 use Bmatovu\MtnMomo\Http\GrantType\ClientCredentials;
+use Bmatovu\MtnMomo\Exception\CollectionRequestException;
 
 class Collection
 {
@@ -33,24 +26,57 @@ class Collection
      *
      * @throws \Exception
      */
-    public function __construct()
+    public function __construct($headers = [], $middlewares = [])
     {
-        $stack = HandlerStack::create();
+        // Guzzle http request headers
 
-        // ...........................................................
-
-        // Default Headers
-        $headers = [
+        $headers = array_merge([
             'Accept' => 'application/json',
             'Content-Type' => 'application/json',
             'Ocp-Apim-Subscription-Key' => $this->configuration()->get('mtn-momo.app.product_key'),
-        ];
+        ], $headers);
 
+        // Guzzle http client middleware
+
+        $stack = HandlerStack::create();
+
+        foreach ($middlewares as $middleware) {
+            $stack->push($middleware);
+        }
+
+        // Add authentication middleware
+
+        $stack->push($this->getAuthBroker($headers));
+
+        // ...........................................................
+
+        // $logger = new Logger('Logger');
+        // $logger->pushHandler(new StreamHandler(storage_path('logs/mtn-momo.log')), Logger::DEBUG);
+
+        // $stack->push(Middleware::log($logger, new MessageFormatter("\r\n[Request] >>>>> {request}. [Response] >>>>> \r\n{response}.")));
+
+        // ...........................................................
+
+        // This is the normal Guzzle client that you use in your application
+        $this->client = new Client([
+            'handler' => $stack,
+            'base_uri' => $this->configuration()->get('mtn-momo.api.base_uri'),
+            'headers' => $headers,
+        ]);
+    }
+
+    /**
+     * Get authentication broker.
+     *
+     * @param  array $headers HTTP request headers
+     *
+     * @return \Bmatovu\MtnMomo\Http\OAuth2Middleware
+     * @throws \Exception
+     */
+    protected function getAuthBroker($headers)
+    {
         // Authorization client - this is used to request OAuth access tokens
         $client = new Client([
-            'progress' => function () {
-                echo '. ';
-            },
             'base_uri' => $this->configuration()->get('mtn-momo.api.base_uri'),
             'headers' => $headers,
             'json' => [
@@ -69,28 +95,7 @@ class Collection
         $client_grant = new ClientCredentials($client, $config);
 
         // Tell the middleware to use both the client and refresh token grants
-        $oauth = new OAuth2Middleware($client_grant);
-
-        $stack->push($oauth);
-
-        // ...........................................................
-
-        $logger = new Logger('Logger');
-        $logger->pushHandler(new StreamHandler(storage_path('logs/mtn-momo.log')), Logger::DEBUG);
-
-        $stack->push(Middleware::log($logger, new MessageFormatter("\r\n[Request] >>>>> {request}. [Response] >>>>> \r\n{response}.")));
-
-        // ...........................................................
-
-        // This is the normal Guzzle client that you use in your application
-        $this->client = new Client([
-            'handler' => $stack,
-            'progress' => function () {
-                echo '. ';
-            },
-            'base_uri' => $this->configuration()->get('mtn-momo.api.base_uri'),
-            'headers' => $headers,
-        ]);
+        return new OAuth2Middleware($client_grant);
     }
 
     /**
@@ -114,6 +119,7 @@ class Collection
      * @param  string $payer_message Payer transaction history message.
      * @param  string $payee_note Payee transaction history message.
      * @return string                Payment reference ID
+     * @throws \Bmatovu\MtnMomo\Exception\CollectionRequestException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function transact($external_id, $party_id, $amount, $payer_message = '', $payee_note = '')
@@ -145,26 +151,8 @@ class Collection
             ]);
 
             return $payment_ref;
-        } catch (ConnectException $ex) {
-            var_dump([
-                'message' => $ex->getMessage(),
-            ]);
-        } catch (ClientException $ex) {
-            $response = $ex->getResponse();
-
-            var_dump([
-                'status' => $response->getStatusCode(),
-                'reason' => $response->getReasonPhrase(),
-                'body' => json_decode($response->getBody()),
-            ]);
-        } catch (ServerException $ex) {
-            $response = $ex->getResponse();
-
-            var_dump([
-                'status' => $response->getStatusCode(),
-                'reason' => $response->getReasonPhrase(),
-                'body' => json_encode($response->getBody()),
-            ]);
+        } catch (RequestException $ex) {
+            throw new CollectionRequestException('Unable to transact (request pay).', 0, $ex);
         }
     }
 
@@ -172,7 +160,9 @@ class Collection
      * Get transaction status.
      *
      * @param  string $payment_ref ID
-     * @return array Payment data
+     *
+     * @return array
+     * @throws \Bmatovu\MtnMomo\Exception\CollectionRequestException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function getTransactionStatus($payment_ref)
@@ -189,33 +179,16 @@ class Collection
             ]);
 
             return json_decode($response->getBody(), true);
-        } catch (ConnectException $ex) {
-            var_dump([
-                'message' => $ex->getMessage(),
-            ]);
-        } catch (ClientException $ex) {
-            $response = $ex->getResponse();
-
-            var_dump([
-                'status' => $response->getStatusCode(),
-                'reason' => $response->getReasonPhrase(),
-                'body' => json_decode($response->getBody()),
-            ]);
-        } catch (ServerException $ex) {
-            $response = $ex->getResponse();
-
-            var_dump([
-                'status' => $response->getStatusCode(),
-                'reason' => $response->getReasonPhrase(),
-                'body' => json_encode($response->getBody()),
-            ]);
+        } catch (RequestException $ex) {
+            throw new CollectionRequestException('Unable to get transaction status.', 0, $ex);
         }
     }
 
     /**
      * Request access token.
      *
-     * @return array|mixed
+     * @return array
+     * @throws \Bmatovu\MtnMomo\Exception\CollectionRequestException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function token()
@@ -234,26 +207,8 @@ class Collection
             ]);
 
             return json_decode($response->getBody(), true);
-        } catch (ConnectException $ex) {
-            var_dump([
-                'message' => $ex->getMessage(),
-            ]);
-        } catch (ClientException $ex) {
-            $response = $ex->getResponse();
-
-            var_dump([
-                'status' => $response->getStatusCode(),
-                'reason' => $response->getReasonPhrase(),
-                'body' => json_decode($response->getBody()),
-            ]);
-        } catch (ServerException $ex) {
-            $response = $ex->getResponse();
-
-            var_dump([
-                'status' => $response->getStatusCode(),
-                'reason' => $response->getReasonPhrase(),
-                'body' => json_encode($response->getBody()),
-            ]);
+        } catch (RequestException $ex) {
+            throw new CollectionRequestException('Unable to get token.', 0, $ex);
         }
     }
 
@@ -261,6 +216,7 @@ class Collection
      * Get account balance.
      *
      * @return array Account balance.
+     * @throws \Bmatovu\MtnMomo\Exception\CollectionRequestException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function getAccountBalance()
@@ -276,26 +232,8 @@ class Collection
             ]);
 
             return json_decode($response->getBody(), true);
-        } catch (ConnectException $ex) {
-            var_dump([
-                'message' => $ex->getMessage(),
-            ]);
-        } catch (ClientException $ex) {
-            $response = $ex->getResponse();
-
-            var_dump([
-                'status' => $response->getStatusCode(),
-                'reason' => $response->getReasonPhrase(),
-                'body' => json_decode($response->getBody()),
-            ]);
-        } catch (ServerException $ex) {
-            $response = $ex->getResponse();
-
-            var_dump([
-                'status' => $response->getStatusCode(),
-                'reason' => $response->getReasonPhrase(),
-                'body' => json_encode($response->getBody()),
-            ]);
+        } catch (RequestException $ex) {
+            throw new CollectionRequestException('Unable to get account balance.', 0, $ex);
         }
     }
 
@@ -305,6 +243,7 @@ class Collection
      * @param  string $account_id
      * @param  string $account_type_name
      * @return array User account info
+     * @throws \Bmatovu\MtnMomo\Exception\CollectionRequestException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function getUserAccountInfo($account_id, $account_type_name = null)
@@ -326,32 +265,14 @@ class Collection
         try {
             $response = $this->client->request('GET', $resource, [
                 'headers' => [
-                    'Ocp-Apim-Subscription-Key' => $this->configuration()->get('mtn-momo.app.product_key'),
+                    'Ocp-Apim-Subscription-Key' => 'wrong->'.$this->configuration()->get('mtn-momo.app.product_key'),
                     'X-Target-Environment' => $this->configuration()->get('mtn-momo.app.environment'),
                 ],
             ]);
 
             return json_decode($response->getBody(), true);
-        } catch (ConnectException $ex) {
-            var_dump([
-                'message' => $ex->getMessage(),
-            ]);
-        } catch (ClientException $ex) {
-            $response = $ex->getResponse();
-
-            var_dump([
-                'status' => $response->getStatusCode(),
-                'reason' => $response->getReasonPhrase(),
-                'body' => json_decode($response->getBody()),
-            ]);
-        } catch (ServerException $ex) {
-            $response = $ex->getResponse();
-
-            var_dump([
-                'status' => $response->getStatusCode(),
-                'reason' => $response->getReasonPhrase(),
-                'body' => json_encode($response->getBody()),
-            ]);
+        } catch (RequestException $ex) {
+            throw new CollectionRequestException('Unable to get user account information.', 0, $ex);
         }
     }
 }

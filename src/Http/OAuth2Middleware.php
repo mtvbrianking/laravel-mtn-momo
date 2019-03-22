@@ -4,9 +4,9 @@ namespace Bmatovu\MtnMomo\Http;
 
 use Carbon\Carbon;
 use Bmatovu\MtnMomo\Model\Token;
-use GuzzleHttp\Exception\BadResponseException;
 use Psr\Http\Message\RequestInterface;
-use Bmatovu\MtnMomo\Exception\AccessTokenRequestException;
+use GuzzleHttp\Exception\RequestException;
+use Bmatovu\MtnMomo\Exception\TokenRequestException;
 
 class OAuth2Middleware
 {
@@ -52,7 +52,10 @@ class OAuth2Middleware
         return function (RequestInterface $request, array $options) use ($handler) {
             $request = $this->signRequest($request);
 
-            return $handler($request, $options)->then($this->onFulfilled($request, $options, $handler), $this->onRejected($request, $options, $handler));
+            return $handler($request, $options)->then(
+                $this->onFulfilled($request, $options, $handler),
+                $this->onRejected($request, $options, $handler)
+            );
         };
     }
 
@@ -133,7 +136,7 @@ class OAuth2Middleware
      *
      * @return \Bmatovu\MtnMomo\Model\Token|null
      *
-     * @throws AccessTokenRequestException
+     * @throws TokenRequestException
      */
     public function getToken()
     {
@@ -157,7 +160,7 @@ class OAuth2Middleware
      *
      * @return \Bmatovu\MtnMomo\Model\Token|null
      *
-     * @throws AccessTokenRequestException
+     * @throws \Bmatovu\MtnMomo\Exception\TokenRequestException
      */
     protected function requestNewToken()
     {
@@ -196,8 +199,8 @@ class OAuth2Middleware
             $token->save();
 
             return $token;
-        } catch (BadResponseException $ex) {
-            throw new AccessTokenRequestException('Unable to request a new access token', $ex->getPrevious());
+        } catch (RequestException $ex) {
+            throw new TokenRequestException('Unable to request a new access token', 0, $ex->getPrevious());
         }
     }
 }
