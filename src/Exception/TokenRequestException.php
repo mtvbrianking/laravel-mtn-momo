@@ -2,8 +2,6 @@
 
 namespace Bmatovu\MtnMomo\Exception;
 
-use GuzzleHttp\Exception\TransferException;
-
 class TokenRequestException extends \RuntimeException
 {
     /**

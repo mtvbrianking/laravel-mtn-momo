@@ -2,13 +2,8 @@
 
 namespace Bmatovu\MtnMomo\Http\GrantType;
 
-use Monolog\Logger;
-use GuzzleHttp\Middleware;
 use GuzzleHttp\ClientInterface;
-use GuzzleHttp\MessageFormatter;
-use Monolog\Handler\StreamHandler;
 use Bmatovu\MtnMomo\Http\GrantTypeInterface;
-use Bmatovu\MtnMomo\Exception\TokenRequestException;
 
 class ClientCredentials implements GrantTypeInterface
 {
