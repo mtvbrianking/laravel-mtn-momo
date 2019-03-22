@@ -16,7 +16,8 @@ class CreateMtnMomoTokensTable extends Migration
             $table->text('access_token');
             $table->string('token_type');
             $table->timestamps();
-            $table->dateTime('expires_at')->nullable();
+            $table->timestamp('expires_at')->nullable();
+            $table->softDeletes();
         });
     }
 

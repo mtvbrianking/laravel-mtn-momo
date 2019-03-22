@@ -2,7 +2,9 @@
 
 namespace Bmatovu\MtnMomo\Http;
 
+use Carbon\Carbon;
 use Bmatovu\MtnMomo\Model\Token;
+use GuzzleHttp\Exception\BadResponseException;
 use Psr\Http\Message\RequestInterface;
 use Bmatovu\MtnMomo\Exception\AccessTokenRequestException;
 
@@ -49,9 +51,72 @@ class OAuth2Middleware
     {
         return function (RequestInterface $request, array $options) use ($handler) {
             $request = $this->signRequest($request);
+
+            return $handler($request, $options)->then($this->onFulfilled($request, $options, $handler), $this->onRejected($request, $options, $handler));
         };
     }
 
+    /**
+     * Request error event handler.
+     *
+     * Handles unauthorized errors by acquiring a new access token and
+     * retrying the request.
+     *
+     * @param \Psr\Http\Message\RequestInterface $request
+     * @param array $options
+     * @param $handler
+     * @return \Closure
+     */
+    private function onFulfilled(RequestInterface $request, array $options, $handler)
+    {
+        return function ($response) use ($request, $options, $handler) {
+            // Only deal with Unauthorized response.
+            if ($response && $response->getStatusCode() != 401) {
+                return $response;
+            }
+
+            // If we already retried once, give up.
+            // This is extremely unlikely in Guzzle 6+ since we're using promises
+            // to check the response - looping should be impossible, but I'm leaving
+            // the code here in case something interferes with the Middleware
+            if ($request->hasHeader('X-Guzzle-Retry')) {
+                return $response;
+            }
+
+            // Delete the previous access token, if any
+            $this->token->delete();
+            $this->token = null;
+
+            // Acquire a new access token, and retry the request.
+            $this->token = $this->getToken();
+            if ($this->token === null) {
+                return $response;
+            }
+
+            $request = $request->withHeader('X-Guzzle-Retry', '1');
+            $request = $this->signRequest($request);
+
+            return $handler($request, $options);
+        };
+    }
+
+    /**
+     * @param \Psr\Http\Message\RequestInterface $request
+     * @param array $options
+     * @param $handler
+     * @return \Closure
+     */
+    private function onRejected(RequestInterface $request, array $options, $handler)
+    {
+        return function ($reason) use ($request, $options) {
+            return \GuzzleHttp\Promise\rejection_for($reason);
+        };
+    }
+
+    /**
+     * @param $request
+     * @return mixed
+     */
     protected function signRequest($request)
     {
         $token = $this->getToken();
@@ -60,7 +125,7 @@ class OAuth2Middleware
             return $request;
         }
 
-        $request->withHeader('Authorization', 'Bearer '.$token->access_token);
+        return $request->withHeader('Authorization', 'Bearer '.$token->access_token);
     }
 
     /**

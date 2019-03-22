@@ -19,36 +19,42 @@ class BootstrapCommand extends Command
 {
     /**
      * Guzzle http client.
+     *
      * @var \GuzzleHttp\Client
      */
     protected $client;
 
     /**
      * `.env` file path.
+     *
      * @var string
      */
     protected $env;
 
     /**
      * Changed product flag.
+     *
      * @var bool
      */
     protected $has_new_product = false;
 
     /**
      * Changed product key flag.
+     *
      * @var bool
      */
     protected $has_new_product_key = false;
 
     /**
      * Changed client app ID flag.
+     *
      * @var bool
      */
     protected $has_new_client_id = false;
 
     /**
      * Changed client app redirect URI flag.
+     *
      * @var bool
      */
     protected $has_new_client_redirect_uri = false;
@@ -75,7 +81,6 @@ class BootstrapCommand extends Command
     public function __construct()
     {
         parent::__construct();
-
         // ...
     }
 
@@ -128,8 +133,9 @@ class BootstrapCommand extends Command
 
     /**
      * Determine replacement regex pattern for setting.
+     *
      * @param  string $name Env name
-     * @param  string $key   Composite config name
+     * @param  string $key Composite config name
      * @return string        Regex pattern
      */
     protected function getRegex($name, $key)
@@ -141,6 +147,7 @@ class BootstrapCommand extends Command
 
     /**
      * Write | replace seeting in .env file.
+     *
      * @param  string $value [description]
      * @return void
      */
@@ -149,11 +156,7 @@ class BootstrapCommand extends Command
         $pattern = $this->getRegex($name, $key);
 
         if (preg_match($pattern, file_get_contents($this->env))) {
-            file_put_contents($this->env, preg_replace(
-                $pattern,
-                "{$name}=\"{$value}\"",
-                file_get_contents($this->env)
-            ));
+            file_put_contents($this->env, preg_replace($pattern, "{$name}=\"{$value}\"", file_get_contents($this->env)));
         } else {
             $setting = "\r\n{$name}=\"{$value}\"\r\n";
 
@@ -176,12 +179,7 @@ class BootstrapCommand extends Command
         $logger = new Logger('Logger');
         $logger->pushHandler(new StreamHandler(storage_path('logs/mtn-momo.log')), Logger::DEBUG);
 
-        $stack->push(
-            Middleware::log(
-                $logger,
-                new MessageFormatter("\r\n[Request] >>>>> {request}. [Response] >>>>> \r\n{response}.")
-            )
-        );
+        $stack->push(Middleware::log($logger, new MessageFormatter("\r\n[Request] >>>>> {request}. [Response] >>>>> \r\n{response}.")));
 
         $this->client = new Client([
             'debug' => false,
@@ -195,6 +193,7 @@ class BootstrapCommand extends Command
 
     /**
      * Reassemble route in memory.
+     *
      * @param  string $uri
      * @param  string $uuid Client ID
      * @return string

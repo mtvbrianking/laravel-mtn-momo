@@ -3,6 +3,7 @@
 namespace Bmatovu\MtnMomo\Product;
 
 use Monolog\Logger;
+use Ramsey\Uuid\Uuid;
 use GuzzleHttp\Client;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\HandlerStack;
@@ -22,12 +23,15 @@ class Collection
 {
     /**
      * HTTP client.
-     * @var \GuzzleHttp\Guzzle\Client
+     *
+     * @var \GuzzleHttp\Client
      */
     protected $client;
 
     /**
      * Constructor.
+     *
+     * @throws \Exception
      */
     public function __construct()
     {
@@ -35,17 +39,20 @@ class Collection
 
         // ...........................................................
 
+        // Default Headers
+        $headers = [
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json',
+            'Ocp-Apim-Subscription-Key' => $this->configuration()->get('mtn-momo.app.product_key'),
+        ];
+
         // Authorization client - this is used to request OAuth access tokens
         $client = new Client([
             'progress' => function () {
                 echo '. ';
             },
             'base_uri' => $this->configuration()->get('mtn-momo.api.base_uri'),
-            'headers' => [
-                'Accept' => 'application/json',
-                'Content-Type' => 'application/json',
-                'Ocp-Apim-Subscription-Key' => $this->configuration()->get('mtn-momo.app.product_key'),
-            ],
+            'headers' => $headers,
             'json' => [
                 'body',
             ],
@@ -71,12 +78,7 @@ class Collection
         $logger = new Logger('Logger');
         $logger->pushHandler(new StreamHandler(storage_path('logs/mtn-momo.log')), Logger::DEBUG);
 
-        $stack->push(
-            Middleware::log(
-                $logger,
-                new MessageFormatter("\r\n[Request] >>>>> {request}. [Response] >>>>> \r\n{response}.")
-            )
-        );
+        $stack->push(Middleware::log($logger, new MessageFormatter("\r\n[Request] >>>>> {request}. [Response] >>>>> \r\n{response}.")));
 
         // ...........................................................
 
@@ -87,11 +89,7 @@ class Collection
                 echo '. ';
             },
             'base_uri' => $this->configuration()->get('mtn-momo.api.base_uri'),
-            'headers' => [
-                'Accept' => 'application/json',
-                'Content-Type' => 'application/json',
-                'Ocp-Apim-Subscription-Key' => $this->configuration()->get('mtn-momo.app.product_key'),
-            ],
+            'headers' => $headers,
         ]);
     }
 
@@ -110,30 +108,35 @@ class Collection
      *
      * @see https://momodeveloper.mtn.com/docs/services/collection/operations/requesttopay-POST Documentation
      *
-     * @param  string $external_id   Transaction reference ID.
-     * @param  string $currency      Currency code, like 'USD'.
-     * @param  int    $amount        How much to debit the payer.
-     * @param  string $party_id_type Account holder type. Default:MSISDN
-     * @param  strinh $party_id      Account holder. Ususally phone number if type is MSISDN.
+     * @param  string $external_id Transaction reference ID.
+     * @param  int $amount How much to debit the payer.
+     * @param  string $party_id Account holder. Usually phone number if type is MSISDN.
      * @param  string $payer_message Payer transaction history message.
-     * @param  string $payee_note    Payee transaction history message.
-     * @return array                 API response.
+     * @param  string $payee_note Payee transaction history message.
+     * @return string                Payment reference ID
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function transact($external_id, $amount, $currency, $party_id, $party_id_type = 'MSISDN', $payer_message = '', $payee_note = '')
+    public function transact($external_id, $party_id, $amount, $payer_message = '', $payee_note = '')
     {
+        $payment_ref = Uuid::uuid4()->toString();
+
+        $resource = $this->configuration()->get('mtn-momo.products.collection.transact_uri');
+
         try {
-            $response = $this->client->request('POST', $this->configuration()->get('mtn-momo.products.collection.transact_uri'), [
+            $response = $this->client->request('POST', $resource, [
                 'headers' => [
                     'Content-Type' => 'application/json',
                     'Ocp-Apim-Subscription-Key' => $this->configuration()->get('mtn-momo.app.product_key'),
-                    'X-Reference-Id' => $this->configuration()->get('mtn-momo.client.id'),
+                    'X-Reference-Id' => $payment_ref,
+                    // 'X-Callback-Url' => $this->configuration()->get('mtn-momo.app.redirect_uri'),
+                    'X-Target-Environment' => $this->configuration()->get('mtn-momo.app.environment'),
                 ],
                 'json' => [
                     'amount' => $amount,
-                    'currency' => $currency,
+                    'currency' => $this->configuration()->get('mtn-momo.app.currency'),
                     'externalId' => $external_id,
                     'payer' => [
-                        'partyIdType' => $party_id_type,
+                        'partyIdType' => $this->configuration()->get('mtn-momo.products.collection.party_id_type'),
                         'partyId' => $party_id,
                     ],
                     'payerMessage' => $payer_message,
@@ -141,56 +144,214 @@ class Collection
                 ],
             ]);
 
-            return json_decode($response->getBody(), true);
+            return $payment_ref;
         } catch (ConnectException $ex) {
-            return [
+            var_dump([
                 'message' => $ex->getMessage(),
-            ];
+            ]);
         } catch (ClientException $ex) {
             $response = $ex->getResponse();
 
-            return [
+            var_dump([
                 'status' => $response->getStatusCode(),
                 'reason' => $response->getReasonPhrase(),
                 'body' => json_decode($response->getBody()),
-            ];
+            ]);
         } catch (ServerException $ex) {
             $response = $ex->getResponse();
 
-            return [
+            var_dump([
                 'status' => $response->getStatusCode(),
                 'reason' => $response->getReasonPhrase(),
-                'body' => $response->getBody(),
-            ];
+                'body' => json_encode($response->getBody()),
+            ]);
         }
     }
 
-    public function getTransactionStatus()
+    /**
+     * Get transaction status.
+     *
+     * @param  string $payment_ref ID
+     * @return array Payment data
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function getTransactionStatus($payment_ref)
     {
-        echo 'Transact/collect what?';
+        $resource = preg_replace('/(\{\btransaction_id\b\})$/', // '/(\{\b\w+\b\})$/',
+            $payment_ref, $this->configuration()->get('mtn-momo.products.collection.transaction_status_uri'));
+
+        try {
+            $response = $this->client->request('GET', $resource, [
+                'headers' => [
+                    'Ocp-Apim-Subscription-Key' => $this->configuration()->get('mtn-momo.app.product_key'),
+                    'X-Target-Environment' => $this->configuration()->get('mtn-momo.app.environment'),
+                ],
+            ]);
+
+            return json_decode($response->getBody(), true);
+        } catch (ConnectException $ex) {
+            var_dump([
+                'message' => $ex->getMessage(),
+            ]);
+        } catch (ClientException $ex) {
+            $response = $ex->getResponse();
+
+            var_dump([
+                'status' => $response->getStatusCode(),
+                'reason' => $response->getReasonPhrase(),
+                'body' => json_decode($response->getBody()),
+            ]);
+        } catch (ServerException $ex) {
+            $response = $ex->getResponse();
+
+            var_dump([
+                'status' => $response->getStatusCode(),
+                'reason' => $response->getReasonPhrase(),
+                'body' => json_encode($response->getBody()),
+            ]);
+        }
     }
 
     /**
      * Request access token.
-     * @return [type] [description]
+     *
+     * @return array|mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function token()
     {
+        $resource = $this->configuration()->get('mtn-momo.products.collection.app_account_balance_uri');
+
+        try {
+            $response = $this->client->request('POST', $resource, [
+                'headers' => [
+                    'Authorization' => 'Basic '.base64_encode($this->configuration()->get('client_id').':'.configuration()->get('client_secret')),
+                    'Ocp-Apim-Subscription-Key' => $this->configuration()->get('mtn-momo.app.product_key'),
+                ],
+                'json' => [
+                    'grant_type' => 'client_credentials',
+                ],
+            ]);
+
+            return json_decode($response->getBody(), true);
+        } catch (ConnectException $ex) {
+            var_dump([
+                'message' => $ex->getMessage(),
+            ]);
+        } catch (ClientException $ex) {
+            $response = $ex->getResponse();
+
+            var_dump([
+                'status' => $response->getStatusCode(),
+                'reason' => $response->getReasonPhrase(),
+                'body' => json_decode($response->getBody()),
+            ]);
+        } catch (ServerException $ex) {
+            $response = $ex->getResponse();
+
+            var_dump([
+                'status' => $response->getStatusCode(),
+                'reason' => $response->getReasonPhrase(),
+                'body' => json_encode($response->getBody()),
+            ]);
+        }
     }
 
     /**
      * Get account balance.
-     * @return [type] [description]
+     *
+     * @return array Account balance.
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function getAccountBalance()
     {
+        $resource = $this->configuration()->get('mtn-momo.products.collection.app_account_balance_uri');
+
+        try {
+            $response = $this->client->request('GET', $resource, [
+                'headers' => [
+                    'Ocp-Apim-Subscription-Key' => $this->configuration()->get('mtn-momo.app.product_key'),
+                    'X-Target-Environment' => $this->configuration()->get('mtn-momo.app.environment'),
+                ],
+            ]);
+
+            return json_decode($response->getBody(), true);
+        } catch (ConnectException $ex) {
+            var_dump([
+                'message' => $ex->getMessage(),
+            ]);
+        } catch (ClientException $ex) {
+            $response = $ex->getResponse();
+
+            var_dump([
+                'status' => $response->getStatusCode(),
+                'reason' => $response->getReasonPhrase(),
+                'body' => json_decode($response->getBody()),
+            ]);
+        } catch (ServerException $ex) {
+            $response = $ex->getResponse();
+
+            var_dump([
+                'status' => $response->getStatusCode(),
+                'reason' => $response->getReasonPhrase(),
+                'body' => json_encode($response->getBody()),
+            ]);
+        }
     }
 
     /**
      * Get user account information.
-     * @return [type] [description]
+     *
+     * @param  string $account_id
+     * @param  string $account_type_name
+     * @return array User account info
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function getUserAccountInfo()
+    public function getUserAccountInfo($account_id, $account_type_name = null)
     {
+        $resource = $this->configuration()->get('mtn-momo.products.collection.user_account_uri');
+
+        if (is_null($account_type_name)) {
+            $account_type_name = $this->configuration()->get('mtn-momo.products.collection.party_id_type');
+        }
+
+        $patterns[] = '/(\{\baccount_type_name\b\})/';
+        $replacements[] = strtolower($account_type_name);
+
+        $patterns[] = '/(\{\baccount_id\b\})/';
+        $replacements[] = $account_id;
+
+        $resource = preg_replace($patterns, $replacements, $resource);
+
+        try {
+            $response = $this->client->request('GET', $resource, [
+                'headers' => [
+                    'Ocp-Apim-Subscription-Key' => $this->configuration()->get('mtn-momo.app.product_key'),
+                    'X-Target-Environment' => $this->configuration()->get('mtn-momo.app.environment'),
+                ],
+            ]);
+
+            return json_decode($response->getBody(), true);
+        } catch (ConnectException $ex) {
+            var_dump([
+                'message' => $ex->getMessage(),
+            ]);
+        } catch (ClientException $ex) {
+            $response = $ex->getResponse();
+
+            var_dump([
+                'status' => $response->getStatusCode(),
+                'reason' => $response->getReasonPhrase(),
+                'body' => json_decode($response->getBody()),
+            ]);
+        } catch (ServerException $ex) {
+            $response = $ex->getResponse();
+
+            var_dump([
+                'status' => $response->getStatusCode(),
+                'reason' => $response->getReasonPhrase(),
+                'body' => json_encode($response->getBody()),
+            ]);
+        }
     }
 }

@@ -2,10 +2,13 @@
 
 namespace Bmatovu\MtnMomo\Model;
 
+// use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model as BaseModel;
 
 class Token extends BaseModel
 {
+    // use SoftDeletes;
+
     /**
      * The table associated with the model.
      *
@@ -20,6 +23,7 @@ class Token extends BaseModel
      */
     protected $dates = [
         'expires_at',
+        'deleted_at',
     ];
 
     /**

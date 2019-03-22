@@ -14,20 +14,21 @@ class ClientCredentials implements GrantTypeInterface
     /**
      * The token endpoint client.
      *
-     * @var ClientInterface
+     * @var \GuzzleHttp\ClientInterface
      */
     private $client;
 
     /**
      * Configuration settings.
      *
-     * @var Collection
+     * @var array
      */
     private $config;
 
     /**
-     * @param ClientInterface $client
-     * @param array           $config
+     * @param \GuzzleHttp\ClientInterface $client
+     * @param array $config
+     * @throws \Exception
      */
     public function __construct(ClientInterface $client, array $config)
     {
@@ -38,10 +39,7 @@ class ClientCredentials implements GrantTypeInterface
         $logger = new Logger('Logger');
         $logger->pushHandler(new StreamHandler(storage_path('logs/mtn-momo.log')), Logger::DEBUG);
 
-        $client->getConfig('handler')->push(Middleware::log(
-                $logger,
-                new MessageFormatter("\r\n[Request] >>>>> {request}. [Response] >>>>> \r\n{response}.")
-        ));
+        $client->getConfig('handler')->push(Middleware::log($logger, new MessageFormatter("\r\n[Request] >>>>> {request}. [Response] >>>>> \r\n{response}.")));
 
         // .....................
 
