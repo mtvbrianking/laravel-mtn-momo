@@ -4,6 +4,9 @@ namespace Bmatovu\MtnMomo;
 
 use Illuminate\Support\ServiceProvider;
 use Bmatovu\MtnMomo\Console\BootstrapCommand;
+use Bmatovu\MtnMomo\Console\ValidateIdCommand;
+use Bmatovu\MtnMomo\Console\RegisterIdCommand;
+use Bmatovu\MtnMomo\Console\RequestSecretCommand;
 
 class MtnMomoServiceProvider extends ServiceProvider
 {
@@ -21,6 +24,9 @@ class MtnMomoServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 BootstrapCommand::class,
+                RegisterIdCommand::class,
+                ValidateIdCommand::class,
+                RequestSecretCommand::class,
             ]);
         }
 

@@ -191,7 +191,7 @@ class Collection
      * @throws \Bmatovu\MtnMomo\Exception\CollectionRequestException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function token()
+    public function getToken()
     {
         $resource = $this->configuration()->get('mtn-momo.products.collection.app_account_balance_uri');
 
