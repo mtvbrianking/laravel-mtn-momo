@@ -124,7 +124,7 @@ class BootstrapCommand extends Command
     protected function setProductKey()
     {
         $this->printLabels('Product subscription key', [
-            "Also called: <options=bold>Ocp-Apim-Subscription-Key</>.",
+            'Also called: <options=bold>Ocp-Apim-Subscription-Key</>.',
         ]);
 
         $product_key = $this->laravel['config']->get('mtn-momo.app.product_key');
@@ -141,7 +141,7 @@ class BootstrapCommand extends Command
     protected function setEnvironment()
     {
         $this->printLabels('Environment', [
-            "Also called: <options=bold>targetEnvironment</>.",
+            'Also called: <options=bold>targetEnvironment</>.',
         ]);
 
         $environment = $this->laravel['config']->get('mtn-momo.app.environment');

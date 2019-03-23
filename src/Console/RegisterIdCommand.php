@@ -2,7 +2,6 @@
 
 namespace Bmatovu\MtnMomo\Console;
 
-use Ramsey\Uuid\Uuid;
 use Illuminate\Console\Command;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;

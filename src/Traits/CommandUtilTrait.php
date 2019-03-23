@@ -50,7 +50,7 @@ trait CommandUtilTrait
      *
      * @param  string  $title
      * @param  array|string  $body
-     * @param  integer $length
+     * @param  int $length
      *
      * @return void
      */
@@ -60,7 +60,7 @@ trait CommandUtilTrait
         $this->line("| {$title}");
         $this->line('|'.str_repeat('-', $length));
 
-        if(is_null($body)) {
+        if (is_null($body)) {
             return;
         }
 

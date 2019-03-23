@@ -4,8 +4,8 @@ namespace Bmatovu\MtnMomo;
 
 use Illuminate\Support\ServiceProvider;
 use Bmatovu\MtnMomo\Console\BootstrapCommand;
-use Bmatovu\MtnMomo\Console\ValidateIdCommand;
 use Bmatovu\MtnMomo\Console\RegisterIdCommand;
+use Bmatovu\MtnMomo\Console\ValidateIdCommand;
 use Bmatovu\MtnMomo\Console\RequestSecretCommand;
 
 class MtnMomoServiceProvider extends ServiceProvider

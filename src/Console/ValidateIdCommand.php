@@ -2,7 +2,6 @@
 
 namespace Bmatovu\MtnMomo\Console;
 
-use Ramsey\Uuid\Uuid;
 use Illuminate\Console\Command;
 use Bmatovu\MtnMomo\Traits\CommandUtilTrait;
 
@@ -58,5 +57,4 @@ class ValidateIdCommand extends Command
 
         $this->info('Todo...');
     }
-
 }
