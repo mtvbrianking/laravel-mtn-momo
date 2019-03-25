@@ -28,7 +28,6 @@
         "illuminate/console": "~5.3",
         "illuminate/container": "~5.3",
         "illuminate/contracts": "~5.3",
-        // "vlucas/phpdotenv": "~2.2",
         "illuminate/database": "~5.3",
         "illuminate/support": "~5.3"
     },
