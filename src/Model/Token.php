@@ -1,6 +1,8 @@
 <?php
 /**
  * Token.php
+ *
+ * @package Bmatovu\MtnMomo\Model
  */
 
 namespace Bmatovu\MtnMomo\Model;
@@ -10,8 +12,6 @@ use Illuminate\Database\Eloquent\Model as BaseModel;
 
 /**
  * Class Token
- *
- * @package Bmatovu\MtnMomo\Model
  */
 class Token extends BaseModel implements TokenInterface
 {

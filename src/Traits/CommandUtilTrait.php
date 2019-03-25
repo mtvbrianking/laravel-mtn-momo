@@ -1,6 +1,8 @@
 <?php
 /**
  * CommandUtilTrait.php
+ *
+ * @package Bmatovu\MtnMomo\Traits
  */
 
 namespace Bmatovu\MtnMomo\Traits;
@@ -15,8 +17,6 @@ use Monolog\Handler\StreamHandler;
 
 /**
  * Trait CommandUtilTrait
- *
- * @package Bmatovu\MtnMomo\Traits
  */
 trait CommandUtilTrait
 {

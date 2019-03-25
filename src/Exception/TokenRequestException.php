@@ -1,14 +1,14 @@
 <?php
 /**
  * TokenRequestException.php
+ *
+ * @package Bmatovu\MtnMomo\Exception
  */
 
 namespace Bmatovu\MtnMomo\Exception;
 
 /**
  * Class TokenRequestException
- *
- * @package Bmatovu\MtnMomo\Exception
  */
 class TokenRequestException extends \RuntimeException
 {

@@ -1,6 +1,8 @@
 <?php
 /**
  * RegisterIdCommand.php
+ *
+ * @package Bmatovu\MtnMomo\Console
  */
 
 namespace Bmatovu\MtnMomo\Console;
@@ -13,8 +15,6 @@ use Bmatovu\MtnMomo\Traits\CommandUtilTrait;
 
 /**
  * Class RegisterIdCommand
- *
- * @package Bmatovu\MtnMomo\Console
  */
 class RegisterIdCommand extends Command
 {

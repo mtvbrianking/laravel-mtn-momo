@@ -1,6 +1,8 @@
 <?php
 /**
  * TokenRepository
+ *
+ * @package Bmatovu\MtnMomo\Repository
  */
 
 namespace Bmatovu\MtnMomo\Repository;
@@ -10,8 +12,6 @@ use Bmatovu\MtnMomo\model\Token;
 
 /**
  * Class TokenRepository
- *
- * @package Bmatovu\MtnMomo\Repository
  */
 class TokenRepository implements TokenRepositoryInterface
 {

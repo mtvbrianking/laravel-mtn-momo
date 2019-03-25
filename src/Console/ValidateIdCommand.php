@@ -1,6 +1,8 @@
 <?php
 /**
- * ValidateIdCommand.php
+ * ValidateIdCommand.php.
+ *
+ * @package Bmatovu\MtnMomo\Console
  */
 
 namespace Bmatovu\MtnMomo\Console;
@@ -12,9 +14,7 @@ use GuzzleHttp\Exception\ConnectException;
 use Bmatovu\MtnMomo\Traits\CommandUtilTrait;
 
 /**
- * Class ValidateIdCommand
- *
- * @package Bmatovu\MtnMomo\Console
+ * Class ValidateIdCommand.
  */
 class ValidateIdCommand extends Command
 {

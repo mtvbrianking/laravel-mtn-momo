@@ -1,6 +1,8 @@
 <?php
 /**
  * Collection.php
+ *
+ * @package Bmatovu\MtnMomo\Product
  */
 
 namespace Bmatovu\MtnMomo\Product;
@@ -22,8 +24,6 @@ use Bmatovu\MtnMomo\Exception\CollectionRequestException;
 
 /**
  * Class Collection.
- *
- * @package Bmatovu\MtnMomo\Product
  */
 class Collection
 {

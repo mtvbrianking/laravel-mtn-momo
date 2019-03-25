@@ -1,6 +1,8 @@
 <?php
 /**
  * ClientCredentials.php
+ *
+ * @package Bmatovu\MtnMomo\Http\GrantType
  */
 
 namespace Bmatovu\MtnMomo\Http\GrantType;
@@ -10,8 +12,6 @@ use Bmatovu\MtnMomo\Http\GrantTypeInterface;
 
 /**
  * Class ClientCredentials
- *
- * @package Bmatovu\MtnMomo\Http\GrantType
  */
 class ClientCredentials implements GrantTypeInterface
 {

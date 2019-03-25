@@ -1,14 +1,14 @@
 <?php
 /**
- * CollectionRequestException.php
+ * CollectionRequestException.php.
+ *
+ * @package Bmatovu\MtnMomo\Exception
  */
 
 namespace Bmatovu\MtnMomo\Exception;
 
 /**
- * Class CollectionRequestException
- *
- * @package Bmatovu\MtnMomo\Exception
+ * Class CollectionRequestException.
  */
 class CollectionRequestException extends \RunTimeException
 {

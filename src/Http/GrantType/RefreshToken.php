@@ -1,6 +1,8 @@
 <?php
 /**
- * RefreshToken.php
+ * RefreshToken.php.
+ *
+ * @package Bmatovu\MtnMomo\Http\GrantType
  */
 
 namespace Bmatovu\MtnMomo\Http\GrantType;
@@ -8,9 +10,7 @@ namespace Bmatovu\MtnMomo\Http\GrantType;
 use Bmatovu\MtnMomo\Http\GrantTypeInterface;
 
 /**
- * Class RefreshToken
- *
- * @package Bmatovu\MtnMomo\Http\GrantType
+ * Class RefreshToken.
  */
 class RefreshToken implements GrantTypeInterface
 {

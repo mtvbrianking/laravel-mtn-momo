@@ -1,14 +1,14 @@
 <?php
 /**
  * TokenInterface
+ *
+ * @package Bmatovu\MtnMomo\Model
  */
 
 namespace Bmatovu\MtnMomo\Model;
 
 /**
  * Interface TokenInterface
- *
- * @package Bmatovu\MtnMomo\Model
  */
 interface TokenInterface
 {

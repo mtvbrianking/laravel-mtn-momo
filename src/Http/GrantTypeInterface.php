@@ -1,14 +1,14 @@
 <?php
 /**
  * GrantTypeInterface.php
+ *
+ * @package Bmatovu\MtnMomo\Http
  */
 
 namespace Bmatovu\MtnMomo\Http;
 
 /**
- * Interface GrantTypeInterface
- *
- * @package Bmatovu\MtnMomo\Http
+ * Interface GrantTypeInterface.
  */
 interface GrantTypeInterface
 {

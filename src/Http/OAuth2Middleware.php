@@ -1,6 +1,8 @@
 <?php
 /**
  * OAuth2Middleware.php
+ *
+ * @package Bmatovu\MtnMomo\Http
  */
 
 namespace Bmatovu\MtnMomo\Http;
@@ -12,8 +14,6 @@ use Bmatovu\MtnMomo\Exception\TokenRequestException;
 
 /**
  * Class OAuth2Middleware
- *
- * @package Bmatovu\MtnMomo\Http
  */
 class OAuth2Middleware
 {
