@@ -1,18 +1,15 @@
 <?php
 /**
- * TokenUtilTrait.php
- *
- * @package Bmatovu\MtnMomo\Traits
+ * TokenUtilTrait.php.
  */
 
 namespace Bmatovu\MtnMomo\Traits;
 
 /**
- * Trait TokenUtilTrait
+ * Trait TokenUtilTrait.
  */
 trait TokenUtilTrait
 {
-
     /**
      * Get access token.
      *
@@ -70,5 +67,4 @@ trait TokenUtilTrait
 
         return true;
     }
-
 }

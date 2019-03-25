@@ -1,8 +1,6 @@
 <?php
 /**
- * OAuth2Middleware.php
- *
- * @package Bmatovu\MtnMomo\Http
+ * OAuth2Middleware.php.
  */
 
 namespace Bmatovu\MtnMomo\Http;
@@ -13,7 +11,7 @@ use GuzzleHttp\Exception\RequestException;
 use Bmatovu\MtnMomo\Exception\TokenRequestException;
 
 /**
- * Class OAuth2Middleware
+ * Class OAuth2Middleware.
  */
 class OAuth2Middleware
 {
@@ -157,7 +155,7 @@ class OAuth2Middleware
         }
 
         // return $request->withHeader('Authorization', 'Bearer ' . $token->access_token);
-        return $request->withHeader('Authorization', 'Bearer ' . $token->getAccessToken());
+        return $request->withHeader('Authorization', 'Bearer '.$token->getAccessToken());
     }
 
     /**

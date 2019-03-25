@@ -1,8 +1,6 @@
 <?php
 /**
- * GrantTypeInterface.php
- *
- * @package Bmatovu\MtnMomo\Http
+ * GrantTypeInterface.php.
  */
 
 namespace Bmatovu\MtnMomo\Http;

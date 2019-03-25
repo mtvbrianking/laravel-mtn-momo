@@ -1,8 +1,6 @@
 <?php
 /**
- * BootstrapCommand.php
- *
- * @package Bmatovu\MtnMomo\Console
+ * BootstrapCommand.php.
  */
 
 namespace Bmatovu\MtnMomo\Console;
@@ -12,7 +10,7 @@ use Illuminate\Console\Command;
 use Bmatovu\MtnMomo\Traits\CommandUtilTrait;
 
 /**
- * Class BootstrapCommand
+ * Class BootstrapCommand.
  */
 class BootstrapCommand extends Command
 {

@@ -1,8 +1,6 @@
 <?php
 /**
  * RefreshToken.php.
- *
- * @package Bmatovu\MtnMomo\Http\GrantType
  */
 
 namespace Bmatovu\MtnMomo\Http\GrantType;
