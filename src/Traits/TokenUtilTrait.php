@@ -1,7 +1,15 @@
 <?php
+/**
+ * TokenUtilTrait.php
+ */
 
 namespace Bmatovu\MtnMomo\Traits;
 
+/**
+ * Trait TokenUtilTrait
+ *
+ * @package Bmatovu\MtnMomo\Traits
+ */
 trait TokenUtilTrait
 {
 

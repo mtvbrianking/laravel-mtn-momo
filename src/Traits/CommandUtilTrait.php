@@ -1,4 +1,7 @@
 <?php
+/**
+ * CommandUtilTrait.php
+ */
 
 namespace Bmatovu\MtnMomo\Traits;
 
@@ -10,6 +13,11 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\MessageFormatter;
 use Monolog\Handler\StreamHandler;
 
+/**
+ * Trait CommandUtilTrait
+ *
+ * @package Bmatovu\MtnMomo\Traits
+ */
 trait CommandUtilTrait
 {
     /**

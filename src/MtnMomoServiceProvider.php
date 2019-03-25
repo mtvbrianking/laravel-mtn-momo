@@ -1,4 +1,7 @@
 <?php
+/**
+ * MtnMomoServiceProvider.php
+ */
 
 namespace Bmatovu\MtnMomo;
 
@@ -8,6 +11,11 @@ use Bmatovu\MtnMomo\Console\RegisterIdCommand;
 use Bmatovu\MtnMomo\Console\ValidateIdCommand;
 use Bmatovu\MtnMomo\Console\RequestSecretCommand;
 
+/**
+ * Class MtnMomoServiceProvider
+ *
+ * @package Bmatovu\MtnMomo
+ */
 class MtnMomoServiceProvider extends ServiceProvider
 {
     /**

@@ -1,4 +1,7 @@
 <?php
+/**
+ * RequestSecretCommand.php
+ */
 
 namespace Bmatovu\MtnMomo\Console;
 
@@ -8,6 +11,11 @@ use GuzzleHttp\Exception\ServerException;
 use GuzzleHttp\Exception\ConnectException;
 use Bmatovu\MtnMomo\Traits\CommandUtilTrait;
 
+/**
+ * Class RequestSecretCommand
+ *
+ * @package Bmatovu\MtnMomo\Console
+ */
 class RequestSecretCommand extends Command
 {
     use CommandUtilTrait;

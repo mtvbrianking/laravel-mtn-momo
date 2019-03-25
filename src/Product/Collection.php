@@ -1,4 +1,7 @@
 <?php
+/**
+ * Collection.php
+ */
 
 namespace Bmatovu\MtnMomo\Product;
 
@@ -17,6 +20,11 @@ use Bmatovu\MtnMomo\Repository\TokenRepository;
 use Bmatovu\MtnMomo\Http\GrantType\ClientCredentials;
 use Bmatovu\MtnMomo\Exception\CollectionRequestException;
 
+/**
+ * Class Collection.
+ *
+ * @package Bmatovu\MtnMomo\Product
+ */
 class Collection
 {
     /**

@@ -1,7 +1,15 @@
 <?php
+/**
+ * CollectionRequestException.php
+ */
 
 namespace Bmatovu\MtnMomo\Exception;
 
+/**
+ * Class CollectionRequestException
+ *
+ * @package Bmatovu\MtnMomo\Exception
+ */
 class CollectionRequestException extends \RunTimeException
 {
     /**

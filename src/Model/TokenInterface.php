@@ -1,7 +1,15 @@
 <?php
+/**
+ * TokenInterface
+ */
 
 namespace Bmatovu\MtnMomo\Model;
 
+/**
+ * Interface TokenInterface
+ *
+ * @package Bmatovu\MtnMomo\Model
+ */
 interface TokenInterface
 {
     /**

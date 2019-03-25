@@ -1,4 +1,7 @@
 <?php
+/**
+ * OAuth2Middleware.php
+ */
 
 namespace Bmatovu\MtnMomo\Http;
 
@@ -7,6 +10,11 @@ use Psr\Http\Message\RequestInterface;
 use GuzzleHttp\Exception\RequestException;
 use Bmatovu\MtnMomo\Exception\TokenRequestException;
 
+/**
+ * Class OAuth2Middleware
+ *
+ * @package Bmatovu\MtnMomo\Http
+ */
 class OAuth2Middleware
 {
     /**

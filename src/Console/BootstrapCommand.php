@@ -1,4 +1,7 @@
 <?php
+/**
+ * BootstrapCommand.php
+ */
 
 namespace Bmatovu\MtnMomo\Console;
 
@@ -6,6 +9,11 @@ use Ramsey\Uuid\Uuid;
 use Illuminate\Console\Command;
 use Bmatovu\MtnMomo\Traits\CommandUtilTrait;
 
+/**
+ * Class BootstrapCommand
+ *
+ * @package Bmatovu\MtnMomo\Console
+ */
 class BootstrapCommand extends Command
 {
     use CommandUtilTrait;
