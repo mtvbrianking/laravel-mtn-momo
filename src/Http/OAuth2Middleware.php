@@ -1,6 +1,6 @@
 <?php
 /**
- * OAuth2Middleware.php.
+ * OAuth2Middleware.
  */
 
 namespace Bmatovu\MtnMomo\Http;

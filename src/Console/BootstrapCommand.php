@@ -1,6 +1,6 @@
 <?php
 /**
- * BootstrapCommand.php.
+ * BootstrapCommand.
  */
 
 namespace Bmatovu\MtnMomo\Console;

@@ -1,6 +1,6 @@
 <?php
 /**
- * MtnMomoServiceProvider.php.
+ * MtnMomoServiceProvider.
  */
 
 namespace Bmatovu\MtnMomo;

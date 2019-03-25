@@ -1,6 +1,6 @@
 <?php
 /**
- * CommandUtilTrait.php.
+ * CommandUtilTrait.
  */
 
 namespace Bmatovu\MtnMomo\Traits;

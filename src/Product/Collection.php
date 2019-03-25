@@ -1,6 +1,6 @@
 <?php
 /**
- * Collection.php.
+ * Collection.
  */
 
 namespace Bmatovu\MtnMomo\Product;

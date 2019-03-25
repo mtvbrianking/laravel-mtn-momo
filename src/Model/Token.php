@@ -1,6 +1,6 @@
 <?php
 /**
- * Token.php.
+ * Token.
  */
 
 namespace Bmatovu\MtnMomo\Model;

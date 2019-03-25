@@ -1,6 +1,6 @@
 <?php
 /**
- * RequestSecretCommand.php.
+ * RequestSecretCommand.
  */
 
 namespace Bmatovu\MtnMomo\Console;

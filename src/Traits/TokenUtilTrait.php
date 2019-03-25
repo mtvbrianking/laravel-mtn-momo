@@ -1,6 +1,6 @@
 <?php
 /**
- * TokenUtilTrait.php.
+ * TokenUtilTrait.
  */
 
 namespace Bmatovu\MtnMomo\Traits;

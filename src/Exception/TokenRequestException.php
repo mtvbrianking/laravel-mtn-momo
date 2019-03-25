@@ -1,6 +1,6 @@
 <?php
 /**
- * TokenRequestException.php.
+ * TokenRequestException.
  */
 
 namespace Bmatovu\MtnMomo\Exception;

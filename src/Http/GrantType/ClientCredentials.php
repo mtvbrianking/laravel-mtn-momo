@@ -1,6 +1,6 @@
 <?php
 /**
- * ClientCredentials.php.
+ * ClientCredentials.
  */
 
 namespace Bmatovu\MtnMomo\Http\GrantType;

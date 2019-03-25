@@ -1,6 +1,6 @@
 <?php
 /**
- * RegisterIdCommand.php.
+ * RegisterIdCommand.
  */
 
 namespace Bmatovu\MtnMomo\Console;
