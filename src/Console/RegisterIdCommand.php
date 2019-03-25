@@ -1,8 +1,6 @@
 <?php
 /**
- * RegisterIdCommand.php
- *
- * @package Bmatovu\MtnMomo\Console
+ * RegisterIdCommand.php.
  */
 
 namespace Bmatovu\MtnMomo\Console;
@@ -14,7 +12,7 @@ use GuzzleHttp\Exception\ConnectException;
 use Bmatovu\MtnMomo\Traits\CommandUtilTrait;
 
 /**
- * Class RegisterIdCommand
+ * Class RegisterIdCommand.
  */
 class RegisterIdCommand extends Command
 {

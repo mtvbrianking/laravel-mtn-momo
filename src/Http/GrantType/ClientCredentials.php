@@ -1,8 +1,6 @@
 <?php
 /**
- * ClientCredentials.php
- *
- * @package Bmatovu\MtnMomo\Http\GrantType
+ * ClientCredentials.php.
  */
 
 namespace Bmatovu\MtnMomo\Http\GrantType;
@@ -11,7 +9,7 @@ use GuzzleHttp\ClientInterface;
 use Bmatovu\MtnMomo\Http\GrantTypeInterface;
 
 /**
- * Class ClientCredentials
+ * Class ClientCredentials.
  */
 class ClientCredentials implements GrantTypeInterface
 {

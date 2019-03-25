@@ -1,8 +1,6 @@
 <?php
 /**
  * ValidateIdCommand.php.
- *
- * @package Bmatovu\MtnMomo\Console
  */
 
 namespace Bmatovu\MtnMomo\Console;

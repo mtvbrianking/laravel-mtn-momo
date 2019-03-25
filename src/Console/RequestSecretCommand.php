@@ -1,8 +1,6 @@
 <?php
 /**
- * RequestSecretCommand.php
- *
- * @package Bmatovu\MtnMomo\Console
+ * RequestSecretCommand.php.
  */
 
 namespace Bmatovu\MtnMomo\Console;
@@ -14,7 +12,7 @@ use GuzzleHttp\Exception\ConnectException;
 use Bmatovu\MtnMomo\Traits\CommandUtilTrait;
 
 /**
- * Class RequestSecretCommand
+ * Class RequestSecretCommand.
  */
 class RequestSecretCommand extends Command
 {
@@ -119,7 +117,7 @@ class RequestSecretCommand extends Command
      * @param  string $client_id
      * @return string
      */
-    protected function prepareUri($client_secret_uri, $client_id= null)
+    protected function prepareUri($client_secret_uri, $client_id = null)
     {
         if (! $client_id) {
             return $client_secret_uri;

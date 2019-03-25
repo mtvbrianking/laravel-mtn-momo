@@ -1,14 +1,12 @@
 <?php
 /**
- * TokenInterface
- *
- * @package Bmatovu\MtnMomo\Model
+ * TokenInterface.
  */
 
 namespace Bmatovu\MtnMomo\Model;
 
 /**
- * Interface TokenInterface
+ * Interface TokenInterface.
  */
 interface TokenInterface
 {
@@ -42,7 +40,7 @@ interface TokenInterface
     /**
      * Determine if token is expired.
      *
-     * @return boolean
+     * @return bool
      */
     public function isExpired();
 }

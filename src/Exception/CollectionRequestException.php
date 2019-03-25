@@ -1,8 +1,6 @@
 <?php
 /**
  * CollectionRequestException.php.
- *
- * @package Bmatovu\MtnMomo\Exception
  */
 
 namespace Bmatovu\MtnMomo\Exception;

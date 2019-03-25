@@ -1,19 +1,17 @@
 <?php
 /**
- * Collection.php
- *
- * @package Bmatovu\MtnMomo\Product
+ * Collection.php.
  */
 
 namespace Bmatovu\MtnMomo\Product;
 
-use GuzzleHttp\MessageFormatter;
-use GuzzleHttp\Middleware;
-use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Ramsey\Uuid\Uuid;
 use GuzzleHttp\Client;
+use GuzzleHttp\Middleware;
 use GuzzleHttp\HandlerStack;
+use GuzzleHttp\MessageFormatter;
+use Monolog\Handler\StreamHandler;
 use Illuminate\Container\Container;
 use Bmatovu\MtnMomo\Http\OAuth2Middleware;
 use GuzzleHttp\Exception\RequestException;
@@ -218,7 +216,7 @@ class Collection
 
             $response = $this->client->request('POST', $resource, [
                 'headers' => [
-                    'Authorization' => 'Basic ' . base64_encode($client_id . ':' . $client_secret),
+                    'Authorization' => 'Basic '.base64_encode($client_id.':'.$client_secret),
                 ],
                 'json' => [
                     'grant_type' => 'client_credentials',
