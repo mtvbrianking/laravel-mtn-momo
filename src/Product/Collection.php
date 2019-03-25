@@ -2,6 +2,10 @@
 
 namespace Bmatovu\MtnMomo\Product;
 
+use GuzzleHttp\MessageFormatter;
+use GuzzleHttp\Middleware;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
 use Ramsey\Uuid\Uuid;
 use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
@@ -9,6 +13,7 @@ use Illuminate\Container\Container;
 use Bmatovu\MtnMomo\Http\OAuth2Middleware;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Contracts\Config\Repository;
+use Bmatovu\MtnMomo\Repository\TokenRepository;
 use Bmatovu\MtnMomo\Http\GrantType\ClientCredentials;
 use Bmatovu\MtnMomo\Exception\CollectionRequestException;
 
@@ -24,12 +29,14 @@ class Collection
     /**
      * Constructor.
      *
+     * @param array  headers
+     * @param array  middlewares
+     *
      * @throws \Exception
      */
     public function __construct($headers = [], $middlewares = [])
     {
         // Guzzle http request headers
-
         $headers = array_merge([
             'Accept' => 'application/json',
             'Content-Type' => 'application/json',
@@ -50,10 +57,10 @@ class Collection
 
         // ...........................................................
 
-        // $logger = new Logger('Logger');
-        // $logger->pushHandler(new StreamHandler(storage_path('logs/mtn-momo.log')), Logger::DEBUG);
+        $logger = new Logger('Logger');
+        $logger->pushHandler(new StreamHandler(storage_path('logs/mtn-momo.log')), Logger::DEBUG);
 
-        // $stack->push(Middleware::log($logger, new MessageFormatter("\r\n[Request] >>>>> {request}. [Response] >>>>> \r\n{response}.")));
+        $stack->push(Middleware::log($logger, new MessageFormatter("\r\n[Request] >>>>> {request}. [Response] >>>>> \r\n{response}.")));
 
         // ...........................................................
 
@@ -94,8 +101,11 @@ class Collection
         // Refresh Token when no valid Access Token or Refresh Token is available
         $client_grant = new ClientCredentials($client, $config);
 
+        // Create token repository
+        $tokenRepo = new TokenRepository();
+
         // Tell the middleware to use both the client and refresh token grants
-        return new OAuth2Middleware($client_grant);
+        return new OAuth2Middleware($client_grant, null, $tokenRepo);
     }
 
     /**
@@ -106,6 +116,8 @@ class Collection
     protected function configuration()
     {
         return Container::getInstance()->make(Repository::class);
+        // $dotenv = \Dotenv\Dotenv::create(__DIR__);
+        // $dotenv->load();
     }
 
     /**
@@ -114,8 +126,8 @@ class Collection
      * @see https://momodeveloper.mtn.com/docs/services/collection/operations/requesttopay-POST Documentation
      *
      * @param  string $external_id Transaction reference ID.
-     * @param  int $amount How much to debit the payer.
      * @param  string $party_id Account holder. Usually phone number if type is MSISDN.
+     * @param  int $amount How much to debit the payer.
      * @param  string $payer_message Payer transaction history message.
      * @param  string $payee_note Payee transaction history message.
      * @return string                Payment reference ID
@@ -131,10 +143,8 @@ class Collection
         try {
             $response = $this->client->request('POST', $resource, [
                 'headers' => [
-                    'Content-Type' => 'application/json',
-                    'Ocp-Apim-Subscription-Key' => $this->configuration()->get('mtn-momo.app.product_key'),
                     'X-Reference-Id' => $payment_ref,
-                    // 'X-Callback-Url' => $this->configuration()->get('mtn-momo.app.redirect_uri'),
+                    'X-Callback-Url' => $this->configuration()->get('mtn-momo.app.redirect_uri'),
                     'X-Target-Environment' => $this->configuration()->get('mtn-momo.app.environment'),
                 ],
                 'json' => [
@@ -173,7 +183,6 @@ class Collection
         try {
             $response = $this->client->request('GET', $resource, [
                 'headers' => [
-                    'Ocp-Apim-Subscription-Key' => $this->configuration()->get('mtn-momo.app.product_key'),
                     'X-Target-Environment' => $this->configuration()->get('mtn-momo.app.environment'),
                 ],
             ]);
@@ -196,10 +205,12 @@ class Collection
         $resource = $this->configuration()->get('mtn-momo.products.collection.app_account_balance_uri');
 
         try {
+            $client_id = $this->configuration()->get('mtn-momo.app.id');
+            $client_secret = $this->configuration()->get('mtn-momo.app.secret');
+
             $response = $this->client->request('POST', $resource, [
                 'headers' => [
-                    'Authorization' => 'Basic '.base64_encode($this->configuration()->get('client_id').':'.configuration()->get('client_secret')),
-                    'Ocp-Apim-Subscription-Key' => $this->configuration()->get('mtn-momo.app.product_key'),
+                    'Authorization' => 'Basic ' . base64_encode($client_id . ':' . $client_secret),
                 ],
                 'json' => [
                     'grant_type' => 'client_credentials',
@@ -226,7 +237,6 @@ class Collection
         try {
             $response = $this->client->request('GET', $resource, [
                 'headers' => [
-                    'Ocp-Apim-Subscription-Key' => $this->configuration()->get('mtn-momo.app.product_key'),
                     'X-Target-Environment' => $this->configuration()->get('mtn-momo.app.environment'),
                 ],
             ]);
@@ -265,7 +275,6 @@ class Collection
         try {
             $response = $this->client->request('GET', $resource, [
                 'headers' => [
-                    'Ocp-Apim-Subscription-Key' => 'wrong->'.$this->configuration()->get('mtn-momo.app.product_key'),
                     'X-Target-Environment' => $this->configuration()->get('mtn-momo.app.environment'),
                 ],
             ]);

@@ -19,7 +19,7 @@ trait CommandUtilTrait
      *
      * @return bool
      */
-    public function runInProduction($warning = 'Application In Production!')
+    protected function runInProduction($warning = 'Application In Production!')
     {
         if ($this->getLaravel()->environment() != 'production') {
             return true;
@@ -87,7 +87,8 @@ trait CommandUtilTrait
         $stack = HandlerStack::create();
 
         if ($debug) {
-            $logger = $this->laravel['log']->getMonolog(); // new Logger('Logger');
+            // $logger = new Logger('Logger');
+            $logger = $this->laravel['log']->getMonolog();
             $logger->pushHandler(new StreamHandler(storage_path('logs/mtn-momo.log')), Logger::DEBUG);
             $stack->push(Middleware::log($logger, new MessageFormatter(MessageFormatter::DEBUG)));
             // $stack->push(Middleware::log($logger, new MessageFormatter("\r\n[Request] >>>>> {request}. [Response] >>>>> \r\n{response}.")));
@@ -111,8 +112,8 @@ trait CommandUtilTrait
     /**
      * Determine replacement regex pattern a setting.
      *
-     * @param  string $name Env name
-     * @param  string $key Composite config name
+     * @param  string $name ENV_VALUE, like; `APP_NAME`
+     * @param  string $key Compose setting name, like `app.name`
      *
      * @return string        Regex pattern
      */
@@ -126,7 +127,9 @@ trait CommandUtilTrait
     /**
      * Write | replace setting in .env file.
      *
-     * @param  string $value
+     * @param  string $name ENV_VALUE, like; `APP_NAME`
+     * @param  string $key Compose setting name, like `app.name`
+     * @param  string $value Setting value
      *
      * @return void
      */

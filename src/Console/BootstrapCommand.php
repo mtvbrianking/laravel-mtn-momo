@@ -11,20 +11,6 @@ class BootstrapCommand extends Command
     use CommandUtilTrait;
 
     /**
-     * Guzzle http client.
-     *
-     * @var \GuzzleHttp\Client
-     */
-    protected $client;
-
-    /**
-     * `.env` file path.
-     *
-     * @var string
-     */
-    protected $env;
-
-    /**
      * The name and signature of the console command.
      *
      * @var string
@@ -55,17 +41,13 @@ class BootstrapCommand extends Command
     /**
      * Execute the console command.
      *
-     * @return mixed
+     * @return void
      */
     public function handle()
     {
         if (! $this->runInProduction()) {
             return;
         }
-
-        $this->client = $this->prepareGuzzle(function () {
-            echo '* ';
-        }, true);
 
         $this->printLabels('MTN MOMO API integration', [
             'Please enter the values for the following settings,',
@@ -98,7 +80,7 @@ class BootstrapCommand extends Command
     }
 
     /**
-     * Set/replace target product subscribed too.
+     * Create/update target product subscribed too.
      *
      * @return void
      */
@@ -117,7 +99,7 @@ class BootstrapCommand extends Command
     }
 
     /**
-     * Set/replace product subscription key.
+     * Create/update product subscription key.
      *
      * @return void
      */
@@ -134,7 +116,7 @@ class BootstrapCommand extends Command
     }
 
     /**
-     * Set/replace target environment.
+     * Create/update target environment.
      *
      * @return void
      */
@@ -154,7 +136,7 @@ class BootstrapCommand extends Command
     }
 
     /**
-     * Set/replace currency.
+     * Create/update currency.
      *
      * @return void
      */
@@ -171,7 +153,7 @@ class BootstrapCommand extends Command
     }
 
     /**
-     * Set/replace the client app redirect URI.
+     * Create/update the client APP redirect URI.
      *
      * @return void
      */
@@ -196,7 +178,7 @@ class BootstrapCommand extends Command
     }
 
     /**
-     * Set/replace client app name.
+     * Create/update client APP name.
      *
      * @return void
      */
@@ -213,7 +195,7 @@ class BootstrapCommand extends Command
     }
 
     /**
-     * Set/replace client app ID.
+     * Create/update client APP ID.
      *
      * @return void
      */
@@ -239,7 +221,7 @@ class BootstrapCommand extends Command
 
         $this->updateSetting('MOMO_CLIENT_ID', 'mtn-momo.app.id', $client_id);
 
-        if ($this->confirm('Do you wish to register the app ID?', true)) {
+        if ($this->confirm('Do you wish to register the APP ID?', true)) {
             $this->call('mtn-momo:register-id', [
                 '--id' => $client_id,
                 '--callback' => $this->laravel['config']->get('mtn-momo.app.redirect_uri'),

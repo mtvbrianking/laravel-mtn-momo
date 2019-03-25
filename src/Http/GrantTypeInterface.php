@@ -10,7 +10,7 @@ interface GrantTypeInterface
      * @param string $grantType Name
      * @param string $refreshToken
      *
-     * @return array
+     * @return array API token
      */
     public function getToken($grantType = 'client_credentials', $refreshToken = null);
 }

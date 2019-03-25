@@ -2,12 +2,12 @@
 
 namespace Bmatovu\MtnMomo\Model;
 
-// use Illuminate\Database\Eloquent\SoftDeletes;
+use Bmatovu\MtnMomo\Traits\TokenUtilTrait;
 use Illuminate\Database\Eloquent\Model as BaseModel;
 
-class Token extends BaseModel
+class Token extends BaseModel implements TokenInterface
 {
-    // use SoftDeletes;
+    use TokenUtilTrait;
 
     /**
      * The table associated with the model.
@@ -17,42 +17,20 @@ class Token extends BaseModel
     protected $table = 'mtn_momo_tokens';
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'access_token', 'token_type', 'expires_at',
+    ];
+
+    /**
      * The attributes that should be mutated to dates.
      *
      * @var array
      */
     protected $dates = [
-        'expires_at',
-        'deleted_at',
+        'expires_at', 'deleted_at',
     ];
-
-    /**
-     * Get refresh token.
-     *
-     * Odd; same as access token.
-     *
-     * @return string
-     */
-    public function getRefreshToken()
-    {
-        return $this->access_token;
-    }
-
-    /**
-     * Determine if a token is expired.
-     *
-     * @return bool
-     */
-    public function isExpired()
-    {
-        if (is_null($this->expires_at)) {
-            return false;
-        }
-
-        if ($this->expires_at->isFuture()) {
-            return false;
-        }
-
-        return true;
-    }
 }

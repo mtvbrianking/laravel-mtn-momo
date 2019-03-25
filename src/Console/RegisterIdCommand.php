@@ -13,13 +13,6 @@ class RegisterIdCommand extends Command
     use CommandUtilTrait;
 
     /**
-     * Guzzle http client.
-     *
-     * @var \GuzzleHttp\Client
-     */
-    protected $client;
-
-    /**
      * The name and signature of the console command.
      *
      * @var string
@@ -52,7 +45,7 @@ class RegisterIdCommand extends Command
     /**
      * Execute the console command.
      *
-     * @return mixed
+     * @return void
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function handle()
@@ -63,23 +56,23 @@ class RegisterIdCommand extends Command
 
         $this->printLabels('Client APP ID -> Registration');
 
-        $id = $this->option('id');
+        $client_id = $this->option('id');
 
-        if (! $id) {
-            $id = $this->laravel['config']->get('mtn-momo.app.id');
+        if (! $client_id) {
+            $client_id = $this->laravel['config']->get('mtn-momo.app.id');
         }
 
-        $redirect_uri = $this->option('callback');
+        $client_redirect_uri = $this->option('callback');
 
-        if (! $redirect_uri) {
-            $redirect_uri = $this->laravel['config']->get('mtn-momo.app.redirect_uri');
+        if (! $client_redirect_uri) {
+            $client_redirect_uri = $this->laravel['config']->get('mtn-momo.app.redirect_uri');
         }
 
-        $this->registerClientId($id, $redirect_uri);
+        $this->registerClientId($client_id, $client_redirect_uri);
 
         if ($this->confirm('Do you wish to request for the app secret?', true)) {
             $this->call('mtn-momo:request-secret', [
-                '--id' => $id,
+                '--id' => $client_id,
                 '--force' => $this->option('force'),
                 '--debug' => $this->option('debug'),
                 '--log' => $this->option('log'),
@@ -90,18 +83,19 @@ class RegisterIdCommand extends Command
     /**
      * Register client ID.
      *
-     * @param $client_id
-     * @param $client_redirect_uri
+     * @param string $client_id
+     * @param string $client_redirect_uri
      * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
      */
-    public function registerClientId($client_id, $client_redirect_uri)
+    protected function registerClientId($client_id, $client_redirect_uri)
     {
         try {
             $client = $this->prepareGuzzle(function () {
                 echo '. ';
             }, $this->option('debug'));
 
-            $response = $client->request('POST', $this->laravel['config']->get('mtn-momo.api.client_id_uri').'/unknown', [
+            $response = $client->request('POST', $this->laravel['config']->get('mtn-momo.api.client_id_uri'), [
                 'headers' => [
                     'X-Reference-Id' => $client_id,
                 ],

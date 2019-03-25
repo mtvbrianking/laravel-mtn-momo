@@ -47,5 +47,12 @@ class MtnMomoServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(__DIR__.'/../config/mtn-momo.php', 'mtn-momo');
+
+        // https://laravel.com/docs/5.3/container#binding-interfaces-to-implementations
+
+        // $this->app->bind(
+        //     'Bmatovu\MtnMomo\Models\Repository\TokenRepositoryInterface',
+        //     'Bmatovu\MtnMomo\Models\Repository\TokenRepository'
+        // );
     }
 }

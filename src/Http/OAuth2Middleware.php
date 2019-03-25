@@ -3,7 +3,6 @@
 namespace Bmatovu\MtnMomo\Http;
 
 use Carbon\Carbon;
-use Bmatovu\MtnMomo\Model\Token;
 use Psr\Http\Message\RequestInterface;
 use GuzzleHttp\Exception\RequestException;
 use Bmatovu\MtnMomo\Exception\TokenRequestException;
@@ -11,34 +10,45 @@ use Bmatovu\MtnMomo\Exception\TokenRequestException;
 class OAuth2Middleware
 {
     /**
-     * The grant type implementation used to acquire access tokens.
+     * Primary grant type.
      *
      * @var \Bmatovu\MtnMomo\Http\GrantTypeInterface
      */
     protected $grantType;
 
     /**
-     * The grant type implementation used to refresh access tokens.
+     * Refresh token (secondary) grant type.
      *
      * @var \Bmatovu\MtnMomo\Http\GrantTypeInterface
      */
     protected $refreshTokenGrantType;
 
     /**
-     * The model including access token.
+     * Token repository.
      *
-     * @var \Bmatovu\MtnMomo\Model\Token
+     * @var \Bmatovu\MtnMomo\Repository\TokenRepositoryInterface
+     */
+    protected $tokenRepository;
+
+    /**
+     * Token model.
+     *
+     * @var \Bmatovu\MtnMomo\Model\TokenInterface
      */
     protected $token;
 
     /**
+     * Constructor.
+     *
      * @param \Bmatovu\MtnMomo\Http\GrantTypeInterface $grantType
      * @param \Bmatovu\MtnMomo\Http\GrantTypeInterface $refreshTokenGrantType
+     * @param \Bmatovu\MtnMomo\Repository\TokenRepositoryInterface $tokenRepository
      */
-    public function __construct($grantType, $refreshTokenGrantType = null)
+    public function __construct($grantType, $refreshTokenGrantType = null, $tokenRepository = null)
     {
         $this->grantType = $grantType;
         $this->refreshTokenGrantType = $refreshTokenGrantType;
+        $this->tokenRepository = $tokenRepository;
     }
 
     /**
@@ -67,10 +77,10 @@ class OAuth2Middleware
      *
      * @param \Psr\Http\Message\RequestInterface $request
      * @param array $options
-     * @param $handler
+     * @param callable $handler
      * @return \Closure
      */
-    private function onFulfilled(RequestInterface $request, array $options, $handler)
+    private function onFulfilled(RequestInterface $request, array $options, callable $handler)
     {
         return function ($response) use ($request, $options, $handler) {
             // Only deal with Unauthorized response.
@@ -86,8 +96,12 @@ class OAuth2Middleware
                 return $response;
             }
 
-            // Delete the previous access token, if any
-            $this->token->delete();
+            // Soft delete the previous access token, if any
+            // $this->token->deleted_at = Carbon::now();
+            // $this->token->save();
+            $this->tokenRepository->delete($this->token->getAccessToken());
+
+            // Unset current token
             $this->token = null;
 
             // Acquire a new access token, and retry the request.
@@ -104,12 +118,15 @@ class OAuth2Middleware
     }
 
     /**
+     * When request is rejected.
+     *
      * @param \Psr\Http\Message\RequestInterface $request
      * @param array $options
-     * @param $handler
+     * @param callable $handler
+     *
      * @return \Closure
      */
-    private function onRejected(RequestInterface $request, array $options, $handler)
+    private function onRejected(RequestInterface $request, array $options, callable $handler)
     {
         return function ($reason) use ($request, $options) {
             return \GuzzleHttp\Promise\rejection_for($reason);
@@ -117,10 +134,13 @@ class OAuth2Middleware
     }
 
     /**
-     * @param $request
-     * @return mixed
+     * Add auth headers.
+     *
+     * @param \Psr\Http\Message\RequestInterface $request
+     *
+     * @return \Psr\Http\Message\RequestInterface
      */
-    protected function signRequest($request)
+    protected function signRequest(RequestInterface $request)
     {
         $token = $this->getToken();
 
@@ -128,13 +148,14 @@ class OAuth2Middleware
             return $request;
         }
 
-        return $request->withHeader('Authorization', 'Bearer '.$token->access_token);
+        // return $request->withHeader('Authorization', 'Bearer ' . $token->access_token);
+        return $request->withHeader('Authorization', 'Bearer ' . $token->getAccessToken());
     }
 
     /**
      * Get a valid access token.
      *
-     * @return \Bmatovu\MtnMomo\Model\Token|null
+     * @return \Bmatovu\MtnMomo\Model\TokenInterface|null
      *
      * @throws TokenRequestException
      */
@@ -142,7 +163,8 @@ class OAuth2Middleware
     {
         // If token is not set try to get it from the persistent storage.
         if ($this->token === null) {
-            $this->token = Token::latest('created_at')->first();
+            // $this->token = Token::whereNull('deleted_at')->latest('created_at')->first();
+            $this->token = $this->tokenRepository->retrieve();
         }
 
         // If token is not set or expired then try to acquire a new one...
@@ -158,7 +180,7 @@ class OAuth2Middleware
     /**
      * Acquire a new access token from the server.
      *
-     * @return \Bmatovu\MtnMomo\Model\Token|null
+     * @return \Bmatovu\MtnMomo\Model\TokenInterface|null
      *
      * @throws \Bmatovu\MtnMomo\Exception\TokenRequestException
      */
@@ -191,14 +213,9 @@ class OAuth2Middleware
             // Request an access token using the main grant type.
             $api_token = $this->grantType->getToken();
 
-            // Save token
-            $token = new Token();
-            $token->access_token = $api_token->access_token;
-            $token->token_type = $api_token->token_type;
-            $token->expires_at = Carbon::now()->addSeconds($api_token->expires_in);
-            $token->save();
+            $api_token['expires_at'] = Carbon::now()->addSeconds($api_token['expires_in']);
 
-            return $token;
+            return $this->tokenRepository->create($api_token);
         } catch (RequestException $ex) {
             throw new TokenRequestException('Unable to request a new access token', 0, $ex->getPrevious());
         }

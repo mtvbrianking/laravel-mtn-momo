@@ -13,13 +13,6 @@ class RequestSecretCommand extends Command
     use CommandUtilTrait;
 
     /**
-     * Guzzle http client.
-     *
-     * @var \GuzzleHttp\Client
-     */
-    protected $client;
-
-    /**
      * The name and signature of the console command.
      *
      * @var string
@@ -51,7 +44,7 @@ class RequestSecretCommand extends Command
     /**
      * Execute the console command.
      *
-     * @return mixed
+     * @return void
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function handle()
@@ -60,24 +53,25 @@ class RequestSecretCommand extends Command
             return;
         }
 
-        $id = $this->option('id');
+        $client_id = $this->option('id');
 
-        if (! $id) {
-            $id = $this->laravel['config']->get('mtn-momo.app.id');
+        if (! $client_id) {
+            $client_id = $this->laravel['config']->get('mtn-momo.app.id');
         }
 
         $this->printLabels('Request -> Client APP secret');
 
-        $this->requestClientSecret($id);
+        $this->requestClientSecret($client_id);
     }
 
     /**
-     * Request for client secret.
+     * Request for client APP secret.
      *
-     * @param $client_id
+     * @param string $client_id
      * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
      */
-    public function requestClientSecret($client_id)
+    protected function requestClientSecret($client_id)
     {
         try {
             $client = $this->prepareGuzzle(function () {
@@ -86,7 +80,7 @@ class RequestSecretCommand extends Command
 
             $client_secret_uri = $this->laravel['config']->get('mtn-momo.api.client_secret_uri');
 
-            $response = $client->request('POST', $this->cleanUri($client_secret_uri, $client_id).'/unknown', []);
+            $response = $client->request('POST', $this->prepareUri($client_secret_uri, $client_id), []);
 
             $this->line("\r\nStatus: <fg=green>".$response->getStatusCode().' '.$response->getReasonPhrase().'</>');
 
@@ -111,24 +105,24 @@ class RequestSecretCommand extends Command
     }
 
     /**
-     * Reassemble route in memory.
+     * Prepare URI with given params.
      *
-     * @param  string $uri
-     * @param  string $uuid Client ID
+     * @param  string $client_secret_uri
+     * @param  string $client_id
      * @return string
      */
-    protected function cleanUri($uri, $uuid = null)
+    protected function prepareUri($client_secret_uri, $client_id= null)
     {
-        if (is_null($uuid)) {
-            $uuid = $this->laravel['config']['mtn-momo.app.id'];
+        if (! $client_id) {
+            return $client_secret_uri;
         }
 
         $patterns[] = '/\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b/';
-        $replacements[] = $uuid;
+        $replacements[] = $client_id;
 
         $patterns[] = '/(?<!:)(\/\/)/';
-        $replacements[] = "/{$uuid}/";
+        $replacements[] = "/{$client_id}/";
 
-        return preg_replace($patterns, $replacements, $uri);
+        return preg_replace($patterns, $replacements, $client_secret_uri);
     }
 }

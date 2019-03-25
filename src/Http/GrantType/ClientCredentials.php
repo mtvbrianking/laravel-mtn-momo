@@ -51,6 +51,6 @@ class ClientCredentials implements GrantTypeInterface
             ],
         ]);
 
-        return json_decode($response->getBody());
+        return json_decode($response->getBody(), true);
     }
 }
