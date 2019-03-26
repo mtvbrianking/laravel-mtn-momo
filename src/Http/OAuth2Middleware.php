@@ -8,7 +8,7 @@ namespace Bmatovu\MtnMomo\Http;
 use Carbon\Carbon;
 use Psr\Http\Message\RequestInterface;
 use GuzzleHttp\Exception\RequestException;
-use Bmatovu\MtnMomo\Exception\TokenRequestException;
+use Bmatovu\MtnMomo\Exceptions\TokenRequestException;
 
 /**
  * Class OAuth2Middleware.
@@ -18,14 +18,14 @@ class OAuth2Middleware
     /**
      * Primary grant type.
      *
-     * @var \Bmatovu\MtnMomo\Http\GrantTypeInterface
+     * @var \Bmatovu\MtnMomo\Http\GrantTypes\GrantTypeInterface
      */
     protected $grantType;
 
     /**
      * Refresh token (secondary) grant type.
      *
-     * @var \Bmatovu\MtnMomo\Http\GrantTypeInterface
+     * @var \Bmatovu\MtnMomo\Http\GrantTypes\GrantTypeInterface
      */
     protected $refreshTokenGrantType;
 
@@ -46,8 +46,8 @@ class OAuth2Middleware
     /**
      * Constructor.
      *
-     * @param \Bmatovu\MtnMomo\Http\GrantTypeInterface $grantType
-     * @param \Bmatovu\MtnMomo\Http\GrantTypeInterface $refreshTokenGrantType
+     * @param \Bmatovu\MtnMomo\Http\GrantTypes\GrantTypeInterface $grantType
+     * @param \Bmatovu\MtnMomo\Http\GrantTypes\GrantTypeInterface $refreshTokenGrantType
      * @param \Bmatovu\MtnMomo\Repositories\TokenRepositoryInterface $tokenRepository
      */
     public function __construct($grantType, $refreshTokenGrantType = null, $tokenRepository = null)
@@ -188,7 +188,7 @@ class OAuth2Middleware
      *
      * @return \Bmatovu\MtnMomo\Models\TokenInterface|null
      *
-     * @throws \Bmatovu\MtnMomo\Exception\TokenRequestException
+     * @throws \Bmatovu\MtnMomo\Exceptions\TokenRequestException
      */
     protected function requestNewToken()
     {

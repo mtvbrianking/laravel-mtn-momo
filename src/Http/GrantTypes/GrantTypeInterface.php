@@ -3,7 +3,7 @@
  * GrantTypeInterface.
  */
 
-namespace Bmatovu\MtnMomo\Http;
+namespace Bmatovu\MtnMomo\Http\GrantTypes;
 
 /**
  * Interface GrantTypeInterface.

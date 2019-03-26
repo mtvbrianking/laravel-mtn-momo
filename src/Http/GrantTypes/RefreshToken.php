@@ -3,9 +3,7 @@
  * RefreshToken.
  */
 
-namespace Bmatovu\MtnMomo\Http\GrantType;
-
-use Bmatovu\MtnMomo\Http\GrantTypeInterface;
+namespace Bmatovu\MtnMomo\Http\GrantTypes;
 
 /**
  * Class RefreshToken.

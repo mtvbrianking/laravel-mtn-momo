@@ -17,8 +17,8 @@ use Bmatovu\MtnMomo\Http\OAuth2Middleware;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Contracts\Config\Repository;
 use Bmatovu\MtnMomo\Repositories\TokenRepository;
-use Bmatovu\MtnMomo\Http\GrantType\ClientCredentials;
-use Bmatovu\MtnMomo\Exception\CollectionRequestException;
+use Bmatovu\MtnMomo\Http\GrantTypes\ClientCredentials;
+use Bmatovu\MtnMomo\Exceptions\CollectionRequestException;
 
 /**
  * Class Collection.
@@ -136,7 +136,7 @@ class Collection
      * @param  string $payer_message Payer transaction history message.
      * @param  string $payee_note Payee transaction history message.
      * @return string                Payment reference ID
-     * @throws \Bmatovu\MtnMomo\Exception\CollectionRequestException
+     * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function transact($external_id, $party_id, $amount, $payer_message = '', $payee_note = '')
@@ -177,7 +177,7 @@ class Collection
      * @param  string $payment_ref ID
      *
      * @return array
-     * @throws \Bmatovu\MtnMomo\Exception\CollectionRequestException
+     * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function getTransactionStatus($payment_ref)
@@ -202,7 +202,7 @@ class Collection
      * Request access token.
      *
      * @return array
-     * @throws \Bmatovu\MtnMomo\Exception\CollectionRequestException
+     * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function getToken()
@@ -232,7 +232,7 @@ class Collection
      * Get account balance.
      *
      * @return array Account balance.
-     * @throws \Bmatovu\MtnMomo\Exception\CollectionRequestException
+     * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function getAccountBalance()
@@ -258,7 +258,7 @@ class Collection
      * @param  string $account_id
      * @param  string $account_type_name
      * @return array User account info
-     * @throws \Bmatovu\MtnMomo\Exception\CollectionRequestException
+     * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function getUserAccountInfo($account_id, $account_type_name = null)

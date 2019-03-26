@@ -3,10 +3,9 @@
  * ClientCredentials.
  */
 
-namespace Bmatovu\MtnMomo\Http\GrantType;
+namespace Bmatovu\MtnMomo\Http\GrantTypes;
 
 use GuzzleHttp\ClientInterface;
-use Bmatovu\MtnMomo\Http\GrantTypeInterface;
 
 /**
  * Class ClientCredentials.

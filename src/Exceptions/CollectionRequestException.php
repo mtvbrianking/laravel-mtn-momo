@@ -1,14 +1,14 @@
 <?php
 /**
- * TokenRequestException.
+ * CollectionRequestException.
  */
 
-namespace Bmatovu\MtnMomo\Exception;
+namespace Bmatovu\MtnMomo\Exceptions;
 
 /**
- * Class TokenRequestException.
+ * Class CollectionRequestException.
  */
-class TokenRequestException extends \RuntimeException
+class CollectionRequestException extends \RunTimeException
 {
     /**
      * Constructor.
