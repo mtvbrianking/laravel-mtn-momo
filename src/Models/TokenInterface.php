@@ -3,7 +3,7 @@
  * TokenInterface.
  */
 
-namespace Bmatovu\MtnMomo\Model;
+namespace Bmatovu\MtnMomo\Models;
 
 /**
  * Interface TokenInterface.

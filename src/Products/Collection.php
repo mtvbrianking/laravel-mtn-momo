@@ -3,7 +3,7 @@
  * Collection.
  */
 
-namespace Bmatovu\MtnMomo\Product;
+namespace Bmatovu\MtnMomo\Products;
 
 use Monolog\Logger;
 use Ramsey\Uuid\Uuid;
@@ -16,7 +16,7 @@ use Illuminate\Container\Container;
 use Bmatovu\MtnMomo\Http\OAuth2Middleware;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Contracts\Config\Repository;
-use Bmatovu\MtnMomo\Repository\TokenRepository;
+use Bmatovu\MtnMomo\Repositories\TokenRepository;
 use Bmatovu\MtnMomo\Http\GrantType\ClientCredentials;
 use Bmatovu\MtnMomo\Exception\CollectionRequestException;
 
@@ -121,9 +121,8 @@ class Collection
      */
     protected function configuration()
     {
+        // return new \Bmatovu\MtnMomo\Configurations\Configuration();
         return Container::getInstance()->make(Repository::class);
-        // $dotenv = \Dotenv\Dotenv::create(__DIR__);
-        // $dotenv->load();
     }
 
     /**

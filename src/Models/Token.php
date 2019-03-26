@@ -3,7 +3,7 @@
  * Token.
  */
 
-namespace Bmatovu\MtnMomo\Model;
+namespace Bmatovu\MtnMomo\Models;
 
 use Bmatovu\MtnMomo\Traits\TokenUtilTrait;
 use Illuminate\Database\Eloquent\Model as BaseModel;

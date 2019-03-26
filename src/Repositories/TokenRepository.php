@@ -3,10 +3,10 @@
  * TokenRepository.
  */
 
-namespace Bmatovu\MtnMomo\Repository;
+namespace Bmatovu\MtnMomo\Repositories;
 
 use Carbon\Carbon;
-use Bmatovu\MtnMomo\model\Token;
+use Bmatovu\MtnMomo\Models\Token;
 
 /**
  * Class TokenRepository.

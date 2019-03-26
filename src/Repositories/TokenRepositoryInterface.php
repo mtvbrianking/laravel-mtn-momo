@@ -3,7 +3,7 @@
  * TokenRepositoryInterface.
  */
 
-namespace Bmatovu\MtnMomo\Repository;
+namespace Bmatovu\MtnMomo\Repositories;
 
 /**
  * Interface TokenRepositoryInterface.
@@ -15,7 +15,7 @@ interface TokenRepositoryInterface
      *
      * @param array $attributes
      *
-     * @return \Bmatovu\MtnMomo\Model\TokenInterface Token created.
+     * @return \Bmatovu\MtnMomo\Models\TokenInterface Token created.
      */
     public function create(array $attributes);
 
@@ -24,7 +24,7 @@ interface TokenRepositoryInterface
      *
      * @param string $access_token
      *
-     * @return \Bmatovu\MtnMomo\Model\TokenInterface|null Token, null if non found..
+     * @return \Bmatovu\MtnMomo\Models\TokenInterface|null Token, null if non found..
      */
     public function retrieve($access_token = null);
 
@@ -38,7 +38,7 @@ interface TokenRepositoryInterface
     /**
      * Updates token.
      *
-     * \Bmatovu\MtnMomo\Model\TokenInterface|null
+     * \Bmatovu\MtnMomo\Models\TokenInterface|null
      */
     public function update($access_token, array $attributes);
 }

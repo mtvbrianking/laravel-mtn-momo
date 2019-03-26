@@ -32,14 +32,14 @@ class OAuth2Middleware
     /**
      * Token repository.
      *
-     * @var \Bmatovu\MtnMomo\Repository\TokenRepositoryInterface
+     * @var \Bmatovu\MtnMomo\Repositories\TokenRepositoryInterface
      */
     protected $tokenRepository;
 
     /**
      * Token model.
      *
-     * @var \Bmatovu\MtnMomo\Model\TokenInterface
+     * @var \Bmatovu\MtnMomo\Models\TokenInterface
      */
     protected $token;
 
@@ -48,7 +48,7 @@ class OAuth2Middleware
      *
      * @param \Bmatovu\MtnMomo\Http\GrantTypeInterface $grantType
      * @param \Bmatovu\MtnMomo\Http\GrantTypeInterface $refreshTokenGrantType
-     * @param \Bmatovu\MtnMomo\Repository\TokenRepositoryInterface $tokenRepository
+     * @param \Bmatovu\MtnMomo\Repositories\TokenRepositoryInterface $tokenRepository
      */
     public function __construct($grantType, $refreshTokenGrantType = null, $tokenRepository = null)
     {
@@ -161,7 +161,7 @@ class OAuth2Middleware
     /**
      * Get a valid access token.
      *
-     * @return \Bmatovu\MtnMomo\Model\TokenInterface|null
+     * @return \Bmatovu\MtnMomo\Models\TokenInterface|null
      *
      * @throws TokenRequestException
      */
@@ -186,7 +186,7 @@ class OAuth2Middleware
     /**
      * Acquire a new access token from the server.
      *
-     * @return \Bmatovu\MtnMomo\Model\TokenInterface|null
+     * @return \Bmatovu\MtnMomo\Models\TokenInterface|null
      *
      * @throws \Bmatovu\MtnMomo\Exception\TokenRequestException
      */
