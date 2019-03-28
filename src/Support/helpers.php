@@ -22,6 +22,7 @@ if (! function_exists('env')) {
         if ($variables === null) {
             $variables = (new DotenvFactory([new EnvConstAdapter, new PutenvAdapter, new ServerConstAdapter]))->createImmutable();
         }
+
         return Option::fromValue($variables->get($key))
             ->map(function ($value) {
                 switch (strtolower($value)) {
@@ -41,6 +42,7 @@ if (! function_exists('env')) {
                 if (preg_match('/\A([\'"])(.*)\1\z/', $value, $matches)) {
                     return $matches[2];
                 }
+
                 return $value;
             })
             ->getOrCall(function () use ($default) {
