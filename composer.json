@@ -55,7 +55,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
-        "doc": "phpdoc -d src -t docs",
+        "doc": "phpdoc -d src -t docs --cache-folder=docs/cache",
         "test": "vendor/bin/phpunit",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
     },
