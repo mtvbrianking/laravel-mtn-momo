@@ -13,9 +13,9 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\MessageFormatter;
 use Monolog\Handler\StreamHandler;
 use Illuminate\Container\Container;
-use Bmatovu\OAuthNegotiator\OAuth2Middleware;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Contracts\Config\Repository;
+use Bmatovu\OAuthNegotiator\OAuth2Middleware;
 use Bmatovu\MtnMomo\Repositories\TokenRepository;
 use Bmatovu\OAuthNegotiator\GrantTypes\ClientCredentials;
 use Bmatovu\MtnMomo\Exceptions\CollectionRequestException;
@@ -80,6 +80,7 @@ class Collection
         $streamHandler = new StreamHandler(storage_path('logs/'.$logFile));
         $logger->pushHandler($streamHandler);
         $messageFormatter = new MessageFormatter("\r\n[Request] {request} \r\n[Response] {response} \r\n[Error] {error}.");
+
         return Middleware::log($logger, $messageFormatter);
     }
 
