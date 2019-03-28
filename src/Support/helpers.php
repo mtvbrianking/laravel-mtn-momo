@@ -1,8 +1,7 @@
 <?php
 /**
- * helpers.php
+ * helpers.php.
  */
-
 use Dotenv\Environment\DotenvFactory;
 use Dotenv\Environment\Adapter\PutenvAdapter;
 use Dotenv\Environment\Adapter\EnvConstAdapter;

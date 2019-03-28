@@ -1,6 +1,6 @@
 <?php
 /**
- * Arr.php
+ * Arr.php.
  */
 
 namespace Bmatovu\MtnMomo\Support;
@@ -8,7 +8,7 @@ namespace Bmatovu\MtnMomo\Support;
 use ArrayAccess;
 
 /**
- * Class Arr
+ * Class Arr.
  */
 class Arr
 {
