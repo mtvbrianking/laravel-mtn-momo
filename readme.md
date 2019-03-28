@@ -65,11 +65,64 @@ php artisan mtn-momo:init
 
 Add screenshot here...
 
-The package is equipped with [more Artisan commands](#more-artisan-command-utilities) that will ease your life.
+The package is equipped with [more Artisan commands](#more-artisan-commands) that will ease your life.
 
 ### Usage
 
-Sample code...
+```php
+use Bmatovu\MtnMomo\Products\Collection;
+
+$collection = new Collection();
+
+// Request a user to pay
+$collection->transact('EXT_REF_ID', '07XXXXXXXX', 100);
+```
+
+**Exception handling**
+
+```php
+use Bmatovu\MtnMomo\Products\Collection;
+use Bmatovu\MtnMomo\Exceptions\CollectionRequestException;
+
+try {
+    $collection = new Collection();
+    
+    // Request a user to pay
+    $collection->transact('EXT_REF_ID', '07XXXXXXXX', 100);
+} catch(CollectionRequestException $e) {
+    do {
+        printf("\n\r%s:%d %s (%d) [%s]\n\r", 
+            $e->getFile(), $e->getLine(), $e->getMessage(), $e->getCode(), get_class($e));
+    } while($e = $e->getPrevious());
+}
+```
+
+**Logging**
+
+Often you might need to log your API requests for debugging purposes. You can adding logging via [Guzzle middleware](http://docs.guzzlephp.org/en/stable/handlers-and-middleware.html#middleware) to the service like;
+
+```php
+use Monolog\Logger;
+use GuzzleHttp\Middleware;
+use GuzzleHttp\MessageFormatter;
+use Monolog\Handler\StreamHandler;+
+
+$logger = new Logger('Logger');
+$streamHandler = new StreamHandler(storage_path('logs/mtn-mono.log'));
+$logger->pushHandler($streamHandler);
+$format = "\r\n[Request] {request} \r\n[Response] {response} \r\n[Error] {error}.";
+$messageFormatter = new MessageFormatter($format);
+$logMiddleware = Middleware::log($logger, $messageFormatter);
+
+$collection = new Collection();
+
+$collection->push($logMiddleware);
+
+// Request a user to pay
+$collection->transact('EXT_REF_ID', '07XXXXXXXX', 100);
+```
+
+**Dive in**: [Source code documentation](https://mtvbrianking.github.io/laravel-mtn-momo)
 
 ### More Artisan commands
 
