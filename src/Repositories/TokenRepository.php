@@ -7,6 +7,7 @@ namespace Bmatovu\MtnMomo\Repositories;
 
 use Carbon\Carbon;
 use Bmatovu\MtnMomo\Models\Token;
+use Bmatovu\OAuthNegotiator\Repositories\TokenRepositoryInterface;
 
 /**
  * Class TokenRepository.

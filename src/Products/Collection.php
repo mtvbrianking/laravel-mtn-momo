@@ -13,11 +13,11 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\MessageFormatter;
 use Monolog\Handler\StreamHandler;
 use Illuminate\Container\Container;
-use Bmatovu\MtnMomo\Http\OAuth2Middleware;
+use Bmatovu\OAuthNegotiator\OAuth2Middleware;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Contracts\Config\Repository;
 use Bmatovu\MtnMomo\Repositories\TokenRepository;
-use Bmatovu\MtnMomo\Http\GrantTypes\ClientCredentials;
+use Bmatovu\OAuthNegotiator\GrantTypes\ClientCredentials;
 use Bmatovu\MtnMomo\Exceptions\CollectionRequestException;
 
 /**
@@ -51,31 +51,36 @@ class Collection
 
         // Guzzle http client middleware
 
-        $stack = HandlerStack::create();
+        $handlerStack = HandlerStack::create();
 
         foreach ($middlewares as $middleware) {
-            $stack->push($middleware);
+            $handlerStack->push($middleware);
         }
 
-        // Add authentication middleware
+        $handlerStack->push($this->getAuthBroker($headers));
 
-        $stack->push($this->getAuthBroker($headers));
-
-        // ...........................................................
-
-        $logger = new Logger('Logger');
-        $logger->pushHandler(new StreamHandler(storage_path('logs/mtn-momo.log')), Logger::DEBUG);
-
-        $stack->push(Middleware::log($logger, new MessageFormatter("\r\n[Request] >>>>> {request}. [Response] >>>>> \r\n{response}.")));
-
-        // ...........................................................
+        $handlerStack->push($this->getLogMiddleware());
 
         // This is the normal Guzzle client that you use in your application
         $this->client = new Client([
-            'handler' => $stack,
+            'handler' => $handlerStack,
             'base_uri' => $this->configuration()->get('mtn-momo.api.base_uri'),
             'headers' => $headers,
         ]);
+    }
+
+    /**
+     * Get log middleware.
+     * @param  string $logFile
+     * @return \GuzzleHttp\Middleware
+     */
+    protected function getLogMiddleware($logFile = 'mtn-momo.log')
+    {
+        $logger = new Logger('Logger');
+        $streamHandler = new StreamHandler(storage_path('logs/'.$logFile));
+        $logger->pushHandler($streamHandler);
+        $messageFormatter = new MessageFormatter("\r\n[Request] {request} \r\n[Response] {response} \r\n[Error] {error}.");
+        return Middleware::log($logger, $messageFormatter);
     }
 
     /**
@@ -88,9 +93,14 @@ class Collection
      */
     protected function getAuthBroker($headers)
     {
+        $handlerStack = HandlerStack::create();
+
+        $handlerStack->push($this->getLogMiddleware());
+
         // Authorization client - this is used to request OAuth access tokens
         $client = new Client([
             'base_uri' => $this->configuration()->get('mtn-momo.api.base_uri'),
+            'handler' => $handlerStack,
             'headers' => $headers,
             'json' => [
                 'body',

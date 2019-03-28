@@ -6,6 +6,7 @@
 namespace Bmatovu\MtnMomo\Models;
 
 use Bmatovu\MtnMomo\Traits\TokenUtilTrait;
+use Bmatovu\OAuthNegotiator\Models\TokenInterface;
 use Illuminate\Database\Eloquent\Model as BaseModel;
 
 /**
