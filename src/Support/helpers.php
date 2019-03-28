@@ -1,4 +1,7 @@
 <?php
+/**
+ * helpers.php
+ */
 
 use Dotenv\Environment\DotenvFactory;
 use Dotenv\Environment\Adapter\PutenvAdapter;

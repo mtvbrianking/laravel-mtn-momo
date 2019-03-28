@@ -1,9 +1,15 @@
 <?php
+/**
+ * Arr.php
+ */
 
 namespace Bmatovu\MtnMomo\Support;
 
 use ArrayAccess;
 
+/**
+ * Class Arr
+ */
 class Arr
 {
     /**
