@@ -57,15 +57,8 @@ class MtnMomoServiceProvider extends ServiceProvider
         // https://laravel.com/docs/5.3/container#binding-interfaces-to-implementations
 
         $this->app->bind(
-            'Bmatovu\MtnMomo\Repositories\TokenRepositoryInterface',
+            'Bmatovu\MtnMomo\OAuthNegotiator\TokenRepositoryInterface',
             'Bmatovu\MtnMomo\Repositories\TokenRepository'
         );
-
-        $this->app->bind(
-            'Bmatovu\MtnMomo\Configurations\ConfigurationInterface',
-            'Bmatovu\MtnMomo\Configurations\Configuration'
-        );
-
-        // bind grant type interface...
     }
 }
