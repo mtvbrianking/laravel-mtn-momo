@@ -57,7 +57,7 @@ Now you need to run the `mtn-momo:init` command. This command will create the ne
 php artisan mtn-momo:init
 ```
 
-Add screenshot here...
+![screenshot](screenshot.png)
 
 The package is equipped with [more Artisan commands](#more-artisan-commands) that will ease your work.
 

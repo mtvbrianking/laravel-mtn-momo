@@ -24,7 +24,6 @@ class MtnMomoServiceProvider extends ServiceProvider
     public function boot()
     {
         if ($this->app->runningInConsole()) {
-
             $this->publishes([
                 __DIR__.'/../config/mtn-momo.php' => base_path('config/mtn-momo.php'),
             ], 'config');
@@ -43,9 +42,7 @@ class MtnMomoServiceProvider extends ServiceProvider
                 ValidateIdCommand::class,
                 RequestSecretCommand::class,
             ]);
-
         }
-
     }
 
     /**
