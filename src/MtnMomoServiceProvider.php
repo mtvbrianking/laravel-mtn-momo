@@ -23,26 +23,29 @@ class MtnMomoServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->publishes([
-            __DIR__.'/../config/mtn-momo.php' => base_path('config/mtn-momo.php'),
-        ], 'config');
-
         if ($this->app->runningInConsole()) {
+
+            $this->publishes([
+                __DIR__.'/../config/mtn-momo.php' => base_path('config/mtn-momo.php'),
+            ], 'config');
+
+            $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+
+            // if (! class_exists('CreateMtnMomoTokensTable')) {
+            //     $this->publishes([
+            //         __DIR__.'/../database/migrations/create_mtn_momo_tokens_table.php' => database_path('migrations/'.date('Y_m_d_His', time()).'_create_mtn_momo_tokens_table.php'),
+            //     ], 'migrations');
+            // }
+
             $this->commands([
                 BootstrapCommand::class,
                 RegisterIdCommand::class,
                 ValidateIdCommand::class,
                 RequestSecretCommand::class,
             ]);
+
         }
 
-        // if (! class_exists('CreateMtnMomoTokensTable')) {
-        //     $this->publishes([
-        //         __DIR__.'/../database/migrations/create_mtn_momo_tokens_table.php' => database_path('migrations/'.date('Y_m_d_His', time()).'_create_mtn_momo_tokens_table.php'),
-        //     ], 'migrations');
-        // }
-
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
     }
 
     /**
@@ -55,7 +58,6 @@ class MtnMomoServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/mtn-momo.php', 'mtn-momo');
 
         // https://laravel.com/docs/5.3/container#binding-interfaces-to-implementations
-
         $this->app->bind(
             'Bmatovu\MtnMomo\OAuthNegotiator\TokenRepositoryInterface',
             'Bmatovu\MtnMomo\Repositories\TokenRepository'
