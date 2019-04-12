@@ -56,11 +56,37 @@ trait CommandUtilTrait
      *
      * @param  string  $title
      * @param  array|string  $body
+     *
+     * @return void
+     */
+    protected function printLabels($title, $body = null)
+    {
+        $this->line("<options=bold>{$title}</>");
+
+        if (is_null($body)) {
+            return;
+        }
+
+        $body = is_array($body) ? $body : [$body];
+
+        foreach ($body as $content) {
+            $this->line("{$content}");
+        }
+
+        $this->output->writeln('');
+    }
+
+    /**
+     * @deprecated
+     * Print formatted labels.
+     *
+     * @param  string  $title
+     * @param  array|string  $body
      * @param  int $length
      *
      * @return void
      */
-    protected function printLabels($title, $body = null, $length = 74)
+    protected function olPrintLabels($title, $body = null, $length = 74)
     {
         $this->line('|'.str_repeat('-', $length));
         $this->line("| {$title}");
