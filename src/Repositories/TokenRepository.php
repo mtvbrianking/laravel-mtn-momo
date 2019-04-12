@@ -19,7 +19,7 @@ class TokenRepository implements TokenRepositoryInterface
      */
     public function __constructor()
     {
-        // slience is golden...
+        // silence is golden...
     }
 
     /**
@@ -55,8 +55,6 @@ class TokenRepository implements TokenRepositoryInterface
      */
     public function update($access_token, array $attributes)
     {
-        // $model->fresh()
-        // $model->refresh()
         return $this->get($access_token)->update($attributes);
     }
 
@@ -66,15 +64,5 @@ class TokenRepository implements TokenRepositoryInterface
     public function delete($access_token)
     {
         Token::destory($access_token);
-        /*
-        $token = $this->get($access_token);
-
-        if(!$token) {
-            return;
-        }
-
-        $token->deleted_at = Carbon::now();
-        $token->save();
-        */
     }
 }

@@ -30,12 +30,6 @@ class MtnMomoServiceProvider extends ServiceProvider
 
             $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
-            // if (! class_exists('CreateMtnMomoTokensTable')) {
-            //     $this->publishes([
-            //         __DIR__.'/../database/migrations/create_mtn_momo_tokens_table.php' => database_path('migrations/'.date('Y_m_d_His', time()).'_create_mtn_momo_tokens_table.php'),
-            //     ], 'migrations');
-            // }
-
             $this->commands([
                 BootstrapCommand::class,
                 RegisterIdCommand::class,
@@ -56,7 +50,7 @@ class MtnMomoServiceProvider extends ServiceProvider
 
         // https://laravel.com/docs/5.3/container#binding-interfaces-to-implementations
         $this->app->bind(
-            'Bmatovu\MtnMomo\OAuthNegotiator\TokenRepositoryInterface',
+            'Bmatovu\OAuthNegotiator\TokenRepositoryInterface',
             'Bmatovu\MtnMomo\Repositories\TokenRepository'
         );
     }
