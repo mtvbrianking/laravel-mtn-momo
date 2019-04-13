@@ -10,7 +10,7 @@ abstract class TestCase extends Orchestra
     /**
      * {@inheritdoc}
      */
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
 
@@ -21,7 +21,7 @@ abstract class TestCase extends Orchestra
     /**
      * {@inheritdoc}
      */
-    public function tearDown()
+    public function tearDown() : void
     {
         // Remove .env in test env
         unlink($this->app->environmentFilePath());
