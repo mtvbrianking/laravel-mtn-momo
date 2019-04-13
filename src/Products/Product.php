@@ -22,7 +22,6 @@ use Bmatovu\OAuthNegotiator\GrantTypes\ClientCredentials;
  */
 abstract class Product
 {
-
     /**
      * HTTP client.
      *
@@ -395,4 +394,11 @@ abstract class Product
         return new OAuth2Middleware($client_grant, null, $tokenRepo);
     }
 
+    /**
+     * Request access token.
+     *
+     * @return array
+     * @throws \GuzzleHttp\Exception\RequestException;
+     */
+    abstract public function getToken();
 }
