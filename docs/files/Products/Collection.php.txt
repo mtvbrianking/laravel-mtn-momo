@@ -204,7 +204,7 @@ class Collection extends Product
     }
 
     /**
-     * Request access token.
+     * Request collections access token.
      *
      * @return array
      * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
