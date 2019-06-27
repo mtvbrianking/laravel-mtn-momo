@@ -43,7 +43,7 @@ class TokenRepository implements TokenRepositoryInterface
     public function retrieve($access_token = null)
     {
         if ($access_token) {
-            return Token::where('access_token', $access_token)->first();
+            return Token::whereNull('deleted_at')->where('access_token', $access_token)->first();
         }
 
         return Token::whereNull('deleted_at')->latest('created_at')->first();

@@ -86,7 +86,7 @@ trait CommandUtilTrait
      *
      * @return void
      */
-    protected function olPrintLabels($title, $body = null, $length = 74)
+    protected function oldPrintLabels($title, $body = null, $length = 74)
     {
         $this->line('|'.str_repeat('-', $length));
         $this->line("| {$title}");
