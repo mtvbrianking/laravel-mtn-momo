@@ -5,6 +5,7 @@
 
 namespace Bmatovu\MtnMomo\Repositories;
 
+use Carbon\Carbon;
 use Bmatovu\MtnMomo\Models\Token;
 use Bmatovu\OAuthNegotiator\Repositories\TokenRepositoryInterface;
 
@@ -18,7 +19,7 @@ class TokenRepository implements TokenRepositoryInterface
      */
     public function __constructor()
     {
-        // silence is golden...
+        // Silence is golden...
     }
 
     /**
@@ -26,6 +27,10 @@ class TokenRepository implements TokenRepositoryInterface
      */
     public function create(array $attributes)
     {
+        // if(isset($attributes['expires_in'])) {
+        //     $attributes['expires_at'] = Carbon::now()->addSeconds($attributes['expires_in'])->format('Y-m-d H:i:s');
+        // }
+
         return Token::create($attributes);
     }
 
@@ -43,10 +48,10 @@ class TokenRepository implements TokenRepositoryInterface
     public function retrieve($access_token = null)
     {
         if ($access_token) {
-            return Token::whereNull('deleted_at')->where('access_token', $access_token)->first();
+            return Token::where('access_token', $access_token)->first();
         }
 
-        return Token::whereNull('deleted_at')->latest('created_at')->first();
+        return Token::latest('created_at')->first();
     }
 
     /**
@@ -54,7 +59,7 @@ class TokenRepository implements TokenRepositoryInterface
      */
     public function update($access_token, array $attributes)
     {
-        return $this->get($access_token)->update($attributes);
+        return Token::where('access_token', $access_token)->update($attributes);
     }
 
     /**
@@ -62,6 +67,6 @@ class TokenRepository implements TokenRepositoryInterface
      */
     public function delete($access_token)
     {
-        Token::destory($access_token);
+        Token::where('access_token', $access_token)->destory();
     }
 }

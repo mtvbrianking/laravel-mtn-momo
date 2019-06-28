@@ -15,10 +15,10 @@ class CreateMtnMomoTokensTable extends Migration
             $table->increments('id');
             $table->text('access_token');
             $table->text('refresh_token')->nullable();
-            $table->string('token_type')->default('access_token');
+            $table->string('token_type')->default('Bearer');
             $table->timestamps();
             $table->timestamp('expires_at')->nullable();
-            $table->timestamp('deleted_at')->nullable();
+            $table->softDeletes();
         });
     }
 

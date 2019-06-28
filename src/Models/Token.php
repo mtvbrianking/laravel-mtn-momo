@@ -5,7 +5,9 @@
 
 namespace Bmatovu\MtnMomo\Models;
 
+use Carbon\Carbon;
 use Bmatovu\MtnMomo\Traits\TokenUtilTrait;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Bmatovu\OAuthNegotiator\Models\TokenInterface;
 use Illuminate\Database\Eloquent\Model as BaseModel;
 
@@ -14,7 +16,7 @@ use Illuminate\Database\Eloquent\Model as BaseModel;
  */
 class Token extends BaseModel implements TokenInterface
 {
-    use TokenUtilTrait;
+    use SoftDeletes, TokenUtilTrait;
 
     /**
      * The table associated with the model.
@@ -29,7 +31,10 @@ class Token extends BaseModel implements TokenInterface
      * @var array
      */
     protected $fillable = [
-        'access_token', 'token_type', 'expires_at',
+        'access_token',
+        'refresh_token',
+        'token_type',
+        'expires_at',
     ];
 
     /**
@@ -38,6 +43,25 @@ class Token extends BaseModel implements TokenInterface
      * @var array
      */
     protected $dates = [
-        'expires_at', 'deleted_at',
+        'expires_at',
+        'deleted_at',
     ];
+
+    /**
+     * Set token expiration.
+     *
+     * Dynamically change 'exipres_in' to 'expires_at'.
+     *
+     * @param  int  $value
+     *
+     * @return void
+     */
+    public function setExpiresInAttribute($value)
+    {
+        if(!is_int($value)) {
+            return;
+        }
+
+        $this->attributes['expires_at'] = Carbon::now()->addSeconds($value)->format('Y-m-d H:i:s');
+    }
 }

@@ -61,10 +61,6 @@ trait TokenUtilTrait
             return false;
         }
 
-        if ($this->expires_at->isFuture()) {
-            return false;
-        }
-
-        return true;
+        return $this->expires_at->isPast();
     }
 }
