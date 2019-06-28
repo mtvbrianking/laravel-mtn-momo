@@ -27,9 +27,9 @@ class TokenRepository implements TokenRepositoryInterface
      */
     public function create(array $attributes)
     {
-        // if(isset($attributes['expires_in'])) {
-        //     $attributes['expires_at'] = Carbon::now()->addSeconds($attributes['expires_in'])->format('Y-m-d H:i:s');
-        // }
+        if(isset($attributes['expires_in'])) {
+            $attributes['expires_at'] = Carbon::now()->addSeconds($attributes['expires_in'])->format('Y-m-d H:i:s');
+        }
 
         return Token::create($attributes);
     }

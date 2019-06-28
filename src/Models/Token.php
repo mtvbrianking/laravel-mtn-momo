@@ -46,22 +46,4 @@ class Token extends BaseModel implements TokenInterface
         'expires_at',
         'deleted_at',
     ];
-
-    /**
-     * Set token expiration.
-     *
-     * Dynamically change 'exipres_in' to 'expires_at'.
-     *
-     * @param  int  $value
-     *
-     * @return void
-     */
-    public function setExpiresInAttribute($value)
-    {
-        if(!is_int($value)) {
-            return;
-        }
-
-        $this->attributes['expires_at'] = Carbon::now()->addSeconds($value)->format('Y-m-d H:i:s');
-    }
 }
