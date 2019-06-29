@@ -3,3 +3,5 @@ coverage
 coverage.clover
 docs/cache
 vendor
+.idea
+.phpunit.result.cache

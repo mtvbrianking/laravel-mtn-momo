@@ -6,6 +6,7 @@
 namespace Bmatovu\MtnMomo\Console;
 
 use Illuminate\Console\Command;
+use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
 use GuzzleHttp\Exception\ConnectException;
@@ -17,6 +18,13 @@ use Bmatovu\MtnMomo\Traits\CommandUtilTrait;
 class RegisterIdCommand extends Command
 {
     use CommandUtilTrait;
+
+    /**
+     * Guzzle HTTP client instance.
+     *
+     * @var \GuzzleHttp\ClientInterface
+     */
+    protected $client;
 
     /**
      * The name and signature of the console command.
@@ -40,23 +48,25 @@ class RegisterIdCommand extends Command
     /**
      * Create a new command instance.
      *
-     * @return void
+     * @param \GuzzleHttp\ClientInterface $client
      */
-    public function __construct()
+    public function __construct(ClientInterface $client)
     {
         parent::__construct();
-        // ...
+
+        $this->client = $client;
     }
 
     /**
      * Execute the console command.
      *
      * @return void
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function handle()
     {
-        if (! $this->runInProduction()) {
+        if (!$this->runInProduction()) {
             return;
         }
 
@@ -64,17 +74,21 @@ class RegisterIdCommand extends Command
 
         $client_id = $this->option('id');
 
-        if (! $client_id) {
+        if (!$client_id) {
             $client_id = $this->laravel['config']->get('mtn-momo.app.id');
         }
 
         $client_redirect_uri = $this->option('callback');
 
-        if (! $client_redirect_uri) {
+        if (!$client_redirect_uri) {
             $client_redirect_uri = $this->laravel['config']->get('mtn-momo.app.redirect_uri');
         }
 
-        $this->registerClientId($client_id, $client_redirect_uri);
+        $is_registered = $this->registerClientId($client_id, $client_redirect_uri);
+
+        if (!$is_registered) {
+            return;
+        }
 
         if ($this->confirm('Do you wish to request for the app secret?', true)) {
             $this->call('mtn-momo:request-secret', [
@@ -91,17 +105,15 @@ class RegisterIdCommand extends Command
      *
      * @param string $client_id
      * @param string $client_redirect_uri
+     *
+     * @return bool Is registered.
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Exception
      */
     protected function registerClientId($client_id, $client_redirect_uri)
     {
         try {
-            $client = $this->prepareGuzzle(function () {
-                echo '. ';
-            }, $this->option('debug'));
-
-            $response = $client->request('POST', $this->laravel['config']->get('mtn-momo.api.client_id_uri'), [
+            $response = $this->client->request('POST', $this->laravel['config']->get('mtn-momo.api.client_id_uri'), [
                 'headers' => [
                     'X-Reference-Id' => $client_id,
                 ],
@@ -110,19 +122,21 @@ class RegisterIdCommand extends Command
                 ],
             ]);
 
-            $this->line("\r\nStatus: <fg=green>".$response->getStatusCode().' '.$response->getReasonPhrase().'</>');
+            $this->line("Status: <fg=green>" . $response->getStatusCode() . ' ' . $response->getReasonPhrase() . '</>');
 
-            $this->line("\r\nBody: <fg=green>".$response->getBody()."\r\n</>");
+            return true;
         } catch (ConnectException $ex) {
-            $this->line("\r\n<fg=red>".$ex->getMessage().'</>');
+            $this->line("\r\n<fg=red>" . $ex->getMessage() . '</>');
         } catch (ClientException $ex) {
             $response = $ex->getResponse();
-            $this->line("\r\nStatus: <fg=yellow>".$response->getStatusCode().' '.$response->getReasonPhrase().'</>');
-            $this->line("\r\nBody: <fg=yellow>".$response->getBody()."\r\n</>");
+            $this->line("\r\nStatus: <fg=yellow>" . $response->getStatusCode() . ' ' . $response->getReasonPhrase() . '</>');
+            $this->line("\r\nBody: <fg=yellow>" . $response->getBody() . "\r\n</>");
         } catch (ServerException $ex) {
             $response = $ex->getResponse();
-            $this->line("\r\nStatus: <fg=red>".$response->getStatusCode().' '.$response->getReasonPhrase().'</>');
-            $this->line("\r\nBody: <fg=red>".$response->getBody()."\r\n</>");
+            $this->line("\r\nStatus: <fg=red>" . $response->getStatusCode() . ' ' . $response->getReasonPhrase() . '</>');
+            $this->line("\r\nBody: <fg=red>" . $response->getBody() . "\r\n</>");
         }
+
+        return false;
     }
 }

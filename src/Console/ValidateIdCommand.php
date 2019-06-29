@@ -41,7 +41,7 @@ class ValidateIdCommand extends Command
      *
      * @var string
      */
-    protected $description = "Validate client APP ID; 'apiuser'";
+    protected $description = "Validate client APP ID; 'apiuser'.";
 
     /**
      * Create a new command instance.

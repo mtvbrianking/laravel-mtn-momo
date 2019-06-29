@@ -2,7 +2,6 @@
 
 namespace Bmatovu\MtnMomo\Tests;
 
-use Bmatovu\MtnMomo\MtnMomoServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class TestCase extends Orchestra
@@ -38,7 +37,7 @@ abstract class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            MtnMomoServiceProvider::class,
+            FakeServiceProvider::class,
         ];
     }
 
