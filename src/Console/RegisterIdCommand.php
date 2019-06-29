@@ -5,8 +5,8 @@
 
 namespace Bmatovu\MtnMomo\Console;
 
-use Illuminate\Console\Command;
 use GuzzleHttp\ClientInterface;
+use Illuminate\Console\Command;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
 use GuzzleHttp\Exception\ConnectException;
@@ -66,7 +66,7 @@ class RegisterIdCommand extends Command
      */
     public function handle()
     {
-        if (!$this->runInProduction()) {
+        if (! $this->runInProduction()) {
             return;
         }
 
@@ -74,19 +74,19 @@ class RegisterIdCommand extends Command
 
         $client_id = $this->option('id');
 
-        if (!$client_id) {
+        if (! $client_id) {
             $client_id = $this->laravel['config']->get('mtn-momo.app.id');
         }
 
         $client_redirect_uri = $this->option('callback');
 
-        if (!$client_redirect_uri) {
+        if (! $client_redirect_uri) {
             $client_redirect_uri = $this->laravel['config']->get('mtn-momo.app.redirect_uri');
         }
 
         $is_registered = $this->registerClientId($client_id, $client_redirect_uri);
 
-        if (!$is_registered) {
+        if (! $is_registered) {
             return;
         }
 
@@ -122,19 +122,19 @@ class RegisterIdCommand extends Command
                 ],
             ]);
 
-            $this->line("Status: <fg=green>" . $response->getStatusCode() . ' ' . $response->getReasonPhrase() . '</>');
+            $this->line('Status: <fg=green>'.$response->getStatusCode().' '.$response->getReasonPhrase().'</>');
 
             return true;
         } catch (ConnectException $ex) {
-            $this->line("\r\n<fg=red>" . $ex->getMessage() . '</>');
+            $this->line("\r\n<fg=red>".$ex->getMessage().'</>');
         } catch (ClientException $ex) {
             $response = $ex->getResponse();
-            $this->line("\r\nStatus: <fg=yellow>" . $response->getStatusCode() . ' ' . $response->getReasonPhrase() . '</>');
-            $this->line("\r\nBody: <fg=yellow>" . $response->getBody() . "\r\n</>");
+            $this->line("\r\nStatus: <fg=yellow>".$response->getStatusCode().' '.$response->getReasonPhrase().'</>');
+            $this->line("\r\nBody: <fg=yellow>".$response->getBody()."\r\n</>");
         } catch (ServerException $ex) {
             $response = $ex->getResponse();
-            $this->line("\r\nStatus: <fg=red>" . $response->getStatusCode() . ' ' . $response->getReasonPhrase() . '</>');
-            $this->line("\r\nBody: <fg=red>" . $response->getBody() . "\r\n</>");
+            $this->line("\r\nStatus: <fg=red>".$response->getStatusCode().' '.$response->getReasonPhrase().'</>');
+            $this->line("\r\nBody: <fg=red>".$response->getBody()."\r\n</>");
         }
 
         return false;
