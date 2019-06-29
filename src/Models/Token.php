@@ -5,7 +5,6 @@
 
 namespace Bmatovu\MtnMomo\Models;
 
-use Carbon\Carbon;
 use Bmatovu\MtnMomo\Traits\TokenUtilTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Bmatovu\OAuthNegotiator\Models\TokenInterface;

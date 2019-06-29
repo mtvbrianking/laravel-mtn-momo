@@ -2,15 +2,11 @@
 
 namespace Bmatovu\MtnMomo\Tests;
 
-use Monolog\Logger;
 use GuzzleHttp\Client;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\MessageFormatter;
-use Monolog\Handler\StreamHandler;
 use GuzzleHttp\Handler\MockHandler;
 use Illuminate\Support\ServiceProvider;
 use GuzzleHttp\Exception\RequestException;
