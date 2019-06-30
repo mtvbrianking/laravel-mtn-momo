@@ -14,6 +14,8 @@ use Bmatovu\MtnMomo\Traits\CommandUtilTrait;
 
 /**
  * Class RegisterIdCommand.
+ *
+ * Register your client application ID with MTN Momo API.
  */
 class RegisterIdCommand extends Command
 {
@@ -122,7 +124,7 @@ class RegisterIdCommand extends Command
                 ],
             ]);
 
-            $this->line('Status: <fg=green>'.$response->getStatusCode().' '.$response->getReasonPhrase().'</>');
+            $this->line("\r\nStatus: <fg=green>".$response->getStatusCode().' '.$response->getReasonPhrase().'</>');
 
             return true;
         } catch (ConnectException $ex) {

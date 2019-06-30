@@ -5,6 +5,7 @@
 
 namespace Bmatovu\MtnMomo\Console;
 
+use GuzzleHttp\ClientInterface;
 use Illuminate\Console\Command;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
@@ -19,9 +20,9 @@ class ValidateIdCommand extends Command
     use CommandUtilTrait;
 
     /**
-     * Guzzle http client.
+     * Guzzle HTTP client instance.
      *
-     * @var \GuzzleHttp\Client
+     * @var \GuzzleHttp\ClientInterface
      */
     protected $client;
 
@@ -46,12 +47,13 @@ class ValidateIdCommand extends Command
     /**
      * Create a new command instance.
      *
-     * @return void
+     * @param \GuzzleHttp\ClientInterface $client
      */
-    public function __construct()
+    public function __construct(ClientInterface $client)
     {
         parent::__construct();
-        // ...
+
+        $this->client = $client;
     }
 
     /**
@@ -86,17 +88,15 @@ class ValidateIdCommand extends Command
      * Validate client APP ID.
      *
      * @param string $client_id_status_uri
+     *
+     * @return void
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Exception
      */
     protected function validateClientId($client_id_status_uri)
     {
         try {
-            $client = $this->prepareGuzzle(function () {
-                echo '. ';
-            }, $this->option('debug'));
-
-            $response = $client->request('GET', $client_id_status_uri, []);
+            $response = $this->client->request('GET', $client_id_status_uri, []);
 
             $this->line("\r\nStatus: <fg=green>".$response->getStatusCode().' '.$response->getReasonPhrase().'</>');
 
