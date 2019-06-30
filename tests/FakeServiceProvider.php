@@ -13,6 +13,7 @@ use Illuminate\Support\ServiceProvider;
 use GuzzleHttp\Exception\RequestException;
 use Bmatovu\MtnMomo\Console\RegisterIdCommand;
 use Bmatovu\MtnMomo\Console\ValidateIdCommand;
+use Bmatovu\MtnMomo\Console\RequestSecretCommand;
 
 class FakeServiceProvider extends ServiceProvider
 {
@@ -34,7 +35,7 @@ class FakeServiceProvider extends ServiceProvider
                 // BootstrapCommand::class,
                 RegisterIdCommand::class,
                 ValidateIdCommand::class,
-                // RequestSecretCommand::class,
+                RequestSecretCommand::class,
             ]);
         }
     }
@@ -50,40 +51,56 @@ class FakeServiceProvider extends ServiceProvider
             ->when(RegisterIdCommand::class)
             ->needs(ClientInterface::class)
             ->give(function($app) {
-                $mockHandler = new MockHandler([
+                $mockResponses = [
                     new Response(201, [], null),
-                    new Response(401, [], json_encode(['error' => 'Unauthorized access.'])),
-                    new RequestException('Error Communicating with Server', new Request('GET', 'last')),
-                ]);
+                ];
 
-                return $this->mockClient($mockHandler);
+                return $this->mockClient($mockResponses);
             });
 
         $this->app
             ->when(ValidateIdCommand::class)
             ->needs(ClientInterface::class)
             ->give(function($app) {
-                $mockHandler = new MockHandler([
+                $mockResponses = [
                     new Response(200, [], json_encode([
                         'key' => 'value',
                     ])),
-                    new Response(401, [], json_encode(['error' => 'Unauthorized access.'])),
-                    new RequestException('Error Communicating with Server', new Request('GET', 'last')),
-                ]);
+                ];
 
-                return $this->mockClient($mockHandler);
+                return $this->mockClient($mockResponses);
+            });
+
+        $this->app
+            ->when(RequestSecretCommand::class)
+            ->needs(ClientInterface::class)
+            ->give(function($app) {
+                $mockResponses = [
+                    new Response(201, [], json_encode([
+                        'apiKey' => 'client-secret',
+                    ])),
+                ];
+
+                return $this->mockClient($mockResponses);
             });
     }
 
     /**
      * Create mock Guzzle HTTP client.
      *
-     * @param  \GuzzleHttp\Handler\MockHandler $mockHandler
+     * @param  array              $mockResponses
      *
      * @return \GuzzleHttp\Client
      */
-    protected function mockClient(MockHandler $mockHandler)
+    protected function mockClient(array $mockResponses)
     {
+        $mockResponses = array_merge($mockResponses, [
+            new Response(401, [], json_encode(['error' => 'Unauthorized access.'])),
+            new RequestException('Error Communicating with Server', new Request('GET', 'last')),
+        ]);
+
+        $mockHandler = new MockHandler($mockResponses);
+
         $historyContainer = [];
 
         $historyMiddleware = Middleware::history($historyContainer);

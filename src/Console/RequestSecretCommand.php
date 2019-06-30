@@ -5,6 +5,7 @@
 
 namespace Bmatovu\MtnMomo\Console;
 
+use GuzzleHttp\ClientInterface;
 use Illuminate\Console\Command;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
@@ -17,6 +18,13 @@ use Bmatovu\MtnMomo\Traits\CommandUtilTrait;
 class RequestSecretCommand extends Command
 {
     use CommandUtilTrait;
+
+    /**
+     * Guzzle HTTP client instance.
+     *
+     * @var \GuzzleHttp\ClientInterface
+     */
+    protected $client;
 
     /**
      * The name and signature of the console command.
@@ -39,12 +47,13 @@ class RequestSecretCommand extends Command
     /**
      * Create a new command instance.
      *
-     * @return void
+     * @param \GuzzleHttp\ClientInterface $client
      */
-    public function __construct()
+    public function __construct(ClientInterface $client)
     {
         parent::__construct();
-        // ...
+
+        $this->client = $client;
     }
 
     /**
@@ -74,19 +83,17 @@ class RequestSecretCommand extends Command
      * Request for client APP secret.
      *
      * @param string $client_id
+     *
+     * @return void
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Exception
      */
     protected function requestClientSecret($client_id)
     {
         try {
-            $client = $this->prepareGuzzle(function () {
-                echo '. ';
-            }, $this->option('debug'));
-
             $client_secret_uri = $this->laravel['config']->get('mtn-momo.api.client_secret_uri');
 
-            $response = $client->request('POST', $this->prepareUri($client_secret_uri, $client_id), []);
+            $response = $this->client->request('POST', $this->prepareUri($client_secret_uri, $client_id), []);
 
             $this->line("\r\nStatus: <fg=green>".$response->getStatusCode().' '.$response->getReasonPhrase().'</>');
 
