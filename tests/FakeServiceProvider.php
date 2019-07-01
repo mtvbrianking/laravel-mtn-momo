@@ -50,7 +50,7 @@ class FakeServiceProvider extends ServiceProvider
         $this->app
             ->when(RegisterIdCommand::class)
             ->needs(ClientInterface::class)
-            ->give(function($app) {
+            ->give(function ($app) {
                 $mockResponses = [
                     new Response(201, [], null),
                 ];
@@ -61,7 +61,7 @@ class FakeServiceProvider extends ServiceProvider
         $this->app
             ->when(ValidateIdCommand::class)
             ->needs(ClientInterface::class)
-            ->give(function($app) {
+            ->give(function ($app) {
                 $mockResponses = [
                     new Response(200, [], json_encode([
                         'key' => 'value',
@@ -74,7 +74,7 @@ class FakeServiceProvider extends ServiceProvider
         $this->app
             ->when(RequestSecretCommand::class)
             ->needs(ClientInterface::class)
-            ->give(function($app) {
+            ->give(function ($app) {
                 $mockResponses = [
                     new Response(201, [], json_encode([
                         'apiKey' => 'client-secret',
