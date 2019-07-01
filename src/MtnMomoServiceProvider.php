@@ -70,11 +70,11 @@ class MtnMomoServiceProvider extends ServiceProvider
                 'progress' => function () {
                     echo '. ';
                 },
-                'base_uri' => $this->app['config']->get('mtn-momo.uri.base'),
+                'base_uri' => $this->app['config']->get('mtn-momo.api.base_uri'),
                 'headers' => [
                     'Accept' => 'application/json',
                     'Content-Type' => 'application/json',
-                    'Ocp-Apim-Subscription-Key' => $this->app['config']->get('mtn-momo.product_key'),
+                    'Ocp-Apim-Subscription-Key' => $this->app['config']->get('mtn-momo.app.product_key'),
                 ],
                 'json' => [
                     'body',

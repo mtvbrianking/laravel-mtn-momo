@@ -78,12 +78,16 @@ class RegisterIdCommand extends Command
 
         if (! $client_id) {
             $client_id = $this->laravel['config']->get('mtn-momo.app.id');
+
+            $client_id = $this->ask('Use client app ID?', $client_id);
         }
 
         $client_redirect_uri = $this->option('callback');
 
         if (! $client_redirect_uri) {
             $client_redirect_uri = $this->laravel['config']->get('mtn-momo.app.redirect_uri');
+
+            $client_redirect_uri = $this->ask('Use client app redirect URI?', $client_redirect_uri);
         }
 
         $is_registered = $this->registerClientId($client_id, $client_redirect_uri);
