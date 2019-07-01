@@ -74,12 +74,14 @@ class ValidateIdCommand extends Command
 
         $client_id = $this->option('id');
 
-        if ($client_id) {
-            // Update client ID in uri.
-            $client_id_status_uri = $this->prepareUri($client_id_status_uri, $client_id);
-        } else {
+        if (! $client_id) {
             $client_id = $this->laravel['config']->get('mtn-momo.app.id');
+
+            $client_id = $this->ask('Use client app ID?', $client_id);
         }
+
+        // Update client ID in uri.
+        $client_id_status_uri = $this->prepareUri($client_id_status_uri, $client_id);
 
         $this->validateClientId($client_id_status_uri);
     }

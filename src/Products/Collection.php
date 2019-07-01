@@ -111,8 +111,8 @@ class Collection extends Product
     /**
      * Constructor.
      *
-     * @param array  headers
-     * @param array  middlewares
+     * @param array $headers
+     * @param array $middlewares
      *
      * @uses \Illuminate\Contracts\Config\Repository
      *
@@ -137,12 +137,14 @@ class Collection extends Product
      *
      * @see https://momodeveloper.mtn.com/docs/services/collection/operations/requesttopay-POST Documentation
      *
-     * @param  string $external_id Transaction reference ID.
-     * @param  string $party_id Account holder. Usually phone number if type is MSISDN.
-     * @param  int $amount How much to debit the payer.
+     * @param  string $external_id   Transaction reference ID.
+     * @param  string $party_id      Account holder. Usually phone number if type is MSISDN.
+     * @param  int    $amount        How much to debit the payer.
      * @param  string $payer_message Payer transaction history message.
-     * @param  string $payee_note Payee transaction history message.
+     * @param  string $payee_note    Payee transaction history message.
+     *
      * @return string                Payment reference ID
+     *
      * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
      */
     public function transact($external_id, $party_id, $amount, $payer_message = '', $payee_note = '')
@@ -183,6 +185,7 @@ class Collection extends Product
      * @param  string $payment_ref ID
      *
      * @return array
+     *
      * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
      */
     public function getTransactionStatus($payment_ref)
@@ -207,6 +210,7 @@ class Collection extends Product
      * Request collections access token.
      *
      * @return array
+     *
      * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
      */
     public function getToken()
@@ -236,6 +240,7 @@ class Collection extends Product
      * Get account balance.
      *
      * @return array Account balance.
+     *
      * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
      */
     public function getAccountBalance()
@@ -260,7 +265,9 @@ class Collection extends Product
      *
      * @param  string $account_id
      * @param  string $account_type_name
+     *
      * @return array User account info
+     *
      * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
      */
     public function getUserAccountInfo($account_id, $account_type_name = null)
@@ -270,6 +277,8 @@ class Collection extends Product
         if (is_null($account_type_name)) {
             $account_type_name = $this->getPartyIdType();
         }
+
+        $patterns = $replacements = [];
 
         $patterns[] = '/(\{\baccount_type_name\b\})/';
         $replacements[] = strtolower($account_type_name);

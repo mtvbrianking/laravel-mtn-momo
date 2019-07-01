@@ -54,7 +54,7 @@ class MtnMomoServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__.'/../config/mtn-momo.php', 'mtn-momo');
 
-        $this->app->bind('GuzzleHttp\ClientInterface', function ($app) {
+        $this->app->bind('GuzzleHttp\ClientInterface', function () {
             $stack = HandlerStack::create();
 
             if ($this->app['config']->get('app.debug')) {

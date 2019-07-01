@@ -11,9 +11,11 @@ class ValidateIdCommandTest extends TestCase
      */
     public function canValidateId()
     {
-        $this->artisan('mtn-momo:validate-id')
-             ->expectsOutput("\r\nStatus: 200 OK")
-             ->expectsOutput("\r\nBody: {\"key\":\"value\"}\r\n")
-             ->assertExitCode(0);
+        $this->artisan('mtn-momo:validate-id', [
+            '--id' => 'some_random_id',
+        ])
+        ->expectsOutput("\r\nStatus: 200 OK")
+        ->expectsOutput("\r\nBody: {\"key\":\"value\"}\r\n")
+        ->assertExitCode(0);
     }
 }

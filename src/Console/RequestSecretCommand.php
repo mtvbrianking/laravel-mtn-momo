@@ -130,6 +130,8 @@ class RequestSecretCommand extends Command
             return $client_secret_uri;
         }
 
+        $patterns = $replacements = [];
+
         $patterns[] = '/\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b/';
         $replacements[] = $client_id;
 

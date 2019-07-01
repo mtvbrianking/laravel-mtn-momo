@@ -278,8 +278,8 @@ abstract class Product
     /**
      * Constructor.
      *
-     * @param array  headers
-     * @param array  middlewares
+     * @param array $headers
+     * @param array $middlewares
      *
      * @throws \Exception
      */
