@@ -11,6 +11,7 @@ use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Handler\MockHandler;
 use Illuminate\Support\ServiceProvider;
 use GuzzleHttp\Exception\RequestException;
+use Bmatovu\MtnMomo\Console\BootstrapCommand;
 use Bmatovu\MtnMomo\Console\RegisterIdCommand;
 use Bmatovu\MtnMomo\Console\ValidateIdCommand;
 use Bmatovu\MtnMomo\Console\RequestSecretCommand;
@@ -32,7 +33,7 @@ class FakeServiceProvider extends ServiceProvider
             $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
             $this->commands([
-                // BootstrapCommand::class,
+                BootstrapCommand::class,
                 RegisterIdCommand::class,
                 ValidateIdCommand::class,
                 RequestSecretCommand::class,
