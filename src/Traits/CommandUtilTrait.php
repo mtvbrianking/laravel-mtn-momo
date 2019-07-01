@@ -111,8 +111,9 @@ trait CommandUtilTrait
      * @param \Closure|null $progress
      * @param bool|false $debug
      *
-     * @return \GuzzleHttp\Client
      * @throws \Exception
+     *
+     * @return \GuzzleHttp\Client
      */
     protected function prepareGuzzle(Closure $progress = null, $debug = false)
     {

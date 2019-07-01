@@ -33,8 +33,9 @@
         "ramsey/uuid": "~3.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "~5.0|~5.7|~6.0|^7.0|^7.5|^8.0",
-        "orchestra/testbench": "~3.3.0|~3.4.0|~3.5.0|~3.6.0|~3.7.0|~3.8.0"
+        "friendsofphp/php-cs-fixer": "^2.15",
+        "orchestra/testbench": "~3.3.0|~3.4.0|~3.5.0|~3.6.0|~3.7.0|~3.8.0",
+        "phpunit/phpunit": "~5.0|~5.7|~6.0|^7.0|^7.5|^8.0"
     },
     "suggest": {
         "monolog/monolog": "For more comprehensive logging."

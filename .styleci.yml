@@ -2,3 +2,17 @@ preset: laravel
 
 disabled:
   - single_class_element_per_statement
+
+# https://docs.styleci.io/standalone-php#risky
+risky: false
+
+finder:
+  exclude:
+    - "config",
+    - "coverage",
+    - "database",
+    - "docs",
+    - "tests",
+    - "vendor",
+  name:
+    - "*.php"

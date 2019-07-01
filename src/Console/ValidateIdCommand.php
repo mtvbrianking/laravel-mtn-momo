@@ -59,8 +59,9 @@ class ValidateIdCommand extends Command
     /**
      * Execute the console command.
      *
-     * @return void
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return void
      */
     public function handle()
     {
@@ -91,9 +92,9 @@ class ValidateIdCommand extends Command
      *
      * @param string $client_id_status_uri
      *
-     * @return void
-     *
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return void
      */
     protected function validateClientId($client_id_status_uri)
     {
@@ -121,6 +122,7 @@ class ValidateIdCommand extends Command
      *
      * @param  string $client_id_status_uri
      * @param  string $client_id
+     *
      * @return string
      */
     protected function prepareUri($client_id_status_uri, $client_id = null)

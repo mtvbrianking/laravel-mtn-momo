@@ -358,8 +358,9 @@ abstract class Product
      *
      * @param  array $headers HTTP request headers
      *
-     * @return \Bmatovu\OAuthNegotiator\OAuth2Middleware
      * @throws \Exception
+     *
+     * @return \Bmatovu\OAuthNegotiator\OAuth2Middleware
      */
     protected function getAuthBroker($headers)
     {
@@ -397,8 +398,9 @@ abstract class Product
     /**
      * Request access token.
      *
-     * @return array
      * @throws \GuzzleHttp\Exception\RequestException;
+     *
+     * @return array
      */
     abstract public function getToken();
 }

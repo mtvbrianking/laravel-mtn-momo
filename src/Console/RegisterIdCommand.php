@@ -62,9 +62,9 @@ class RegisterIdCommand extends Command
     /**
      * Execute the console command.
      *
-     * @return void
-     *
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return void
      */
     public function handle()
     {
@@ -112,9 +112,9 @@ class RegisterIdCommand extends Command
      * @param string $client_id
      * @param string $client_redirect_uri
      *
-     * @return bool Is registered.
-     *
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return bool Is registered.
      */
     protected function registerClientId($client_id, $client_redirect_uri)
     {

@@ -35,9 +35,7 @@ return [
          */
         'redirect_uri' => env('MOMO_CLIENT_REDIRECT_URI', ''),
 
-        /*
-         * Transaction currency code.
-         */
+        // Transaction currency code.
         'currency' => env('MOMO_CURRENCY', 'EUR'),
 
         /*
@@ -65,24 +63,16 @@ return [
     ],
 
     'api' => [
-        /*
-         * API base URI.
-         */
+        // API base URI.
         'base_uri' => env('MOMO_BASE_URI', 'https://ericssonbasicapi2.azure-api.net/'),
 
-        /*
-         * Register client ID URI
-         */
+        // Register client ID URI
         'client_id_uri' => env('MOMO_CLIENT_ID_URI', 'v1_0/apiuser'),
 
-        /*
-         * Validate client ID URI
-         */
+        // Validate client ID URI
         'client_id_status_uri' => env('MOMO_VALIDATE_CLIENT_ID_URI', 'v1_0/apiuser/'.env('MOMO_CLIENT_ID')),
 
-        /*
-         * Generate client secret URI
-         */
+        // Generate client secret URI
         'client_secret_uri' => env('MOMO_CLIENT_SECRET_URI', 'v1_0/apiuser/'.env('MOMO_CLIENT_ID').'/apikey'),
     ],
 

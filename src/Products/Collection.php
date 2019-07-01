@@ -143,9 +143,9 @@ class Collection extends Product
      * @param  string $payer_message Payer transaction history message.
      * @param  string $payee_note    Payee transaction history message.
      *
-     * @return string                Payment reference ID
-     *
      * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
+     *
+     * @return string                Payment reference ID
      */
     public function transact($external_id, $party_id, $amount, $payer_message = '', $payee_note = '')
     {
@@ -184,14 +184,17 @@ class Collection extends Product
      *
      * @param  string $payment_ref ID
      *
-     * @return array
-     *
      * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
+     *
+     * @return array
      */
     public function getTransactionStatus($payment_ref)
     {
-        $resource = preg_replace('/(\{\btransaction_id\b\})$/',
-            $payment_ref, $this->getTransactionStatusUri());
+        $resource = preg_replace(
+            '/(\{\btransaction_id\b\})$/',
+            $payment_ref,
+            $this->getTransactionStatusUri()
+        );
 
         try {
             $response = $this->client->request('GET', $resource, [
@@ -209,9 +212,9 @@ class Collection extends Product
     /**
      * Request collections access token.
      *
-     * @return array
-     *
      * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
+     *
+     * @return array
      */
     public function getToken()
     {
@@ -239,9 +242,9 @@ class Collection extends Product
     /**
      * Get account balance.
      *
-     * @return array Account balance.
-     *
      * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
+     *
+     * @return array Account balance.
      */
     public function getAccountBalance()
     {
@@ -266,9 +269,9 @@ class Collection extends Product
      * @param  string $account_id
      * @param  string $account_type_name
      *
-     * @return array User account info
-     *
      * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
+     *
+     * @return array User account info
      */
     public function getUserAccountInfo($account_id, $account_type_name = null)
     {
