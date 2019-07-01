@@ -8,8 +8,6 @@ class RequestSecretCommandTest extends TestCase
 {
     /**
      * @test
-     *
-     * @group current
      */
     public function canRequestSecret()
     {
