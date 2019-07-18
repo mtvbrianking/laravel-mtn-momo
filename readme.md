@@ -9,21 +9,19 @@
 
 ### Introduction
 
-This package offers everything you need to integrate the [MTN MOMO API](https://momodeveloper.mtn.com) in your Laravel application. It provides a wrapper around the core MTN Momo API services, leaving you to worry about other parts of your application.
+This package helps you integrate the [MTN MOMO API](https://momodeveloper.mtn.com) into your Laravel application. It provides a wrapper around the core MTN Momo API services, leaving you to worry about other parts of your application.
 
 ### [Installation](https://packagist.org/packages/bmatovu/laravel-mtn-momo)
 
 To get started, install the package via the Composer package manager:
 
-```
-composer require bmatovu/laravel-mtn-momo
-```
+`composer require bmatovu/laravel-mtn-momo 1.3.*`
 
-Next, for Laravel 5.3, 5.4; you need register the package service provider in the providers array of your `config/app.php` configuration file. For later Laravel versions, this package is auto-discoverable.
+Register the package service provider in the app configuration file (`config/app.php`).
 
 ```php
 'providers' => array(
-    // ...
+   // ...
    Bmatovu\MtnMomo\MtnMomoServiceProvider::class,
 ),
 ```
@@ -59,7 +57,7 @@ php artisan mtn-momo:init
 
 ![screenshot](screenshot.png)
 
-The package is equipped with [more Artisan commands](#more-artisan-commands) that will ease your work.
+The package also comes with more Artisan commands for various actions. [Ref](#more-artisan-commands)
 
 ### Usage
 
@@ -85,8 +83,7 @@ try {
     $collection->transact('EXT_REF_ID', '07XXXXXXXX', 100);
 } catch(CollectionRequestException $e) {
     do {
-        printf("\n\r%s:%d %s (%d) [%s]\n\r", 
-            $e->getFile(), $e->getLine(), $e->getMessage(), $e->getCode(), get_class($e));
+        printf("\n\r%s:%d %s (%d) [%s]\n\r", $e->getFile(), $e->getLine(), $e->getMessage(), $e->getCode(), get_class($e));
     } while($e = $e->getPrevious());
 }
 ```
@@ -116,7 +113,7 @@ $collection->push($logMiddleware);
 $collection->transact('EXT_REF_ID', '07XXXXXXXX', 100);
 ```
 
-**Dive in**: [Source code documentation](https://mtvbrianking.github.io/laravel-mtn-momo)
+**Inspired! Dive into the** [source code documentation](https://mtvbrianking.github.io/laravel-mtn-momo).
 
 ### More Artisan commands
 
@@ -132,14 +129,12 @@ $collection->transact('EXT_REF_ID', '07XXXXXXXX', 100);
 
 `php artisan mtn-momo:request-secret`
 
-<hr/>
+### I Need help!
 
-I Need help!
----
 Feel free to [open an issue](https://github.com/mtvbrianking/laravel-mtn-momo/issues/new). Please be as specific as possible if you want to get help.
 
-Reporting bugs
---
+### Reporting bugs
+
 If you've stumbled across a bug, please help us by leaving as much information about the bug as possible, e.g.
 - Steps to reproduce
 - Expected result
