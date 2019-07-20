@@ -3,7 +3,6 @@ namespace Bmatovu\MtnMomo\Tests;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Handler\MockHandler;
 use Bmatovu\MtnMomo\MtnMomoServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
@@ -64,13 +63,17 @@ abstract class TestCase extends Orchestra
     /**
      * Mock Guzzle client.
      *
-     * @param  \GuzzleHttp\Psr7\Response $response
+     * @param  array $response
      *
      * @return \GuzzleHttp\Client
      */
-    protected function mockGuzzleClient(Response $response)
+    protected function mockGuzzleClient($response)
     {
-        $responses[] = $response;
+        if(is_array($response)) {
+            $responses = $response;
+        } else {
+            $responses[] = $response;
+        }
 
         $mockHandler = new MockHandler($responses);
 
