@@ -1,6 +1,6 @@
 <?php
 /**
- * RegisterIdCommand.
+ * src/Console/RegisterIdCommand.php
  */
 
 namespace Bmatovu\MtnMomo\Console;
@@ -13,9 +13,12 @@ use GuzzleHttp\Exception\ConnectException;
 use Bmatovu\MtnMomo\Traits\CommandUtilTrait;
 
 /**
- * Class RegisterIdCommand.
+ * Register client ID.
  *
- * Register your client application ID with MTN Momo API.
+ * The client application ID is a user generate UUID format 4,
+ * that is then registered with MTN Momo API.
+ *
+ * @link https://momodeveloper.mtn.com/docs/services/sandbox-provisioning-api/operations/post-v1_0-apiuser Documenation.
  */
 class RegisterIdCommand extends Command
 {

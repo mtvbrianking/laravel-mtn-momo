@@ -1,6 +1,10 @@
 <?php
 namespace Bmatovu\MtnMomo\Tests;
 
+use GuzzleHttp\Client;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Psr7\Response;
+use GuzzleHttp\Handler\MockHandler;
 use Bmatovu\MtnMomo\MtnMomoServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
@@ -32,6 +36,31 @@ abstract class TestCase extends Orchestra
             'driver' => 'sqlite',
             'database' => ':memory:',
             'prefix' => '',
+        ]);
+    }
+
+    /**
+     * Mock Guzzle client.
+     *
+     * @param  \GuzzleHttp\Psr7\Response $response
+     *
+     * @return \GuzzleHttp\Client
+     */
+    protected function mockGuzzleClient(Response $response)
+    {
+        $responses[] = $response;
+
+        $mockHandler = new MockHandler($responses);
+
+        $handlerStack = HandlerStack::create($mockHandler);
+
+        return new Client([
+            'base_uri' => 'http://api.example.com/mtn-momo/',
+            'handler'  => $handlerStack,
+            'headers'  => [
+                'Accept'       => 'application/json',
+                'Content-Type' => 'application/json',
+            ],
         ]);
     }
 }
