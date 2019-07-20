@@ -5,6 +5,12 @@
 
 namespace Bmatovu\MtnMomo;
 
+use Monolog\Logger;
+use GuzzleHttp\Client;
+use GuzzleHttp\Middleware;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\MessageFormatter;
+use Monolog\Handler\StreamHandler;
 use Illuminate\Support\ServiceProvider;
 use Bmatovu\MtnMomo\Console\BootstrapCommand;
 use Bmatovu\MtnMomo\Console\RegisterIdCommand;
@@ -48,7 +54,34 @@ class MtnMomoServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__.'/../config/mtn-momo.php', 'mtn-momo');
 
-        // https://laravel.com/docs/5.3/container#binding-interfaces-to-implementations
+        $this->app->bind('GuzzleHttp\ClientInterface', function () {
+            $stack = HandlerStack::create();
+
+            if ($this->app['config']->get('app.debug')) {
+                $logger = $this->app['log']->getMonolog();
+                $logger->pushHandler(new StreamHandler(storage_path('logs/mtn-momo.log')), Logger::DEBUG);
+                // $formatter = new MessageFormatter("\r\n[Request] {request} [Response] \r\n{response}");
+                $formatter = new MessageFormatter(MessageFormatter::DEBUG);
+                $stack->push(Middleware::log($logger, $formatter));
+            }
+
+            return new Client([
+                'handler' => $stack,
+                'progress' => function () {
+                    echo '. ';
+                },
+                'base_uri' => $this->app['config']->get('mtn-momo.api.base_uri'),
+                'headers' => [
+                    'Accept' => 'application/json',
+                    'Content-Type' => 'application/json',
+                    'Ocp-Apim-Subscription-Key' => $this->app['config']->get('mtn-momo.app.product_key'),
+                ],
+                'json' => [
+                    'body',
+                ],
+            ]);
+        });
+
         $this->app->bind(
             'Bmatovu\OAuthNegotiator\TokenRepositoryInterface',
             'Bmatovu\MtnMomo\Repositories\TokenRepository'
