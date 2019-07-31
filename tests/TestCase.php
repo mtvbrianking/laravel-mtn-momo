@@ -34,7 +34,7 @@ abstract class TestCase extends Orchestra
     /**
      * Add package service provider
      *
-     * @param $app
+     * @param \Illuminate\Foundation\Application $app
      * @return array
      */
     protected function getPackageProviders($app)
@@ -63,7 +63,7 @@ abstract class TestCase extends Orchestra
     /**
      * Mock Guzzle client.
      *
-     * @param  array $response
+     * @param  mixed $response
      *
      * @return \GuzzleHttp\Client
      */
