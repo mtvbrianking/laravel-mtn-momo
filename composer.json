@@ -22,14 +22,14 @@
     "require": {
         "php": ">=5.6.4",
         "ext-json": "*",
-        "bmatovu/oauth-negotiator": "^0.0.1",
+        "bmatovu/oauth-negotiator": "~0.0.2",
         "guzzlehttp/guzzle": "^6.3",
         "illuminate/console": "~5.3.0|~5.4.0|~5.5.0|~5.6.0|~5.7.0|~5.8.0",
         "illuminate/container": "~5.3.0|~5.4.0|~5.5.0|~5.6.0|~5.7.0|~5.8.0",
         "illuminate/contracts": "~5.3.0|~5.4.0|~5.5.0|~5.6.0|~5.7.0|~5.8.0",
         "illuminate/database": "~5.3.0|~5.4.0|~5.5.0|~5.6.0|~5.7.0|~5.8.0",
         "illuminate/support": "~5.3.0|~5.4.0|~5.5.0|~5.6.0|~5.7.0|~5.8.0",
-        "nesbot/carbon": "~1.20",
+        "nesbot/carbon": "~1.20||^2.0",
         "ramsey/uuid": "~3.0"
     },
     "require-dev": {
