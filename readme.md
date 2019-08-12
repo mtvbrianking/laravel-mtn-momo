@@ -63,6 +63,8 @@ The package is equipped with [more Artisan commands](#more-artisan-commands) tha
 
 ### Usage
 
+[Test numbers](https://momodeveloper.mtn.com/api-documentation/testing/#testing)
+
 ```php
 use Bmatovu\MtnMomo\Products\Collection;
 
