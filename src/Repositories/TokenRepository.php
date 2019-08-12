@@ -5,6 +5,7 @@
 
 namespace Bmatovu\MtnMomo\Repositories;
 
+use Carbon\Carbon;
 use Bmatovu\MtnMomo\Models\Token;
 use Bmatovu\OAuthNegotiator\Repositories\TokenRepositoryInterface;
 
@@ -26,6 +27,9 @@ class TokenRepository implements TokenRepositoryInterface
      */
     public function create(array $attributes)
     {
+        $attributes['token_type'] = 'Bearer';
+        $attributes['expires_at'] = Carbon::now()->addSeconds($attributes['expires_in']);
+
         return Token::create($attributes);
     }
 
@@ -62,6 +66,6 @@ class TokenRepository implements TokenRepositoryInterface
      */
     public function delete($access_token)
     {
-        Token::destory($access_token);
+        Token::where('access_token', $access_token)->delete();
     }
 }

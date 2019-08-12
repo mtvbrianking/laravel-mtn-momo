@@ -155,7 +155,7 @@ class Collection extends Product
             $this->client->request('POST', $resource, [
                 'headers' => [
                     'X-Reference-Id' => $payment_ref,
-                    'X-Callback-Url' => $this->getClientRedirectUri(),
+                    // 'X-Callback-Url' => $this->getClientRedirectUri(),
                     'X-Target-Environment' => $this->getEnvironment(),
                 ],
                 'json' => [
@@ -173,7 +173,7 @@ class Collection extends Product
 
             return $payment_ref;
         } catch (RequestException $ex) {
-            throw new CollectionRequestException('Unable to transact (request pay).', 0, $ex);
+            throw new CollectionRequestException('Request to pay transaction - unsuccessful.', 0, $ex);
         }
     }
 
