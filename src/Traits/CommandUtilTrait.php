@@ -129,11 +129,11 @@ trait CommandUtilTrait
         return new Client([
             'handler' => $stack,
             'progress' => $progress,
-            'base_uri' => $this->laravel['config']->get('mtn-momo.uri.base'),
+            'base_uri' => $this->laravel['config']->get('mtn-momo.api.base_uri'),
             'headers' => [
                 'Accept' => 'application/json',
                 'Content-Type' => 'application/json',
-                'Ocp-Apim-Subscription-Key' => $this->laravel['config']->get('mtn-momo.product_key'),
+                'Ocp-Apim-Subscription-Key' => $this->laravel['config']->get('mtn-momo.app.product_key'),
             ],
             'json' => [
                 'body',
