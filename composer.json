@@ -29,7 +29,7 @@
         "illuminate/contracts": "~5.3.0",
         "illuminate/database": "~5.3.0",
         "illuminate/support": "~5.3.0",
-        "nesbot/carbon": "~1.20",
+        "nesbot/carbon": "~1.20||^2.0",
         "ramsey/uuid": "~3.0"
     },
     "require-dev": {
@@ -57,7 +57,7 @@
     "prefer-stable": true,
     "scripts": {
         "doc": "phpdoc -d src -t docs --cache-folder=docs/cache",
-        "test": "vendor/bin/phpunit",
+        "test": "./vendor/bin/phpunit",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
     },
     "config": {

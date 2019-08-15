@@ -5,6 +5,7 @@
 
 namespace Bmatovu\MtnMomo\Console;
 
+use Ramsey\Uuid\Uuid;
 use GuzzleHttp\ClientInterface;
 use Illuminate\Console\Command;
 use GuzzleHttp\Exception\ClientException;
@@ -17,6 +18,9 @@ use Bmatovu\MtnMomo\Traits\CommandUtilTrait;
  *
  * The client application ID is a user generate UUID format 4,
  * that is then registered with MTN Momo API.
+ *
+ * Note:
+ * - The redirect URI is not used in sandbox; but its still needed when registering a client ID.
  *
  * @link https://momodeveloper.mtn.com/docs/services/sandbox-provisioning-api/operations/post-v1_0-apiuser Documenation.
  */
@@ -39,8 +43,7 @@ class RegisterIdCommand extends Command
     protected $signature = 'mtn-momo:register-id
                                 {--id= : Client APP ID.}
                                 {--callback= : Client APP redirect URI.}
-                                {--d|debug= : Enable debugging for http requests.}
-                                {--l|log=mtn-momo.log : Debug log file.}
+                                {--no-write= : Don\'t credentials to .env file.}
                                 {--f|force : Force the operation to run when in production.}';
 
     /**
@@ -75,38 +78,93 @@ class RegisterIdCommand extends Command
             return;
         }
 
-        $this->printLabels('Client APP ID -> Registration');
+        $id = $this->getClientId();
 
-        $client_id = $this->option('id');
+        $redirect_uri = $this->getClientRedirectUri();
 
-        if (! $client_id) {
-            $client_id = $this->laravel['config']->get('mtn-momo.app.id');
-
-            $client_id = $this->ask('Use client app ID?', $client_id);
-        }
-
-        $client_redirect_uri = $this->option('callback');
-
-        if (! $client_redirect_uri) {
-            $client_redirect_uri = $this->laravel['config']->get('mtn-momo.app.redirect_uri');
-
-            $client_redirect_uri = $this->ask('Use client app redirect URI?', $client_redirect_uri);
-        }
-
-        $is_registered = $this->registerClientId($client_id, $client_redirect_uri);
+        $is_registered = $this->registerClientId($id, $redirect_uri);
 
         if (! $is_registered) {
             return;
         }
 
+        $this->info('Writing configurations to .env file...');
+
+        if(! $this->option('no-write')) {
+            $this->updateSetting('MOMO_CLIENT_ID', 'mtn-momo.app.id', $id);
+            $this->updateSetting('MOMO_CLIENT_REDIRECT_URI', 'mtn-momo.app.redirect_uri', $redirect_uri);
+        }
+
         if ($this->confirm('Do you wish to request for the app secret?', true)) {
             $this->call('mtn-momo:request-secret', [
-                '--id' => $client_id,
+                '--id' => $id,
                 '--force' => $this->option('force'),
-                '--debug' => $this->option('debug'),
-                '--log' => $this->option('log'),
             ]);
         }
+    }
+
+    /**
+     * Determine client ID
+     *
+     * @return string
+     */
+    protected function getClientId()
+    {
+        $this->info('Client APP ID - [X-Reference-Id, api_user_id]');
+
+        // Client ID from command options.
+        $id = $this->option('id');
+
+        // Client ID from .env
+        if (! $id) {
+            $id = $this->laravel['config']->get('mtn-momo.app.id');
+        }
+
+        // Auto-generate client ID
+        if (! $id) {
+            $this->comment('> Generating random client ID...');
+
+            $id = Uuid::uuid4()->toString();
+        }
+
+        // Confirm Client ID
+        $id = $this->ask('Use client app ID?', $id);
+
+        // Validate Client ID
+        while (! Uuid::isValid($id)) {
+            $this->info(' Invalid UUID (Format: 4). #IETF RFC4122');
+            $id = $this->ask('MOMO_CLIENT_ID');
+        }
+
+        return $id;
+    }
+
+    /**
+     * Determine client redirect URI.
+     *
+     * @return string
+     */
+    protected function getClientRedirectUri()
+    {
+        $this->info('Client APP redirect URI - [X-Callback-Url, providerCallbackHost]');
+
+        // Client redirect URI from command options.
+        $redirect_uri = $this->option('callback');
+
+        // Client redirect URI from .env
+        if (! $redirect_uri) {
+            $redirect_uri = $this->laravel['config']->get('mtn-momo.app.redirect_uri');
+        }
+
+        $redirect_uri = $this->ask('Use client app redirect URI?', $redirect_uri);
+
+        // Validate Client redirect URI
+        while ($redirect_uri && ! filter_var($redirect_uri, FILTER_VALIDATE_URL)) {
+            $this->info(' Invalid URI. #IETF RFC3986');
+            $redirect_uri = $this->ask('MOMO_CLIENT_REDIRECT_URI?', false);
+        }
+
+        return $redirect_uri;
     }
 
     /**
@@ -121,6 +179,8 @@ class RegisterIdCommand extends Command
      */
     protected function registerClientId($client_id, $client_redirect_uri)
     {
+        $this->info('Registering Client ID');
+
         try {
             $response = $this->client->request('POST', $this->laravel['config']->get('mtn-momo.api.client_id_uri'), [
                 'headers' => [

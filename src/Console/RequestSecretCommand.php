@@ -33,8 +33,7 @@ class RequestSecretCommand extends Command
      */
     protected $signature = 'mtn-momo:request-secret
                                 {--id= : Client APP ID.}
-                                {--d|debug= : Enable debugging for http requests.}
-                                {--l|log=mtn-momo.log : Debug log file.}
+                                {--no-write= : Don\'t credentials to .env file.}
                                 {--f|force : Force the operation to run when in production.}';
 
     /**
@@ -69,15 +68,55 @@ class RequestSecretCommand extends Command
             return;
         }
 
-        $client_id = $this->option('id');
-
-        if (! $client_id) {
-            $client_id = $this->laravel['config']->get('mtn-momo.app.id');
-        }
-
         $this->printLabels('Request -> Client APP secret');
 
-        $this->requestClientSecret($client_id);
+        $client_id = $this->getClientId();
+
+        $client_secret = $this->requestClientSecret($client_id);;
+
+        if (! $client_secret) {
+            return;
+        }
+
+        if(! $this->option('no-write')) {
+            $this->updateSetting('MOMO_CLIENT_SECRET', 'mtn-momo.app.secret', $client_secret);
+        }
+    }
+
+    /**
+     * Determine client ID
+     *
+     * @return string
+     */
+    protected function getClientId()
+    {
+        $this->info('Client APP ID - [X-Reference-Id, api_user_id]');
+
+        // Client ID from command options.
+        $id = $this->option('id');
+
+        // Client ID from .env
+        if (! $id) {
+            $id = $this->laravel['config']->get('mtn-momo.app.id');
+        }
+
+        // Auto-generate client ID
+        if (! $id) {
+            $this->comment('> Generating random client ID...');
+
+            $id = Uuid::uuid4()->toString();
+        }
+
+        // Confirm Client ID
+        $id = $this->ask('Use client app ID?', $id);
+
+        // Validate Client ID
+        while (! Uuid::isValid($id)) {
+            $this->info(' Invalid UUID (Format: 4). #IETF RFC4122');
+            $id = $this->ask('MOMO_CLIENT_ID');
+        }
+
+        return $id;
     }
 
     /**
@@ -87,14 +126,16 @@ class RequestSecretCommand extends Command
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
-     * @return void
+     * @return string Client Secret
      */
     protected function requestClientSecret($client_id)
     {
         try {
             $client_secret_uri = $this->laravel['config']->get('mtn-momo.api.client_secret_uri');
 
-            $response = $this->client->request('POST', $this->prepareUri($client_secret_uri, $client_id), []);
+            $client_secret_uri = str_replace('{client_id}', $client_id, $client_secret_uri);
+
+            $response = $this->client->request('POST', $client_secret_uri, []);
 
             $this->line("\r\nStatus: <fg=green>".$response->getStatusCode().' '.$response->getReasonPhrase().'</>');
 
@@ -102,9 +143,7 @@ class RequestSecretCommand extends Command
 
             $api_response = json_decode($response->getBody(), true);
 
-            $client_secret = $api_response['apiKey'];
-
-            $this->updateSetting('MOMO_CLIENT_SECRET', 'mtn-momo.app.secret', $client_secret);
+            return $api_response['apiKey'];
         } catch (ConnectException $ex) {
             $this->line("\r\n<fg=red>".$ex->getMessage().'</>');
         } catch (ClientException $ex) {
@@ -116,30 +155,5 @@ class RequestSecretCommand extends Command
             $this->line("\r\nStatus: <fg=red>".$response->getStatusCode().' '.$response->getReasonPhrase().'</>');
             $this->line("\r\nBody: <fg=red>".$response->getBody()."\r\n</>");
         }
-    }
-
-    /**
-     * Prepare URI with given params.
-     *
-     * @param  string $client_secret_uri
-     * @param  string $client_id
-     *
-     * @return string
-     */
-    protected function prepareUri($client_secret_uri, $client_id = null)
-    {
-        if (! $client_id) {
-            return $client_secret_uri;
-        }
-
-        $patterns = $replacements = [];
-
-        $patterns[] = '/\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b/';
-        $replacements[] = $client_id;
-
-        $patterns[] = '/(?<!:)(\/\/)/';
-        $replacements[] = "/{$client_id}/";
-
-        return preg_replace($patterns, $replacements, $client_secret_uri);
     }
 }

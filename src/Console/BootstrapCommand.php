@@ -22,8 +22,6 @@ class BootstrapCommand extends Command
      * @var string
      */
     protected $signature = 'mtn-momo:init
-                                {--d|debug= : Enable debugging for http requests.}
-                                {--l|log=mtn-momo.log : Debug log file.}
                                 {--f|force : Force the operation to run when in production.}';
 
     /**
@@ -72,12 +70,6 @@ class BootstrapCommand extends Command
 
         // Client APP name
         $this->setClientName();
-
-        // Client APP redirect URI
-        $this->setClientRedirectUri();
-
-        // Client APP ID
-        $this->setClientId();
 
         $this->info("\r\nComplete...");
     }
@@ -156,31 +148,6 @@ class BootstrapCommand extends Command
     }
 
     /**
-     * Create/update the client APP redirect URI.
-     *
-     * @return void
-     */
-    protected function setClientRedirectUri()
-    {
-        $this->printLabels('Client APP redirect URI', [
-            'Also called; <options=bold>providerCallbackHost</> or <options=bold>X-Callback-Url</> interchangeably',
-        ]);
-
-        $redirect_uri = $this->laravel['config']->get('mtn-momo.app.redirect_uri');
-
-        $redirect_uri = $redirect_uri ? $redirect_uri : false;
-
-        $redirect_uri = $this->ask('MOMO_CLIENT_REDIRECT_URI', $redirect_uri);
-
-        while ($redirect_uri && ! filter_var($redirect_uri, FILTER_VALIDATE_URL)) {
-            $this->info(' Invalid URI. #IETF RFC3986');
-            $redirect_uri = $this->ask('MOMO_CLIENT_REDIRECT_URI', false);
-        }
-
-        $this->updateSetting('MOMO_CLIENT_REDIRECT_URI', 'mtn-momo.app.redirect_uri', $redirect_uri);
-    }
-
-    /**
      * Create/update client APP name.
      *
      * @return void
@@ -195,43 +162,5 @@ class BootstrapCommand extends Command
         $client_name = $this->ask('MOMO_CLIENT_NAME', $client_name);
 
         $this->updateSetting('MOMO_CLIENT_NAME', 'mtn-momo.app.name', $client_name);
-    }
-
-    /**
-     * Create/update client APP ID.
-     *
-     * @return void
-     */
-    protected function setClientId()
-    {
-        $this->printLabels('Client APP ID', [
-            'Also called; <options=bold>X-Reference-Id</> or <options=bold>api_user_id</> interchangeably',
-        ]);
-
-        $client_id = $this->laravel['config']->get('mtn-momo.app.id');
-
-        if (! $client_id) {
-            $this->comment('> Generating new client ID...');
-            $client_id = Uuid::uuid4()->toString();
-        }
-
-        $client_id = $this->ask('MOMO_CLIENT_ID', $client_id);
-
-        while (! Uuid::isValid($client_id)) {
-            $this->info(' Invalid UUID (Format: 4). #IETF RFC4122');
-            $client_id = $this->ask('MOMO_CLIENT_ID');
-        }
-
-        $this->updateSetting('MOMO_CLIENT_ID', 'mtn-momo.app.id', $client_id);
-
-        if ($this->confirm('Do you wish to register the APP ID?', true)) {
-            $this->call('mtn-momo:register-id', [
-                '--id' => $client_id,
-                '--callback' => $this->laravel['config']->get('mtn-momo.app.redirect_uri'),
-                '--force' => $this->option('force'),
-                '--debug' => $this->option('debug'),
-                '--log' => $this->option('log'),
-            ]);
-        }
     }
 }

@@ -47,6 +47,8 @@ You will need the following to get started with you integration...
 1. Create a [**developer account**](https://momodeveloper.mtn.com/signup) with MTN MOMO.
 2. Subscribe to a [**product/service**](https://momodeveloper.mtn.com/products) that you wish to consume.
 
+If you already subscribed to a product, the subscription key can be found in your [**profile**](https://momodeveloper.mtn.com/developer).
+
 ### Bootstrapping
 
 Now you need to run the `mtn-momo:init` command. This command will create the necessary settings in you're `.env` file as you walkthrough the steps. These settings are needed for authentication and communication with the MTN MOMO API.

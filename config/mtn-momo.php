@@ -70,10 +70,10 @@ return [
         'client_id_uri' => env('MOMO_CLIENT_ID_URI', 'v1_0/apiuser'),
 
         // Validate client ID URI
-        'client_id_status_uri' => env('MOMO_VALIDATE_CLIENT_ID_URI', 'v1_0/apiuser/'.env('MOMO_CLIENT_ID')),
+        'client_id_status_uri' => env('MOMO_VALIDATE_CLIENT_ID_URI', 'v1_0/apiuser/{client_id}'),
 
         // Generate client secret URI
-        'client_secret_uri' => env('MOMO_CLIENT_SECRET_URI', 'v1_0/apiuser/'.env('MOMO_CLIENT_ID').'/apikey'),
+        'client_secret_uri' => env('MOMO_CLIENT_SECRET_URI', 'v1_0/apiuser/{client_id}/apikey'),
     ],
 
     'products' => [

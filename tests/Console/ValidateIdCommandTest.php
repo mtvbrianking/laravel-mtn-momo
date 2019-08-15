@@ -1,0 +1,51 @@
+<?php
+namespace Bmatovu\MtnMomo\Tests\Console;
+
+use Mockery as m;
+use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\Psr7\Response;
+use Bmatovu\MtnMomo\Tests\TestCase;
+use Illuminate\Container\Container;
+use Illuminate\Contracts\Console\Kernel;
+use Bmatovu\MtnMomo\Console\ValidateIdCommand;
+
+/**
+ * @see \Bmatovu\MtnMomo\Console\ValidateIdCommand
+ */
+class ValidateIdCommandTest extends TestCase
+{
+    public function test_request_client_info()
+    {
+        $body = json_encode([
+            'providerCallbackHost' => 'string',
+            'targetEnvironment' => 'sandbox',
+        ]);
+
+        $response = new Response(201, [], $body);
+
+        $mockClient = $this->mockGuzzleClient($response);
+
+        $mockCommand = m::mock('Bmatovu\MtnMomo\Console\ValidateIdCommand[line,ask]', [$mockClient]);
+
+        $mockCommand->shouldReceive('line')->with('<options=bold>Client APP ID -> Validation</>');
+
+        $client_id = 'd83eadba-a6b8-4301-b78e-454f73b5725c';
+
+        $mockCommand->shouldReceive('ask')
+            ->once()
+            ->with('Use client app ID?', $client_id)
+            ->andReturn($client_id);
+
+        $mockCommand->shouldReceive('line')->with("\r\nStatus: <fg=green>201 Created</>");
+
+        $mockCommand->shouldReceive('line')->once()->with("\r\nBody: <fg=green>{$body}</>\r\n");
+
+        Container::getInstance()->make(Kernel::class)->registerCommand($mockCommand);
+
+        $exitCode = $this->artisan('mtn-momo:validate-id', [
+            '--id' => $client_id,
+        ]);
+
+        $this->assertEquals(0, $exitCode, "Expected status code 0 but received {$exitCode}.");
+    }
+}
