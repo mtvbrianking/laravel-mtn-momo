@@ -17,6 +17,8 @@ abstract class TestCase extends Orchestra
     protected function setUp()
     {
         parent::setup();
+
+        fopen(base_path('.env'), 'w');
     }
 
     /**
@@ -29,6 +31,8 @@ abstract class TestCase extends Orchestra
         parent::tearDown();
 
         \Mockery::close();
+
+        unlink(base_path('.env'));
     }
 
     /**
