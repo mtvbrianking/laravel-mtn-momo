@@ -83,7 +83,7 @@ class RequestSecretCommand extends Command
     }
 
     /**
-     * Determine client ID
+     * Determine client ID.
      *
      * @return string
      */
