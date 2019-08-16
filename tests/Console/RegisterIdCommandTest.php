@@ -172,9 +172,6 @@ class RegisterIdCommandTest extends TestCase
         $this->assertEquals(0, $exitCode, "Expected status code 0 but received {$exitCode}.");
     }
 
-    /**
-     * @group current
-     */
     public function test_register_duplicate_client_id()
     {
         $err_body = json_encode([

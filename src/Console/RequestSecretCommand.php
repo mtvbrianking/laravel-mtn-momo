@@ -5,6 +5,7 @@
 
 namespace Bmatovu\MtnMomo\Console;
 
+use Ramsey\Uuid\Uuid;
 use GuzzleHttp\ClientInterface;
 use Illuminate\Console\Command;
 use GuzzleHttp\Exception\ClientException;
@@ -74,13 +75,11 @@ class RequestSecretCommand extends Command
 
         $client_secret = $this->requestClientSecret($client_id);;
 
-        if (! $client_secret) {
+        if (! $client_secret || $this->option('no-write')) {
             return;
         }
 
-        if(! $this->option('no-write')) {
-            $this->updateSetting('MOMO_CLIENT_SECRET', 'mtn-momo.app.secret', $client_secret);
-        }
+        $this->updateSetting('MOMO_CLIENT_SECRET', 'mtn-momo.app.secret', $client_secret);
     }
 
     /**
@@ -139,7 +138,7 @@ class RequestSecretCommand extends Command
 
             $this->line("\r\nStatus: <fg=green>".$response->getStatusCode().' '.$response->getReasonPhrase().'</>');
 
-            $this->line("\r\nBody: <fg=green>".$response->getBody()."\r\n</>");
+            $this->line("\r\nBody: <fg=green>".$response->getBody()."</>\r\n");
 
             $api_response = json_decode($response->getBody(), true);
 
@@ -149,11 +148,11 @@ class RequestSecretCommand extends Command
         } catch (ClientException $ex) {
             $response = $ex->getResponse();
             $this->line("\r\nStatus: <fg=yellow>".$response->getStatusCode().' '.$response->getReasonPhrase().'</>');
-            $this->line("\r\nBody: <fg=yellow>".$response->getBody()."\r\n</>");
+            $this->line("\r\nBody: <fg=yellow>".$response->getBody()."</>\r\n");
         } catch (ServerException $ex) {
             $response = $ex->getResponse();
             $this->line("\r\nStatus: <fg=red>".$response->getStatusCode().' '.$response->getReasonPhrase().'</>');
-            $this->line("\r\nBody: <fg=red>".$response->getBody()."\r\n</>");
+            $this->line("\r\nBody: <fg=red>".$response->getBody()."</>\r\n");
         }
     }
 }
