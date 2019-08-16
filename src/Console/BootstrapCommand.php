@@ -5,7 +5,6 @@
 
 namespace Bmatovu\MtnMomo\Console;
 
-use Ramsey\Uuid\Uuid;
 use Illuminate\Console\Command;
 use Bmatovu\MtnMomo\Traits\CommandUtilTrait;
 
@@ -142,9 +141,9 @@ class BootstrapCommand extends Command
         ]);
 
         $currency = $this->laravel['config']->get('mtn-momo.app.currency');
-        $currency = strtoupper($this->ask('MOMO_CURRENCY', $currency));
+        $currency = $this->ask('MOMO_CURRENCY', $currency);
 
-        $this->updateSetting('MOMO_CURRENCY', 'mtn-momo.app.currency', $currency);
+        $this->updateSetting('MOMO_CURRENCY', 'mtn-momo.app.currency', strtoupper($currency));
     }
 
     /**

@@ -73,7 +73,7 @@ class RequestSecretCommand extends Command
 
         $client_id = $this->getClientId();
 
-        $client_secret = $this->requestClientSecret($client_id);;
+        $client_secret = $this->requestClientSecret($client_id);
 
         if (! $client_secret || $this->option('no-write')) {
             return;

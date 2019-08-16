@@ -14,7 +14,7 @@ use Bmatovu\MtnMomo\Console\RequestSecretCommand;
  */
 class RequestSecretCommandTest extends TestCase
 {
-    public function test_request_client_info()
+    public function test_request_client_secret()
     {
         $body = json_encode([
             'apiKey' => '78da1ff701e141d9f5b55f321f122ca7',

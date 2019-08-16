@@ -90,7 +90,7 @@ class RegisterIdCommand extends Command
 
         $this->info('Writing configurations to .env file...');
 
-        if(! $this->option('no-write')) {
+        if (! $this->option('no-write')) {
             $this->updateSetting('MOMO_CLIENT_ID', 'mtn-momo.app.id', $id);
             $this->updateSetting('MOMO_CLIENT_REDIRECT_URI', 'mtn-momo.app.redirect_uri', $redirect_uri);
         }
@@ -104,7 +104,7 @@ class RegisterIdCommand extends Command
     }
 
     /**
-     * Determine client ID
+     * Determine client ID.
      *
      * @return string
      */
