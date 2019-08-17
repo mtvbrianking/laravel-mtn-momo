@@ -88,7 +88,7 @@ class RegisterIdCommand extends Command
 
         $this->product = $this->option('product');
 
-        if(!$this->product) {
+        if (! $this->product) {
             $this->product = $this->laravel['config']->get('mtn-momo.product');
         }
 

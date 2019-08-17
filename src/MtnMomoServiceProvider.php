@@ -5,22 +5,14 @@
 
 namespace Bmatovu\MtnMomo;
 
-use Monolog\Logger;
 use GuzzleHttp\Client;
-use GuzzleHttp\Middleware;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\ClientInterface;
-use GuzzleHttp\MessageFormatter;
-use Monolog\Handler\StreamHandler;
-use Bmatovu\MtnMomo\Products\Product;
 use Illuminate\Support\ServiceProvider;
-use Bmatovu\OAuthNegotiator\OAuth2Middleware;
 use Bmatovu\MtnMomo\Console\BootstrapCommand;
 use Bmatovu\MtnMomo\Console\RegisterIdCommand;
 use Bmatovu\MtnMomo\Console\ValidateIdCommand;
 use Bmatovu\MtnMomo\Console\RequestSecretCommand;
-use Bmatovu\MtnMomo\Repositories\TokenRepository;
-use Bmatovu\OAuthNegotiator\GrantTypes\ClientCredentials;
 
 /**
  * Class MtnMomoServiceProvider.
@@ -59,7 +51,7 @@ class MtnMomoServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__.'/../config/mtn-momo.php', 'mtn-momo');
 
-        $this->app->bind(ClientInterface::class, function() {
+        $this->app->bind(ClientInterface::class, function () {
             return $this->commandClient();
         });
     }

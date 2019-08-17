@@ -70,7 +70,7 @@ class ValidateIdCommand extends Command
 
         $product = $this->option('product');
 
-        if(!$product) {
+        if (! $product) {
             $product = $this->laravel['config']->get('mtn-momo.product');
         }
 

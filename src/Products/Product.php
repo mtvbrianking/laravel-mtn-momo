@@ -292,8 +292,9 @@ abstract class Product
         // Set defaults.
         $this->setConfigurations();
 
-        if($client) {
+        if ($client) {
             $this->client = $client;
+
             return;
         }
 
@@ -314,7 +315,7 @@ abstract class Product
 
         $handlerStack->push($this->getAuthBroker($headers));
 
-        if($this->config->get('app.debug')) {
+        if ($this->config->get('app.debug')) {
             $handlerStack->push($this->getLogMiddleware());
         }
 
