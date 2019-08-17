@@ -379,7 +379,9 @@ abstract class Product
     {
         $handlerStack = HandlerStack::create();
 
-        $handlerStack->push($this->getLogMiddleware());
+        if ($this->config->get('app.debug')) {
+            $handlerStack->push($this->getLogMiddleware());
+        }
 
         // Authorization client - this is used to request OAuth access tokens
         $client = new Client([

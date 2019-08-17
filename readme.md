@@ -72,6 +72,8 @@ $collection = new Collection();
 $collection->transact('EXT_REF_ID', '07XXXXXXXX', 100);
 ```
 
+[Test numbers](https://momodeveloper.mtn.com/api-documentation/testing/#testing)
+
 **Exception handling**
 
 ```php

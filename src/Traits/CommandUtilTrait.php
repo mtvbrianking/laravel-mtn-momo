@@ -69,6 +69,7 @@ trait CommandUtilTrait
     }
 
     /**
+     * @deprecated
      * Determine replacement regex pattern a setting.
      *
      * @param  string $name ENV_VALUE, like; `APP_NAME`

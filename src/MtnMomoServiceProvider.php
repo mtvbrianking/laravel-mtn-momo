@@ -5,9 +5,13 @@
 
 namespace Bmatovu\MtnMomo;
 
+use Monolog\Logger;
 use GuzzleHttp\Client;
+use GuzzleHttp\Middleware;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\ClientInterface;
+use GuzzleHttp\MessageFormatter;
+use Monolog\Handler\StreamHandler;
 use Illuminate\Support\ServiceProvider;
 use Bmatovu\MtnMomo\Console\BootstrapCommand;
 use Bmatovu\MtnMomo\Console\RegisterIdCommand;
@@ -86,5 +90,20 @@ class MtnMomoServiceProvider extends ServiceProvider
                 'body',
             ],
         ]);
+    }
+
+    /**
+     * Get log middleware.
+     *
+     * @return callable
+     */
+    protected function getLogMiddleware()
+    {
+        $logger = $this->app['log']->getMonolog();
+        $streamHandler = new StreamHandler(storage_path('logs/mtn-momo.log'));
+        $logger->pushHandler($streamHandler, Logger::DEBUG);
+        $messageFormatter = new MessageFormatter(MessageFormatter::DEBUG);
+
+        return Middleware::log($logger, $messageFormatter);
     }
 }
