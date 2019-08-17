@@ -8,7 +8,6 @@ use Bmatovu\MtnMomo\Tests\TestCase;
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Console\Kernel;
 use GuzzleHttp\Exception\ConnectException;
-use Bmatovu\MtnMomo\Console\RegisterIdCommand;
 
 /**
  * @see \Bmatovu\MtnMomo\Console\RegisterIdCommand

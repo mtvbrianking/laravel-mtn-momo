@@ -7,7 +7,6 @@ use GuzzleHttp\Psr7\Response;
 use Bmatovu\MtnMomo\Tests\TestCase;
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Console\Kernel;
-use Bmatovu\MtnMomo\Console\ValidateIdCommand;
 
 /**
  * @see \Bmatovu\MtnMomo\Console\ValidateIdCommand
@@ -17,7 +16,7 @@ class ValidateIdCommandTest extends TestCase
     public function test_request_client_info()
     {
         $body = json_encode([
-            'providerCallbackHost' => 'string',
+            'providerCallbackHost' => 'https://example.com/mtn-momo/callback',
             'targetEnvironment' => 'sandbox',
         ]);
 
@@ -44,6 +43,7 @@ class ValidateIdCommandTest extends TestCase
 
         $exitCode = $this->artisan('mtn-momo:validate-id', [
             '--id' => $client_id,
+            '--product' => 'collection',
         ]);
 
         $this->assertEquals(0, $exitCode, "Expected status code 0 but received {$exitCode}.");

@@ -7,7 +7,6 @@ use GuzzleHttp\Psr7\Response;
 use Bmatovu\MtnMomo\Tests\TestCase;
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Console\Kernel;
-use Bmatovu\MtnMomo\Console\RequestSecretCommand;
 
 /**
  * @see \Bmatovu\MtnMomo\Console\RequestSecretCommand

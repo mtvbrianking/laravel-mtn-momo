@@ -34,14 +34,19 @@ class BootstrapCommandTest extends TestCase
 
     public function test_set_product_key()
     {
-        $mockCommand = m::mock('Bmatovu\MtnMomo\Console\BootstrapCommand[ask,line]')
+        $mockCommand = m::mock('Bmatovu\MtnMomo\Console\BootstrapCommand[ask,choice,line]')
             ->shouldIgnoreMissing();
 
         $mockCommand->shouldReceive('line')->once()->with('<options=bold>Product subscription key</>');
 
+        $mockCommand->shouldReceive('choice')
+            ->once()
+            ->with('MOMO_PRODUCT', ['collection', 'disbursement', 'remittance'], 0)
+            ->andReturn('collection');
+
         $mockCommand->shouldReceive('ask')
             ->once()
-            ->with('MOMO_PRODUCT_KEY', null)
+            ->with('MOMO_COLLECTION_SUBSCRIPTION_KEY', null)
             ->andReturn('baf309d73a34435190410e9a47a377f4');
 
         Container::getInstance()->make(Kernel::class)->registerCommand($mockCommand);
@@ -104,7 +109,7 @@ class BootstrapCommandTest extends TestCase
 
         $mockCommand->shouldReceive('ask')
             ->once()
-            ->with('MOMO_CLIENT_NAME', 'Laravel')
+            ->with('MOMO_APP', 'Laravel MTN Momo')
             ->andReturn('TestMomoApp');
 
         Container::getInstance()->make(Kernel::class)->registerCommand($mockCommand);

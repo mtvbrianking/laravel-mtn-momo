@@ -6,6 +6,7 @@
 namespace Bmatovu\MtnMomo\Products;
 
 use Ramsey\Uuid\Uuid;
+use GuzzleHttp\ClientInterface;
 use Illuminate\Container\Container;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Contracts\Config\Repository;
@@ -113,14 +114,20 @@ class Collection extends Product
      *
      * @param array $headers
      * @param array $middlewares
+     * @param \GuzzleHttp\ClientInterface $client
      *
      * @uses \Illuminate\Contracts\Config\Repository
      *
      * @throws \Exception
      */
-    public function __construct($headers = [], $middlewares = [])
+    public function __construct($headers = [], $middlewares = [], ClientInterface $client = null)
     {
         $config = Container::getInstance()->make(Repository::class);
+
+        $this->setsubscriptionKey($config->get('mtn-momo.products.collection.key'));
+        $this->setClientId($config->get('mtn-momo.products.collection.id'));
+        $this->setClientSecret($config->get('mtn-momo.products.collection.secret'));
+        $this->setClientRedirectUri($config->get('mtn-momo.products.collection.redirect_uri'));
 
         $this->setTokenUri($config->get('mtn-momo.products.collection.token_uri'));
         $this->setTransactUri($config->get('mtn-momo.products.collection.transact_uri'));
@@ -129,7 +136,7 @@ class Collection extends Product
         $this->setAppAccountBalanceUri($config->get('mtn-momo.products.collection.app_account_balance_uri'));
         $this->setPartyIdType($config->get('mtn-momo.products.collection.party_id_type'));
 
-        parent::__construct($headers, $middlewares);
+        parent::__construct($headers, $middlewares, $client);
     }
 
     /**

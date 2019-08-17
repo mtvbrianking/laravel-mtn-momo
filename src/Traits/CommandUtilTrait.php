@@ -5,14 +5,6 @@
 
 namespace Bmatovu\MtnMomo\Traits;
 
-use Closure;
-use Monolog\Logger;
-use GuzzleHttp\Client;
-use GuzzleHttp\Middleware;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\MessageFormatter;
-use Monolog\Handler\StreamHandler;
-
 /**
  * Trait CommandUtilTrait.
  */
@@ -102,9 +94,21 @@ trait CommandUtilTrait
      */
     protected function updateSetting($name, $key, $value)
     {
+        // Update in memory.
+        $this->laravel['config']->set([$key => $value]);
+
+        if ($this->option('no-write')) {
+            return;
+        }
+
+        // Update in file.
         $env = $this->laravel->environmentFilePath();
 
-        $pattern = $this->getRegex($name, $key);
+        $name = strtoupper($name);
+
+        // $pattern = $this->getRegex($name, $key);
+
+        $pattern = "/^{$name}=[\"']?.*/m";
 
         if (preg_match($pattern, file_get_contents($env))) {
             file_put_contents($env, preg_replace($pattern, "{$name}=\"{$value}\"", file_get_contents($env)));
@@ -112,8 +116,5 @@ trait CommandUtilTrait
             $setting = "\r\n{$name}=\"{$value}\"\r\n";
             file_put_contents($env, file_get_contents($env).$setting);
         }
-
-        // Update in memory.
-        $this->laravel['config']->set([$key => $value]);
     }
 }

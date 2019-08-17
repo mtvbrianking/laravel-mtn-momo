@@ -34,6 +34,7 @@ class RequestSecretCommand extends Command
      */
     protected $signature = 'mtn-momo:request-secret
                                 {--id= : Client APP ID.}
+                                {--product= : Product subscribed to.}
                                 {--no-write= : Don\'t credentials to .env file.}
                                 {--f|force : Force the operation to run when in production.}';
 
@@ -71,15 +72,21 @@ class RequestSecretCommand extends Command
 
         $this->printLabels('Request -> Client APP secret');
 
+        $this->product = $this->option('product');
+
+        if(!$this->product) {
+            $this->product = $this->laravel['config']->get('mtn-momo.product');
+        }
+
         $client_id = $this->getClientId();
 
         $client_secret = $this->requestClientSecret($client_id);
 
-        if (! $client_secret || $this->option('no-write')) {
+        if (! $client_secret) {
             return;
         }
 
-        $this->updateSetting('MOMO_CLIENT_SECRET', 'mtn-momo.app.secret', $client_secret);
+        $this->updateSetting("MOMO_{$this->product}_SECRET", "mtn-momo.products.{$this->product}.secret", $client_secret);
     }
 
     /**
@@ -96,14 +103,7 @@ class RequestSecretCommand extends Command
 
         // Client ID from .env
         if (! $id) {
-            $id = $this->laravel['config']->get('mtn-momo.app.id');
-        }
-
-        // Auto-generate client ID
-        if (! $id) {
-            $this->comment('> Generating random client ID...');
-
-            $id = Uuid::uuid4()->toString();
+            $id = $this->laravel['config']->get("mtn-momo.products.{$this->product}.id");
         }
 
         // Confirm Client ID
@@ -130,11 +130,11 @@ class RequestSecretCommand extends Command
     protected function requestClientSecret($client_id)
     {
         try {
-            $client_secret_uri = $this->laravel['config']->get('mtn-momo.api.client_secret_uri');
+            $request_secret_uri = $this->laravel['config']->get('mtn-momo.api.request_secret_uri');
 
-            $client_secret_uri = str_replace('{client_id}', $client_id, $client_secret_uri);
+            $request_secret_uri = str_replace('{client_id}', $client_id, $request_secret_uri);
 
-            $response = $this->client->request('POST', $client_secret_uri, []);
+            $response = $this->client->request('POST', $request_secret_uri, []);
 
             $this->line("\r\nStatus: <fg=green>".$response->getStatusCode().' '.$response->getReasonPhrase().'</>');
 

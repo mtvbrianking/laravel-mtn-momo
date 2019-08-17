@@ -9,13 +9,18 @@ use Monolog\Logger;
 use GuzzleHttp\Client;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\HandlerStack;
+use GuzzleHttp\ClientInterface;
 use GuzzleHttp\MessageFormatter;
 use Monolog\Handler\StreamHandler;
+use Bmatovu\MtnMomo\Products\Product;
 use Illuminate\Support\ServiceProvider;
+use Bmatovu\OAuthNegotiator\OAuth2Middleware;
 use Bmatovu\MtnMomo\Console\BootstrapCommand;
 use Bmatovu\MtnMomo\Console\RegisterIdCommand;
 use Bmatovu\MtnMomo\Console\ValidateIdCommand;
 use Bmatovu\MtnMomo\Console\RequestSecretCommand;
+use Bmatovu\MtnMomo\Repositories\TokenRepository;
+use Bmatovu\OAuthNegotiator\GrantTypes\ClientCredentials;
 
 /**
  * Class MtnMomoServiceProvider.
@@ -54,37 +59,40 @@ class MtnMomoServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__.'/../config/mtn-momo.php', 'mtn-momo');
 
-        $this->app->bind('GuzzleHttp\ClientInterface', function () {
-            $stack = HandlerStack::create();
-
-            if ($this->app['config']->get('app.debug')) {
-                $logger = $this->app['log']->getMonolog();
-                $logger->pushHandler(new StreamHandler(storage_path('logs/mtn-momo.log')), Logger::DEBUG);
-                // $formatter = new MessageFormatter("\r\n[Request] {request} [Response] \r\n{response}");
-                $formatter = new MessageFormatter(MessageFormatter::DEBUG);
-                $stack->push(Middleware::log($logger, $formatter));
-            }
-
-            return new Client([
-                'handler' => $stack,
-                'progress' => function () {
-                    echo '. ';
-                },
-                'base_uri' => $this->app['config']->get('mtn-momo.api.base_uri'),
-                'headers' => [
-                    'Accept' => 'application/json',
-                    'Content-Type' => 'application/json',
-                    'Ocp-Apim-Subscription-Key' => $this->app['config']->get('mtn-momo.app.product_key'),
-                ],
-                'json' => [
-                    'body',
-                ],
-            ]);
+        $this->app->bind(ClientInterface::class, function() {
+            return $this->commandClient();
         });
+    }
 
-        $this->app->bind(
-            'Bmatovu\OAuthNegotiator\TokenRepositoryInterface',
-            'Bmatovu\MtnMomo\Repositories\TokenRepository'
-        );
+    /**
+     * Create command's concrete client.
+     *
+     * @return \GuzzleHttp\ClientInterface
+     */
+    protected function commandClient()
+    {
+        $handlerStack = HandlerStack::create();
+
+        if ($this->app['config']->get('app.debug')) {
+            $handlerStack->push($this->getLogMiddleware());
+        }
+
+        $product = $this->app['config']->get('mtn-momo.product');
+
+        return new Client([
+            'handler' => $handlerStack,
+            'progress' => function () {
+                echo '. ';
+            },
+            'base_uri' => $this->app['config']->get('mtn-momo.api.base_uri'),
+            'headers' => [
+                'Accept' => 'application/json',
+                'Content-Type' => 'application/json',
+                'Ocp-Apim-Subscription-Key' => $this->app['config']->get("mtn-momo.products.{$product}.key"),
+            ],
+            'json' => [
+                'body',
+            ],
+        ]);
     }
 }

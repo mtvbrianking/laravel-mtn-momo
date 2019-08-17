@@ -36,6 +36,13 @@ class RegisterIdCommand extends Command
     protected $client;
 
     /**
+     * Product subscribed to.
+     *
+     * @var string
+     */
+    protected $product;
+
+    /**
      * The name and signature of the console command.
      *
      * @var string
@@ -43,6 +50,7 @@ class RegisterIdCommand extends Command
     protected $signature = 'mtn-momo:register-id
                                 {--id= : Client APP ID.}
                                 {--callback= : Client APP redirect URI.}
+                                {--product= : Product subscribed to.}
                                 {--no-write= : Don\'t credentials to .env file.}
                                 {--f|force : Force the operation to run when in production.}';
 
@@ -78,6 +86,12 @@ class RegisterIdCommand extends Command
             return;
         }
 
+        $this->product = $this->option('product');
+
+        if(!$this->product) {
+            $this->product = $this->laravel['config']->get('mtn-momo.product');
+        }
+
         $id = $this->getClientId();
 
         $redirect_uri = $this->getClientRedirectUri();
@@ -90,14 +104,13 @@ class RegisterIdCommand extends Command
 
         $this->info('Writing configurations to .env file...');
 
-        if (! $this->option('no-write')) {
-            $this->updateSetting('MOMO_CLIENT_ID', 'mtn-momo.app.id', $id);
-            $this->updateSetting('MOMO_CLIENT_REDIRECT_URI', 'mtn-momo.app.redirect_uri', $redirect_uri);
-        }
+        $this->updateSetting("MOMO_{$this->product}_ID", "mtn-momo.products.{$this->product}.id", $id);
+        $this->updateSetting("MOMO_{$this->product}_REDIRECT_URI", "mtn-momo.products.{$this->product}.redirect_uri", $redirect_uri);
 
         if ($this->confirm('Do you wish to request for the app secret?', true)) {
             $this->call('mtn-momo:request-secret', [
                 '--id' => $id,
+                '--product' => $this->option('product'),
                 '--force' => $this->option('force'),
             ]);
         }
@@ -117,7 +130,7 @@ class RegisterIdCommand extends Command
 
         // Client ID from .env
         if (! $id) {
-            $id = $this->laravel['config']->get('mtn-momo.app.id');
+            $id = $this->laravel['config']->get("mtn-momo.products.{$this->product}.id");
         }
 
         // Auto-generate client ID
@@ -153,7 +166,7 @@ class RegisterIdCommand extends Command
 
         // Client redirect URI from .env
         if (! $redirect_uri) {
-            $redirect_uri = $this->laravel['config']->get('mtn-momo.app.redirect_uri');
+            $redirect_uri = $this->laravel['config']->get("mtn-momo.products.{$this->product}.redirect_uri");
         }
 
         $redirect_uri = $this->ask('Use client app redirect URI?', $redirect_uri);
@@ -181,8 +194,10 @@ class RegisterIdCommand extends Command
     {
         $this->info('Registering Client ID');
 
+        $register_id_uri = $this->laravel['config']->get('mtn-momo.api.register_id_uri');
+
         try {
-            $response = $this->client->request('POST', $this->laravel['config']->get('mtn-momo.api.client_id_uri'), [
+            $response = $this->client->request('POST', $register_id_uri, [
                 'headers' => [
                     'X-Reference-Id' => $client_id,
                 ],

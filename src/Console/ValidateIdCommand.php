@@ -35,7 +35,8 @@ class ValidateIdCommand extends Command
      * @var string
      */
     protected $signature = 'mtn-momo:validate-id
-                                {--id= : Client APP ID.}';
+                                {--id= : Client APP ID.}
+                                {--product= : Product subscribed to.}';
 
     /**
      * The console command description.
@@ -67,10 +68,16 @@ class ValidateIdCommand extends Command
     {
         $this->printLabels('Client APP ID -> Validation');
 
+        $product = $this->option('product');
+
+        if(!$product) {
+            $product = $this->laravel['config']->get('mtn-momo.product');
+        }
+
         $client_id = $this->option('id');
 
         if (! $client_id) {
-            $client_id = $this->laravel['config']->get('mtn-momo.app.id');
+            $client_id = $this->laravel['config']->get("mtn-momo.products.{$product}.id");
         }
 
         $client_id = $this->ask('Use client app ID?', $client_id);
@@ -80,11 +87,11 @@ class ValidateIdCommand extends Command
             $client_id = $this->ask('MOMO_CLIENT_ID');
         }
 
-        $client_id_status_uri = $this->laravel['config']->get('mtn-momo.api.client_id_status_uri');
+        $validate_id_uri = $this->laravel['config']->get('mtn-momo.api.validate_id_uri');
 
-        $client_id_status_uri = str_replace('{client_id}', $client_id, $client_id_status_uri);
+        $validate_id_uri = str_replace('{client_id}', $client_id, $validate_id_uri);
 
-        $this->requestClientInfo($client_id_status_uri);
+        $this->requestClientInfo($validate_id_uri);
     }
 
     /**

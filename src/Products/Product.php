@@ -9,6 +9,7 @@ use Monolog\Logger;
 use GuzzleHttp\Client;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\HandlerStack;
+use GuzzleHttp\ClientInterface;
 use GuzzleHttp\MessageFormatter;
 use Monolog\Handler\StreamHandler;
 use Illuminate\Container\Container;
@@ -44,11 +45,11 @@ abstract class Product
     protected $tokenUri;
 
     /**
-     * Product key.
+     * Subscription key.
      *
      * @var string
      */
-    protected $productKey;
+    protected $subscriptionKey;
 
     /**
      * Client ID.
@@ -100,7 +101,7 @@ abstract class Product
     protected $logFile;
 
     /**
-     * @return \GuzzleHttp\Client
+     * @return \GuzzleHttp\ClientInterface
      */
     public function getClient()
     {
@@ -108,7 +109,7 @@ abstract class Product
     }
 
     /**
-     * @param \GuzzleHttp\Client $client
+     * @param \GuzzleHttp\ClientInterface $client
      */
     public function setClient($client)
     {
@@ -150,17 +151,17 @@ abstract class Product
     /**
      * @return string
      */
-    public function getProductKey()
+    public function getsubscriptionKey()
     {
-        return $this->productKey;
+        return $this->subscriptionKey;
     }
 
     /**
-     * @param string $productKey
+     * @param string $subscriptionKey
      */
-    public function setProductKey($productKey)
+    public function setsubscriptionKey($subscriptionKey)
     {
-        $this->productKey = $productKey;
+        $this->subscriptionKey = $subscriptionKey;
     }
 
     /**
@@ -280,19 +281,27 @@ abstract class Product
      *
      * @param array $headers
      * @param array $middlewares
+     * @param \GuzzleHttp\ClientInterface $client
      *
      * @throws \Exception
      */
-    public function __construct($headers = [], $middlewares = [])
+    public function __construct($headers = [], $middlewares = [], ClientInterface $client = null)
     {
+        $this->config = Container::getInstance()->make(Repository::class);
+
         // Set defaults.
         $this->setConfigurations();
+
+        if($client) {
+            $this->client = $client;
+            return;
+        }
 
         // Guzzle http request headers.
         $headers = array_merge([
             'Accept' => 'application/json',
             'Content-Type' => 'application/json',
-            'Ocp-Apim-Subscription-Key' => $this->getProductKey(),
+            'Ocp-Apim-Subscription-Key' => $this->getsubscriptionKey(),
         ], $headers);
 
         // Guzzle http client middleware.
@@ -305,7 +314,9 @@ abstract class Product
 
         $handlerStack->push($this->getAuthBroker($headers));
 
-        $handlerStack->push($this->getLogMiddleware());
+        if($this->config->get('app.debug')) {
+            $handlerStack->push($this->getLogMiddleware());
+        }
 
         // Set http client.
         $this->client = new Client([
@@ -316,6 +327,15 @@ abstract class Product
     }
 
     /**
+     * Request access token.
+     *
+     * @throws \GuzzleHttp\Exception\RequestException;
+     *
+     * @return array
+     */
+    abstract public function getToken();
+
+    /**
      * Setup default configurations.
      *
      * @uses \Illuminate\Contracts\Config\Repository
@@ -324,17 +344,9 @@ abstract class Product
      */
     private function setConfigurations()
     {
-        $config = Container::getInstance()->make(Repository::class);
-
-        $this->setBaseUri($config->get('mtn-momo.api.base_uri'));
-
-        $this->setProductKey($config->get('mtn-momo.app.product_key'));
-        $this->setClientId($config->get('mtn-momo.app.id'));
-        $this->setClientSecret($config->get('mtn-momo.app.secret'));
-        $this->setClientRedirectUri($config->get('mtn-momo.app.redirect_uri'));
-        $this->setCurrency($config->get('mtn-momo.app.currency'));
-        $this->setEnvironment($config->get('mtn-momo.app.environment'));
-
+        $this->setBaseUri($this->config->get('mtn-momo.api.base_uri'));
+        $this->setCurrency($this->config->get('mtn-momo.currency'));
+        $this->setEnvironment($this->config->get('mtn-momo.environment'));
         $this->setLogFile('mtn-momo.log');
     }
 
@@ -394,13 +406,4 @@ abstract class Product
         // Tell the middleware to use both the client and refresh token grants
         return new OAuth2Middleware($client_grant, null, $tokenRepo);
     }
-
-    /**
-     * Request access token.
-     *
-     * @throws \GuzzleHttp\Exception\RequestException;
-     *
-     * @return array
-     */
-    abstract public function getToken();
 }
