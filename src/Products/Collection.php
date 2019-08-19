@@ -165,7 +165,7 @@ class Collection extends Product
             'X-Target-Environment' => $this->getEnvironment(),
         ];
 
-        if($this->getEnvironment() == 'live') {
+        if ($this->getEnvironment() == 'live') {
             $headers['X-Callback-Url'] = $this->getClientRedirectUri();
         }
 
