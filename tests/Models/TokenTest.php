@@ -6,7 +6,6 @@ use Bmatovu\MtnMomo\Models\Token;
 use Bmatovu\MtnMomo\Tests\TestCase;
 use Bmatovu\OAuthNegotiator\Models\TokenInterface;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 /**
  * @see \Bmatovu\MtnMomo\Models\Token

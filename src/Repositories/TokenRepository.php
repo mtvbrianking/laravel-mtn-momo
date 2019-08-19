@@ -28,7 +28,10 @@ class TokenRepository implements TokenRepositoryInterface
     public function create(array $attributes)
     {
         $attributes['token_type'] = 'Bearer';
-        $attributes['expires_at'] = Carbon::now()->addSeconds($attributes['expires_in']);
+
+        if (isset($attributes['expires_in'])) {
+            $attributes['expires_at'] = Carbon::now()->addSeconds($attributes['expires_in']);
+        }
 
         return Token::create($attributes);
     }
@@ -58,7 +61,11 @@ class TokenRepository implements TokenRepositoryInterface
      */
     public function update($access_token, array $attributes)
     {
-        return Token::where('access_token', $access_token)->update($attributes);
+        $token = Token::where('access_token', $access_token)->first();
+
+        $token->update($attributes);
+
+        return $token->fresh();
     }
 
     /**
