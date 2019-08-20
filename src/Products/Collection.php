@@ -13,7 +13,7 @@ use Illuminate\Contracts\Config\Repository;
 use Bmatovu\MtnMomo\Exceptions\CollectionRequestException;
 
 /**
- * Class Collection.
+ * Collection service/product.
  */
 class Collection extends Product
 {
@@ -152,7 +152,7 @@ class Collection extends Product
      *
      * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
      *
-     * @return string                Payment reference ID
+     * @return string                Auto generated payment reference. Format: UUID
      */
     public function transact($external_id, $party_id, $amount, $payer_message = '', $payee_note = '')
     {
@@ -194,7 +194,9 @@ class Collection extends Product
     /**
      * Get transaction status.
      *
-     * @param  string $payment_ref ID
+     * @see https://momodeveloper.mtn.com/docs/services/collection/operations/requesttopay-referenceId-GET Documentation
+     *
+     * @param  string $payment_ref That was returned by transact (requestToPay)
      *
      * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
      *
@@ -202,14 +204,10 @@ class Collection extends Product
      */
     public function getTransactionStatus($payment_ref)
     {
-        $resource = preg_replace(
-            '/(\{\btransaction_id\b\})$/',
-            $payment_ref,
-            $this->getTransactionStatusUri()
-        );
+        $transaction_status_uri = str_replace('{transaction_id}', $payment_ref, $this->getTransactionStatusUri());
 
         try {
-            $response = $this->client->request('GET', $resource, [
+            $response = $this->client->request('GET', $transaction_status_uri, [
                 'headers' => [
                     'X-Target-Environment' => $this->getEnvironment(),
                 ],
@@ -223,6 +221,8 @@ class Collection extends Product
 
     /**
      * Request collections access token.
+     *
+     * @see https://momodeveloper.mtn.com/docs/services/collection/operations/token-POST Documentation
      *
      * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
      *
@@ -254,6 +254,8 @@ class Collection extends Product
     /**
      * Get account balance.
      *
+     * @see https://momodeveloper.mtn.com/docs/services/collection/operations/get-v1_0-account-balance Documentation
+     *
      * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
      *
      * @return array Account balance.
@@ -278,8 +280,10 @@ class Collection extends Product
     /**
      * Get user account information.
      *
-     * @param  string $account_id
-     * @param  string $account_type_name
+     * @see https://momodeveloper.mtn.com/docs/services/collection/operations/get-v1_0-accountholder-accountholderidtype-accountholderid-active Documentation
+     *
+     * @param  string $account_id        Party number - MSISDN, email, or code - UUID.
+     * @param  string $account_type_name Specifies the type of the account ID. Allowed values [msisdn, email, party_code].
      *
      * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
      *

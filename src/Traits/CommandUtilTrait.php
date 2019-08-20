@@ -6,12 +6,12 @@
 namespace Bmatovu\MtnMomo\Traits;
 
 /**
- * Trait CommandUtilTrait.
+ * Console commands utilities.
  */
 trait CommandUtilTrait
 {
     /**
-     * Confirm to run command in production.
+     * Warn user running command in production.
      *
      * @param  string $warning
      *
@@ -69,8 +69,9 @@ trait CommandUtilTrait
     }
 
     /**
-     * @deprecated
      * Determine replacement regex pattern a setting.
+     *
+     * @deprecated 1.3 No longer used.
      *
      * @param  string $name ENV_VALUE, like; `APP_NAME`
      * @param  string $key Compose setting name, like `app.name`
@@ -106,8 +107,6 @@ trait CommandUtilTrait
         $env = $this->laravel->environmentFilePath();
 
         $name = strtoupper($name);
-
-        // $pattern = $this->getRegex($name, $key);
 
         $pattern = "/^{$name}=[\"']?.*/m";
 

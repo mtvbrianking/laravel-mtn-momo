@@ -19,7 +19,7 @@ use Bmatovu\MtnMomo\Repositories\TokenRepository;
 use Bmatovu\OAuthNegotiator\GrantTypes\ClientCredentials;
 
 /**
- * Class Product.
+ * Generic product/service.
  */
 abstract class Product
 {
@@ -368,6 +368,8 @@ abstract class Product
 
     /**
      * Get authentication broker.
+     *
+     * @link https://momodeveloper.mtn.com/api-documentation/api-description/#oauth-2-0 Documentation
      *
      * @param  array $headers HTTP request headers
      *

@@ -77,7 +77,7 @@ return [
             'key' => env('MOMO_COLLECTION_SUBSCRIPTION_KEY'),
 
             // Party ID type
-            'party_id_type' => env('MOMO_COLLECTION_PARTY_ID_TYPE', 'MSISDN'),
+            'party_id_type' => env('MOMO_COLLECTION_PARTY_ID_TYPE', 'msisdn'),
 
             // Token uri
             'token_uri' => env('MOMO_COLLECTION_TOKEN_URI', 'collection/token/'),

@@ -15,8 +15,6 @@ use Bmatovu\MtnMomo\Traits\CommandUtilTrait;
 
 /**
  * Get client APP API credentials.
- *
- * @link https://momodeveloper.mtn.com/docs/services/sandbox-provisioning-api/operations/get-v1_0-apiuser Documenation.
  */
 class ValidateIdCommand extends Command
 {
@@ -96,6 +94,8 @@ class ValidateIdCommand extends Command
 
     /**
      * Request client credentials.
+     *
+     * @link https://momodeveloper.mtn.com/docs/services/sandbox-provisioning-api/operations/get-v1_0-apiuser Documenation.
      *
      * @param string $client_id_status_uri
      *

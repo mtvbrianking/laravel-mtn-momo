@@ -19,7 +19,7 @@ use Bmatovu\MtnMomo\Console\ValidateIdCommand;
 use Bmatovu\MtnMomo\Console\RequestSecretCommand;
 
 /**
- * Class MtnMomoServiceProvider.
+ * Package service provider.
  */
 class MtnMomoServiceProvider extends ServiceProvider
 {
@@ -95,7 +95,7 @@ class MtnMomoServiceProvider extends ServiceProvider
     /**
      * Get log middleware.
      *
-     * @return callable
+     * @return callable GuzzleHttp Middleware
      */
     protected function getLogMiddleware()
     {

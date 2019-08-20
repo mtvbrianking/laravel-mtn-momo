@@ -10,7 +10,7 @@ use Bmatovu\MtnMomo\Models\Token;
 use Bmatovu\OAuthNegotiator\Repositories\TokenRepositoryInterface;
 
 /**
- * Class TokenRepository.
+ * Token repository.
  */
 class TokenRepository implements TokenRepositoryInterface
 {

@@ -6,7 +6,7 @@
 namespace Bmatovu\MtnMomo\Traits;
 
 /**
- * Trait TokenUtilTrait.
+ * Token model utilities.
  */
 trait TokenUtilTrait
 {

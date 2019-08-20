@@ -14,15 +14,10 @@ use GuzzleHttp\Exception\ConnectException;
 use Bmatovu\MtnMomo\Traits\CommandUtilTrait;
 
 /**
- * Register client ID.
+ * Register client ID in sandbox environment.
  *
  * The client application ID is a user generate UUID format 4,
  * that is then registered with MTN Momo API.
- *
- * Note:
- * - The redirect URI is not used in sandbox; but its still needed when registering a client ID.
- *
- * @link https://momodeveloper.mtn.com/docs/services/sandbox-provisioning-api/operations/post-v1_0-apiuser Documenation.
  */
 class RegisterIdCommand extends Command
 {
@@ -182,6 +177,11 @@ class RegisterIdCommand extends Command
 
     /**
      * Register client ID.
+     *
+     * The redirect URI is implemented in sandbox environment,
+     * but is still required when registering a client ID.
+     *
+     * @link https://momodeveloper.mtn.com/docs/services/sandbox-provisioning-api/operations/post-v1_0-apiuser Documenation.
      *
      * @param string $client_id
      * @param string $client_redirect_uri

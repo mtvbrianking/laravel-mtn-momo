@@ -10,7 +10,7 @@ use Bmatovu\OAuthNegotiator\Models\TokenInterface;
 use Illuminate\Database\Eloquent\Model as BaseModel;
 
 /**
- * Class Token.
+ * Token model.
  */
 class Token extends BaseModel implements TokenInterface
 {

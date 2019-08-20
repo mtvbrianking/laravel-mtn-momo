@@ -14,7 +14,7 @@ use GuzzleHttp\Exception\ConnectException;
 use Bmatovu\MtnMomo\Traits\CommandUtilTrait;
 
 /**
- * Class RequestSecretCommand.
+ * Request client app secret.
  */
 class RequestSecretCommand extends Command
 {
@@ -120,6 +120,8 @@ class RequestSecretCommand extends Command
 
     /**
      * Request for client APP secret.
+     *
+     * @link https://momodeveloper.mtn.com/docs/services/sandbox-provisioning-api/operations/post-v1_0-apiuser-apikey Documentation
      *
      * @param string $client_id
      *
