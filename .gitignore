@@ -1,7 +1,8 @@
 composer.lock
 coverage
 coverage.clover
-docs/cache
+docs
+sami.phar
 vendor
 .idea
 .php_cs.cache
