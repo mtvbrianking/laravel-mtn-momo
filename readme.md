@@ -30,13 +30,15 @@ Register the package service provider in the app configuration file (`config/app
 
 If you wish to customize the default configurations, you  may export the default configuration using
 
-`php artisan vendor:publish --provider="Bmatovu\MtnMomo\MtnMomoServiceProvider" --tag="config"`
+```bash
+php artisan vendor:publish --provider="Bmatovu\MtnMomo\MtnMomoServiceProvider" --tag="config"
+```
 
-### Database Migration
+**Database Migration**
 
 The package service provider registers its own database migrations with the framework, so you should migrate your database after installation. The migration will create a tokens tables your application needs to store access tokens from MTN MOMO API.
 
-```
+```bash
 php artisan migrate
 ```
 
@@ -49,17 +51,31 @@ You will need the following to get started with you integration...
 
 If you already subscribed to a product, the subscription key can be found in your [**profile**](https://momodeveloper.mtn.com/developer).
 
-### Bootstrapping
+### Getting started
 
-Now you need to run the `mtn-momo:init` command. This command will create the necessary settings in you're `.env` file as you walkthrough the steps. These settings are needed for authentication and communication with the MTN MOMO API.
+Register you client details.
 
-```
+```bash
 php artisan mtn-momo:init
 ```
 
-![screenshot](screenshot.png)
+Next you need to register your client app ID.
 
-The package also comes with more Artisan commands for various actions. [Ref](#more-artisan-commands)
+```bash
+php artisan mtn-momo:register-id
+```
+
+You may want to verify your client ID at this stage
+
+```bash
+php artisan mtn-momo:validate-id
+```
+
+Then request for a client secret (key).
+
+```bash
+php artisan mtn-momo:request-secret
+```
 
 ### Usage
 
@@ -72,7 +88,7 @@ $collection = new Collection();
 $collection->transact('EXT_REF_ID', '07XXXXXXXX', 100);
 ```
 
-[Test numbers](https://momodeveloper.mtn.com/api-documentation/testing/#testing)
+See [test numbers](https://momodeveloper.mtn.com/api-documentation/testing/#testing)
 
 **Exception handling**
 
@@ -87,7 +103,8 @@ try {
     $collection->transact('EXT_REF_ID', '07XXXXXXXX', 100);
 } catch(CollectionRequestException $e) {
     do {
-        printf("\n\r%s:%d %s (%d) [%s]\n\r", $e->getFile(), $e->getLine(), $e->getMessage(), $e->getCode(), get_class($e));
+        printf("\n\r%s:%d %s (%d) [%s]\n\r", 
+            $e->getFile(), $e->getLine(), $e->getMessage(), $e->getCode(), get_class($e));
     } while($e = $e->getPrevious());
 }
 ```
@@ -95,6 +112,8 @@ try {
 **Logging**
 
 Often you might need to log your API requests for debugging purposes. You can adding logging via [Guzzle middleware](http://docs.guzzlephp.org/en/stable/handlers-and-middleware.html#middleware);
+
+**Note**: Logging is enabled by default debugging mode.
 
 ```php
 use Monolog\Logger;
@@ -118,20 +137,6 @@ $collection->transact('EXT_REF_ID', '07XXXXXXXX', 100);
 ```
 
 **Inspired! Dive into the** [source code documentation](https://mtvbrianking.github.io/laravel-mtn-momo).
-
-### More Artisan commands
-
-- Register client APP ID.
-
-`php artisan mtn-momo:register-id`
-
-- Validate client APP ID.
-
-`php artisan mtn-momo:validate-id`
-
-- Request client APP secret.
-
-`php artisan mtn-momo:request-secret`
 
 ### I Need help!
 
