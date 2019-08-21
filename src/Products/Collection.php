@@ -278,7 +278,7 @@ class Collection extends Product
     }
 
     /**
-     * Get user account information.
+     * Determine if an account holder is registered and active.
      *
      * @see https://momodeveloper.mtn.com/docs/services/collection/operations/get-v1_0-accountholder-accountholderidtype-accountholderid-active Documentation
      *
@@ -287,9 +287,9 @@ class Collection extends Product
      *
      * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
      *
-     * @return array User account info
+     * @return bool True if account holder is registered and active, false if the account holder is not active or not found
      */
-    public function getUserAccountInfo($account_id, $account_type_name = null)
+    public function isActive($account_id, $account_type_name = null)
     {
         $resource = $this->getUserAccountUri();
 
@@ -303,7 +303,7 @@ class Collection extends Product
         $replacements[] = strtolower($account_type_name);
 
         $patterns[] = '/(\{\baccount_id\b\})/';
-        $replacements[] = $account_id;
+        $replacements[] = urlencode($account_id);
 
         $resource = preg_replace($patterns, $replacements, $resource);
 
@@ -314,7 +314,7 @@ class Collection extends Product
                 ],
             ]);
 
-            return json_decode($response->getBody(), true);
+            return (bool) $response->getStatusCode();
         } catch (RequestException $ex) {
             throw new CollectionRequestException('Unable to get user account information.', 0, $ex);
         }

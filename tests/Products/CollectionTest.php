@@ -36,9 +36,9 @@ class CollectionTest extends TestCase
 
         $this->assertInstanceOf(Product::class, $collection);
 
-        $payment_ref = $collection->transact('EXT_REF_ID', '07XXXXXXXX', 100);
+        $transaction_ref = $collection->transact('EXT_REF_ID', '07XXXXXXXX', 100);
 
-        $this->assertTrue(Uuid::isValid($payment_ref));
+        $this->assertTrue(Uuid::isValid($transaction_ref));
     }
 
     public function test_throws_transact_collection_request_exception()
@@ -55,9 +55,9 @@ class CollectionTest extends TestCase
         $this->expectExceptionCode(0);
         $this->expectExceptionMessage('Request to pay transaction - unsuccessful.');
 
-        $payment_ref = $collection->transact('EXT_REF_ID', '07XXXXXXXX', 100);
+        $transaction_ref = $collection->transact('EXT_REF_ID', '07XXXXXXXX', 100);
 
-        $this->assertNull($payment_ref);
+        $this->assertNull($transaction_ref);
     }
 
     public function test_throws_previous_transact_collection_request_exception()
@@ -71,8 +71,8 @@ class CollectionTest extends TestCase
         $this->assertInstanceOf(Product::class, $collection);
 
         try {
-            $payment_ref = $collection->transact('EXT_REF_ID', '07XXXXXXXX', 100);
-            $this->assertNull($payment_ref);
+            $transaction_ref = $collection->transact('EXT_REF_ID', '07XXXXXXXX', 100);
+            $this->assertNull($transaction_ref);
         } catch(CollectionRequestException $e) {
             $this->assertInstanceOf(CollectionRequestException::class, $e);
             $this->assertEquals($e->getCode(), 0);
@@ -83,5 +83,85 @@ class CollectionTest extends TestCase
             $this->assertInstanceOf(RequestException::class, $pex);
             $this->assertEquals($pex->getCode(), 400);
         }
+    }
+
+    public function test_check_transaction_status()
+    {
+        $body = [
+            'amount' => 100,
+            'currency' => 'UGX',
+            'externalId' => 947354,
+            'payer' => [
+                'partyIdType' => 'MSISDN',
+                'partyId' => 4656473839
+            ],
+            'status' => 'FAILED',
+            'reason' => [
+                'code' => 'PAYER_NOT_FOUND',
+                'message' => 'Payee does not exist'
+            ]
+        ];
+
+        $response = new Response(200, [], json_encode($body));
+
+        $mockClient = $this->mockGuzzleClient($response);
+
+        $collection = new Collection([], [], $mockClient);
+
+        $treansaction_ref = Uuid::uuid4()->toString();
+
+        $transaction = $collection->getTransactionStatus($treansaction_ref);
+
+        $this->assertEquals($transaction, $body);
+    }
+
+    public function test_get_token()
+    {
+        $body = [
+            'access_token' => str_random(60),
+            'token_type' => 'Bearer',
+            'expires_in' => 3600,
+        ];
+
+        $response = new Response(200, [], json_encode($body));
+
+        $mockClient = $this->mockGuzzleClient($response);
+
+        $collection = new Collection([], [], $mockClient);
+
+        $token = $collection->getToken();
+
+        $this->assertEquals($token, $body);
+    }
+
+    public function test_get_account_balance()
+    {
+        $body = [
+            'availableBalance' => 100,
+            'currency' => 'EUR'
+        ];
+
+        $response = new Response(200, [], json_encode($body));
+
+        $mockClient = $this->mockGuzzleClient($response);
+
+        $collection = new Collection([], [], $mockClient);
+
+        $accountBal = $collection->getAccountBalance();
+
+        $this->assertEquals($accountBal, $body);
+    }
+
+    public function test_can_determine_account_status()
+    {
+        $response = new Response(200, [], null);
+
+        $mockClient = $this->mockGuzzleClient($response);
+
+        $collection = new Collection([], [], $mockClient);
+
+        $isActive = $collection->isActive('07XXXXXXXX');
+
+        $this->assertTrue($isActive);
     }
 }
