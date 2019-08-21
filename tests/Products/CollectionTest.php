@@ -154,7 +154,11 @@ class CollectionTest extends TestCase
 
     public function test_can_determine_account_status()
     {
-        $response = new Response(200, [], null);
+        $body = [
+            'result' => true
+        ];
+
+        $response = new Response(200, [], json_encode($body));
 
         $mockClient = $this->mockGuzzleClient($response);
 

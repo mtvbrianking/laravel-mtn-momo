@@ -314,7 +314,9 @@ class Collection extends Product
                 ],
             ]);
 
-            return (bool) $response->getStatusCode();
+            $body = json_decode($response->getBody(), true);
+
+            return (bool) $body['result'];
         } catch (RequestException $ex) {
             throw new CollectionRequestException('Unable to get user account information.', 0, $ex);
         }
