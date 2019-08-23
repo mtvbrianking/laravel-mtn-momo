@@ -9,6 +9,8 @@ namespace Bmatovu\MtnMomo\Products;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
 use Bmatovu\MtnMomo\Exceptions\CollectionRequestException;
+use Illuminate\Container\Container;
+use Illuminate\Contracts\Config\Repository;
 
 /**
  * Class Disbursement
@@ -26,6 +28,16 @@ class Disbursement extends Product
      */
     public function __construct(array $headers = [], array $middlewares = [], ClientInterface $client = null)
     {
+        $config = Container::getInstance()->make(Repository::class);
+
+        $this->setsubscriptionKey($config->get('mtn-momo.products.disbursement.key'));
+        $this->setClientId($config->get('mtn-momo.products.disbursement.id'));
+        $this->setClientSecret($config->get('mtn-momo.products.disbursement.secret'));
+        $this->setClientRedirectUri($config->get('mtn-momo.products.disbursement.redirect_uri'));
+
+        $this->setTokenUri($config->get('mtn-momo.products.disbursement.token_uri'));
+
+
         parent::__construct($headers, $middlewares, $client);
     }
 
