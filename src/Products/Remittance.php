@@ -213,7 +213,7 @@ class Remittance extends Product
 
             return $ext_trans_id;
         } catch (RequestException $ex) {
-            throw new RemittanceRequestException('Request to pay transaction - unsuccessful.', 0, $ex);
+            throw new RemittanceRequestException('Transfer transaction - unsuccessful.', 0, $ex);
         }
     }
 
@@ -245,16 +245,16 @@ class Remittance extends Product
      *
      * @see https://momodeveloper.mtn.com/docs/services/remittance/operations/transfer-referenceId-GET Documentation
      *
-     * @param  string $payment_ref That was returned by transact (requestToPay)
+     * @param  string $ext_trans_id That was returned by transact (transfer)
      *
      * @throws \Bmatovu\MtnMomo\Exceptions\RemittanceRequestException
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return array
      */
-    public function getTransactionStatus($payment_ref)
+    public function getTransactionStatus($ext_trans_id)
     {
-        $transaction_status_uri = str_replace('{transaction_id}', $payment_ref, $this->transactionStatusUri);
+        $transaction_status_uri = str_replace('{transaction_id}', $ext_trans_id, $this->transactionStatusUri);
 
         try {
             $response = $this->client->request('GET', $transaction_status_uri, [
