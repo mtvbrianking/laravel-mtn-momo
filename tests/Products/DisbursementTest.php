@@ -6,6 +6,7 @@ use GuzzleHttp\Psr7\Response;
 use Bmatovu\MtnMomo\Tests\TestCase;
 use Bmatovu\MtnMomo\Products\Product;
 use Bmatovu\MtnMomo\Products\Disbursement;
+use Ramsey\Uuid\Uuid;
 
 /**
  * @see \Bmatovu\MtnMomo\Products\Disbursement
@@ -51,6 +52,18 @@ class DisbursementTest extends TestCase
     }
 
     public function test_transfer_operation(){
+
+        $response = new Response(202, [], null);
+
+        $mockClient = $this->mockGuzzleClient($response);
+
+        $disbursement = new Disbursement([], [], $mockClient);
+
+        $this->assertInstanceOf(Product::class, $disbursement);
+
+        $transaction_ref = $disbursement->transfer('EXT_REF_ID', '07XXXXXXXX', 100);
+
+        $this->assertTrue(Uuid::isValid($transaction_ref));
 
     }
 
