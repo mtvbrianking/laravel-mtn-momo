@@ -302,7 +302,7 @@ class Remittance extends Product
      * @param  string $account_id Party number - MSISDN, email, or code - UUID.
      * @param  string $account_type_name Specifies the type of the account ID. Allowed values [msisdn, email, party_code].
      *
-     * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
+     * @throws \Bmatovu\MtnMomo\Exceptions\RemittanceRequestException
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return bool True if account holder is registered and active, false if the account holder is not active or not found
@@ -334,7 +334,7 @@ class Remittance extends Product
 
             return (bool) $body['result'];
         } catch (RequestException $ex) {
-            throw new CollectionRequestException('Unable to get user account information.', 0, $ex);
+            throw new RemittanceRequestException('Unable to get user account information.', 0, $ex);
         }
     }
 }
