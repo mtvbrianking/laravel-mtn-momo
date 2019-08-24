@@ -148,6 +148,19 @@ class Remittance extends Product
      */
     public function getToken()
     {
-        // TODO
+        try {
+            $response = $this->client->request('POST', $this->tokenUri, [
+                'headers' => [
+                    'Authorization' => 'Basic '.base64_encode($this->clientId.':'.$this->clientSecret),
+                ],
+                'json' => [
+                    'grant_type' => 'client_credentials',
+                ],
+            ]);
+
+            return json_decode($response->getBody(), true);
+        } catch (RequestException $ex) {
+            throw new CollectionRequestException('Unable to get token.', 0, $ex);
+        }
     }
 }
