@@ -239,4 +239,33 @@ class Remittance extends Product
     {
         return $this->transact($int_trans_id, $party_id, $amount, $payer_message, $payee_note);
     }
+
+    /**
+     * Get transaction status.
+     *
+     * @see https://momodeveloper.mtn.com/docs/services/remittance/operations/transfer-referenceId-GET Documentation
+     *
+     * @param  string $payment_ref That was returned by transact (requestToPay)
+     *
+     * @throws \Bmatovu\MtnMomo\Exceptions\RemittanceRequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array
+     */
+    public function getTransactionStatus($payment_ref)
+    {
+        $transaction_status_uri = str_replace('{transaction_id}', $payment_ref, $this->transactionStatusUri);
+
+        try {
+            $response = $this->client->request('GET', $transaction_status_uri, [
+                'headers' => [
+                    'X-Target-Environment' => $this->environment,
+                ],
+            ]);
+
+            return json_decode($response->getBody(), true);
+        } catch (RequestException $ex) {
+            throw new RemittanceRequestException('Unable to get transaction status.', 0, $ex);
+        }
+    }
 }

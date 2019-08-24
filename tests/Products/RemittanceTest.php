@@ -46,9 +46,9 @@ class RemittanceTest extends TestCase
 
         $remittance = new Remittance([], [], $mockClient);
 
-        $transaction_ref = $remittance->transact('int_trans_id', '07XXXXXXXX', 100);
+        $ext_trans_ref = $remittance->transact('int_trans_id', '07XXXXXXXX', 100);
 
-        $this->assertTrue(Uuid::isValid($transaction_ref));
+        $this->assertTrue(Uuid::isValid($ext_trans_ref));
     }
 
     public function test_can_tranfer()
@@ -59,8 +59,38 @@ class RemittanceTest extends TestCase
 
         $remittance = new Remittance([], [], $mockClient);
 
-        $transaction_ref = $remittance->transfer('int_trans_id', '07XXXXXXXX', 100);
+        $ext_trans_ref = $remittance->transfer('int_trans_id', '07XXXXXXXX', 100);
 
-        $this->assertTrue(Uuid::isValid($transaction_ref));
+        $this->assertTrue(Uuid::isValid($ext_trans_ref));
+    }
+
+    public function test_check_transaction_status()
+    {
+        $body = [
+            'amount' => 100,
+            'currency' => 'UGX',
+            'externalId' => 947354,
+            'payer' => [
+                'partyIdType' => 'MSISDN',
+                'partyId' => 4656473839
+            ],
+            'status' => 'FAILED',
+            'reason' => [
+                'code' => 'PAYER_NOT_FOUND',
+                'message' => 'Payee does not exist'
+            ]
+        ];
+
+        $response = new Response(200, [], json_encode($body));
+
+        $mockClient = $this->mockGuzzleClient($response);
+
+        $remittance = new Remittance([], [], $mockClient);
+
+        $ext_trans_ref = Uuid::uuid4()->toString();
+
+        $transaction = $remittance->getTransactionStatus($ext_trans_ref);
+
+        $this->assertEquals($transaction, $body);
     }
 }
