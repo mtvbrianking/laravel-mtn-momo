@@ -293,4 +293,48 @@ class Remittance extends Product
             throw new RemittanceRequestException('Unable to get account balance.', 0, $ex);
         }
     }
+
+    /**
+     * Determine if an account holder is registered and active.
+     *
+     * @see https://momodeveloper.mtn.com/docs/services/remittance/operations/get-v1_0-accountholder-accountholderidtype-accountholderid-active Documentation
+     *
+     * @param  string $account_id Party number - MSISDN, email, or code - UUID.
+     * @param  string $account_type_name Specifies the type of the account ID. Allowed values [msisdn, email, party_code].
+     *
+     * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return bool True if account holder is registered and active, false if the account holder is not active or not found
+     */
+    public function isActive($account_id, $account_type_name = null)
+    {
+        if (is_null($account_type_name)) {
+            $account_type_name = $this->partyIdType;
+        }
+
+        $patterns = $replacements = [];
+
+        $patterns[] = '/(\{\baccount_type_name\b\})/';
+        $replacements[] = strtolower($account_type_name);
+
+        $patterns[] = '/(\{\baccount_id\b\})/';
+        $replacements[] = urlencode($account_id);
+
+        $userAccountUri = preg_replace($patterns, $replacements, $this->userAccountUri);
+
+        try {
+            $response = $this->client->request('GET', $userAccountUri, [
+                'headers' => [
+                    'X-Target-Environment' => $this->getEnvironment(),
+                ],
+            ]);
+
+            $body = json_decode($response->getBody(), true);
+
+            return (bool) $body['result'];
+        } catch (RequestException $ex) {
+            throw new CollectionRequestException('Unable to get user account information.', 0, $ex);
+        }
+    }
 }

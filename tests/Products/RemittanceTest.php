@@ -111,4 +111,21 @@ class RemittanceTest extends TestCase
 
         $this->assertEquals($accountBal, $body);
     }
+
+    public function test_can_determine_if_account_is_active()
+    {
+        $body = [
+            'result' => true
+        ];
+
+        $response = new Response(200, [], json_encode($body));
+
+        $mockClient = $this->mockGuzzleClient($response);
+
+        $remittance = new Remittance([], [], $mockClient);
+
+        $isActive = $remittance->isActive('07XXXXXXXX');
+
+        $this->assertTrue($isActive);
+    }
 }
