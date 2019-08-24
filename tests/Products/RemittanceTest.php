@@ -1,6 +1,7 @@
 <?php
 namespace Bmatovu\MtnMomo\Tests\Products;
 
+use Ramsey\Uuid\Uuid;
 use GuzzleHttp\Psr7\Response;
 use Bmatovu\MtnMomo\Tests\TestCase;
 use Bmatovu\MtnMomo\Products\Product;
@@ -18,7 +19,7 @@ class RemittanceTest extends TestCase
         $this->assertInstanceOf(Product::class, $remittance);
     }
 
-    public function test_get_token()
+    public function test_can_get_token()
     {
         $body = [
             'access_token' => str_random(60),
@@ -37,4 +38,29 @@ class RemittanceTest extends TestCase
         $this->assertEquals($token, $body);
     }
 
+    public function test_can_transact()
+    {
+        $response = new Response(202, [], null);
+
+        $mockClient = $this->mockGuzzleClient($response);
+
+        $remittance = new Remittance([], [], $mockClient);
+
+        $transaction_ref = $remittance->transact('int_trans_id', '07XXXXXXXX', 100);
+
+        $this->assertTrue(Uuid::isValid($transaction_ref));
+    }
+
+    public function test_can_tranfer()
+    {
+        $response = new Response(202, [], null);
+
+        $mockClient = $this->mockGuzzleClient($response);
+
+        $remittance = new Remittance([], [], $mockClient);
+
+        $transaction_ref = $remittance->transfer('int_trans_id', '07XXXXXXXX', 100);
+
+        $this->assertTrue(Uuid::isValid($transaction_ref));
+    }
 }

@@ -109,7 +109,7 @@ return [
 
             'key' => env('MOMO_DISBURSEMENT_SUBSCRIPTION_KEY'),
 
-            'party_id_type' => env('MOMO_COLLECTION_PARTY_ID_TYPE', 'msisdn'),
+            'party_id_type' => env('MOMO_DISBURSEMENT_PARTY_ID_TYPE', 'msisdn'),
 
             // Token uri
             'token_uri' => env('MOMO_DISBURSEMENT_TOKEN_URI', 'disbursement/token/'),
@@ -141,7 +141,7 @@ return [
 
             'key' => env('MOMO_REMITTANCE_SUBSCRIPTION_KEY'),
 
-            'party_id_type' => env('MOMO_COLLECTION_PARTY_ID_TYPE', 'msisdn'),
+            'party_id_type' => env('MOMO_REMITTANCE_PARTY_ID_TYPE', 'msisdn'),
 
             // Token uri
             'token_uri' => env('MOMO_REMITTANCE_TOKEN_URI', 'remittance/token/'),

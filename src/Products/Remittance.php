@@ -5,6 +5,7 @@
 
 namespace Bmatovu\MtnMomo\Products;
 
+use Ramsey\Uuid\Uuid;
 use GuzzleHttp\ClientInterface;
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Config\Repository;
@@ -139,9 +140,9 @@ class Remittance extends Product
     /**
      * Request remittance access token.
      *
-     * @link https://momodeveloper.mtn.com/docs/services/remittance/operations/token-POST Documentation
+     * @see https://momodeveloper.mtn.com/docs/services/remittance/operations/token-POST Documentation
      *
-     * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
+     * @throws \Bmatovu\MtnMomo\Exceptions\RemittanceRequestException
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return array
@@ -160,7 +161,82 @@ class Remittance extends Product
 
             return json_decode($response->getBody(), true);
         } catch (RequestException $ex) {
-            throw new CollectionRequestException('Unable to get token.', 0, $ex);
+            throw new RemittanceRequestException('Unable to get token.', 0, $ex);
         }
+    }
+
+    /**
+     * Transfer from your own account to another person's account.
+     *
+     * @see https://momodeveloper.mtn.com/docs/services/remittance/operations/transfer-POST Documentation
+     *
+     * @param string $int_trans_id  Your internal transaction reference ID.
+     * @param string $party_id      Account holder. Usually phone number if type is MSISDN.
+     * @param int    $amount        How much to credit the payer.
+     * @param string $payer_message Payer transaction message.
+     * @param string $payee_note    Payee transaction message.
+     *
+     * @throws \Bmatovu\MtnMomo\Exceptions\RemittanceRequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
+     *
+     * @return string Auto generated transaction reference. Format: UUID
+     */
+    public function transact($int_trans_id, $party_id, $amount, $payer_message = '', $payee_note = '')
+    {
+        $ext_trans_id = Uuid::uuid4()->toString();
+
+        $headers = [
+            'X-Reference-Id' => $ext_trans_id,
+            'X-Target-Environment' => $this->environment,
+        ];
+
+        if ($this->environment != 'sandbox') {
+            $headers['X-Callback-Url'] = $this->clientRedirectUri;
+        }
+
+        try {
+            $this->client->request('POST', $this->transactUri, [
+                'headers' => $headers,
+                'json' => [
+                    'amount' => $amount,
+                    'currency' => $this->currency,
+                    'externalId' => $int_trans_id,
+                    'payer' => [
+                        'partyIdType' => $this->partyIdType,
+                        'partyId' => $party_id,
+                    ],
+                    'payerMessage' => $payer_message,
+                    'payeeNote' => $payee_note,
+                ],
+            ]);
+
+            return $ext_trans_id;
+        } catch (RequestException $ex) {
+            throw new RemittanceRequestException('Request to pay transaction - unsuccessful.', 0, $ex);
+        }
+    }
+
+    /**
+     * Transfer from your own account to another person's account.
+     *
+     * @see Remittance::transact
+     * @see https://momodeveloper.mtn.com/docs/services/remittance/operations/transfer-POST Documentation
+     *
+     * @param string $int_trans_id  Your internal transaction reference ID.
+     * @param string $party_id      Account holder. Usually phone number if type is MSISDN.
+     * @param int    $amount        How much to credit the payer.
+     * @param string $payer_message Payer transaction message.
+     * @param string $payee_note    Payee transaction message.
+     *
+     * @throws \Bmatovu\MtnMomo\Exceptions\RemittanceRequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
+     *
+     * @return string Auto generated transaction reference. Format: UUID
+     */
+    public function transfer($int_trans_id, $party_id, $amount, $payer_message = '', $payee_note = '')
+    {
+        return $this->transact($int_trans_id, $party_id, $amount, $payer_message, $payee_note);
     }
 }
