@@ -86,13 +86,19 @@ return [
             'transact_uri' => env('MOMO_COLLECTION_TRANSACTION_URI', 'collection/v1_0/requesttopay'),
 
             // Transaction status
-            'transaction_status_uri' => env('MOMO_COLLECTION_TRANSACTION_STATUS_URI', 'collection/v1_0/requesttopay/{transaction_id}'),
+            'transaction_status_uri' => env(
+                'MOMO_COLLECTION_TRANSACTION_STATUS_URI',
+                'collection/v1_0/requesttopay/{transaction_id}'
+            ),
 
             // App account balance
             'app_account_balance_uri' => env('MOMO_COLLECTION_APP_BALANCE_URI', 'collection/v1_0/account/balance'),
 
             // User account status
-            'user_account_uri' => env('MOMO_COLLECTION_USER_ACCOUNT_URI', 'collection/v1_0/accountholder/{account_type_name}/{account_id}/active'),
+            'user_account_uri' => env(
+                'MOMO_COLLECTION_USER_ACCOUNT_URI',
+                'collection/v1_0/accountholder/{account_type_name}/{account_id}/active'
+            ),
         ],
         'disbursement' => [
             'id' => env('MOMO_DISBURSEMENT_ID'),
@@ -103,6 +109,8 @@ return [
 
             'key' => env('MOMO_DISBURSEMENT_SUBSCRIPTION_KEY'),
 
+            'party_id_type' => env('MOMO_COLLECTION_PARTY_ID_TYPE', 'msisdn'),
+
             // Token uri
             'token_uri' => env('MOMO_DISBURSEMENT_TOKEN_URI', 'disbursement/token/'),
 
@@ -110,13 +118,19 @@ return [
             'transact_uri' => env('MOMO_DISBURSEMENT_TRANSACTION_URI', 'disbursement/v1_0/transfer'),
 
             // Transaction status
-            'transaction_status_uri' => env('MOMO_DISBURSEMENT_TRANSACTION_STATUS_URI', 'disbursement/v1_0/transfer/{transaction_id}'),
+            'transaction_status_uri' => env(
+                'MOMO_DISBURSEMENT_TRANSACTION_STATUS_URI',
+                'disbursement/v1_0/transfer/{transaction_id}'
+            ),
 
             // App account balance
             'app_account_balance_uri' => env('MOMO_DISBURSEMENT_APP_BALANCE_URI', 'disbursement/v1_0/account/balance'),
 
             // User account status
-            'user_account_uri' => env('MOMO_DISBURSEMENT_USER_ACCOUNT_URI', 'disbursement/v1_0/accountholder/{account_type_name}/{account_id}/active'),
+            'user_account_uri' => env(
+                'MOMO_DISBURSEMENT_USER_ACCOUNT_URI',
+                'disbursement/v1_0/accountholder/{account_type_name}/{account_id}/active'
+            ),
         ],
         'remittance' => [
             'id' => env('MOMO_REMITTANCE_ID'),
@@ -127,6 +141,8 @@ return [
 
             'key' => env('MOMO_REMITTANCE_SUBSCRIPTION_KEY'),
 
+            'party_id_type' => env('MOMO_COLLECTION_PARTY_ID_TYPE', 'msisdn'),
+
             // Token uri
             'token_uri' => env('MOMO_REMITTANCE_TOKEN_URI', 'remittance/token/'),
 
@@ -134,13 +150,19 @@ return [
             'transact_uri' => env('MOMO_REMITTANCE_TRANSACTION_URI', 'remittance/v1_0/transfer'),
 
             // Transaction status
-            'transaction_status_uri' => env('MOMO_REMITTANCE_TRANSACTION_STATUS_URI', 'remittance/v1_0/transfer/{transaction_id}'),
+            'transaction_status_uri' => env(
+                'MOMO_REMITTANCE_TRANSACTION_STATUS_URI',
+                'remittance/v1_0/transfer/{transaction_id}'
+            ),
 
             // App account balance
             'app_account_balance_uri' => env('MOMO_REMITTANCE_APP_BALANCE_URI', 'remittance/v1_0/account/balance'),
 
             // User account status
-            'user_account_uri' => env('MOMO_REMITTANCE_USER_ACCOUNT_URI', 'remittance/v1_0/accountholder/{account_type_name}/{account_id}/active'),
+            'user_account_uri' => env(
+                'MOMO_REMITTANCE_USER_ACCOUNT_URI',
+                'remittance/v1_0/accountholder/{account_type_name}/{account_id}/active'
+            ),
         ],
     ],
 
