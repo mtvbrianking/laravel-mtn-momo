@@ -268,4 +268,29 @@ class Remittance extends Product
             throw new RemittanceRequestException('Unable to get transaction status.', 0, $ex);
         }
     }
+
+    /**
+     * Get account balance.
+     *
+     * @see https://momodeveloper.mtn.com/docs/services/remittance/operations/get-v1_0-account-balance Documentation
+     *
+     * @throws \Bmatovu\MtnMomo\Exceptions\RemittanceRequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array Account balance.
+     */
+    public function getAccountBalance()
+    {
+        try {
+            $response = $this->client->request('GET', $this->appAccountBalanceUri, [
+                'headers' => [
+                    'X-Target-Environment' => $this->environment,
+                ],
+            ]);
+
+            return json_decode($response->getBody(), true);
+        } catch (RequestException $ex) {
+            throw new RemittanceRequestException('Unable to get account balance.', 0, $ex);
+        }
+    }
 }

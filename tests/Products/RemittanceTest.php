@@ -93,4 +93,22 @@ class RemittanceTest extends TestCase
 
         $this->assertEquals($transaction, $body);
     }
+
+    public function test_get_account_balance()
+    {
+        $body = [
+            'availableBalance' => 100,
+            'currency' => 'EUR'
+        ];
+
+        $response = new Response(200, [], json_encode($body));
+
+        $mockClient = $this->mockGuzzleClient($response);
+
+        $remittance = new Remittance([], [], $mockClient);
+
+        $accountBal = $remittance->getAccountBalance();
+
+        $this->assertEquals($accountBal, $body);
+    }
 }
