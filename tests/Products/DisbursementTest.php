@@ -143,6 +143,20 @@ class DisbursementTest extends TestCase
         $this->assertEquals($accountBal, $body);
     }
 
+    public function test_disbursement_can_determine_account_status()
+    {
+        $body = [
+            'result' => true
+        ];
 
+        $response = new Response(200, [], json_encode($body));
 
+        $mockClient = $this->mockGuzzleClient($response);
+
+            $disbursement = new Disbursement([], [], $mockClient);
+
+        $isActive = $disbursement->isActive('07XXXXXXXX');
+
+        $this->assertTrue($isActive);
+    }
 }
