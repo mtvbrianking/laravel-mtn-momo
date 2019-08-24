@@ -5,13 +5,14 @@
  */
 
 namespace Bmatovu\MtnMomo\Products;
-
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Exception\RequestException;
-use Bmatovu\MtnMomo\Exceptions\CollectionRequestException;
-use Illuminate\Container\Container;
-use Illuminate\Contracts\Config\Repository;
 use Ramsey\Uuid\Uuid;
+use GuzzleHttp\ClientInterface;
+use Illuminate\Container\Container;
+use GuzzleHttp\Exception\RequestException;
+use Illuminate\Contracts\Config\Repository;
+use Bmatovu\MtnMomo\Exceptions\CollectionRequestException;
+
+
 
 /**
  * Class Disbursement
@@ -129,6 +130,7 @@ class Disbursement extends Product
 
         $this->setTokenUri($config->get('mtn-momo.products.disbursement.token_uri'));
         $this->setTransactUri($config->get('mtn-momo.products.disbursement.transact_uri'));
+        $this->setTransactionStatusUri($config->get('mtn-momo.products.disbursement.transaction_status_uri'));
 
 
         parent::__construct($headers, $middlewares, $client);
@@ -216,6 +218,27 @@ class Disbursement extends Product
             throw new CollectionRequestException('Request to transfer transaction - unsuccessful.', 0, $ex);
         }
     }
+
+    public function getDisbursementTransactionStatus($payment_ref)
+    {
+        $transaction_status_uri = str_replace('{transaction_id}', $payment_ref, $this->getTransactionStatusUri());
+
+        try {
+            $response = $this->client->request('GET', $transaction_status_uri, [
+                'headers' => [
+                    'X-Target-Environment' => $this->getEnvironment(),
+                ],
+            ]);
+
+            return json_decode($response->getBody(), true);
+        } catch (RequestException $ex) {
+            throw new CollectionRequestException('Unable to get transaction status.', 0, $ex);
+        }
+    }
+
+
+
+
 
 
 
