@@ -9,7 +9,7 @@ use Illuminate\Console\Command;
 use Bmatovu\MtnMomo\Traits\CommandUtilTrait;
 
 /**
- * Boostrap integration.
+ * Bootstrap integration.
  */
 class BootstrapCommand extends Command
 {

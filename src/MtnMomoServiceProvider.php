@@ -63,6 +63,8 @@ class MtnMomoServiceProvider extends ServiceProvider
     /**
      * Create command's concrete client.
      *
+     * @throws \Exception
+     *
      * @return \GuzzleHttp\ClientInterface
      */
     protected function commandClient()
@@ -94,6 +96,8 @@ class MtnMomoServiceProvider extends ServiceProvider
 
     /**
      * Get log middleware.
+     *
+     * @throws \Exception
      *
      * @return callable GuzzleHttp Middleware
      */
