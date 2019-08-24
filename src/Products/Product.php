@@ -341,6 +341,8 @@ abstract class Product
     /**
      * Get log middleware.
      *
+     * @throws \Exception
+     *
      * @return callable
      */
     protected function getLogMiddleware()

@@ -200,6 +200,8 @@ class BootstrapCommand extends Command
     /**
      * Create/update client APP ID.
      *
+     * @throws \Exception
+     *
      * @return void
      */
     protected function setClientId()

@@ -137,13 +137,15 @@ class Collection extends Product
      *
      * @see https://momodeveloper.mtn.com/docs/services/collection/operations/requesttopay-POST Documentation
      *
-     * @param  string $external_id   Transaction reference ID.
-     * @param  string $party_id      Account holder. Usually phone number if type is MSISDN.
-     * @param  int    $amount        How much to debit the payer.
+     * @param  string $external_id Transaction reference ID.
+     * @param  string $party_id Account holder. Usually phone number if type is MSISDN.
+     * @param  int $amount How much to debit the payer.
      * @param  string $payer_message Payer transaction history message.
-     * @param  string $payee_note    Payee transaction history message.
+     * @param  string $payee_note Payee transaction history message.
      *
      * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
      *
      * @return string                Payment reference ID
      */
@@ -185,6 +187,7 @@ class Collection extends Product
      * @param  string $payment_ref ID
      *
      * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return array
      */
@@ -213,6 +216,7 @@ class Collection extends Product
      * Request collections access token.
      *
      * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return array
      */
@@ -243,6 +247,7 @@ class Collection extends Product
      * Get account balance.
      *
      * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return array Account balance.
      */
@@ -270,6 +275,7 @@ class Collection extends Product
      * @param  string $account_type_name
      *
      * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return array User account info
      */
