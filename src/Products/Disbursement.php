@@ -11,7 +11,7 @@ use GuzzleHttp\ClientInterface;
 use Illuminate\Container\Container;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Contracts\Config\Repository;
-use Bmatovu\MtnMomo\Exceptions\CollectionRequestException;
+use Bmatovu\MtnMomo\Exceptions\DisbursementRequestException;
 
 /**
  * Class Disbursement.
@@ -23,7 +23,7 @@ class Disbursement extends Product
      *
      * @var string
      */
-    protected $transactUri;
+    protected $transactionUri;
 
     /**
      * Transaction status URI.
@@ -33,33 +33,33 @@ class Disbursement extends Product
     protected $transactionStatusUri;
 
     /**
-     * User account URI.
+     * Account status URI.
      *
      * @var string
      */
-    protected $userAccountUri;
+    protected $accountStatusUri;
 
     /**
-     * App account balance URI.
+     * Account balance URI.
      *
      * @var string
      */
-    protected $appAccountBalanceUri;
+    protected $accountBalanceUri;
 
     /**
      * @return string
      */
-    public function getTransactUri()
+    public function getTransactionUri()
     {
-        return $this->transactUri;
+        return $this->transactionUri;
     }
 
     /**
-     * @param string $transactUri
+     * @param string $transactionUri
      */
-    public function setTransactUri($transactUri)
+    public function setTransactionUri($transactionUri)
     {
-        $this->transactUri = $transactUri;
+        $this->transactionUri = $transactionUri;
     }
 
     /**
@@ -81,59 +81,61 @@ class Disbursement extends Product
     /**
      * @return string
      */
-    public function getUserAccountUri()
+    public function getAccountStatusUri()
     {
-        return $this->userAccountUri;
+        return $this->accountStatusUri;
     }
 
     /**
-     * @param string $userAccountUri
+     * @param string $accountStatusUri
      */
-    public function setUserAccountUri($userAccountUri)
+    public function setAccountStatusUri($accountStatusUri)
     {
-        $this->userAccountUri = $userAccountUri;
+        $this->accountStatusUri = $accountStatusUri;
     }
 
     /**
      * @return string
      */
-    public function getAppAccountBalanceUri()
+    public function getAccountBalanceUri()
     {
-        return $this->appAccountBalanceUri;
+        return $this->accountBalanceUri;
     }
 
     /**
-     * @param string $appAccountBalanceUri
+     * @param string $accountBalanceUri
      */
-    public function setAppAccountBalanceUri($appAccountBalanceUri)
+    public function setAccountBalanceUri($accountBalanceUri)
     {
-        $this->appAccountBalanceUri = $appAccountBalanceUri;
+        $this->accountBalanceUri = $accountBalanceUri;
     }
 
     /**
      * Disbursement constructor.
+     *
      * @param array $headers
-     * @param array $middlewares
+     * @param array $middleware
      * @param \GuzzleHttp\ClientInterface $client
+     *
      * @throws \Exception
      */
-    public function __construct(array $headers = [], array $middlewares = [], ClientInterface $client = null)
+    public function __construct(array $headers = [], array $middleware = [], ClientInterface $client = null)
     {
         $config = Container::getInstance()->make(Repository::class);
 
-        $this->setsubscriptionKey($config->get('mtn-momo.products.disbursement.key'));
-        $this->setClientId($config->get('mtn-momo.products.disbursement.id'));
-        $this->setClientSecret($config->get('mtn-momo.products.disbursement.secret'));
-        $this->setClientRedirectUri($config->get('mtn-momo.products.disbursement.redirect_uri'));
+        $this->subscriptionKey = $config->get('mtn-momo.products.disbursement.key');
+        $this->clientId = $config->get('mtn-momo.products.disbursement.id');
+        $this->clientSecret = $config->get('mtn-momo.products.disbursement.secret');
+        $this->clientRedirectUri = $config->get('mtn-momo.products.disbursement.redirect_uri');
 
-        $this->setTokenUri($config->get('mtn-momo.products.disbursement.token_uri'));
-        $this->setTransactUri($config->get('mtn-momo.products.disbursement.transact_uri'));
-        $this->setTransactionStatusUri($config->get('mtn-momo.products.disbursement.transaction_status_uri'));
-        $this->setUserAccountUri($config->get('mtn-momo.products.disbursement.user_account_uri'));
-        $this->setAppAccountBalanceUri($config->get('mtn-momo.products.disbursement.app_account_balance_uri'));
-        $this->setPartyIdType($config->get('mtn-momo.products.disbursement.party_id_type'));
+        $this->tokenUri = $config->get('mtn-momo.products.disbursement.token_uri');
+        $this->transactionUri = $config->get('mtn-momo.products.disbursement.transaction_uri');
+        $this->transactionStatusUri = $config->get('mtn-momo.products.disbursement.transaction_status_uri');
+        $this->accountStatusUri = $config->get('mtn-momo.products.disbursement.account_status_uri');
+        $this->accountBalanceUri = $config->get('mtn-momo.products.disbursement.account_balance_uri');
+        $this->partyIdType = $config->get('mtn-momo.products.disbursement.party_id_type');
 
-        parent::__construct($headers, $middlewares, $client);
+        parent::__construct($headers, $middleware, $client);
     }
 
     /**
@@ -141,21 +143,16 @@ class Disbursement extends Product
      *
      * @see https://momodeveloper.mtn.com/docs/services/disbursement/operations/token-POST Documentation
      *
-     * @return array
-     *
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array
      */
     public function getToken()
     {
-        $resource = $this->getTokenUri();
-
         try {
-            $client_id = $this->getClientId();
-            $client_secret = $this->getClientSecret();
-
-            $response = $this->client->request('POST', $resource, [
+            $response = $this->client->request('POST', $this->tokenUri, [
                 'headers' => [
-                    'Authorization' => 'Basic '.base64_encode($client_id.':'.$client_secret),
+                    'Authorization' => 'Basic '.base64_encode($this->clientId.':'.$this->clientSecret),
                 ],
                 'json' => [
                     'grant_type' => 'client_credentials',
@@ -164,7 +161,7 @@ class Disbursement extends Product
 
             return json_decode($response->getBody(), true);
         } catch (RequestException $ex) {
-            throw new CollectionRequestException('Unable to get token.', 0, $ex);
+            throw new DisbursementRequestException('Unable to get token.', 0, $ex);
         }
     }
 
@@ -173,49 +170,50 @@ class Disbursement extends Product
      *
      * @see https://momodeveloper.mtn.com/docs/services/disbursement/operations/transfer-POST Documentation
      *
-     * @param  string $external_id             Transaction reference ID.
-     * @param  string $party_id                Account holder. Usually phone number if type is MSISDN.
-     * @param  int $amount                     How much to transfer to payee account.
-     * @param  string $payer_message           Payer transaction history message.
-     * @param  string $payee_note              Payee transaction history message.
+     * @param  string $transactionId Transaction reference ID.
+     * @param  string $partyId Account holder. Usually phone number if type is MSISDN.
+     * @param  int $amount How much to transfer to payee account.
+     * @param  string $payerMessage Payer transaction history message.
+     * @param  string $payeeNote Payee transaction history message.
      *
-     * @return string $payment_ref                Auto generated payment reference. Format: UUID
+     * @throws \Bmatovu\MtnMomo\Exceptions\DisbursementRequestException
      * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
+     *
+     * @return string $momoTransactionId                Auto generated payment reference. Format: UUID
      */
-    public function transfer($external_id, $party_id, $amount, $payer_message = '', $payee_note = '')
+    public function transfer($transactionId, $partyId, $amount, $payerMessage = '', $payeeNote = '')
     {
-        $payment_ref = Uuid::uuid4()->toString();
-
-        $resource = $this->getTransactUri();
+        $momoTransactionId = Uuid::uuid4()->toString();
 
         $headers = [
-            'X-Reference-Id' => $payment_ref,
-            'X-Target-Environment' => $this->getEnvironment(),
+            'X-Reference-Id' => $momoTransactionId,
+            'X-Target-Environment' => $this->environment,
         ];
 
-        if ($this->getEnvironment() == 'live') {
-            $headers['X-Callback-Url'] = $this->getClientRedirectUri();
+        if ($this->environment != 'sandbox') {
+            $headers['X-Callback-Url'] = $this->clientRedirectUri;
         }
 
         try {
-            $this->client->request('POST', $resource, [
+            $this->client->request('POST', $this->transactionUri, [
                 'headers' => $headers,
                 'json' => [
                     'amount' => $amount,
-                    'currency' => $this->getCurrency(),
-                    'externalId' => $external_id,
+                    'currency' => $this->currency,
+                    'externalId' => $transactionId,
                     'payee' => [
-                        'partyIdType' => $this->getPartyIdType(),
-                        'partyId' => $party_id,
+                        'partyIdType' => $this->partyIdType,
+                        'partyId' => $partyId,
                     ],
-                    'payerMessage' => $payer_message,
-                    'payeeNote' => $payee_note,
+                    'payerMessage' => $payerMessage,
+                    'payeeNote' => $payeeNote,
                 ],
             ]);
 
-            return $payment_ref;
+            return $momoTransactionId;
         } catch (RequestException $ex) {
-            throw new CollectionRequestException('Request to transfer transaction - unsuccessful.', 0, $ex);
+            throw new DisbursementRequestException('Request to transfer transaction - unsuccessful.', 0, $ex);
         }
     }
 
@@ -224,26 +222,27 @@ class Disbursement extends Product
      *
      * @see https://momodeveloper.mtn.com/docs/services/disbursement/operations/transfer-referenceId-GET Documentation
      *
-     * @param  string $payment_ref That was returned by transfer (transferAmount)
+     * @param  string $momoTransactionId That was returned by transfer (transferAmount)
      *
-     * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
+     * @throws \Bmatovu\MtnMomo\Exceptions\DisbursementRequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return array
      */
-    public function getDisbursementTransactionStatus($payment_ref)
+    public function getDisbursementTransactionStatus($momoTransactionId)
     {
-        $transaction_status_uri = str_replace('{transaction_id}', $payment_ref, $this->getTransactionStatusUri());
+        $transaction_status_uri = str_replace('{momoTransactionId}', $momoTransactionId, $this->transactionStatusUri);
 
         try {
             $response = $this->client->request('GET', $transaction_status_uri, [
                 'headers' => [
-                    'X-Target-Environment' => $this->getEnvironment(),
+                    'X-Target-Environment' => $this->environment,
                 ],
             ]);
 
             return json_decode($response->getBody(), true);
         } catch (RequestException $ex) {
-            throw new CollectionRequestException('Unable to get transaction status.', 0, $ex);
+            throw new DisbursementRequestException('Unable to get transaction status.', 0, $ex);
         }
     }
 
@@ -252,24 +251,23 @@ class Disbursement extends Product
      *
      * @see https://momodeveloper.mtn.com/docs/services/disbursement/operations/get-v1_0-account-balance Documentation
      *
-     * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
+     * @throws \Bmatovu\MtnMomo\Exceptions\DisbursementRequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return array Account balance.
      */
     public function getAccountBalance()
     {
-        $resource = $this->getAppAccountBalanceUri();
-
         try {
-            $response = $this->client->request('GET', $resource, [
+            $response = $this->client->request('GET', $this->accountBalanceUri, [
                 'headers' => [
-                    'X-Target-Environment' => $this->getEnvironment(),
+                    'X-Target-Environment' => $this->environment,
                 ],
             ]);
 
             return json_decode($response->getBody(), true);
         } catch (RequestException $ex) {
-            throw new CollectionRequestException('Unable to get account balance.', 0, $ex);
+            throw new DisbursementRequestException('Unable to get account balance.', 0, $ex);
         }
     }
 
@@ -278,35 +276,34 @@ class Disbursement extends Product
      *
      * @see https://momodeveloper.mtn.com/docs/services/disbursement/operations/get-v1_0-accountholder-accountholderidtype-accountholderid-active Documentation
      *
-     * @param  string $account_id        Party number - MSISDN, email, or code - UUID.
-     * @param  string $account_type_name Specifies the type of the account ID. Allowed values [msisdn, email, party_code].
+     * @param  string $partyId Party number - MSISDN, email, or code - UUID.
+     * @param  string $partyIdType Specifies the type of the account ID. Allowed values [msisdn, email, party_code].
      *
-     * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
+     * @throws \Bmatovu\MtnMomo\Exceptions\DisbursementRequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return bool True if account holder is registered and active, false if the account holder is not active or not found
      */
-    public function isActive($account_id, $account_type_name = null)
+    public function isActive($partyId, $partyIdType = null)
     {
-        $resource = $this->getUserAccountUri();
-
-        if (is_null($account_type_name)) {
-            $account_type_name = $this->getPartyIdType();
+        if (is_null($partyIdType)) {
+            $partyIdType = $this->partyIdType;
         }
 
         $patterns = $replacements = [];
 
-        $patterns[] = '/(\{\baccount_type_name\b\})/';
-        $replacements[] = strtolower($account_type_name);
+        $patterns[] = '/(\{\bpartyIdType\b\})/';
+        $replacements[] = strtolower($partyIdType);
 
-        $patterns[] = '/(\{\baccount_id\b\})/';
-        $replacements[] = urlencode($account_id);
+        $patterns[] = '/(\{\bpartyId\b\})/';
+        $replacements[] = urlencode($partyId);
 
-        $resource = preg_replace($patterns, $replacements, $resource);
+        $accountStatusUri = preg_replace($patterns, $replacements, $this->accountStatusUri);
 
         try {
-            $response = $this->client->request('GET', $resource, [
+            $response = $this->client->request('GET', $accountStatusUri, [
                 'headers' => [
-                    'X-Target-Environment' => $this->getEnvironment(),
+                    'X-Target-Environment' => $this->environment,
                 ],
             ]);
 
@@ -314,7 +311,7 @@ class Disbursement extends Product
 
             return (bool) $body['result'];
         } catch (RequestException $ex) {
-            throw new CollectionRequestException('Unable to get user account information.', 0, $ex);
+            throw new DisbursementRequestException('Unable to get user account information.', 0, $ex);
         }
     }
 }

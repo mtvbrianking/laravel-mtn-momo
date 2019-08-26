@@ -1,5 +1,5 @@
 <?php
-namespace Bmatovu\MtnMomo\Tests\Models;
+namespace Bmatovu\MtnMomo\Tests\Repositories;
 
 use Carbon\Carbon;
 use Bmatovu\MtnMomo\Models\Token;

@@ -85,10 +85,10 @@ class BootstrapCommand extends Command
             'May be indicated in the message sent to the payee',
         ]);
 
-        $client_name = $this->laravel['config']->get('mtn-momo.app');
-        $client_name = $this->ask('MOMO_APP', $client_name);
+        $clientName = $this->laravel['config']->get('mtn-momo.app');
+        $clientName = $this->ask('MOMO_APP', $clientName);
 
-        $this->updateSetting('MOMO_APP', 'mtn-momo.app', $client_name);
+        $this->updateSetting('MOMO_APP', 'mtn-momo.app', $clientName);
     }
 
     /**
@@ -162,9 +162,9 @@ class BootstrapCommand extends Command
 
         $uProduct = strtoupper($product);
 
-        $product_key = $this->laravel['config']->get("mtn-momo.products.{$product}.key");
-        $product_key = $this->ask("MOMO_{$uProduct}_SUBSCRIPTION_KEY", $product_key);
+        $productKey = $this->laravel['config']->get("mtn-momo.products.{$product}.key");
+        $productKey = $this->ask("MOMO_{$uProduct}_SUBSCRIPTION_KEY", $productKey);
 
-        $this->updateSetting("MOMO_{$uProduct}_SUBSCRIPTION_KEY", "mtn-momo.products.{$product}.key", $product_key);
+        $this->updateSetting("MOMO_{$uProduct}_SUBSCRIPTION_KEY", "mtn-momo.products.{$product}.key", $productKey);
     }
 }
