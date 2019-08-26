@@ -54,6 +54,11 @@ class DisbursementTest extends TestCase
         $this->assertEquals($token,$body);
     }
 
+    /**
+     * Test transfer amount
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     public function test_transfer_operation(){
 
         $response = new Response(202, [], null);
@@ -69,6 +74,12 @@ class DisbursementTest extends TestCase
         $this->assertTrue(Uuid::isValid($transaction_ref));
 
     }
+
+    /**
+     * Test bad request
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
 
     public function test_throws_previous_transfer_disbursement_request_exception()
     {
@@ -95,6 +106,12 @@ class DisbursementTest extends TestCase
         }
     }
 
+    /**
+     * Test check transaction status
+     *
+     * @throws \Exception
+     *
+     */
     public function test_check_transfer_transaction_status()
     {
         $body = [
@@ -125,6 +142,11 @@ class DisbursementTest extends TestCase
         $this->assertEquals($transaction, $body);
     }
 
+    /**
+     * Test account balance
+     *
+     * @throws \Exception
+     */
     public function test_disbursement_get_account_balance()
     {
         $body = [

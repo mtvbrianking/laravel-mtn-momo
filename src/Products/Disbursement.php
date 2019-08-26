@@ -131,6 +131,9 @@ class Disbursement extends Product
         $this->setTokenUri($config->get('mtn-momo.products.disbursement.token_uri'));
         $this->setTransactUri($config->get('mtn-momo.products.disbursement.transact_uri'));
         $this->setTransactionStatusUri($config->get('mtn-momo.products.disbursement.transaction_status_uri'));
+        $this->setUserAccountUri($config->get('mtn-momo.products.disbursement.user_account_uri'));
+        $this->setAppAccountBalanceUri($config->get('mtn-momo.products.disbursement.app_account_balance_uri'));
+        $this->setPartyIdType($config->get('mtn-momo.products.disbursement.party_id_type'));
 
 
         parent::__construct($headers, $middlewares, $client);
@@ -182,7 +185,7 @@ class Disbursement extends Product
      * @return string $payment_ref                Auto generated payment reference. Format: UUID
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function transfer($external_id, $party_id, $amount, $payer_message = '', $payee_note = '')
+    public function transfer($external_id, $party_id, $amount, $payer_message = '',$partyIdType='', $payee_note = '')
     {
         $payment_ref = Uuid::uuid4()->toString();
 
@@ -204,7 +207,7 @@ class Disbursement extends Product
                     'amount' => $amount,
                     'currency' => $this->getCurrency(),
                     'externalId' => $external_id,
-                    'payer' => [
+                    'payee' => [
                         'partyIdType' => $this->getPartyIdType(),
                         'partyId' => $party_id,
                     ],
