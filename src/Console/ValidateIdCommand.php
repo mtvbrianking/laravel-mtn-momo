@@ -72,24 +72,24 @@ class ValidateIdCommand extends Command
             $product = $this->laravel['config']->get('mtn-momo.product');
         }
 
-        $client_id = $this->option('id');
+        $clientId = $this->option('id');
 
-        if (! $client_id) {
-            $client_id = $this->laravel['config']->get("mtn-momo.products.{$product}.id");
+        if (! $clientId) {
+            $clientId = $this->laravel['config']->get("mtn-momo.products.{$product}.id");
         }
 
-        $client_id = $this->ask('Use client app ID?', $client_id);
+        $clientId = $this->ask('Use client app ID?', $clientId);
 
-        while (! Uuid::isValid($client_id)) {
+        while (! Uuid::isValid($clientId)) {
             $this->info(' Invalid UUID (Format: 4). #IETF RFC4122');
-            $client_id = $this->ask('MOMO_CLIENT_ID');
+            $clientId = $this->ask('MOMO_CLIENT_ID');
         }
 
-        $validate_id_uri = $this->laravel['config']->get('mtn-momo.api.validate_id_uri');
+        $validateIdUri = $this->laravel['config']->get('mtn-momo.api.validate_id_uri');
 
-        $validate_id_uri = str_replace('{client_id}', $client_id, $validate_id_uri);
+        $validateIdUri = str_replace('{clientId}', $clientId, $validateIdUri);
 
-        $this->requestClientInfo($validate_id_uri);
+        $this->requestClientInfo($validateIdUri);
     }
 
     /**
@@ -97,16 +97,16 @@ class ValidateIdCommand extends Command
      *
      * @link https://momodeveloper.mtn.com/docs/services/sandbox-provisioning-api/operations/get-v1_0-apiuser Documenation.
      *
-     * @param string $client_id_status_uri
+     * @param string $clientIdStatusUri
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return void
      */
-    protected function requestClientInfo($client_id_status_uri)
+    protected function requestClientInfo($clientIdStatusUri)
     {
         try {
-            $response = $this->client->request('GET', $client_id_status_uri, []);
+            $response = $this->client->request('GET', $clientIdStatusUri, []);
 
             $this->line("\r\nStatus: <fg=green>".$response->getStatusCode().' '.$response->getReasonPhrase().'</>');
 

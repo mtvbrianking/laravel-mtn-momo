@@ -70,7 +70,7 @@ class RemittanceTest extends TestCase
             'amount' => 100,
             'currency' => 'UGX',
             'externalId' => 947354,
-            'payer' => [
+            'payee' => [
                 'partyIdType' => 'MSISDN',
                 'partyId' => 4656473839
             ],

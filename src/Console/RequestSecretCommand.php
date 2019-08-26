@@ -85,15 +85,15 @@ class RequestSecretCommand extends Command
             $this->product = $this->laravel['config']->get('mtn-momo.product');
         }
 
-        $client_id = $this->getClientId();
+        $clientId = $this->getClientId();
 
-        $client_secret = $this->requestClientSecret($client_id);
+        $clientSecret = $this->requestClientSecret($clientId);
 
-        if (! $client_secret) {
+        if (! $clientSecret) {
             return;
         }
 
-        $this->updateSetting("MOMO_{$this->product}_SECRET", "mtn-momo.products.{$this->product}.secret", $client_secret);
+        $this->updateSetting("MOMO_{$this->product}_SECRET", "mtn-momo.products.{$this->product}.secret", $clientSecret);
     }
 
     /**
@@ -130,28 +130,28 @@ class RequestSecretCommand extends Command
      *
      * @link https://momodeveloper.mtn.com/docs/services/sandbox-provisioning-api/operations/post-v1_0-apiuser-apikey Documentation
      *
-     * @param string $client_id
+     * @param string $clientId
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return string|null Client Secret
      */
-    protected function requestClientSecret($client_id)
+    protected function requestClientSecret($clientId)
     {
         try {
-            $request_secret_uri = $this->laravel['config']->get('mtn-momo.api.request_secret_uri');
+            $requestSecretUri = $this->laravel['config']->get('mtn-momo.api.request_secret_uri');
 
-            $request_secret_uri = str_replace('{client_id}', $client_id, $request_secret_uri);
+            $requestSecretUri = str_replace('{clientId}', $clientId, $requestSecretUri);
 
-            $response = $this->client->request('POST', $request_secret_uri, []);
+            $response = $this->client->request('POST', $requestSecretUri, []);
 
             $this->line("\r\nStatus: <fg=green>".$response->getStatusCode().' '.$response->getReasonPhrase().'</>');
 
             $this->line("\r\nBody: <fg=green>".$response->getBody()."</>\r\n");
 
-            $api_response = json_decode($response->getBody(), true);
+            $apiResponse = json_decode($response->getBody(), true);
 
-            return $api_response['apiKey'];
+            return $apiResponse['apiKey'];
         } catch (ConnectException $ex) {
             $this->line("\r\n<fg=red>".$ex->getMessage().'</>');
         } catch (ClientException $ex) {

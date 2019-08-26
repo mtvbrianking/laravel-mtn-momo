@@ -2,25 +2,19 @@
 
 namespace Bmatovu\MtnMomo\Tests\Products;
 
-
 use Ramsey\Uuid\Uuid;
 use GuzzleHttp\Psr7\Response;
 use Bmatovu\MtnMomo\Tests\TestCase;
 use Bmatovu\MtnMomo\Products\Product;
 use Bmatovu\MtnMomo\Products\Disbursement;
 use GuzzleHttp\Exception\RequestException;
-use Bmatovu\MtnMomo\Exceptions\CollectionRequestException;
+use Bmatovu\MtnMomo\Exceptions\DisbursementRequestException;
 
 /**
  * @see \Bmatovu\MtnMomo\Products\Disbursement
  */
 class DisbursementTest extends TestCase
 {
-    /**
-     * Test Disbursement extends Product
-     *
-     * @throws \Exception
-     */
     public function test_disbursement_extends_product()
     {
         $disburse = new Disbursement();
@@ -28,13 +22,6 @@ class DisbursementTest extends TestCase
         $this->assertInstanceOf(Product::class, $disburse);
     }
 
-    /**
-     * test create access token
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     *
-     * @throws \Exception
-     */
     public function test_create_accessToken()
     {
         $body = [
@@ -54,12 +41,7 @@ class DisbursementTest extends TestCase
         $this->assertEquals($token,$body);
     }
 
-    /**
-     * Test transfer amount
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     */
-    public function test_transfer_operation(){
+    public function test_can_transfer(){
 
         $response = new Response(202, [], null);
 
@@ -69,17 +51,11 @@ class DisbursementTest extends TestCase
 
         $this->assertInstanceOf(Product::class, $disbursement);
 
-        $transaction_ref = $disbursement->transfer('EXT_REF_ID', '07XXXXXXXX', 100);
+        $transaction_ref = $disbursement->transfer('int_trans_id', '07XXXXXXXX', 100);
 
         $this->assertTrue(Uuid::isValid($transaction_ref));
 
     }
-
-    /**
-     * Test bad request
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     */
 
     public function test_throws_previous_transfer_disbursement_request_exception()
     {
@@ -92,10 +68,10 @@ class DisbursementTest extends TestCase
         $this->assertInstanceOf(Product::class, $disbursement);
 
         try {
-            $transaction_ref = $disbursement->transfer('EXT_REF_ID', '07XXXXXXXX', 100);
+            $transaction_ref = $disbursement->transfer('int_trans_id', '07XXXXXXXX', 100);
             $this->assertNull($transaction_ref);
-        } catch(CollectionRequestException $e) {
-            $this->assertInstanceOf(CollectionRequestException::class, $e);
+        } catch(DisbursementRequestException $e) {
+            $this->assertInstanceOf(DisbursementRequestException::class, $e);
             $this->assertEquals($e->getCode(), 0);
             $this->assertEquals('Request to transfer transaction - unsuccessful.', $e->getMessage());
 
@@ -106,19 +82,13 @@ class DisbursementTest extends TestCase
         }
     }
 
-    /**
-     * Test check transaction status
-     *
-     * @throws \Exception
-     *
-     */
     public function test_check_transfer_transaction_status()
     {
         $body = [
             'amount' => 100,
             'currency' => 'UGX',
             'externalId' => 947354,
-            'payer' => [
+            'payee' => [
                 'partyIdType' => 'MSISDN',
                 'partyId' => 4656473839
             ],
@@ -135,18 +105,13 @@ class DisbursementTest extends TestCase
 
         $disbursement = new Disbursement([], [], $mockClient);
 
-        $treansaction_ref = Uuid::uuid4()->toString();
+        $ext_trans_ref = Uuid::uuid4()->toString();
 
-        $transaction = $disbursement->getDisbursementTransactionStatus($treansaction_ref);
+        $transaction = $disbursement->getDisbursementTransactionStatus($ext_trans_ref);
 
         $this->assertEquals($transaction, $body);
     }
 
-    /**
-     * Test account balance
-     *
-     * @throws \Exception
-     */
     public function test_disbursement_get_account_balance()
     {
         $body = [
@@ -175,7 +140,7 @@ class DisbursementTest extends TestCase
 
         $mockClient = $this->mockGuzzleClient($response);
 
-            $disbursement = new Disbursement([], [], $mockClient);
+        $disbursement = new Disbursement([], [], $mockClient);
 
         $isActive = $disbursement->isActive('07XXXXXXXX');
 
