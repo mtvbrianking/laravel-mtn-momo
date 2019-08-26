@@ -5,6 +5,7 @@
  */
 
 namespace Bmatovu\MtnMomo\Products;
+
 use Ramsey\Uuid\Uuid;
 use GuzzleHttp\ClientInterface;
 use Illuminate\Container\Container;
@@ -12,11 +13,8 @@ use GuzzleHttp\Exception\RequestException;
 use Illuminate\Contracts\Config\Repository;
 use Bmatovu\MtnMomo\Exceptions\CollectionRequestException;
 
-
-
 /**
- * Class Disbursement
- * @package Bmatovu\MtnMomo\Products
+ * Class Disbursement.
  */
 class Disbursement extends Product
 {
@@ -148,8 +146,8 @@ class Disbursement extends Product
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function getToken(){
-
+    public function getToken()
+    {
         $resource = $this->getTokenUri();
 
         try {
@@ -172,7 +170,7 @@ class Disbursement extends Product
     }
 
     /**
-     * transfer an amount to a payee account
+     * Transfer an amount to a payee account.
      *
      * @see https://momodeveloper.mtn.com/docs/services/disbursement/operations/transfer-POST Documentation
      *
@@ -185,7 +183,7 @@ class Disbursement extends Product
      * @return string $payment_ref                Auto generated payment reference. Format: UUID
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function transfer($external_id, $party_id, $amount, $payer_message = '',$partyIdType='', $payee_note = '')
+    public function transfer($external_id, $party_id, $amount, $payer_message = '', $payee_note = '')
     {
         $payment_ref = Uuid::uuid4()->toString();
 
@@ -221,6 +219,7 @@ class Disbursement extends Product
             throw new CollectionRequestException('Request to transfer transaction - unsuccessful.', 0, $ex);
         }
     }
+
     /**
      * Get transaction status.
      *
