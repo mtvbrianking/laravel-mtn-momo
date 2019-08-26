@@ -89,18 +89,18 @@ class RegisterIdCommand extends Command
 
         $id = $this->getClientId();
 
-        $redirect_uri = $this->getClientRedirectUri();
+        $redirectUri = $this->getClientRedirectUri();
 
-        $is_registered = $this->registerClientId($id, $redirect_uri);
+        $isRegistered = $this->registerClientId($id, $redirectUri);
 
-        if (! $is_registered) {
+        if (! $isRegistered) {
             return;
         }
 
         $this->info('Writing configurations to .env file...');
 
         $this->updateSetting("MOMO_{$this->product}_ID", "mtn-momo.products.{$this->product}.id", $id);
-        $this->updateSetting("MOMO_{$this->product}_REDIRECT_URI", "mtn-momo.products.{$this->product}.redirect_uri", $redirect_uri);
+        $this->updateSetting("MOMO_{$this->product}_REDIRECT_URI", "mtn-momo.products.{$this->product}.redirect_uri", $redirectUri);
 
         if ($this->confirm('Do you wish to request for the app secret?', true)) {
             $this->call('mtn-momo:request-secret', [
@@ -159,22 +159,22 @@ class RegisterIdCommand extends Command
         $this->info('Client APP redirect URI - [X-Callback-Url, providerCallbackHost]');
 
         // Client redirect URI from command options.
-        $redirect_uri = $this->option('callback');
+        $redirectUri = $this->option('callback');
 
         // Client redirect URI from .env
-        if (! $redirect_uri) {
-            $redirect_uri = $this->laravel['config']->get("mtn-momo.products.{$this->product}.redirect_uri");
+        if (! $redirectUri) {
+            $redirectUri = $this->laravel['config']->get("mtn-momo.products.{$this->product}.redirect_uri");
         }
 
-        $redirect_uri = $this->ask('Use client app redirect URI?', $redirect_uri);
+        $redirectUri = $this->ask('Use client app redirect URI?', $redirectUri);
 
         // Validate Client redirect URI
-        while ($redirect_uri && ! filter_var($redirect_uri, FILTER_VALIDATE_URL)) {
+        while ($redirectUri && ! filter_var($redirectUri, FILTER_VALIDATE_URL)) {
             $this->info(' Invalid URI. #IETF RFC3986');
-            $redirect_uri = $this->ask('MOMO_CLIENT_REDIRECT_URI?', false);
+            $redirectUri = $this->ask('MOMO_CLIENT_REDIRECT_URI?', false);
         }
 
-        return $redirect_uri;
+        return $redirectUri;
     }
 
     /**
@@ -185,26 +185,26 @@ class RegisterIdCommand extends Command
      *
      * @link https://momodeveloper.mtn.com/docs/services/sandbox-provisioning-api/operations/post-v1_0-apiuser Documenation.
      *
-     * @param string $client_id
-     * @param string $client_redirect_uri
+     * @param string $clientId
+     * @param string $clientRedirectUri
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return bool Is registered.
      */
-    protected function registerClientId($client_id, $client_redirect_uri)
+    protected function registerClientId($clientId, $clientRedirectUri)
     {
         $this->info('Registering Client ID');
 
-        $register_id_uri = $this->laravel['config']->get('mtn-momo.api.register_id_uri');
+        $registerIdUri = $this->laravel['config']->get('mtn-momo.api.register_id_uri');
 
         try {
-            $response = $this->client->request('POST', $register_id_uri, [
+            $response = $this->client->request('POST', $registerIdUri, [
                 'headers' => [
-                    'X-Reference-Id' => $client_id,
+                    'X-Reference-Id' => $clientId,
                 ],
                 'json' => [
-                    'providerCallbackHost' => $client_redirect_uri,
+                    'providerCallbackHost' => $clientRedirectUri,
                 ],
             ]);
 

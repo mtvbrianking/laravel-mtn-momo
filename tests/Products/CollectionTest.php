@@ -108,9 +108,9 @@ class CollectionTest extends TestCase
 
         $collection = new Collection([], [], $mockClient);
 
-        $treansaction_ref = Uuid::uuid4()->toString();
+        $ext_trans_ref = Uuid::uuid4()->toString();
 
-        $transaction = $collection->getTransactionStatus($treansaction_ref);
+        $transaction = $collection->getTransactionStatus($ext_trans_ref);
 
         $this->assertEquals($transaction, $body);
     }

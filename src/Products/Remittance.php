@@ -22,7 +22,7 @@ class Remittance extends Product
      *
      * @var string
      */
-    protected $transactUri;
+    protected $transactionUri;
 
     /**
      * Transaction status URI.
@@ -32,33 +32,33 @@ class Remittance extends Product
     protected $transactionStatusUri;
 
     /**
-     * User account URI.
+     * Account status URI.
      *
      * @var string
      */
-    protected $userAccountUri;
+    protected $accountStatusUri;
 
     /**
-     * App account balance URI.
+     * Account balance URI.
      *
      * @var string
      */
-    protected $appAccountBalanceUri;
+    protected $accountBalanceUri;
 
     /**
      * @return string
      */
-    public function getTransactUri()
+    public function getTransactionUri()
     {
-        return $this->transactUri;
+        return $this->transactionUri;
     }
 
     /**
-     * @param string $transactUri
+     * @param string $transactionUri
      */
-    public function setTransactUri($transactUri)
+    public function setTransactionUri($transactionUri)
     {
-        $this->transactUri = $transactUri;
+        $this->transactionUri = $transactionUri;
     }
 
     /**
@@ -80,47 +80,47 @@ class Remittance extends Product
     /**
      * @return string
      */
-    public function getUserAccountUri()
+    public function getAccountStatusUri()
     {
-        return $this->userAccountUri;
+        return $this->accountStatusUri;
     }
 
     /**
-     * @param string $userAccountUri
+     * @param string $accountStatusUri
      */
-    public function setUserAccountUri($userAccountUri)
+    public function setAccountStatusUri($accountStatusUri)
     {
-        $this->userAccountUri = $userAccountUri;
+        $this->accountStatusUri = $accountStatusUri;
     }
 
     /**
      * @return string
      */
-    public function getAppAccountBalanceUri()
+    public function getAccountBalanceUri()
     {
-        return $this->appAccountBalanceUri;
+        return $this->accountBalanceUri;
     }
 
     /**
-     * @param string $appAccountBalanceUri
+     * @param string $accountBalanceUri
      */
-    public function setAppAccountBalanceUri($appAccountBalanceUri)
+    public function setAccountBalanceUri($accountBalanceUri)
     {
-        $this->appAccountBalanceUri = $appAccountBalanceUri;
+        $this->accountBalanceUri = $accountBalanceUri;
     }
 
     /**
      * Constructor.
      *
      * @param array $headers
-     * @param array $middlewares
+     * @param array $middleware
      * @param \GuzzleHttp\ClientInterface $client
      *
      * @uses \Illuminate\Contracts\Config\Repository
      *
      * @throws \Exception
      */
-    public function __construct($headers = [], $middlewares = [], ClientInterface $client = null)
+    public function __construct($headers = [], $middleware = [], ClientInterface $client = null)
     {
         $config = Container::getInstance()->make(Repository::class);
 
@@ -130,13 +130,13 @@ class Remittance extends Product
         $this->clientRedirectUri = $config->get('mtn-momo.products.remittance.redirect_uri');
 
         $this->tokenUri = $config->get('mtn-momo.products.remittance.token_uri');
-        $this->transactUri = $config->get('mtn-momo.products.remittance.transact_uri');
+        $this->transactionUri = $config->get('mtn-momo.products.remittance.transaction_uri');
         $this->transactionStatusUri = $config->get('mtn-momo.products.remittance.transaction_status_uri');
-        $this->userAccountUri = $config->get('mtn-momo.products.remittance.user_account_uri');
-        $this->appAccountBalanceUri = $config->get('mtn-momo.products.remittance.app_account_balance_uri');
+        $this->accountStatusUri = $config->get('mtn-momo.products.remittance.account_status_uri');
+        $this->accountBalanceUri = $config->get('mtn-momo.products.remittance.account_balance_uri');
         $this->partyIdType = $config->get('mtn-momo.products.remittance.party_id_type');
 
-        parent::__construct($headers, $middlewares, $client);
+        parent::__construct($headers, $middleware, $client);
     }
 
     /**
@@ -172,11 +172,11 @@ class Remittance extends Product
      *
      * @see https://momodeveloper.mtn.com/docs/services/remittance/operations/transfer-POST Documentation
      *
-     * @param string $int_trans_id  Your internal transaction reference ID.
-     * @param string $party_id      Account holder. Usually phone number if type is MSISDN.
-     * @param int    $amount        How much to credit the payer.
-     * @param string $payer_message Payer transaction message.
-     * @param string $payee_note    Payee transaction message.
+     * @param string $transactionId  Your internal transaction reference ID.
+     * @param string $partyId        Account holder. Usually phone number if type is MSISDN.
+     * @param int    $amount          How much to credit the payer.
+     * @param string $payerMessage   Payer transaction message.
+     * @param string $payeeNote      Payee transaction message.
      *
      * @throws \Bmatovu\MtnMomo\Exceptions\RemittanceRequestException
      * @throws \GuzzleHttp\Exception\GuzzleException
@@ -184,12 +184,12 @@ class Remittance extends Product
      *
      * @return string Auto generated transaction reference. Format: UUID
      */
-    public function transact($int_trans_id, $party_id, $amount, $payer_message = '', $payee_note = '')
+    public function transact($transactionId, $partyId, $amount, $payerMessage = '', $payeeNote = '')
     {
-        $ext_trans_id = Uuid::uuid4()->toString();
+        $momoTransactionId = Uuid::uuid4()->toString();
 
         $headers = [
-            'X-Reference-Id' => $ext_trans_id,
+            'X-Reference-Id' => $momoTransactionId,
             'X-Target-Environment' => $this->environment,
         ];
 
@@ -198,24 +198,24 @@ class Remittance extends Product
         }
 
         try {
-            $this->client->request('POST', $this->transactUri, [
+            $this->client->request('POST', $this->transactionUri, [
                 'headers' => $headers,
                 'json' => [
                     'amount' => $amount,
                     'currency' => $this->currency,
-                    'externalId' => $int_trans_id,
+                    'externalId' => $transactionId,
                     'payee' => [
                         'partyIdType' => $this->partyIdType,
-                        'partyId' => $party_id,
+                        'partyId' => $partyId,
                     ],
-                    'payerMessage' => $payer_message,
-                    'payeeNote' => $payee_note,
+                    'payerMessage' => $payerMessage,
+                    'payeeNote' => $payeeNote,
                 ],
             ]);
 
-            return $ext_trans_id;
+            return $momoTransactionId;
         } catch (RequestException $ex) {
-            throw new RemittanceRequestException('Transfer transaction - unsuccessful.', 0, $ex);
+            throw new RemittanceRequestException('Transfer unsuccessful.', 0, $ex);
         }
     }
 
@@ -225,11 +225,11 @@ class Remittance extends Product
      * @see Remittance::transact
      * @see https://momodeveloper.mtn.com/docs/services/remittance/operations/transfer-POST Documentation
      *
-     * @param string $int_trans_id  Your internal transaction reference ID.
-     * @param string $party_id      Account holder. Usually phone number if type is MSISDN.
-     * @param int    $amount        How much to credit the payer.
-     * @param string $payer_message Payer transaction message.
-     * @param string $payee_note    Payee transaction message.
+     * @param string $transactionId  Your internal transaction reference ID.
+     * @param string $partyId        Account holder. Usually phone number if type is MSISDN.
+     * @param int    $amount          How much to credit the payer.
+     * @param string $payerMessage   Payer transaction message.
+     * @param string $payeeNote      Payee transaction message.
      *
      * @throws \Bmatovu\MtnMomo\Exceptions\RemittanceRequestException
      * @throws \GuzzleHttp\Exception\GuzzleException
@@ -237,9 +237,9 @@ class Remittance extends Product
      *
      * @return string Auto generated transaction reference. Format: UUID
      */
-    public function transfer($int_trans_id, $party_id, $amount, $payer_message = '', $payee_note = '')
+    public function transfer($transactionId, $partyId, $amount, $payerMessage = '', $payeeNote = '')
     {
-        return $this->transact($int_trans_id, $party_id, $amount, $payer_message, $payee_note);
+        return $this->transact($transactionId, $partyId, $amount, $payerMessage, $payeeNote);
     }
 
     /**
@@ -247,19 +247,19 @@ class Remittance extends Product
      *
      * @see https://momodeveloper.mtn.com/docs/services/remittance/operations/transfer-referenceId-GET Documentation
      *
-     * @param  string $ext_trans_id That was returned by transact (transfer)
+     * @param  string $momoTransactionId That was returned by transact (transfer)
      *
      * @throws \Bmatovu\MtnMomo\Exceptions\RemittanceRequestException
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return array
      */
-    public function getTransactionStatus($ext_trans_id)
+    public function getTransactionStatus($momoTransactionId)
     {
-        $transaction_status_uri = str_replace('{transaction_id}', $ext_trans_id, $this->transactionStatusUri);
+        $transactionStatusUri = str_replace('{momoTransactionId}', $momoTransactionId, $this->transactionStatusUri);
 
         try {
-            $response = $this->client->request('GET', $transaction_status_uri, [
+            $response = $this->client->request('GET', $transactionStatusUri, [
                 'headers' => [
                     'X-Target-Environment' => $this->environment,
                 ],
@@ -284,7 +284,7 @@ class Remittance extends Product
     public function getAccountBalance()
     {
         try {
-            $response = $this->client->request('GET', $this->appAccountBalanceUri, [
+            $response = $this->client->request('GET', $this->accountBalanceUri, [
                 'headers' => [
                     'X-Target-Environment' => $this->environment,
                 ],
@@ -301,34 +301,34 @@ class Remittance extends Product
      *
      * @see https://momodeveloper.mtn.com/docs/services/remittance/operations/get-v1_0-accountholder-accountholderidtype-accountholderid-active Documentation
      *
-     * @param  string $account_id Party number - MSISDN, email, or code - UUID.
-     * @param  string $account_type_name Specifies the type of the account ID. Allowed values [msisdn, email, party_code].
+     * @param  string $partyId Party number - MSISDN, email, or code - UUID.
+     * @param  string $partyIdType Specifies the type of the account ID. Allowed values [msisdn, email, party_code].
      *
      * @throws \Bmatovu\MtnMomo\Exceptions\RemittanceRequestException
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return bool True if account holder is registered and active, false if the account holder is not active or not found
      */
-    public function isActive($account_id, $account_type_name = null)
+    public function isActive($partyId, $partyIdType = null)
     {
-        if (is_null($account_type_name)) {
-            $account_type_name = $this->partyIdType;
+        if (is_null($partyIdType)) {
+            $partyIdType = $this->partyIdType;
         }
 
         $patterns = $replacements = [];
 
-        $patterns[] = '/(\{\baccount_type_name\b\})/';
-        $replacements[] = strtolower($account_type_name);
+        $patterns[] = '/(\{\bpartyIdType\b\})/';
+        $replacements[] = strtolower($partyIdType);
 
-        $patterns[] = '/(\{\baccount_id\b\})/';
-        $replacements[] = urlencode($account_id);
+        $patterns[] = '/(\{\bpartyId\b\})/';
+        $replacements[] = urlencode($partyId);
 
-        $userAccountUri = preg_replace($patterns, $replacements, $this->userAccountUri);
+        $accountStatusUri = preg_replace($patterns, $replacements, $this->accountStatusUri);
 
         try {
-            $response = $this->client->request('GET', $userAccountUri, [
+            $response = $this->client->request('GET', $accountStatusUri, [
                 'headers' => [
-                    'X-Target-Environment' => $this->getEnvironment(),
+                    'X-Target-Environment' => $this->environment,
                 ],
             ]);
 
@@ -336,7 +336,7 @@ class Remittance extends Product
 
             return (bool) $body['result'];
         } catch (RequestException $ex) {
-            throw new RemittanceRequestException('Unable to get user account information.', 0, $ex);
+            throw new RemittanceRequestException('Unable to get account status.', 0, $ex);
         }
     }
 }

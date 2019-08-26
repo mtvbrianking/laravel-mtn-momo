@@ -287,12 +287,12 @@ abstract class Product
      * Constructor.
      *
      * @param array $headers
-     * @param array $middlewares
+     * @param array $middleware
      * @param \GuzzleHttp\ClientInterface $client
      *
      * @throws \Exception
      */
-    public function __construct($headers = [], $middlewares = [], ClientInterface $client = null)
+    public function __construct($headers = [], $middleware = [], ClientInterface $client = null)
     {
         $this->config = Container::getInstance()->make(Repository::class);
 
@@ -309,15 +309,15 @@ abstract class Product
         $headers = array_merge([
             'Accept' => 'application/json',
             'Content-Type' => 'application/json',
-            'Ocp-Apim-Subscription-Key' => $this->getSubscriptionKey(),
+            'Ocp-Apim-Subscription-Key' => $this->subscriptionKey,
         ], $headers);
 
         // Guzzle http client middleware.
 
         $handlerStack = HandlerStack::create();
 
-        foreach ($middlewares as $middleware) {
-            $handlerStack->push($middleware);
+        foreach ($middleware as $mw) {
+            $handlerStack->push($mw);
         }
 
         $handlerStack->push($this->getAuthBroker($headers));
@@ -329,7 +329,7 @@ abstract class Product
         // Set http client.
         $this->client = new Client([
             'handler' => $handlerStack,
-            'base_uri' => $this->getBaseUri(),
+            'base_uri' => $this->baseUri,
             'headers' => $headers,
         ]);
     }
@@ -352,10 +352,10 @@ abstract class Product
      */
     private function setConfigurations()
     {
-        $this->setBaseUri($this->config->get('mtn-momo.api.base_uri'));
-        $this->setCurrency($this->config->get('mtn-momo.currency'));
-        $this->setEnvironment($this->config->get('mtn-momo.environment'));
-        $this->setLogFile('mtn-momo.log');
+        $this->baseUri = $this->config->get('mtn-momo.api.base_uri');
+        $this->currency = $this->config->get('mtn-momo.currency');
+        $this->environment = $this->config->get('mtn-momo.environment');
+        $this->logFile = $this->config->get('mtn-momo.log');
     }
 
     /**
@@ -368,7 +368,7 @@ abstract class Product
     protected function getLogMiddleware()
     {
         $logger = new Logger('Logger');
-        $streamHandler = new StreamHandler(storage_path('logs/'.$this->getLogFile()));
+        $streamHandler = new StreamHandler(storage_path('logs/'.$this->logFile));
         $logger->pushHandler($streamHandler);
         $messageFormatter = new MessageFormatter("\r\n[Request] {request} \r\n[Response] {response} \r\n[Error] {error}.");
 
@@ -396,7 +396,7 @@ abstract class Product
 
         // Authorization client - this is used to request OAuth access tokens
         $client = new Client([
-            'base_uri' => $this->getBaseUri(),
+            'base_uri' => $this->baseUri,
             'handler' => $handlerStack,
             'headers' => $headers,
             'json' => [
@@ -405,19 +405,19 @@ abstract class Product
         ]);
 
         $config = [
-            'client_id' => $this->getClientId(),
-            'client_secret' => $this->getClientSecret(),
-            'token_uri' => $this->getTokenUri(),
+            'client_id' => $this->clientId,
+            'client_secret' => $this->clientSecret,
+            'token_uri' => $this->tokenUri,
         ];
 
         // This grant type is used to get a new Access Token and,
         // Refresh Token when no valid Access Token or Refresh Token is available
-        $client_grant = new ClientCredentials($client, $config);
+        $clientCredGrant = new ClientCredentials($client, $config);
 
         // Create token repository
         $tokenRepo = new TokenRepository();
 
         // Tell the middleware to use both the client and refresh token grants
-        return new OAuth2Middleware($client_grant, null, $tokenRepo);
+        return new OAuth2Middleware($clientCredGrant, null, $tokenRepo);
     }
 }
