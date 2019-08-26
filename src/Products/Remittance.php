@@ -8,7 +8,9 @@ namespace Bmatovu\MtnMomo\Products;
 use Ramsey\Uuid\Uuid;
 use GuzzleHttp\ClientInterface;
 use Illuminate\Container\Container;
+use GuzzleHttp\Exception\RequestException;
 use Illuminate\Contracts\Config\Repository;
+use Bmatovu\MtnMomo\Exceptions\RemittanceRequestException;
 
 /**
  * Remittance service/product.
@@ -202,7 +204,7 @@ class Remittance extends Product
                     'amount' => $amount,
                     'currency' => $this->currency,
                     'externalId' => $int_trans_id,
-                    'payer' => [
+                    'payee' => [
                         'partyIdType' => $this->partyIdType,
                         'partyId' => $party_id,
                     ],
