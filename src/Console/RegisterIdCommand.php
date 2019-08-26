@@ -114,6 +114,8 @@ class RegisterIdCommand extends Command
     /**
      * Determine client ID.
      *
+     * @throws \Exception
+     *
      * @return string
      */
     protected function getClientId()

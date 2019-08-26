@@ -24,6 +24,13 @@ use Bmatovu\OAuthNegotiator\GrantTypes\ClientCredentials;
 abstract class Product
 {
     /**
+     * Configuration.
+     *
+     * @var \Illuminate\Contracts\Config\Repository
+     */
+    protected $config;
+
+    /**
      * HTTP client.
      *
      * @var \GuzzleHttp\Client
@@ -151,7 +158,7 @@ abstract class Product
     /**
      * @return string
      */
-    public function getsubscriptionKey()
+    public function getSubscriptionKey()
     {
         return $this->subscriptionKey;
     }
@@ -159,7 +166,7 @@ abstract class Product
     /**
      * @param string $subscriptionKey
      */
-    public function setsubscriptionKey($subscriptionKey)
+    public function setSubscriptionKey($subscriptionKey)
     {
         $this->subscriptionKey = $subscriptionKey;
     }
@@ -302,7 +309,7 @@ abstract class Product
         $headers = array_merge([
             'Accept' => 'application/json',
             'Content-Type' => 'application/json',
-            'Ocp-Apim-Subscription-Key' => $this->getsubscriptionKey(),
+            'Ocp-Apim-Subscription-Key' => $this->getSubscriptionKey(),
         ], $headers);
 
         // Guzzle http client middleware.
@@ -353,6 +360,8 @@ abstract class Product
 
     /**
      * Get log middleware.
+     *
+     * @throws \Exception
      *
      * @return callable
      */

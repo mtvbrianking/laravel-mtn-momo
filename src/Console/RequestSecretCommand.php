@@ -28,6 +28,13 @@ class RequestSecretCommand extends Command
     protected $client;
 
     /**
+     * Product subscribed too.
+     *
+     * @var string
+     */
+    protected $product;
+
+    /**
      * The name and signature of the console command.
      *
      * @var string
@@ -127,7 +134,7 @@ class RequestSecretCommand extends Command
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
-     * @return string Client Secret
+     * @return string|null Client Secret
      */
     protected function requestClientSecret($client_id)
     {
@@ -156,5 +163,7 @@ class RequestSecretCommand extends Command
             $this->line("\r\nStatus: <fg=red>".$response->getStatusCode().' '.$response->getReasonPhrase().'</>');
             $this->line("\r\nBody: <fg=red>".$response->getBody()."</>\r\n");
         }
+
+        return null;
     }
 }

@@ -124,7 +124,7 @@ class Collection extends Product
     {
         $config = Container::getInstance()->make(Repository::class);
 
-        $this->setsubscriptionKey($config->get('mtn-momo.products.collection.key'));
+        $this->setSubscriptionKey($config->get('mtn-momo.products.collection.key'));
         $this->setClientId($config->get('mtn-momo.products.collection.id'));
         $this->setClientSecret($config->get('mtn-momo.products.collection.secret'));
         $this->setClientRedirectUri($config->get('mtn-momo.products.collection.redirect_uri'));
@@ -144,13 +144,15 @@ class Collection extends Product
      *
      * @see https://momodeveloper.mtn.com/docs/services/collection/operations/requesttopay-POST Documentation
      *
-     * @param  string $external_id   Transaction reference ID.
-     * @param  string $party_id      Account holder. Usually phone number if type is MSISDN.
-     * @param  int    $amount        How much to debit the payer.
+     * @param  string $external_id Transaction reference ID.
+     * @param  string $party_id Account holder. Usually phone number if type is MSISDN.
+     * @param  int $amount How much to debit the payer.
      * @param  string $payer_message Payer transaction history message.
-     * @param  string $payee_note    Payee transaction history message.
+     * @param  string $payee_note Payee transaction history message.
      *
      * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
      *
      * @return string                Auto generated payment reference. Format: UUID
      */
@@ -199,6 +201,7 @@ class Collection extends Product
      * @param  string $payment_ref That was returned by transact (requestToPay)
      *
      * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return array
      */
@@ -225,6 +228,7 @@ class Collection extends Product
      * @see https://momodeveloper.mtn.com/docs/services/collection/operations/token-POST Documentation
      *
      * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return array
      */
@@ -257,6 +261,7 @@ class Collection extends Product
      * @see https://momodeveloper.mtn.com/docs/services/collection/operations/get-v1_0-account-balance Documentation
      *
      * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return array Account balance.
      */
@@ -282,10 +287,11 @@ class Collection extends Product
      *
      * @see https://momodeveloper.mtn.com/docs/services/collection/operations/get-v1_0-accountholder-accountholderidtype-accountholderid-active Documentation
      *
-     * @param  string $account_id        Party number - MSISDN, email, or code - UUID.
+     * @param  string $account_id Party number - MSISDN, email, or code - UUID.
      * @param  string $account_type_name Specifies the type of the account ID. Allowed values [msisdn, email, party_code].
      *
      * @throws \Bmatovu\MtnMomo\Exceptions\CollectionRequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return bool True if account holder is registered and active, false if the account holder is not active or not found
      */
