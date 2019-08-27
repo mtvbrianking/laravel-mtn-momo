@@ -17,27 +17,27 @@ before_script:
 script:
  - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
 
-jobs:
+# jobs:
 
-  include:
+#   include:
 
-    - stage: deploy
+#     - stage: deploy
 
-      name: Documentation
+#       name: Documentation
 
-      php: 7.2
+#       php: 7.2
 
-      install:
-        - curl -O http://get.sensiolabs.org/sami.phar
+#       install:
+#         - curl -O http://get.sensiolabs.org/sami.phar
 
-      script:
-       - php sami.phar update .sami
+#       script:
+#        - php sami.phar update .sami
 
-      # https://docs.travis-ci.com/user/deployment/pages/
-      deploy:
-        provider: pages
-        skip-cleanup: true
-        github-token: $GITHUB_TOKEN
-        local_dir: docs
-        # on:
-        #   branch: master
+#       # https://docs.travis-ci.com/user/deployment/pages/
+#       deploy:
+#         provider: pages
+#         skip-cleanup: true
+#         github-token: $GITHUB_TOKEN
+#         local_dir: docs
+#         on:
+#           branch: master
