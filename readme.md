@@ -1,4 +1,4 @@
-## Laravel MTM Momo API Integration
+## Laravel MTM MOMO API Integration
 
 [![Total Downloads](https://poser.pugx.org/bmatovu/laravel-mtn-momo/downloads)](https://packagist.org/packages/bmatovu/laravel-mtn-momo)
 [![Latest Stable Version](https://poser.pugx.org/bmatovu/laravel-mtn-momo/v/stable)](https://packagist.org/packages/bmatovu/laravel-mtn-momo)
@@ -85,7 +85,7 @@ use Bmatovu\MtnMomo\Products\Collection;
 $collection = new Collection();
 
 // Request a user to pay
-$collection->transact('EXT_REF_ID', '07XXXXXXXX', 100);
+$momoTransactionId = $collection->transact('transactionId', '07XXXXXXXX', 100);
 ```
 
 See [test numbers](https://momodeveloper.mtn.com/api-documentation/testing/#testing)
@@ -100,7 +100,7 @@ try {
     $collection = new Collection();
     
     // Request a user to pay
-    $collection->transact('EXT_REF_ID', '07XXXXXXXX', 100);
+    $momoTransactionId = $collection->transact('transactionId', '07XXXXXXXX', 100);
 } catch(CollectionRequestException $e) {
     do {
         printf("\n\r%s:%d %s (%d) [%s]\n\r", 
@@ -119,7 +119,7 @@ Often you might need to log your API requests for debugging purposes. You can ad
 use Monolog\Logger;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\MessageFormatter;
-use Monolog\Handler\StreamHandler;+
+use Monolog\Handler\StreamHandler;
 
 $logger = new Logger('Logger');
 $streamHandler = new StreamHandler(storage_path('logs/mtn-mono.log'));
@@ -133,7 +133,7 @@ $collection = new Collection();
 $collection->push($logMiddleware);
 
 // Request a user to pay
-$collection->transact('EXT_REF_ID', '07XXXXXXXX', 100);
+$momoTransactionId = $collection->transact('transactionId', '07XXXXXXXX', 100);
 ```
 
 **Inspired! Dive into the** [source code documentation](https://mtvbrianking.github.io/laravel-mtn-momo).
