@@ -39,5 +39,5 @@ jobs:
         skip-cleanup: true
         github-token: $GITHUB_TOKEN
         local_dir: docs
-        on:
-          branch: master
+        # on:
+        #   branch: master

@@ -15,7 +15,7 @@ $iterator = Finder::create()
     ->in($dir);
 
 $versions = GitVersionCollection::create($dir)
-    // ->add('1.3', 'Branch v1.3')
+    ->add('1.3', 'Branch v1.3')
     ->add('master', 'Branch master');
 
 $repo = new GitHubRemoteRepository(
