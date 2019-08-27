@@ -5,8 +5,6 @@ use Symfony\Component\Finder\Finder;
 use Sami\Version\GitVersionCollection;
 use Sami\RemoteRepository\GitHubRemoteRepository;
 
-// https://github.com/laravel/laravel.com/blob/master/build/sami/sami.php
-
 $dir = __DIR__ . '/src';
 
 $iterator = Finder::create()
@@ -17,8 +15,8 @@ $iterator = Finder::create()
     ->in($dir);
 
 $versions = GitVersionCollection::create($dir)
-    ->add('1.3', 'v1.3 branch')
-    ->add('master', 'master branch');
+    ->add('1.3', 'Branch v1.3')
+    ->add('master', 'Branch master');
 
 $repo = new GitHubRemoteRepository(
     'mtvbrianking/laravel-mtn-momo',
@@ -28,15 +26,10 @@ $repo = new GitHubRemoteRepository(
 
 $options = [
     'theme' => 'default',
-    // '%versions%' => $versions,
     'title' => 'Laravel MTN MOMO API',
-    // 'build_dir' => __DIR__ . '/docs',
-    // 'cache_dir' => __DIR__ . '/docs/cache',
-
     'versions' => $versions,
     'build_dir' => __DIR__.'/docs/%version%',
     'cache_dir' => __DIR__.'/docs/cache/%version%',
-
     'remote_repository' => $repo,
     'default_opened_level' => 2,
 ];
