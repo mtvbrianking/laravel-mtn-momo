@@ -46,9 +46,9 @@ class RemittanceTest extends TestCase
 
         $remittance = new Remittance([], [], $mockClient);
 
-        $ext_trans_ref = $remittance->transact('int_trans_id', '07XXXXXXXX', 100);
+        $momoTransactionId = $remittance->transact('transactionId', '07XXXXXXXX', 100);
 
-        $this->assertTrue(Uuid::isValid($ext_trans_ref));
+        $this->assertTrue(Uuid::isValid($momoTransactionId));
     }
 
     public function test_can_tranfer()
@@ -59,9 +59,9 @@ class RemittanceTest extends TestCase
 
         $remittance = new Remittance([], [], $mockClient);
 
-        $ext_trans_ref = $remittance->transfer('int_trans_id', '07XXXXXXXX', 100);
+        $momoTransactionId = $remittance->transfer('transactionId', '07XXXXXXXX', 100);
 
-        $this->assertTrue(Uuid::isValid($ext_trans_ref));
+        $this->assertTrue(Uuid::isValid($momoTransactionId));
     }
 
     public function test_check_transaction_status()
@@ -87,9 +87,9 @@ class RemittanceTest extends TestCase
 
         $remittance = new Remittance([], [], $mockClient);
 
-        $ext_trans_ref = Uuid::uuid4()->toString();
+        $momoTransactionId = Uuid::uuid4()->toString();
 
-        $transaction = $remittance->getTransactionStatus($ext_trans_ref);
+        $transaction = $remittance->getTransactionStatus($momoTransactionId);
 
         $this->assertEquals($transaction, $body);
     }

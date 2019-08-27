@@ -36,9 +36,9 @@ class CollectionTest extends TestCase
 
         $this->assertInstanceOf(Product::class, $collection);
 
-        $transaction_ref = $collection->transact('EXT_REF_ID', '07XXXXXXXX', 100);
+        $momoTransactionId = $collection->transact('transactionId', '07XXXXXXXX', 100);
 
-        $this->assertTrue(Uuid::isValid($transaction_ref));
+        $this->assertTrue(Uuid::isValid($momoTransactionId));
     }
 
     public function test_throws_transact_collection_request_exception()
@@ -55,9 +55,9 @@ class CollectionTest extends TestCase
         $this->expectExceptionCode(0);
         $this->expectExceptionMessage('Request to pay transaction - unsuccessful.');
 
-        $transaction_ref = $collection->transact('EXT_REF_ID', '07XXXXXXXX', 100);
+        $momoTransactionId = $collection->transact('transactionId', '07XXXXXXXX', 100);
 
-        $this->assertNull($transaction_ref);
+        $this->assertNull($momoTransactionId);
     }
 
     public function test_throws_previous_transact_collection_request_exception()
@@ -71,8 +71,8 @@ class CollectionTest extends TestCase
         $this->assertInstanceOf(Product::class, $collection);
 
         try {
-            $transaction_ref = $collection->transact('EXT_REF_ID', '07XXXXXXXX', 100);
-            $this->assertNull($transaction_ref);
+            $momoTransactionId = $collection->transact('transactionId', '07XXXXXXXX', 100);
+            $this->assertNull($momoTransactionId);
         } catch(CollectionRequestException $e) {
             $this->assertInstanceOf(CollectionRequestException::class, $e);
             $this->assertEquals($e->getCode(), 0);
@@ -108,9 +108,9 @@ class CollectionTest extends TestCase
 
         $collection = new Collection([], [], $mockClient);
 
-        $ext_trans_ref = Uuid::uuid4()->toString();
+        $momoTransactionId = Uuid::uuid4()->toString();
 
-        $transaction = $collection->getTransactionStatus($ext_trans_ref);
+        $transaction = $collection->getTransactionStatus($momoTransactionId);
 
         $this->assertEquals($transaction, $body);
     }

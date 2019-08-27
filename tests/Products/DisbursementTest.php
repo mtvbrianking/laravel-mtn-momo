@@ -17,9 +17,9 @@ class DisbursementTest extends TestCase
 {
     public function test_disbursement_extends_product()
     {
-        $disburse = new Disbursement();
+        $disbursement = new Disbursement();
 
-        $this->assertInstanceOf(Product::class, $disburse);
+        $this->assertInstanceOf(Product::class, $disbursement);
     }
 
     public function test_create_accessToken()
@@ -32,11 +32,11 @@ class DisbursementTest extends TestCase
 
         $response =new Response(200, [],json_encode($body));
 
-        $mockclient = $this->mockGuzzleClient($response);
+        $mockClient = $this->mockGuzzleClient($response);
 
-        $disbursement = new Disbursement([],[],$mockclient);
+        $disbursement = new Disbursement([], [], $mockClient);
 
-        $token=$disbursement->getToken();
+        $token = $disbursement->getToken();
 
         $this->assertEquals($token,$body);
     }
@@ -51,9 +51,9 @@ class DisbursementTest extends TestCase
 
         $this->assertInstanceOf(Product::class, $disbursement);
 
-        $transaction_ref = $disbursement->transfer('int_trans_id', '07XXXXXXXX', 100);
+        $momoTransactionId = $disbursement->transfer('transactionId', '07XXXXXXXX', 100);
 
-        $this->assertTrue(Uuid::isValid($transaction_ref));
+        $this->assertTrue(Uuid::isValid($momoTransactionId));
 
     }
 
@@ -68,8 +68,8 @@ class DisbursementTest extends TestCase
         $this->assertInstanceOf(Product::class, $disbursement);
 
         try {
-            $transaction_ref = $disbursement->transfer('int_trans_id', '07XXXXXXXX', 100);
-            $this->assertNull($transaction_ref);
+            $momoTransactionId = $disbursement->transfer('transactionId', '07XXXXXXXX', 100);
+            $this->assertNull($momoTransactionId);
         } catch(DisbursementRequestException $e) {
             $this->assertInstanceOf(DisbursementRequestException::class, $e);
             $this->assertEquals($e->getCode(), 0);
