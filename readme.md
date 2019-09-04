@@ -144,7 +144,7 @@ $collection->push($logMiddleware);
 $momoTransactionId = $collection->transact('transactionId', '07XXXXXXXX', 100);
 ```
 
-**Inspired! Dive into the** [source code documentation](https://mtvbrianking.github.io/laravel-mtn-momo).
+**Inspired! Dive into the** [source code documentation](https://mtvbrianking.github.io/laravel-mtn-momo/master).
 
 ### I Need help!
 

@@ -1,42 +1,49 @@
-# https://docs.travis-ci.com/user/build-stages
-
 language: php
 
-php:
-  - 7.2
+cache:
+  directories:
+    - $HOME/.composer/cache/files
 
-# Default stage = test,
-# Runs for both default php versions - above.
+# https://docs.travis-ci.com/user/build-stages
 
-before_script:
-  - travis_retry composer self-update
-  - travis_retry composer update --prefer-lowest --no-ansi --no-interaction --no-progress --no-scripts
+jobs:
 
-script:
- - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
+  include:
 
-# jobs:
+    - stage: test
 
-#   include:
+      php: 7.2
 
-#     - stage: deploy
+      before_script:
+        - travis_retry composer self-update
+        - travis_retry composer update --prefer-lowest --no-ansi --no-interaction --no-progress --no-scripts
 
-#       name: Documentation
+      script:
+        - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
 
-#       php: 7.2
+    - stage: deploy
 
-#       install:
-#         - curl -O http://get.sensiolabs.org/sami.phar
+      name: "Documentation"
 
-#       script:
-#        - php sami.phar update .sami
+      php: 7.2
 
-#       # https://docs.travis-ci.com/user/deployment/pages/
-#       deploy:
-#         provider: pages
-#         skip-cleanup: true
-#         github-token: $GITHUB_TOKEN
-#         local_dir: docs
-#         on:
-#           branch: master
+      install:
+        - curl -O http://get.sensiolabs.org/sami.phar
 
+      script:
+       - php sami.phar update .sami
+
+      # https://docs.travis-ci.com/user/deployment/pages/
+      deploy:
+        provider: pages
+        skip-cleanup: true
+        github-token: $GITHUB_TOKEN
+        local_dir: docs
+        on:
+          branch: master
+
+# https://docs.travis-ci.com/user/notifications
+notifications:
+  email:
+    on_success: never
+    on_failure: always
