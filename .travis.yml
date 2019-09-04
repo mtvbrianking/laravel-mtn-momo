@@ -27,11 +27,14 @@ jobs:
 
       php: 7.2
 
+      before_script:
+        - git clone https://github.com/mtvbrianking/laravel-mtn-momo.git
+
       install:
         - curl -O http://get.sensiolabs.org/sami.phar
 
       script:
-       - php sami.phar update .sami
+       - php sami.phar update .sami.dist
 
       # https://docs.travis-ci.com/user/deployment/pages/
       deploy:
