@@ -3,6 +3,7 @@ namespace Bmatovu\MtnMomo\Tests\Products;
 
 use Mockery as m;
 use Ramsey\Uuid\Uuid;
+use Illuminate\Support\Str;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\ClientInterface;
@@ -118,7 +119,7 @@ class CollectionTest extends TestCase
     public function test_get_token()
     {
         $body = [
-            'access_token' => str_random(60),
+            'access_token' => Str::random(60),
             'token_type' => 'Bearer',
             'expires_in' => 3600,
         ];

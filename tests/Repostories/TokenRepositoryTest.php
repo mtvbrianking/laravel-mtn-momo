@@ -2,6 +2,7 @@
 namespace Bmatovu\MtnMomo\Tests\Repositories;
 
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 use Bmatovu\MtnMomo\Models\Token;
 use Bmatovu\MtnMomo\Tests\TestCase;
 use Illuminate\Database\Eloquent\Collection;
@@ -20,8 +21,8 @@ class TokenRepositoryTest extends TestCase
     public function test_can_create_token()
     {
         $tokenAttrs = [
-            'access_token' => str_random(60),
-            'refresh_token' => str_random(60),
+            'access_token' => Str::random(60),
+            'refresh_token' => Str::random(60),
             'token_type' => 'Bearer',
             'expires_in' => 3600,
         ];
@@ -69,7 +70,7 @@ class TokenRepositoryTest extends TestCase
     {
         factory(Token::class, 2)->create();
 
-        $access_token = str_random(60);
+        $access_token = Str::random(60);
 
         factory(Token::class)->create([
             'access_token' => $access_token,
@@ -87,7 +88,7 @@ class TokenRepositoryTest extends TestCase
 
         // Test retrieving non-existent token
 
-        $access_token = str_random(60);
+        $access_token = Str::random(60);
 
         $token = $tokenRepo->retrieve($access_token);
 
@@ -106,7 +107,7 @@ class TokenRepositoryTest extends TestCase
 
         factory(Token::class, 2)->create();
 
-        $access_token = str_random(60);
+        $access_token = Str::random(60);
 
         factory(Token::class)->create([
             'access_token' => $access_token,
@@ -124,7 +125,7 @@ class TokenRepositoryTest extends TestCase
 
     public function test_can_update_token()
     {
-        $org_access_token = str_random(60);
+        $org_access_token = Str::random(60);
 
         $org_token = factory(Token::class)->create([
             'access_token' => $org_access_token,
@@ -134,8 +135,8 @@ class TokenRepositoryTest extends TestCase
 
         $tokenRepo = new TokenRepository();
 
-        $new_access_token = str_random(60);
-        $new_refresh_token = str_random(60);
+        $new_access_token = Str::random(60);
+        $new_refresh_token = Str::random(60);
         $new_token_type = 'New_Bearer';
 
         $new_token = $tokenRepo->update($org_access_token, [
@@ -154,7 +155,7 @@ class TokenRepositoryTest extends TestCase
 
     public function test_can_delete_token()
     {
-        $access_token = str_random(60);
+        $access_token = Str::random(60);
 
         $token = factory(Token::class)->create([
             'access_token' => $access_token,

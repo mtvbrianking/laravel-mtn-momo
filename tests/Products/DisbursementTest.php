@@ -3,6 +3,7 @@
 namespace Bmatovu\MtnMomo\Tests\Products;
 
 use Ramsey\Uuid\Uuid;
+use Illuminate\Support\Str;
 use GuzzleHttp\Psr7\Response;
 use Bmatovu\MtnMomo\Tests\TestCase;
 use Bmatovu\MtnMomo\Products\Product;
@@ -25,7 +26,7 @@ class DisbursementTest extends TestCase
     public function test_create_accessToken()
     {
         $body = [
-            'access_token' => str_random(60),
+            'access_token' => Str::random(60),
             'token_type' => 'Bearer',
             'expires_in' => 3600,
         ];

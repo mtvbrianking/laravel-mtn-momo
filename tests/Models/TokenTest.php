@@ -2,6 +2,7 @@
 namespace Bmatovu\MtnMomo\Tests\Models;
 
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 use Bmatovu\MtnMomo\Models\Token;
 use Bmatovu\MtnMomo\Tests\TestCase;
 use Bmatovu\OAuthNegotiator\Models\TokenInterface;
@@ -16,8 +17,8 @@ class TokenTest extends TestCase
 
     public function test_can_create_token()
     {
-        $access_token = str_random(60);
-        $refresh_token = str_random(60);
+        $access_token = Str::random(60);
+        $refresh_token = Str::random(60);
         $token_type = 'Bearer';
         $expires_at = Carbon::now();
 
@@ -45,8 +46,8 @@ class TokenTest extends TestCase
 
     public function test_getters()
     {
-        $access_token = str_random(60);
-        $refresh_token = str_random(60);
+        $access_token = Str::random(60);
+        $refresh_token = Str::random(60);
         $token_type = 'Bearer';
         $expires_at = Carbon::now();
 
