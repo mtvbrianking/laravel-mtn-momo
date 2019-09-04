@@ -103,7 +103,7 @@ class MtnMomoServiceProvider extends ServiceProvider
      */
     protected function getLogMiddleware()
     {
-        $logger = $this->app['log']->getMonolog();
+        $logger = $this->app['log']->getLogger();
         $streamHandler = new StreamHandler(storage_path('logs/mtn-momo.log'));
         $logger->pushHandler($streamHandler, Logger::DEBUG);
         $messageFormatter = new MessageFormatter(MessageFormatter::DEBUG);
