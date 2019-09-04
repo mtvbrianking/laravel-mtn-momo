@@ -37,6 +37,21 @@ class TokenRepositoryTest extends TestCase
         $this->assertInstanceOf(Carbon::class, $token->getExpiresAt());
     }
 
+    public function test_doesnt_retrieve_deleted_tokens()
+    {
+        factory(Token::class)->create([
+            'deleted_at' => Carbon::now(),
+        ]);
+
+        $tokenRepo = new TokenRepository();
+
+        $tokens = $tokenRepo->retrieveAll();
+
+        $this->assertInstanceOf(Collection::class, $tokens);
+
+        $this->assertEquals(0, $tokens->count());
+    }
+
     public function test_can_retrieve_all_tokens()
     {
         factory(Token::class, 3)->create();
@@ -151,7 +166,7 @@ class TokenRepositoryTest extends TestCase
 
         $tokenRepo->delete($access_token);
 
-        $this->assertDatabaseMissing($table, [
+        $this->assertSoftDeleted($table, [
             'access_token' => $access_token,
         ]);
     }
