@@ -15,9 +15,17 @@ This package helps you integrate the [MTN MOMO API](https://momodeveloper.mtn.co
 
 To get started, install the package via the Composer package manager:
 
-`composer require bmatovu/laravel-mtn-momo 2.0.*`
+| Laravel | Package | Installation                                      |
+| :-----: | :-----: | ------------------------------------------------- |
+|   5.3   |   1.3   | `composer require bmatovu/laravel-mtn-momo 1.3.*` |
+|   5.4   |   1.4   | `composer require bmatovu/laravel-mtn-momo 1.5.*` |
+|   5.5   |   1.5   | `composer require bmatovu/laravel-mtn-momo 1.5.*` |
+|   5.6   |   1.6   | `composer require bmatovu/laravel-mtn-momo 1.6.*` |
+|   5.7   |   1.7   | `composer require bmatovu/laravel-mtn-momo 1.7.*` |
+|   5.8   |   1.8   | `composer require bmatovu/laravel-mtn-momo 1.8.*` |
+|   6.0   | master  | `composer require bmatovu/laravel-mtn-momo`       |
 
-The service provider will automatically get registered. Or you may manually add the service provider in your configuration `config/app.php` file:
+The service provider will be auto-discovered for Laravel 5.5 and above. You may manually register the service provider in your configuration `config/app.php` file:
 
 ```php
 'providers' => array(
