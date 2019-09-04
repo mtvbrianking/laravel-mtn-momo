@@ -151,7 +151,7 @@ class TokenRepositoryTest extends TestCase
 
         $tokenRepo->delete($access_token);
 
-        $this->missingFromDatabase($table, [
+        $this->assertDatabaseMissing($table, [
             'access_token' => $access_token,
         ]);
     }

@@ -34,7 +34,7 @@ class TokenTest extends TestCase
 
         $this->assertEquals('mtn_momo_tokens', $token->getTable());
 
-        $this->seeInDatabase('mtn_momo_tokens', [
+        $this->assertDatabaseHas('mtn_momo_tokens', [
             'access_token' => $access_token,
             'refresh_token' => $refresh_token,
             'token_type' => $token_type,
