@@ -15,9 +15,9 @@ This package helps you integrate the [MTN MOMO API](https://momodeveloper.mtn.co
 
 To get started, install the package via the Composer package manager:
 
-`composer require bmatovu/laravel-mtn-momo 1.4.*`
+`composer require bmatovu/laravel-mtn-momo 1.5.*`
 
-Register the package service provider in the app configuration file (`config/app.php`).
+The service provider will automatically get registered. Or you may manually add the service provider in your configuration `config/app.php` file:
 
 ```php
 'providers' => array(
@@ -28,7 +28,7 @@ Register the package service provider in the app configuration file (`config/app
 
 **Configuration customization**
 
-If you wish to customize the default configurations, you  may export the default configuration using
+If you wish to customize the default configurations, you may export the default configuration using
 
 ```bash
 php artisan vendor:publish --provider="Bmatovu\MtnMomo\MtnMomoServiceProvider" --tag="config"
@@ -36,7 +36,7 @@ php artisan vendor:publish --provider="Bmatovu\MtnMomo\MtnMomoServiceProvider" -
 
 **Database Migration**
 
-The package service provider registers its own database migrations with the framework, so you should migrate your database after installation. The migration will create a tokens tables your application needs to store access tokens from MTN MOMO API.
+The package service provider registers it's own database migrations with the framework, so you should migrate your database after installation. The migration will create a tokens tables your application needs to store access tokens from MTN MOMO API.
 
 ```bash
 php artisan migrate
