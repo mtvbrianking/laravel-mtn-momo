@@ -23,7 +23,7 @@ class RegisterIdCommandTest extends TestCase
 
         $mockClient = $this->mockGuzzleClient($apiResponse);
 
-        $mockCommand = m::mock('Bmatovu\MtnMomo\Console\RegisterIdCommand[confirm,comment,info]', [$mockClient])
+        $mockCommand = m::mock('Bmatovu\MtnMomo\Console\RegisterIdCommand[comment,confirm,info]', [$mockClient])
             ->shouldIgnoreMissing();
 
         $mockCommand->shouldReceive('confirm')
@@ -37,12 +37,11 @@ class RegisterIdCommandTest extends TestCase
 
         Container::getInstance()->make(Kernel::class)->registerCommand($mockCommand);
 
-        $exitCode = $this->artisan('mtn-momo:register-id', [
+        $this->artisan('mtn-momo:register-id', [
             '--id' => 'd83eadba-a6b8-4301-b78e-454f73b5725c',
             '--callback' => 'https://example.com/mtn-momo/callback',
-        ]);
-
-        $this->assertEquals(0, $exitCode, "Expected status code 0 but received {$exitCode}.");
+            '--no-interaction' => true,
+        ])->assertExitCode(0);
     }
 
     public function test_accept_run_in_production()
@@ -54,7 +53,7 @@ class RegisterIdCommandTest extends TestCase
 
         $mockClient = $this->mockGuzzleClient($apiResponse);
 
-        $mockCommand = m::mock('Bmatovu\MtnMomo\Console\RegisterIdCommand[confirm,comment,info]', [$mockClient])
+        $mockCommand = m::mock('Bmatovu\MtnMomo\Console\RegisterIdCommand[ask,confirm,comment,info]', [$mockClient])
             ->shouldIgnoreMissing();
 
         $mockCommand->shouldReceive('confirm')
@@ -66,15 +65,18 @@ class RegisterIdCommandTest extends TestCase
 
         $mockCommand->shouldReceive('info')->once()->with('Client APP ID - [X-Reference-Id, api_user_id]');
 
+        $mockCommand->shouldReceive('ask')
+            ->once()
+            ->with('Use client app ID?', 'd83eadba-a6b8-4301-b78e-454f73b5725c')
+            ->andReturn('d83eadba-a6b8-4301-b78e-454f73b5725c');
+
         Container::getInstance()->make(Kernel::class)->registerCommand($mockCommand);
 
-        $exitCode = $this->artisan('mtn-momo:register-id', [
+        $this->artisan('mtn-momo:register-id', [
             '--id' => 'd83eadba-a6b8-4301-b78e-454f73b5725c',
             '--callback' => 'https://example.com/mtn-momo/callback',
             '--no-interaction' => true,
-        ]);
-
-        $this->assertEquals(0, $exitCode, "Expected status code 0 but received {$exitCode}.");
+        ])->assertExitCode(0);
     }
 
     public function test_force_run_in_production()
@@ -86,7 +88,7 @@ class RegisterIdCommandTest extends TestCase
 
         $mockClient = $this->mockGuzzleClient($apiResponse);
 
-        $mockCommand = m::mock('Bmatovu\MtnMomo\Console\RegisterIdCommand[confirm,comment,info]', [$mockClient])
+        $mockCommand = m::mock('Bmatovu\MtnMomo\Console\RegisterIdCommand[ask,confirm,comment,info]', [$mockClient])
             ->shouldIgnoreMissing();
 
         $mockCommand->shouldNotReceive('confirm')->with('Do you really wish to proceed?');
@@ -95,16 +97,19 @@ class RegisterIdCommandTest extends TestCase
 
         $mockCommand->shouldReceive('info')->once()->with('Client APP ID - [X-Reference-Id, api_user_id]');
 
+        $mockCommand->shouldReceive('ask')
+            ->once()
+            ->with('Use client app ID?', 'd83eadba-a6b8-4301-b78e-454f73b5725c')
+            ->andReturn('d83eadba-a6b8-4301-b78e-454f73b5725c');
+
         Container::getInstance()->make(Kernel::class)->registerCommand($mockCommand);
 
-        $exitCode = $this->artisan('mtn-momo:register-id', [
+        $this->artisan('mtn-momo:register-id', [
             '--id' => 'd83eadba-a6b8-4301-b78e-454f73b5725c',
             '--callback' => 'https://example.com/mtn-momo/callback',
             '--force' => true,
             '--no-interaction' => true,
-        ]);
-
-        $this->assertEquals(0, $exitCode, "Expected status code 0 but received {$exitCode}.");
+        ])->assertExitCode(0);
     }
 
     public function test_server_unreachable()
@@ -113,11 +118,17 @@ class RegisterIdCommandTest extends TestCase
 
         $mockClient = $this->mockGuzzleClient($apiResponse);
 
-        $mockCommand = m::mock('Bmatovu\MtnMomo\Console\RegisterIdCommand[info,confirm]', [$mockClient]);
+        $mockCommand = m::mock('Bmatovu\MtnMomo\Console\RegisterIdCommand[ask,info,confirm]', [$mockClient])
+            ->shouldIgnoreMissing();
 
         $mockCommand->shouldReceive('info')->once()->with('Client APP ID - [X-Reference-Id, api_user_id]');
 
         $mockCommand->shouldReceive('info')->once()->with('Client APP redirect URI - [X-Callback-Url, providerCallbackHost]');
+
+        $mockCommand->shouldReceive('ask')
+            ->once()
+            ->with('Use client app ID?', 'd83eadba-a6b8-4301-b78e-454f73b5725c')
+            ->andReturn('d83eadba-a6b8-4301-b78e-454f73b5725c');
 
         $mockCommand->shouldReceive('info')->once()->with('Registering Client ID');
 
@@ -128,13 +139,11 @@ class RegisterIdCommandTest extends TestCase
 
         Container::getInstance()->make(Kernel::class)->registerCommand($mockCommand);
 
-        $exitCode = $this->artisan('mtn-momo:register-id', [
+        $this->artisan('mtn-momo:register-id', [
             '--id' => 'd83eadba-a6b8-4301-b78e-454f73b5725c',
             '--callback' => 'https://example.com/mtn-momo/callback',
             '--no-interaction' => true,
-        ]);
-
-        $this->assertEquals(0, $exitCode, "Expected status code 0 but received {$exitCode}.");
+        ])->assertExitCode(0);
     }
 
     public function test_register_client_id()
@@ -143,11 +152,21 @@ class RegisterIdCommandTest extends TestCase
 
         $mockClient = $this->mockGuzzleClient($apiResponse);
 
-        $mockCommand = m::mock('Bmatovu\MtnMomo\Console\RegisterIdCommand[info,line,confirm]', [$mockClient]);
+        $mockCommand = m::mock('Bmatovu\MtnMomo\Console\RegisterIdCommand[ask,info,line,confirm]', [$mockClient]);
 
         $mockCommand->shouldReceive('info')->once()->with('Client APP ID - [X-Reference-Id, api_user_id]');
 
         $mockCommand->shouldReceive('info')->once()->with('Client APP redirect URI - [X-Callback-Url, providerCallbackHost]');
+
+        $mockCommand->shouldReceive('ask')
+            ->once()
+            ->with('Use client app ID?', 'd83eadba-a6b8-4301-b78e-454f73b5725c')
+            ->andReturn('d83eadba-a6b8-4301-b78e-454f73b5725c');
+
+        $mockCommand->shouldReceive('ask')
+            ->once()
+            ->with('Use client app redirect URI?', 'https://example.com/mtn-momo/callback')
+            ->andReturn('https://example.com/mtn-momo/callback');
 
         $mockCommand->shouldReceive('info')->once()->with('Registering Client ID');
 
@@ -162,13 +181,11 @@ class RegisterIdCommandTest extends TestCase
 
         Container::getInstance()->make(Kernel::class)->registerCommand($mockCommand);
 
-        $exitCode = $this->artisan('mtn-momo:register-id', [
+        $this->artisan('mtn-momo:register-id', [
             '--id' => 'd83eadba-a6b8-4301-b78e-454f73b5725c',
             '--callback' => 'https://example.com/mtn-momo/callback',
             '--no-interaction' => true,
-        ]);
-
-        $this->assertEquals(0, $exitCode, "Expected status code 0 but received {$exitCode}.");
+        ])->assertExitCode(0);
     }
 
     public function test_register_duplicate_client_id()
@@ -185,8 +202,16 @@ class RegisterIdCommandTest extends TestCase
 
         $mockClient = $this->mockGuzzleClient($apiResponses);
 
-        $mockCommand = m::mock('Bmatovu\MtnMomo\Console\RegisterIdCommand[info,line,confirm]', [$mockClient])
+        $mockCommand = m::mock('Bmatovu\MtnMomo\Console\RegisterIdCommand[ask,info,line,confirm]', [$mockClient])
             ->shouldIgnoreMissing();
+
+        $mockCommand->shouldReceive('ask')
+            ->with('Use client app ID?', 'd83eadba-a6b8-4301-b78e-454f73b5725c')
+            ->andReturn('d83eadba-a6b8-4301-b78e-454f73b5725c');
+
+        $mockCommand->shouldReceive('ask')
+            ->with('Use client app redirect URI?', 'https://example.com/mtn-momo/callback')
+            ->andReturn('https://example.com/mtn-momo/callback');
 
         $mockCommand->shouldReceive('info')->once()->with('Registering Client ID');
 
@@ -199,13 +224,11 @@ class RegisterIdCommandTest extends TestCase
 
         Container::getInstance()->make(Kernel::class)->registerCommand($mockCommand);
 
-        $exitCode = $this->artisan('mtn-momo:register-id', [
+        $this->artisan('mtn-momo:register-id', [
             '--id' => 'd83eadba-a6b8-4301-b78e-454f73b5725c',
             '--callback' => 'https://example.com/mtn-momo/callback',
             '--no-interaction' => true,
-        ]);
-
-        $this->assertEquals(0, $exitCode, "Expected status code 0 but received {$exitCode}.");
+        ])->assertExitCode(0);
 
         // Re-registration
 
@@ -215,12 +238,10 @@ class RegisterIdCommandTest extends TestCase
 
         $mockCommand->shouldReceive('line')->once()->with("\r\nBody: <fg=yellow>{$err_body}\r\n</>");
 
-        $exitCode = $this->artisan('mtn-momo:register-id', [
+        $this->artisan('mtn-momo:register-id', [
             '--id' => 'd83eadba-a6b8-4301-b78e-454f73b5725c',
             '--callback' => 'https://example.com/mtn-momo/callback',
             '--no-interaction' => true,
-        ]);
-
-        $this->assertEquals(0, $exitCode, "Expected status code 0 but received {$exitCode}.");
+        ])->assertExitCode(0);
     }
 }

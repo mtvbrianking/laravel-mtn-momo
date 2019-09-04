@@ -13,7 +13,7 @@ class BootstrapCommandTest extends TestCase
 {
     public function test_update_env_settings()
     {
-        $mockCommand = m::mock('Bmatovu\MtnMomo\Console\BootstrapCommand[line,choice]')
+        $mockCommand = m::mock('Bmatovu\MtnMomo\Console\BootstrapCommand[ask,choice,line]')
             ->shouldIgnoreMissing();
 
         $mockCommand->shouldReceive('line')->with('<options=bold>Product</>');
@@ -25,11 +25,9 @@ class BootstrapCommandTest extends TestCase
 
         Container::getInstance()->make(Kernel::class)->registerCommand($mockCommand);
 
-        $exitCode = $this->artisan('mtn-momo:init', [
+        $this->artisan('mtn-momo:init', [
             '--no-interaction' => true,
-        ]);
-
-        $this->assertEquals(0, $exitCode, "Expected status code 0 but received {$exitCode}.");
+        ])->assertExitCode(0);
 
         $env = file_get_contents(base_path('.env'));
 
@@ -44,11 +42,9 @@ class BootstrapCommandTest extends TestCase
             ->with('MOMO_PRODUCT', ['collection', 'disbursement', 'remittance'], 0)
             ->andReturn('disbursement');
 
-        $exitCode = $this->artisan('mtn-momo:init', [
+        $this->artisan('mtn-momo:init', [
             '--no-interaction' => true,
-        ]);
-
-        $this->assertEquals(0, $exitCode, "Expected status code 0 but received {$exitCode}.");
+        ])->assertExitCode(0);
 
         $env = file_get_contents(base_path('.env'));
 
@@ -59,7 +55,7 @@ class BootstrapCommandTest extends TestCase
 
     public function test_set_product()
     {
-        $mockCommand = m::mock('Bmatovu\MtnMomo\Console\BootstrapCommand[line,choice]')
+        $mockCommand = m::mock('Bmatovu\MtnMomo\Console\BootstrapCommand[ask,choice,line]')
             ->shouldIgnoreMissing();
 
         $mockCommand->shouldReceive('line')->once()->with('<options=bold>Product</>');
@@ -71,11 +67,9 @@ class BootstrapCommandTest extends TestCase
 
         Container::getInstance()->make(Kernel::class)->registerCommand($mockCommand);
 
-        $exitCode = $this->artisan('mtn-momo:init', [
+        $this->artisan('mtn-momo:init', [
             '--no-interaction' => true,
-        ]);
-
-        $this->assertEquals(0, $exitCode, "Expected status code 0 but received {$exitCode}.");
+        ])->assertExitCode(0);
     }
 
     public function test_set_product_key()
@@ -97,16 +91,14 @@ class BootstrapCommandTest extends TestCase
 
         Container::getInstance()->make(Kernel::class)->registerCommand($mockCommand);
 
-        $exitCode = $this->artisan('mtn-momo:init', [
+        $this->artisan('mtn-momo:init', [
             '--no-interaction' => true,
-        ]);
-
-        $this->assertEquals(0, $exitCode, "Expected status code 0 but received {$exitCode}.");
+        ])->assertExitCode(0);
     }
 
     public function test_set_environment()
     {
-        $mockCommand = m::mock('Bmatovu\MtnMomo\Console\BootstrapCommand[line,choice]')
+        $mockCommand = m::mock('Bmatovu\MtnMomo\Console\BootstrapCommand[ask,choice,line]')
             ->shouldIgnoreMissing();
 
         $mockCommand->shouldReceive('line')->once()->with('<options=bold>Product</>');
@@ -118,16 +110,14 @@ class BootstrapCommandTest extends TestCase
 
         Container::getInstance()->make(Kernel::class)->registerCommand($mockCommand);
 
-        $exitCode = $this->artisan('mtn-momo:init', [
+        $this->artisan('mtn-momo:init', [
             '--no-interaction' => true,
-        ]);
-
-        $this->assertEquals(0, $exitCode, "Expected status code 0 but received {$exitCode}.");
+        ])->assertExitCode(0);
     }
 
     public function test_set_currency()
     {
-        $mockCommand = m::mock('Bmatovu\MtnMomo\Console\BootstrapCommand[ask,line]')
+        $mockCommand = m::mock('Bmatovu\MtnMomo\Console\BootstrapCommand[ask,choice,line]')
             ->shouldIgnoreMissing();
 
         $mockCommand->shouldReceive('line')->once()->with('<options=bold>Currency</>');
@@ -139,16 +129,14 @@ class BootstrapCommandTest extends TestCase
 
         Container::getInstance()->make(Kernel::class)->registerCommand($mockCommand);
 
-        $exitCode = $this->artisan('mtn-momo:init', [
+        $this->artisan('mtn-momo:init', [
             '--no-interaction' => true,
-        ]);
-
-        $this->assertEquals(0, $exitCode, "Expected status code 0 but received {$exitCode}.");
+        ])->assertExitCode(0);
     }
 
     public function test_set_client_name()
     {
-        $mockCommand = m::mock('Bmatovu\MtnMomo\Console\BootstrapCommand[ask,line]')
+        $mockCommand = m::mock('Bmatovu\MtnMomo\Console\BootstrapCommand[ask,choice,line]')
             ->shouldIgnoreMissing();
 
         $mockCommand->shouldReceive('line')->once()->with('<options=bold>Client APP name</>');
@@ -160,10 +148,8 @@ class BootstrapCommandTest extends TestCase
 
         Container::getInstance()->make(Kernel::class)->registerCommand($mockCommand);
 
-        $exitCode = $this->artisan('mtn-momo:init', [
+        $this->artisan('mtn-momo:init', [
             '--no-interaction' => true,
-        ]);
-
-        $this->assertEquals(0, $exitCode, "Expected status code 0 but received {$exitCode}.");
+        ])->assertExitCode(0);
     }
 }

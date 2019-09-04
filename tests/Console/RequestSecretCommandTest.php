@@ -42,10 +42,8 @@ class RequestSecretCommandTest extends TestCase
 
         Container::getInstance()->make(Kernel::class)->registerCommand($mockCommand);
 
-        $exitCode = $this->artisan('mtn-momo:request-secret', [
+        $this->artisan('mtn-momo:request-secret', [
             '--id' => $client_id,
-        ]);
-
-        $this->assertEquals(0, $exitCode, "Expected status code 0 but received {$exitCode}.");
+        ])->assertExitCode(0);
     }
 }

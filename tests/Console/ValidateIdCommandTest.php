@@ -41,11 +41,9 @@ class ValidateIdCommandTest extends TestCase
 
         Container::getInstance()->make(Kernel::class)->registerCommand($mockCommand);
 
-        $exitCode = $this->artisan('mtn-momo:validate-id', [
+        $this->artisan('mtn-momo:validate-id', [
             '--id' => $client_id,
             '--product' => 'collection',
-        ]);
-
-        $this->assertEquals(0, $exitCode, "Expected status code 0 but received {$exitCode}.");
+        ])->assertExitCode(0);
     }
 }
