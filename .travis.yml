@@ -12,7 +12,7 @@ php:
 
 before_script:
   - travis_retry composer self-update
-  - travis_retry composer install --prefer-lowest --no-ansi --no-interaction --no-progress --no-scripts
+  - travis_retry composer update --prefer-lowest --no-ansi --no-interaction --no-progress --no-scripts
 
 script:
  - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
