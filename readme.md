@@ -18,7 +18,7 @@ To get started, install the package via the Composer package manager:
 | Laravel | Package | Installation                                      |
 | :-----: | :-----: | ------------------------------------------------- |
 |   5.3   |   1.3   | `composer require bmatovu/laravel-mtn-momo 1.3.*` |
-|   5.4   |   1.4   | `composer require bmatovu/laravel-mtn-momo 1.5.*` |
+|   5.4   |   1.4   | `composer require bmatovu/laravel-mtn-momo 1.4.*` |
 |   5.5   |   1.5   | `composer require bmatovu/laravel-mtn-momo 1.5.*` |
 |   5.6   |   1.6   | `composer require bmatovu/laravel-mtn-momo 1.6.*` |
 |   5.7   |   1.7   | `composer require bmatovu/laravel-mtn-momo 1.7.*` |
