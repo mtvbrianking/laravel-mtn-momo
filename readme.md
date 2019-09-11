@@ -117,33 +117,6 @@ try {
 }
 ```
 
-**Logging**
-
-Often you might need to log your API requests for debugging purposes. You can adding logging via [Guzzle middleware](http://docs.guzzlephp.org/en/stable/handlers-and-middleware.html#middleware);
-
-**Note**: Logging is enabled by default debugging mode.
-
-```php
-use Monolog\Logger;
-use GuzzleHttp\Middleware;
-use GuzzleHttp\MessageFormatter;
-use Monolog\Handler\StreamHandler;
-
-$logger = new Logger('Logger');
-$streamHandler = new StreamHandler(storage_path('logs/mtn-mono.log'));
-$logger->pushHandler($streamHandler);
-$format = "\r\n[Request] {request} \r\n[Response] {response} \r\n[Error] {error}.";
-$messageFormatter = new MessageFormatter($format);
-$logMiddleware = Middleware::log($logger, $messageFormatter);
-
-$collection = new Collection();
-
-$collection->push($logMiddleware);
-
-// Request a user to pay
-$momoTransactionId = $collection->transact('transactionId', '07XXXXXXXX', 100);
-```
-
 **Inspired! Dive into the** [source code documentation](https://mtvbrianking.github.io/laravel-mtn-momo/master).
 
 ### I Need help!
