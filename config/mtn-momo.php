@@ -32,7 +32,7 @@ return [
 
     'api' => [
         // API base URI.
-        'base_uri' => env('MOMO_API_BASE_URI', 'https://ericssonbasicapi2.azure-api.net/'),
+        'base_uri' => env('MOMO_API_BASE_URI', 'https://sandbox.momodeveloper.mtn.com/'),
 
         // Register client ID URI
         'register_id_uri' => env('MOMO_API_REGISTER_ID_URI', 'v1_0/apiuser'),
