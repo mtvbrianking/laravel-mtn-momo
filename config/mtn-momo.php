@@ -168,4 +168,13 @@ return [
         ],
     ],
 
+    /*
+     * GuzzleHttp client request options.
+     * http://docs.guzzlephp.org/en/stable/request-options.html
+     */
+    'guzzle' => [
+        'options' => [
+            // 'verify' => false
+        ],
+    ],
 ];

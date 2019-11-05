@@ -77,7 +77,7 @@ class MtnMomoServiceProvider extends ServiceProvider
 
         $product = $this->app['config']->get('mtn-momo.product');
 
-        return new Client([
+        $options = array_merge([
             'handler' => $handlerStack,
             'progress' => function () {
                 echo '. ';
@@ -91,7 +91,9 @@ class MtnMomoServiceProvider extends ServiceProvider
             'json' => [
                 'body',
             ],
-        ]);
+        ], $this->app['config']->get('mtn-momo.guzzle.options'));
+
+        return new Client($options);
     }
 
     /**

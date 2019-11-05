@@ -326,12 +326,14 @@ abstract class Product
             $handlerStack->push($this->getLogMiddleware());
         }
 
-        // Set http client.
-        $this->client = new Client([
+        $options = array_merge([
             'handler' => $handlerStack,
             'base_uri' => $this->baseUri,
             'headers' => $headers,
-        ]);
+        ], $this->config->get('mtn-momo.guzzle.options'));
+
+        // Set http client.
+        $this->client = new Client($options);
     }
 
     /**
@@ -394,15 +396,17 @@ abstract class Product
             $handlerStack->push($this->getLogMiddleware());
         }
 
-        // Authorization client - this is used to request OAuth access tokens
-        $client = new Client([
+        $options = array_merge([
             'base_uri' => $this->baseUri,
             'handler' => $handlerStack,
             'headers' => $headers,
             'json' => [
                 'body',
             ],
-        ]);
+        ], $this->config->get('mtn-momo.guzzle.options'));
+
+        // Authorization client - this is used to request OAuth access tokens
+        $client = new Client($options);
 
         $config = [
             'client_id' => $this->clientId,
