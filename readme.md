@@ -18,7 +18,7 @@ To get started, install the package via the Composer package manager:
 | Laravel | Package | Installation                                      |
 | :-----: | :-----: | ------------------------------------------------- |
 |   5.3   |   1.3   | `composer require bmatovu/laravel-mtn-momo 1.3.*` |
-|   5.4   |   1.4   | `composer require bmatovu/laravel-mtn-momo 1.5.*` |
+|   5.4   |   1.4   | `composer require bmatovu/laravel-mtn-momo 1.4.*` |
 |   5.5   |   1.5   | `composer require bmatovu/laravel-mtn-momo 1.5.*` |
 |   5.6   |   1.6   | `composer require bmatovu/laravel-mtn-momo 1.6.*` |
 |   5.7   |   1.7   | `composer require bmatovu/laravel-mtn-momo 1.7.*` |
@@ -115,33 +115,6 @@ try {
             $e->getFile(), $e->getLine(), $e->getMessage(), $e->getCode(), get_class($e));
     } while($e = $e->getPrevious());
 }
-```
-
-**Logging**
-
-Often you might need to log your API requests for debugging purposes. You can adding logging via [Guzzle middleware](http://docs.guzzlephp.org/en/stable/handlers-and-middleware.html#middleware);
-
-**Note**: Logging is enabled by default debugging mode.
-
-```php
-use Monolog\Logger;
-use GuzzleHttp\Middleware;
-use GuzzleHttp\MessageFormatter;
-use Monolog\Handler\StreamHandler;
-
-$logger = new Logger('Logger');
-$streamHandler = new StreamHandler(storage_path('logs/mtn-mono.log'));
-$logger->pushHandler($streamHandler);
-$format = "\r\n[Request] {request} \r\n[Response] {response} \r\n[Error] {error}.";
-$messageFormatter = new MessageFormatter($format);
-$logMiddleware = Middleware::log($logger, $messageFormatter);
-
-$collection = new Collection();
-
-$collection->push($logMiddleware);
-
-// Request a user to pay
-$momoTransactionId = $collection->transact('transactionId', '07XXXXXXXX', 100);
 ```
 
 **Inspired! Dive into the** [source code documentation](https://mtvbrianking.github.io/laravel-mtn-momo/master).
