@@ -6,9 +6,9 @@
 namespace Bmatovu\MtnMomo\Models;
 
 use Bmatovu\MtnMomo\Traits\TokenUtilTrait;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Bmatovu\OAuthNegotiator\Models\TokenInterface;
 use Illuminate\Database\Eloquent\Model as BaseModel;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Token model.

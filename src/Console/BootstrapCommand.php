@@ -5,8 +5,8 @@
 
 namespace Bmatovu\MtnMomo\Console;
 
-use Illuminate\Console\Command;
 use Bmatovu\MtnMomo\Traits\CommandUtilTrait;
+use Illuminate\Console\Command;
 
 /**
  * Bootstrap integration.

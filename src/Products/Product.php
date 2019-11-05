@@ -5,18 +5,18 @@
 
 namespace Bmatovu\MtnMomo\Products;
 
-use Monolog\Logger;
-use GuzzleHttp\Client;
-use GuzzleHttp\Middleware;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\MessageFormatter;
-use Monolog\Handler\StreamHandler;
-use Illuminate\Container\Container;
-use Illuminate\Contracts\Config\Repository;
-use Bmatovu\OAuthNegotiator\OAuth2Middleware;
 use Bmatovu\MtnMomo\Repositories\TokenRepository;
 use Bmatovu\OAuthNegotiator\GrantTypes\ClientCredentials;
+use Bmatovu\OAuthNegotiator\OAuth2Middleware;
+use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\MessageFormatter;
+use GuzzleHttp\Middleware;
+use Illuminate\Container\Container;
+use Illuminate\Contracts\Config\Repository;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
 
 /**
  * Generic product/service.

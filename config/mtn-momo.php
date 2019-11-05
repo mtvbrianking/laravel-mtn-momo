@@ -174,7 +174,7 @@ return [
      */
     'guzzle' => [
         'options' => [
-            // 'verify' => false
+            // 'verify' => false,
         ],
     ],
 ];

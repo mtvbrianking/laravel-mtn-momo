@@ -5,13 +5,13 @@
 
 namespace Bmatovu\MtnMomo\Console;
 
-use Ramsey\Uuid\Uuid;
-use GuzzleHttp\ClientInterface;
-use Illuminate\Console\Command;
-use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Exception\ServerException;
-use GuzzleHttp\Exception\ConnectException;
 use Bmatovu\MtnMomo\Traits\CommandUtilTrait;
+use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Exception\ServerException;
+use Illuminate\Console\Command;
+use Ramsey\Uuid\Uuid;
 
 /**
  * Get client APP API credentials.

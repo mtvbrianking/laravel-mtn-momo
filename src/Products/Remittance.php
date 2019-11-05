@@ -5,12 +5,12 @@
 
 namespace Bmatovu\MtnMomo\Products;
 
-use Ramsey\Uuid\Uuid;
-use GuzzleHttp\ClientInterface;
-use Illuminate\Container\Container;
-use GuzzleHttp\Exception\RequestException;
-use Illuminate\Contracts\Config\Repository;
 use Bmatovu\MtnMomo\Exceptions\RemittanceRequestException;
+use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Exception\RequestException;
+use Illuminate\Container\Container;
+use Illuminate\Contracts\Config\Repository;
+use Ramsey\Uuid\Uuid;
 
 /**
  * Remittance service/product.

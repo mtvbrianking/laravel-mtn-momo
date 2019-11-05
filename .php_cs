@@ -21,7 +21,7 @@ $rules = [
     'not_operator_with_successor_space' => true,
     'no_useless_else' => true,
     'ordered_imports' => [
-        'sortAlgorithm' => 'length',
+        'sortAlgorithm' => 'alpha',
     ],
     'phpdoc_add_missing_param_annotation' => true,
     'phpdoc_indent' => true,

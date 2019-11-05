@@ -5,18 +5,18 @@
 
 namespace Bmatovu\MtnMomo;
 
-use Monolog\Logger;
-use GuzzleHttp\Client;
-use GuzzleHttp\Middleware;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\MessageFormatter;
-use Monolog\Handler\StreamHandler;
-use Illuminate\Support\ServiceProvider;
 use Bmatovu\MtnMomo\Console\BootstrapCommand;
 use Bmatovu\MtnMomo\Console\RegisterIdCommand;
-use Bmatovu\MtnMomo\Console\ValidateIdCommand;
 use Bmatovu\MtnMomo\Console\RequestSecretCommand;
+use Bmatovu\MtnMomo\Console\ValidateIdCommand;
+use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\MessageFormatter;
+use GuzzleHttp\Middleware;
+use Illuminate\Support\ServiceProvider;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
 
 /**
  * Package service provider.
