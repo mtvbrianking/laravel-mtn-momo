@@ -108,7 +108,7 @@ class DisbursementTest extends TestCase
 
         $ext_trans_ref = Uuid::uuid4()->toString();
 
-        $transaction = $disbursement->getDisbursementTransactionStatus($ext_trans_ref);
+        $transaction = $disbursement->getTransactionStatus($ext_trans_ref);
 
         $this->assertEquals($transaction, $body);
     }

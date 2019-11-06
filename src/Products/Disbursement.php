@@ -229,7 +229,7 @@ class Disbursement extends Product
      *
      * @return array
      */
-    public function getDisbursementTransactionStatus($momoTransactionId)
+    public function getTransactionStatus($momoTransactionId)
     {
         $transaction_status_uri = str_replace('{momoTransactionId}', $momoTransactionId, $this->transactionStatusUri);
 
