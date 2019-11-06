@@ -122,69 +122,99 @@ try {
 
 **Collection**
 
-- [Collect money](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Collection.html#method_transact)
+1. [Collect money](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Collection.html#method_transact)
 
-`$collection->transact($transactionId, $partyId, $amount)`
+    ```
+    $collection->transact($transactionId, $partyId, $amount)
+    ```
 
-- [Check transaction status](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Collection.html#method_getTransactionStatus)
+2. [Check transaction status](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Collection.html#method_getTransactionStatus)
 
-`$collection->getTransactionStatus($momoTransactionId)`
+    ```
+    $collection->getTransactionStatus($momoTransactionId)
+    ```
 
-- [Check account balance](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Collection.html#method_getAccountBalance)
+3. [Check account balance](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Collection.html#method_getAccountBalance)
 
-`$collection->getAccountBalance()`
+    ```
+    $collection->getAccountBalance()
+    ```
 
-- [Check account status](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Collection.html#method_isActive)
+4. [Check account status](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Collection.html#method_isActive)
 
-`$collection->isActive($partyId)`
+    ```
+    $collection->isActive($partyId)
+    ```
 
-- [Get OAuth token](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Collection.html#method_getToken)
+5. [Get OAuth token](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Collection.html#method_getToken)
 
-`$collection->getToken()`
+    ```
+    $collection->getToken()
+    ```
 
 **Disbursement**
 
-- [Disburse money](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Disbursement.html#method_transfer)
+1. [Disburse money](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Disbursement.html#method_transfer)
 
-`$disbursement->transfer($transactionId, $partyId, $amount)`
+    ```
+    $disbursement->transfer($transactionId, $partyId, $amount)
+    ```
 
-- [Check transaction status](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Disbursement.html#method_getTransactionStatus)
+2. [Check transaction status](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Disbursement.html#method_getTransactionStatus)
 
-`$disbursement->getTransactionStatus($momoTransactionId)`
+    ```
+    $disbursement->getTransactionStatus($momoTransactionId)
+    ```
 
-- [Check account balance](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Disbursement.html#method_getAccountBalance)
+3. [Check account balance](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Disbursement.html#method_getAccountBalance)
 
-`$disbursement->getAccountBalance()`
+    ```
+    $disbursement->getAccountBalance()
+    ```
 
-- [Check account status](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Disbursement.html#method_isActive)
+4. [Check account status](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Disbursement.html#method_isActive)
 
-`$disbursement->isActive($partyId)`
+    ```
+    $disbursement->isActive($partyId)
+    ```
 
-- [Get OAuth token](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Disbursement.html#method_getToken)
+5. [Get OAuth token](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Disbursement.html#method_getToken)
 
-`$disbursement->getToken()`
+    ```
+    $disbursement->getToken()
+    ```
 
 **Remittance**
 
-- [Remit money](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Remittance.html#method_transact)
+1. [Remit money](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Remittance.html#method_transact)
 
-`$remittance->transfer($transactionId, $partyId, $amount)`
+    ```
+    $remittance->transfer($transactionId, $partyId, $amount)
+    ```
 
-- [Check transaction status](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Remittance.html#method_getTransactionStatus)
+2. [Check transaction status](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Remittance.html#method_getTransactionStatus)
 
-`$remittance->getTransactionStatus($momoTransactionId)`
+    ```
+    $remittance->getTransactionStatus($momoTransactionId)
+    ```
 
-- [Check account balance](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Remittance.html#method_getAccountBalance)
+3. [Check account balance](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Remittance.html#method_getAccountBalance)
 
-`$remittance->getAccountBalance()`
+    ```
+    $remittance->getAccountBalance()
+    ```
 
-- [Check account status](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Remittance.html#method_isActive)
+4. [Check account status](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Remittance.html#method_isActive)
 
-`$remittance->isActive($partyId)`
+    ```
+    $remittance->isActive($partyId)
+    ```
 
-- [Get OAuth token](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Remittance.html#method_getToken)
+5. [Get OAuth token](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Remittance.html#method_getToken)
 
-`$remittance->getToken()`
+    ```
+    $remittance->getToken()
+    ```
 
 ### I Need help!
 
