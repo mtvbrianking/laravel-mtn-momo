@@ -16,6 +16,8 @@ build:
     environment:
         php:
             version: '7.2'
+    requires:
+        - branch: master
     nodes:
         analysis:
             tests:
