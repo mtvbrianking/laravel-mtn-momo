@@ -104,7 +104,7 @@ trait CommandUtilTrait
         }
 
         // Update in file.
-        $env = $this->laravel->environmentFilePath();
+        $env = environment_file_path();
 
         $name = strtoupper($name);
 
