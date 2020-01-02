@@ -86,15 +86,30 @@ Then request for a client secret (key).
 ```bash
 php artisan mtn-momo:request-secret
 ```
+### Getting started in Production
+1. Once you have applied to go in production , skip the steps above.
+Upon approval of your company documents
+Unlike sanbox , creating an API user in production is already handled for you in the partner portal.
+
+You will receive an email from the Mobile Money Office in order to access the partner portal with  this [**link
+**](https://mobilemoneyreadonly.mtn.co.ug/)
+
+ 
+
+Your username and one-time password  are indicated on the simpack picked from the Mtn Mobile Money Offices. Enter
+ username and select ‘First Login’
 
 ### Usage
+
+
+#### Make sure the phone number to collect funds from starts with international country code other than a leading Zero.
 
 ```php
 use Bmatovu\MtnMomo\Products\Collection;
 
 $collection = new Collection();
 
-// Request a user to pay
+
 $momoTransactionId = $collection->transact('transactionId', '07XXXXXXXX', 100);
 ```
 
