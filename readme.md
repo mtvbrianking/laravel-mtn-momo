@@ -61,7 +61,7 @@ You will need the following to get started with you integration...
 
 If you already subscribed to a product, the subscription key can be found in your [**profile**](https://momodeveloper.mtn.com/developer).
 
-### Getting started
+### Getting started sanbox
 
 Register you client details.
 
@@ -87,22 +87,56 @@ Then request for a client secret (key).
 php artisan mtn-momo:request-secret
 ```
 ### Getting started in Production
-1. Once you have applied to go in production , skip the steps above.
-Upon approval of your company documents
-Unlike sanbox , creating an API user in production is already handled for you in the partner portal.
+Once you have applied to go in production ,subscription to the product is done via paper work 
+1.Register you client details.
+
+```bash
+php artisan mtn-momo:init
+```
+2.Upon approval of your company documents
+Unlike sanbox , creating an API user (Client Id) and Secret (API KEY) in production is already handled for you via the [partner portal](https://mobilemoneyreadonly.mtn.co.ug/).
 
 You will receive an email from the Mobile Money Office in order to access the partner portal with  this [**link
 **](https://mobilemoneyreadonly.mtn.co.ug/)
 
  
 
-Your username and one-time password  are indicated on the simpack picked from the Mtn Mobile Money Offices. Enter
- username and select ‘First Login’
+Your username and one-time password  are indicated on the simpack picked from the Mtn Mobile Money Offices.
+Enter username and select ‘First Login’
+
+Once logged in navigate to the top right corner and create an API User.
+Use the Generated APIUSER as the client ID and API_KEY as the secret.
 
 ### Usage
 
+Update your Env file with the latest production credentials 
+```env
+MOMO_APP="Your App Name"
 
-#### Make sure the phone number to collect funds from starts with international country code other than a leading Zero.
+MOMO_ENVIRONMENT="mtnuganda"
+
+MOMO_CURRENCY="UGX"
+
+MOMO_PRODUCT="collection" // can be disbursment or remittence
+
+MOMO_COLLECTION_SUBSCRIPTION_KEY="PRODUCT SUBSCRIPTION KEY"
+
+MOMO_API_BASE_URI = "https://ericssonbasicapi1.azure-api.net/"   // this is the production url
+
+MOMO_COLLECTION_REDIRECT_URI = "https://yourcallbackhost.com"
+
+MOMO_COLLECTION_ID = "APIUSER FROM PARTNER PORTAL"
+
+MOMO_COLLECTION_SECRET= "API KEY FROM PARTNER PORTAL"
+
+
+
+```
+
+#### In production ,make sure the phone number to collect funds from starts with international country code other than a leading Zero.
+
+Forexample, in uganada use '2567XXXXXXXX' instead of '07XXXXXXXX'  cameroon use '237XXXXXXXX' instead ot the leading Zero etc..
+
 
 ```php
 use Bmatovu\MtnMomo\Products\Collection;
