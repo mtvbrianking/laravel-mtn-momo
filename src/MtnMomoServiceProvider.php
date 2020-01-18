@@ -91,7 +91,7 @@ class MtnMomoServiceProvider extends ServiceProvider
             'json' => [
                 'body',
             ],
-        ], $this->app['config']->get('mtn-momo.guzzle.options'));
+        ], (array) $this->app['config']->get('mtn-momo.guzzle.options'));
 
         return new Client($options);
     }
