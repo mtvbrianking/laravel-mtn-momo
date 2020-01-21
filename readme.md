@@ -98,7 +98,7 @@ $collection = new Collection();
 $momoTransactionId = $collection->transact('transactionId', '07XXXXXXXX', 100);
 ```
 
-See [test numbers](https://momodeveloper.mtn.com/api-documentation/testing/#testing)
+See [test numbers](https://momodeveloper.mtn.com/api-documentation/testing/#test-numbers)
 
 **Exception handling**
 
