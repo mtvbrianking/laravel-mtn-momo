@@ -15,11 +15,17 @@ use Carbon\Carbon;
 class TokenRepository implements TokenRepositoryInterface
 {
     /**
-     * Constructor.
+     * @var String The product whose token you are looking for.
      */
-    public function __constructor()
+    protected $product_type;
+
+    /**
+     * TokenRepository constructor.
+     * @param String $product_type Product type I.E collection, disbursement
+     */
+    public function __construct(String $product_type)
     {
-        // Silence is golden...
+        $this->product_type = $product_type;
     }
 
     /**
@@ -28,6 +34,10 @@ class TokenRepository implements TokenRepositoryInterface
     public function create(array $attributes)
     {
         $attributes['token_type'] = 'Bearer';
+
+        if(empty($attributes['product_type'])){
+            $attributes['product_type'] = $this->product_type;
+        }
 
         if (isset($attributes['expires_in'])) {
             $attributes['expires_at'] = Carbon::now()->addSeconds($attributes['expires_in']);
@@ -53,7 +63,7 @@ class TokenRepository implements TokenRepositoryInterface
             return Token::where('access_token', $access_token)->first();
         }
 
-        return Token::latest('created_at')->first();
+        return Token::where('product_type',$this->product_type)->latest('created_at')->first();
     }
 
     /**

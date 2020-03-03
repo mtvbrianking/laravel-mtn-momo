@@ -136,7 +136,7 @@ class Remittance extends Product
         $this->accountBalanceUri = $config->get('mtn-momo.products.remittance.account_balance_uri');
         $this->partyIdType = $config->get('mtn-momo.products.remittance.party_id_type');
 
-        parent::__construct($headers, $middleware, $client);
+        parent::__construct("remittance",$headers, $middleware, $client);
     }
 
     /**
