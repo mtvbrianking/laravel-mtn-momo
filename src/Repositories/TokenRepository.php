@@ -15,15 +15,15 @@ use Carbon\Carbon;
 class TokenRepository implements TokenRepositoryInterface
 {
     /**
-     * @var String The product whose token you are looking for.
+     * @var string The product whose token you are looking for.
      */
     protected $product_type;
 
     /**
      * TokenRepository constructor.
-     * @param String $product_type Product type I.E collection, disbursement
+     * @param string $product_type Product type I.E collection, disbursement
      */
-    public function __construct(String $product_type)
+    public function __construct(string $product_type)
     {
         $this->product_type = $product_type;
     }
