@@ -135,7 +135,7 @@ class Disbursement extends Product
         $this->accountBalanceUri = $config->get('mtn-momo.products.disbursement.account_balance_uri');
         $this->partyIdType = $config->get('mtn-momo.products.disbursement.party_id_type');
 
-        parent::__construct($headers, $middleware, $client);
+        parent::__construct("disbursement",$headers, $middleware, $client);
     }
 
     /**

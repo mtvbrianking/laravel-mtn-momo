@@ -1,13 +1,12 @@
 <?php
 namespace Bmatovu\MtnMomo\Tests\Repositories;
 
+use Bmatovu\MtnMomo\Repositories\TokenRepository;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Bmatovu\MtnMomo\Models\Token;
 use Bmatovu\MtnMomo\Tests\TestCase;
 use Illuminate\Database\Eloquent\Collection;
-use Bmatovu\MtnMomo\Repositories\TokenRepository;
-use Bmatovu\OAuthNegotiator\Models\TokenInterface;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Bmatovu\OAuthNegotiator\Repositories\TokenRepositoryInterface;
 
@@ -27,7 +26,7 @@ class TokenRepositoryTest extends TestCase
             'expires_in' => 3600,
         ];
 
-        $tokenRepo = new TokenRepository();
+        $tokenRepo = new TokenRepository("");
 
         $this->assertInstanceOf(TokenRepositoryInterface::class, $tokenRepo);
 
