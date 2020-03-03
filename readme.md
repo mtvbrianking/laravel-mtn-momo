@@ -113,7 +113,7 @@ $collection = new Collection();
 $momoTransactionId = $collection->transact('transactionId', '07XXXXXXXX', 100);
 ```
 
-See [test numbers](https://momodeveloper.mtn.com/api-documentation/testing/#testing)
+See [test numbers](https://momodeveloper.mtn.com/api-documentation/testing/#test-numbers)
 
 **Exception handling**
 
@@ -232,9 +232,9 @@ try {
     $remittance->getToken()
     ```
 
-### I Need help!
+### Go live
 
-Feel free to [open an issue](https://github.com/mtvbrianking/laravel-mtn-momo/issues/new). Please be as specific as possible if you want to get help.
+You will need to make some changes to your setup before going live. [Read more](https://github.com/mtvbrianking/laravel-mtn-momo/wiki/Go-Live).
 
 ### Reporting bugs
 
