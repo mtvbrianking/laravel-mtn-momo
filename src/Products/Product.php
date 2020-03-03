@@ -286,20 +286,20 @@ abstract class Product
     /**
      * Constructor.
      *
-     * @param String $product_type
+     * @param string $product_type
      * @param array $headers
      * @param array $middleware
      * @param \GuzzleHttp\ClientInterface $client
      *
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function __construct($product_type,$headers = [], $middleware = [], ClientInterface $client = null)
+    public function __construct($product_type, $headers = [], $middleware = [], ClientInterface $client = null)
     {
         $this->config = Container::getInstance()->make(Repository::class);
 
         // Set defaults.
         $this->setConfigurations();
-        $this->product_type = $product_type;
+        $this->productType = $product_type;
 
         if ($client) {
             $this->client = $client;
@@ -338,7 +338,7 @@ abstract class Product
         $this->client = new Client($options);
     }
 
-    protected $product_type;
+    protected $productType;
 
     /**
      * Request access token.
@@ -423,7 +423,7 @@ abstract class Product
         $clientCredGrant = new ClientCredentials($client, $config);
 
         // Create token repository
-        $tokenRepo = new TokenRepository($this->product_type);
+        $tokenRepo = new TokenRepository($this->productType);
 
         // Tell the middleware to use both the client and refresh token grants
         return new OAuth2Middleware($clientCredGrant, null, $tokenRepo);
