@@ -8,8 +8,8 @@ $factory->define(Token::class, function (Faker $faker) {
     return [
         'access_token' => Str::random(60),
         'refresh_token' => Str::random(60),
-        'product_type'=> $faker->randomElement(['collection','disbursement','remittance']),
         'token_type' => $faker->randomElement(['Basic', 'Bearer']),
-        'expires_at' => $faker->dateTime('now', null)
+        'product' => $faker->randomElement(['collection', 'disbursement', 'remittance']),
+        'expires_at' => $faker->dateTime('now', null),
     ];
 });

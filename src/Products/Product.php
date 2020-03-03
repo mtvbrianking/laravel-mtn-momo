@@ -24,6 +24,13 @@ use Monolog\Logger;
 abstract class Product
 {
     /**
+     * Product.
+     *
+     * @var string
+     */
+    const PRODUCT = null;
+
+    /**
      * Configuration.
      *
      * @var \Illuminate\Contracts\Config\Repository
@@ -286,20 +293,18 @@ abstract class Product
     /**
      * Constructor.
      *
-     * @param string $product_type
      * @param array $headers
      * @param array $middleware
      * @param \GuzzleHttp\ClientInterface $client
      *
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     * @throws \Exception
      */
-    public function __construct($product_type, $headers = [], $middleware = [], ClientInterface $client = null)
+    public function __construct($headers = [], $middleware = [], ClientInterface $client = null)
     {
         $this->config = Container::getInstance()->make(Repository::class);
 
         // Set defaults.
         $this->setConfigurations();
-        $this->productType = $product_type;
 
         if ($client) {
             $this->client = $client;
@@ -337,8 +342,6 @@ abstract class Product
         // Set http client.
         $this->client = new Client($options);
     }
-
-    protected $productType;
 
     /**
      * Request access token.
@@ -423,7 +426,7 @@ abstract class Product
         $clientCredGrant = new ClientCredentials($client, $config);
 
         // Create token repository
-        $tokenRepo = new TokenRepository($this->productType);
+        $tokenRepo = new TokenRepository(self::PRODUCT);
 
         // Tell the middleware to use both the client and refresh token grants
         return new OAuth2Middleware($clientCredGrant, null, $tokenRepo);

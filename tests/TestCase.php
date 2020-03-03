@@ -1,10 +1,10 @@
 <?php
 namespace Bmatovu\MtnMomo\Tests;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Handler\MockHandler;
 use Bmatovu\MtnMomo\MtnMomoServiceProvider;
+use GuzzleHttp\Client;
+use GuzzleHttp\Handler\MockHandler;
+use GuzzleHttp\HandlerStack;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class TestCase extends Orchestra
@@ -38,15 +38,16 @@ abstract class TestCase extends Orchestra
     }
 
     /**
-     * Add package service provider
+     * Add package service provider.
      *
      * @param \Illuminate\Foundation\Application $app
+     *
      * @return array
      */
     protected function getPackageProviders($app)
     {
         return [
-            MtnMomoServiceProvider::class
+            MtnMomoServiceProvider::class,
         ];
     }
 
@@ -54,6 +55,7 @@ abstract class TestCase extends Orchestra
      * Define environment setup.
      *
      * @param \Illuminate\Foundation\Application $app
+     *
      * @return void
      */
     protected function getEnvironmentSetUp($app)
@@ -75,7 +77,7 @@ abstract class TestCase extends Orchestra
      */
     protected function mockGuzzleClient($response)
     {
-        if(is_array($response)) {
+        if (is_array($response)) {
             $responses = $response;
         } else {
             $responses[] = $response;

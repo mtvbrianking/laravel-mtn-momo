@@ -1,12 +1,12 @@
 <?php
 namespace Bmatovu\MtnMomo\Tests\Models;
 
-use Carbon\Carbon;
-use Illuminate\Support\Str;
 use Bmatovu\MtnMomo\Models\Token;
 use Bmatovu\MtnMomo\Tests\TestCase;
 use Bmatovu\OAuthNegotiator\Models\TokenInterface;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Support\Str;
 
 /**
  * @see \Bmatovu\MtnMomo\Models\Token
@@ -20,12 +20,14 @@ class TokenTest extends TestCase
         $access_token = Str::random(60);
         $refresh_token = Str::random(60);
         $token_type = 'Bearer';
+        $product = 'collection';
         $expires_at = Carbon::now();
 
         $token = Token::create([
             'access_token' => $access_token,
             'refresh_token' => $refresh_token,
             'token_type' => $token_type,
+            'product' => $product,
             'expires_at' => $expires_at,
         ]);
 
@@ -39,6 +41,7 @@ class TokenTest extends TestCase
             'access_token' => $access_token,
             'refresh_token' => $refresh_token,
             'token_type' => $token_type,
+            'product' => $product,
             'expires_at' => $expires_at,
             'deleted_at' => null,
         ]);
@@ -49,18 +52,21 @@ class TokenTest extends TestCase
         $access_token = Str::random(60);
         $refresh_token = Str::random(60);
         $token_type = 'Bearer';
+        $product = 'collection';
         $expires_at = Carbon::now();
 
         $token = Token::create([
             'access_token' => $access_token,
             'refresh_token' => $refresh_token,
             'token_type' => $token_type,
+            'product' => $product,
             'expires_at' => $expires_at,
         ]);
 
         $this->assertEquals($access_token, $token->getAccessToken());
         $this->assertEquals($refresh_token, $token->getRefreshToken());
         $this->assertEquals($token_type, $token->getTokenType());
+        $this->assertEquals($product, $token->getProduct());
         $this->assertInstanceOf(Carbon::class, $token->getExpiresAt());
         $this->assertEquals($expires_at->format('Y-m-d H:i:s'), $token->getExpiresAt()->format('Y-m-d H:i:s'));
     }

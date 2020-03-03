@@ -16,6 +16,11 @@ class CreateMtnMomoTokensTable extends Migration
             $table->text('access_token');
             $table->text('refresh_token')->nullable();
             $table->string('token_type')->default('Bearer');
+            $table->enum('product', [
+                'collection',
+                'disbursement',
+                'remittance',
+            ]);
             $table->timestamps();
             $table->timestamp('expires_at')->nullable();
             $table->softDeletes();

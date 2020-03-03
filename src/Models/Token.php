@@ -33,6 +33,7 @@ class Token extends BaseModel implements TokenInterface
         'access_token',
         'refresh_token',
         'token_type',
+        'product',
         'expires_at',
     ];
 

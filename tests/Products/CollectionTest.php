@@ -1,19 +1,14 @@
 <?php
 namespace Bmatovu\MtnMomo\Tests\Products;
 
-use Mockery as m;
-use Ramsey\Uuid\Uuid;
-use Illuminate\Support\Str;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Psr7\Response;
-use GuzzleHttp\ClientInterface;
-use Bmatovu\MtnMomo\Tests\TestCase;
-use Illuminate\Container\Container;
-use Bmatovu\MtnMomo\Products\Product;
-use Illuminate\Contracts\Console\Kernel;
-use Bmatovu\MtnMomo\Products\Collection;
-use GuzzleHttp\Exception\RequestException;
 use Bmatovu\MtnMomo\Exceptions\CollectionRequestException;
+use Bmatovu\MtnMomo\Products\Collection;
+use Bmatovu\MtnMomo\Products\Product;
+use Bmatovu\MtnMomo\Tests\TestCase;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Psr7\Response;
+use Illuminate\Support\Str;
+use Ramsey\Uuid\Uuid;
 
 /**
  * @see \Bmatovu\MtnMomo\Products\Collection
@@ -74,7 +69,7 @@ class CollectionTest extends TestCase
         try {
             $momoTransactionId = $collection->transact('transactionId', '07XXXXXXXX', 100);
             $this->assertNull($momoTransactionId);
-        } catch(CollectionRequestException $e) {
+        } catch (CollectionRequestException $e) {
             $this->assertInstanceOf(CollectionRequestException::class, $e);
             $this->assertEquals($e->getCode(), 0);
             $this->assertEquals('Request to pay transaction - unsuccessful.', $e->getMessage());
@@ -94,13 +89,13 @@ class CollectionTest extends TestCase
             'externalId' => 947354,
             'payer' => [
                 'partyIdType' => 'MSISDN',
-                'partyId' => 4656473839
+                'partyId' => 4656473839,
             ],
             'status' => 'FAILED',
             'reason' => [
                 'code' => 'PAYER_NOT_FOUND',
-                'message' => 'Payee does not exist'
-            ]
+                'message' => 'Payee does not exist',
+            ],
         ];
 
         $response = new Response(200, [], json_encode($body));
@@ -139,7 +134,7 @@ class CollectionTest extends TestCase
     {
         $body = [
             'availableBalance' => 100,
-            'currency' => 'EUR'
+            'currency' => 'EUR',
         ];
 
         $response = new Response(200, [], json_encode($body));
@@ -156,7 +151,7 @@ class CollectionTest extends TestCase
     public function test_can_determine_account_status()
     {
         $body = [
-            'result' => true
+            'result' => true,
         ];
 
         $response = new Response(200, [], json_encode($body));

@@ -1,13 +1,13 @@
 <?php
 namespace Bmatovu\MtnMomo\Tests\Console;
 
-use Mockery as m;
+use Bmatovu\MtnMomo\Tests\TestCase;
+use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
-use Bmatovu\MtnMomo\Tests\TestCase;
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Console\Kernel;
-use GuzzleHttp\Exception\ConnectException;
+use Mockery as m;
 
 /**
  * @see \Bmatovu\MtnMomo\Console\RegisterIdCommand
@@ -197,7 +197,7 @@ class RegisterIdCommandTest extends TestCase
 
         $apiResponses = [
             new Response(201, [], null),
-            new Response(409, [], $err_body)
+            new Response(409, [], $err_body),
         ];
 
         $mockClient = $this->mockGuzzleClient($apiResponses);

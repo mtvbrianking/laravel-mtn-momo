@@ -41,6 +41,16 @@ trait TokenUtilTrait
     }
 
     /**
+     * Get product.
+     *
+     * @return string
+     */
+    public function getProduct()
+    {
+        return $this->product;
+    }
+
+    /**
      * Get expires at.
      *
      * @return string Datatime

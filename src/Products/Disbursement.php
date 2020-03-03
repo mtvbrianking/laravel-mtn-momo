@@ -19,6 +19,13 @@ use Ramsey\Uuid\Uuid;
 class Disbursement extends Product
 {
     /**
+     * Product.
+     *
+     * @var string
+     */
+    const PRODUCT = 'disbursement';
+
+    /**
      * Transact URI.
      *
      * @var string
@@ -117,6 +124,8 @@ class Disbursement extends Product
      * @param array $middleware
      * @param \GuzzleHttp\ClientInterface $client
      *
+     * @uses \Illuminate\Contracts\Config\Repository
+     *
      * @throws \Exception
      */
     public function __construct(array $headers = [], array $middleware = [], ClientInterface $client = null)
@@ -135,7 +144,7 @@ class Disbursement extends Product
         $this->accountBalanceUri = $config->get('mtn-momo.products.disbursement.account_balance_uri');
         $this->partyIdType = $config->get('mtn-momo.products.disbursement.party_id_type');
 
-        parent::__construct('disbursement', $headers, $middleware, $client);
+        parent::__construct($headers, $middleware, $client);
     }
 
     /**

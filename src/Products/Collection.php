@@ -18,6 +18,13 @@ use Ramsey\Uuid\Uuid;
 class Collection extends Product
 {
     /**
+     * Product.
+     *
+     * @var string
+     */
+    const PRODUCT = 'collection';
+
+    /**
      * Transact URI.
      *
      * @var string
@@ -136,7 +143,7 @@ class Collection extends Product
         $this->accountBalanceUri = $config->get('mtn-momo.products.collection.account_balance_uri');
         $this->partyIdType = $config->get('mtn-momo.products.collection.party_id_type');
 
-        parent::__construct('collection', $headers, $middleware, $client);
+        parent::__construct($headers, $middleware, $client);
     }
 
     /**
