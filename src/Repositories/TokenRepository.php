@@ -35,7 +35,7 @@ class TokenRepository implements TokenRepositoryInterface
     {
         $attributes['token_type'] = 'Bearer';
 
-        if(empty($attributes['product_type'])){
+        if (empty($attributes['product_type'])) {
             $attributes['product_type'] = $this->product_type;
         }
 
@@ -63,7 +63,7 @@ class TokenRepository implements TokenRepositoryInterface
             return Token::where('access_token', $access_token)->first();
         }
 
-        return Token::where('product_type',$this->product_type)->latest('created_at')->first();
+        return Token::where('product_type', $this->product_type)->latest('created_at')->first();
     }
 
     /**
