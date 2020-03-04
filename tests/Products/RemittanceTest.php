@@ -47,7 +47,7 @@ class RemittanceTest extends TestCase
 
         $remittance = new Remittance([], [], $mockClient);
 
-        $momoTransactionId = $remittance->transact('transactionId', '07XXXXXXXX', 100);
+        $momoTransactionId = $remittance->transfer('transactionId', '07XXXXXXXX', 100);
 
         $this->assertTrue(Uuid::isValid($momoTransactionId));
     }

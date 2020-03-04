@@ -191,7 +191,7 @@ class Remittance extends Product
      *
      * @return string Auto generated transaction reference. Format: UUID
      */
-    public function transact($transactionId, $partyId, $amount, $payerMessage = '', $payeeNote = '')
+    public function transfer($transactionId, $partyId, $amount, $payerMessage = '', $payeeNote = '')
     {
         $momoTransactionId = Uuid::uuid4()->toString();
 
@@ -224,29 +224,6 @@ class Remittance extends Product
         } catch (RequestException $ex) {
             throw new RemittanceRequestException('Transfer unsuccessful.', 0, $ex);
         }
-    }
-
-    /**
-     * Transfer from your own account to another person's account.
-     *
-     * @see Remittance::transact
-     * @see https://momodeveloper.mtn.com/docs/services/remittance/operations/transfer-POST Documentation
-     *
-     * @param string $transactionId  Your internal transaction reference ID.
-     * @param string $partyId        Account holder. Usually phone number if type is MSISDN.
-     * @param int    $amount          How much to credit the payer.
-     * @param string $payerMessage   Payer transaction message.
-     * @param string $payeeNote      Payee transaction message.
-     *
-     * @throws \Bmatovu\MtnMomo\Exceptions\RemittanceRequestException
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Exception
-     *
-     * @return string Auto generated transaction reference. Format: UUID
-     */
-    public function transfer($transactionId, $partyId, $amount, $payerMessage = '', $payeeNote = '')
-    {
-        return $this->transact($transactionId, $partyId, $amount, $payerMessage, $payeeNote);
     }
 
     /**

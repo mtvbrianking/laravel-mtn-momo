@@ -32,7 +32,7 @@ class CollectionTest extends TestCase
 
         $this->assertInstanceOf(Product::class, $collection);
 
-        $momoTransactionId = $collection->transact('transactionId', '07XXXXXXXX', 100);
+        $momoTransactionId = $collection->requestToPay('transactionId', '07XXXXXXXX', 100);
 
         $this->assertTrue(Uuid::isValid($momoTransactionId));
     }
@@ -51,7 +51,7 @@ class CollectionTest extends TestCase
         $this->expectExceptionCode(0);
         $this->expectExceptionMessage('Request to pay transaction - unsuccessful.');
 
-        $momoTransactionId = $collection->transact('transactionId', '07XXXXXXXX', 100);
+        $momoTransactionId = $collection->requestToPay('transactionId', '07XXXXXXXX', 100);
 
         $this->assertNull($momoTransactionId);
     }
@@ -67,7 +67,7 @@ class CollectionTest extends TestCase
         $this->assertInstanceOf(Product::class, $collection);
 
         try {
-            $momoTransactionId = $collection->transact('transactionId', '07XXXXXXXX', 100);
+            $momoTransactionId = $collection->requestToPay('transactionId', '07XXXXXXXX', 100);
             $this->assertNull($momoTransactionId);
         } catch (CollectionRequestException $e) {
             $this->assertInstanceOf(CollectionRequestException::class, $e);
