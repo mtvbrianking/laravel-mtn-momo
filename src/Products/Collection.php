@@ -134,7 +134,7 @@ class Collection extends Product
         $this->subscriptionKey = $config->get('mtn-momo.products.collection.key');
         $this->clientId = $config->get('mtn-momo.products.collection.id');
         $this->clientSecret = $config->get('mtn-momo.products.collection.secret');
-        $this->clientRedirectUri = $config->get('mtn-momo.products.collection.redirect_uri');
+        $this->clientCallbackUri = $config->get('mtn-momo.products.collection.callback_uri');
 
         $this->tokenUri = $config->get('mtn-momo.products.collection.token_uri');
         $this->transactionUri = $config->get('mtn-momo.products.collection.transaction_uri');
@@ -173,7 +173,7 @@ class Collection extends Product
         ];
 
         if ($this->environment != 'sandbox') {
-            $headers['X-Callback-Url'] = $this->clientRedirectUri;
+            $headers['X-Callback-Url'] = $this->clientCallbackUri;
         }
 
         try {

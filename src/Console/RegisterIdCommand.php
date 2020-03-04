@@ -44,7 +44,7 @@ class RegisterIdCommand extends Command
      */
     protected $signature = 'mtn-momo:register-id
                                 {--id= : Client APP ID.}
-                                {--callback= : Client APP redirect URI.}
+                                {--callback= : Client APP Callback URI.}
                                 {--product= : Product subscribed to.}
                                 {--no-write= : Don\'t credentials to .env file.}
                                 {--f|force : Force the operation to run when in production.}';
@@ -89,9 +89,9 @@ class RegisterIdCommand extends Command
 
         $id = $this->getClientId();
 
-        $redirectUri = $this->getClientRedirectUri();
+        $callbackUri = $this->getClientCallbackUri();
 
-        $isRegistered = $this->registerClientId($id, $redirectUri);
+        $isRegistered = $this->registerClientId($id, $callbackUri);
 
         if (! $isRegistered) {
             return;
@@ -100,7 +100,7 @@ class RegisterIdCommand extends Command
         $this->info('Writing configurations to .env file...');
 
         $this->updateSetting("MOMO_{$this->product}_ID", "mtn-momo.products.{$this->product}.id", $id);
-        $this->updateSetting("MOMO_{$this->product}_REDIRECT_URI", "mtn-momo.products.{$this->product}.redirect_uri", $redirectUri);
+        $this->updateSetting("MOMO_{$this->product}_CALLBACK_URI", "mtn-momo.products.{$this->product}.callback_uri", $callbackUri);
 
         if ($this->confirm('Do you wish to request for the app secret?', true)) {
             $this->call('mtn-momo:request-secret', [
@@ -150,49 +150,49 @@ class RegisterIdCommand extends Command
     }
 
     /**
-     * Determine client redirect URI.
+     * Determine client Callback URI.
      *
      * @return string
      */
-    protected function getClientRedirectUri()
+    protected function getClientCallbackUri()
     {
-        $this->info('Client APP redirect URI - [X-Callback-Url, providerCallbackHost]');
+        $this->info('Client APP callback URI - [X-Callback-Url, providerCallbackHost]');
 
-        // Client redirect URI from command options.
-        $redirectUri = $this->option('callback');
+        // Client Callback URI from command options.
+        $callbackUri = $this->option('callback');
 
-        // Client redirect URI from .env
-        if (! $redirectUri) {
-            $redirectUri = $this->laravel['config']->get("mtn-momo.products.{$this->product}.redirect_uri");
+        // Client Callback URI from .env
+        if (! $callbackUri) {
+            $callbackUri = $this->laravel['config']->get("mtn-momo.products.{$this->product}.callback_uri");
         }
 
-        $redirectUri = $this->ask('Use client app redirect URI?', $redirectUri);
+        $callbackUri = $this->ask('Use client app callback URI?', $callbackUri);
 
-        // Validate Client redirect URI
-        while ($redirectUri && ! filter_var($redirectUri, FILTER_VALIDATE_URL)) {
+        // Validate Client Callback URI
+        while ($callbackUri && ! filter_var($callbackUri, FILTER_VALIDATE_URL)) {
             $this->info(' Invalid URI. #IETF RFC3986');
-            $redirectUri = $this->ask('MOMO_CLIENT_REDIRECT_URI?', false);
+            $callbackUri = $this->ask('MOMO_CLIENT_CALLBACK_URI?', false);
         }
 
-        return $redirectUri;
+        return $callbackUri;
     }
 
     /**
      * Register client ID.
      *
-     * The redirect URI is implemented in sandbox environment,
+     * The Callback URI is implemented in sandbox environment,
      * but is still required when registering a client ID.
      *
      * @link https://momodeveloper.mtn.com/docs/services/sandbox-provisioning-api/operations/post-v1_0-apiuser Documenation.
      *
      * @param string $clientId
-     * @param string $clientRedirectUri
+     * @param string $clientCallbackUri
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return bool Is registered.
      */
-    protected function registerClientId($clientId, $clientRedirectUri)
+    protected function registerClientId($clientId, $clientCallbackUri)
     {
         $this->info('Registering Client ID');
 
@@ -204,7 +204,7 @@ class RegisterIdCommand extends Command
                     'X-Reference-Id' => $clientId,
                 ],
                 'json' => [
-                    'providerCallbackHost' => $clientRedirectUri,
+                    'providerCallbackHost' => $clientCallbackUri,
                 ],
             ]);
 

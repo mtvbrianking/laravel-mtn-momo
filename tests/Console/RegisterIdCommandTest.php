@@ -123,7 +123,7 @@ class RegisterIdCommandTest extends TestCase
 
         $mockCommand->shouldReceive('info')->once()->with('Client APP ID - [X-Reference-Id, api_user_id]');
 
-        $mockCommand->shouldReceive('info')->once()->with('Client APP redirect URI - [X-Callback-Url, providerCallbackHost]');
+        $mockCommand->shouldReceive('info')->once()->with('Client APP callback URI - [X-Callback-Url, providerCallbackHost]');
 
         $mockCommand->shouldReceive('ask')
             ->once()
@@ -156,7 +156,7 @@ class RegisterIdCommandTest extends TestCase
 
         $mockCommand->shouldReceive('info')->once()->with('Client APP ID - [X-Reference-Id, api_user_id]');
 
-        $mockCommand->shouldReceive('info')->once()->with('Client APP redirect URI - [X-Callback-Url, providerCallbackHost]');
+        $mockCommand->shouldReceive('info')->once()->with('Client APP callback URI - [X-Callback-Url, providerCallbackHost]');
 
         $mockCommand->shouldReceive('ask')
             ->once()
@@ -165,7 +165,7 @@ class RegisterIdCommandTest extends TestCase
 
         $mockCommand->shouldReceive('ask')
             ->once()
-            ->with('Use client app redirect URI?', 'https://example.com/mtn-momo/callback')
+            ->with('Use client app callback URI?', 'https://example.com/mtn-momo/callback')
             ->andReturn('https://example.com/mtn-momo/callback');
 
         $mockCommand->shouldReceive('info')->once()->with('Registering Client ID');
@@ -210,7 +210,7 @@ class RegisterIdCommandTest extends TestCase
             ->andReturn('d83eadba-a6b8-4301-b78e-454f73b5725c');
 
         $mockCommand->shouldReceive('ask')
-            ->with('Use client app redirect URI?', 'https://example.com/mtn-momo/callback')
+            ->with('Use client app callback URI?', 'https://example.com/mtn-momo/callback')
             ->andReturn('https://example.com/mtn-momo/callback');
 
         $mockCommand->shouldReceive('info')->once()->with('Registering Client ID');

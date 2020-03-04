@@ -134,7 +134,7 @@ class Remittance extends Product
         $this->subscriptionKey = $config->get('mtn-momo.products.remittance.key');
         $this->clientId = $config->get('mtn-momo.products.remittance.id');
         $this->clientSecret = $config->get('mtn-momo.products.remittance.secret');
-        $this->clientRedirectUri = $config->get('mtn-momo.products.remittance.redirect_uri');
+        $this->clientCallbackUri = $config->get('mtn-momo.products.remittance.callback_uri');
 
         $this->tokenUri = $config->get('mtn-momo.products.remittance.token_uri');
         $this->transactionUri = $config->get('mtn-momo.products.remittance.transaction_uri');
@@ -201,7 +201,7 @@ class Remittance extends Product
         ];
 
         if ($this->environment != 'sandbox') {
-            $headers['X-Callback-Url'] = $this->clientRedirectUri;
+            $headers['X-Callback-Url'] = $this->clientCallbackUri;
         }
 
         try {

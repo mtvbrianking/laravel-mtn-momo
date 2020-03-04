@@ -57,11 +57,11 @@ return [
             'id' => env('MOMO_COLLECTION_ID'),
 
             /*
-             * Redirect URI.
+             * Callback URI.
              *
              * Also called; providerCallbackHost
              */
-            'redirect_uri' => env('MOMO_COLLECTION_REDIRECT_URI'),
+            'callback_uri' => env('MOMO_COLLECTION_CALLBACK_URI'),
 
             /*
              * Client app secret.
@@ -106,7 +106,7 @@ return [
         'disbursement' => [
             'id' => env('MOMO_DISBURSEMENT_ID'),
 
-            'redirect_uri' => env('MOMO_DISBURSEMENT_REDIRECT_URI'),
+            'callback_uri' => env('MOMO_DISBURSEMENT_CALLBACK_URI'),
 
             'secret' => env('MOMO_DISBURSEMENT_SECRET'),
 
@@ -138,7 +138,7 @@ return [
         'remittance' => [
             'id' => env('MOMO_REMITTANCE_ID'),
 
-            'redirect_uri' => env('MOMO_REMITTANCE_REDIRECT_URI'),
+            'callback_uri' => env('MOMO_REMITTANCE_CALLBACK_URI'),
 
             'secret' => env('MOMO_REMITTANCE_SECRET'),
 

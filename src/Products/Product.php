@@ -80,11 +80,11 @@ abstract class Product
     protected $clientSecret;
 
     /**
-     * Client redirect URI.
+     * Client callback URI.
      *
      * @var string
      */
-    protected $clientRedirectUri;
+    protected $clientCallbackUri;
 
     /**
      * Currency.
@@ -213,17 +213,17 @@ abstract class Product
     /**
      * @return string
      */
-    public function getClientRedirectUri()
+    public function getClientCallbackUri()
     {
-        return $this->clientRedirectUri;
+        return $this->clientCallbackUri;
     }
 
     /**
-     * @param string $clientRedirectUri
+     * @param string $clientCallbackUri
      */
-    public function setClientRedirectUri($clientRedirectUri)
+    public function setClientCallbackUri($clientCallbackUri)
     {
-        $this->clientRedirectUri = $clientRedirectUri;
+        $this->clientCallbackUri = $clientCallbackUri;
     }
 
     /**
