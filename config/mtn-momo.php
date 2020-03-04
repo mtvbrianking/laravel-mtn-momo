@@ -9,7 +9,7 @@ return [
      */
     'app' => env('MOMO_APP', 'Laravel MTN Momo'),
 
-    // Transaction currency code.
+    // Momo API transaction currency code.
     'currency' => env('MOMO_CURRENCY', 'EUR'),
 
     /*
@@ -28,6 +28,7 @@ return [
      */
     'product' => env('MOMO_PRODUCT', 'collection'),
 
+    // Momo API requests' log file.
     'log' => env('MOMO_LOG', 'mtn-momo.log'),
 
     'api' => [

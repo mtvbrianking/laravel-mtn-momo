@@ -1,12 +1,11 @@
 <?php
 namespace Bmatovu\MtnMomo\Tests\Console;
 
-use Mockery as m;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Psr7\Response;
 use Bmatovu\MtnMomo\Tests\TestCase;
+use GuzzleHttp\Psr7\Response;
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Console\Kernel;
+use Mockery as m;
 
 /**
  * @see \Bmatovu\MtnMomo\Console\RequestSecretCommand

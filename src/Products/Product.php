@@ -24,6 +24,13 @@ use Monolog\Logger;
 abstract class Product
 {
     /**
+     * Product.
+     *
+     * @var string
+     */
+    const PRODUCT = null;
+
+    /**
      * Configuration.
      *
      * @var \Illuminate\Contracts\Config\Repository
@@ -419,7 +426,7 @@ abstract class Product
         $clientCredGrant = new ClientCredentials($client, $config);
 
         // Create token repository
-        $tokenRepo = new TokenRepository();
+        $tokenRepo = new TokenRepository(static::PRODUCT);
 
         // Tell the middleware to use both the client and refresh token grants
         return new OAuth2Middleware($clientCredGrant, null, $tokenRepo);

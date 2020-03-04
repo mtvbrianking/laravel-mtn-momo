@@ -18,6 +18,13 @@ use Ramsey\Uuid\Uuid;
 class Collection extends Product
 {
     /**
+     * Product.
+     *
+     * @var string
+     */
+    const PRODUCT = 'collection';
+
+    /**
      * Transact URI.
      *
      * @var string

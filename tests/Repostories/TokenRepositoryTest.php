@@ -1,15 +1,15 @@
 <?php
 namespace Bmatovu\MtnMomo\Tests\Repositories;
 
-use Carbon\Carbon;
-use Illuminate\Support\Str;
 use Bmatovu\MtnMomo\Models\Token;
-use Bmatovu\MtnMomo\Tests\TestCase;
-use Illuminate\Database\Eloquent\Collection;
 use Bmatovu\MtnMomo\Repositories\TokenRepository;
+use Bmatovu\MtnMomo\Tests\TestCase;
 use Bmatovu\OAuthNegotiator\Models\TokenInterface;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Bmatovu\OAuthNegotiator\Repositories\TokenRepositoryInterface;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Support\Str;
 
 /**
  * @see \Bmatovu\MtnMomo\Repositories\TokenRepository
@@ -27,7 +27,7 @@ class TokenRepositoryTest extends TestCase
             'expires_in' => 3600,
         ];
 
-        $tokenRepo = new TokenRepository();
+        $tokenRepo = new TokenRepository('collection');
 
         $this->assertInstanceOf(TokenRepositoryInterface::class, $tokenRepo);
 
@@ -41,10 +41,11 @@ class TokenRepositoryTest extends TestCase
     public function test_doesnt_retrieve_deleted_tokens()
     {
         factory(Token::class)->create([
+            'product' => 'collection',
             'deleted_at' => Carbon::now(),
         ]);
 
-        $tokenRepo = new TokenRepository();
+        $tokenRepo = new TokenRepository('collection');
 
         $tokens = $tokenRepo->retrieveAll();
 
@@ -55,9 +56,11 @@ class TokenRepositoryTest extends TestCase
 
     public function test_can_retrieve_all_tokens()
     {
-        factory(Token::class, 3)->create();
+        factory(Token::class, 3)->create([
+            'product' => 'collection',
+        ]);
 
-        $tokenRepo = new TokenRepository();
+        $tokenRepo = new TokenRepository('collection');
 
         $tokens = $tokenRepo->retrieveAll();
 
@@ -68,15 +71,18 @@ class TokenRepositoryTest extends TestCase
 
     public function test_can_retrieve_token_access_token()
     {
-        factory(Token::class, 2)->create();
+        factory(Token::class, 2)->create([
+            'product' => 'collection',
+        ]);
 
         $access_token = Str::random(60);
 
         factory(Token::class)->create([
+            'product' => 'collection',
             'access_token' => $access_token,
         ]);
 
-        $tokenRepo = new TokenRepository();
+        $tokenRepo = new TokenRepository('collection');
 
         $token = $tokenRepo->retrieve($access_token);
 
@@ -97,7 +103,7 @@ class TokenRepositoryTest extends TestCase
 
     public function test_can_retrieve_lastest_token()
     {
-        $tokenRepo = new TokenRepository();
+        $tokenRepo = new TokenRepository('collection');
 
         $token = $tokenRepo->retrieve();
 
@@ -105,16 +111,19 @@ class TokenRepositoryTest extends TestCase
 
         // ...
 
-        factory(Token::class, 2)->create();
+        factory(Token::class, 2)->create([
+            'product' => 'collection',
+        ]);
 
         $access_token = Str::random(60);
 
         factory(Token::class)->create([
             'access_token' => $access_token,
+            'product' => 'collection',
             'created_at' => Carbon::now()->addSeconds(10),
         ]);
 
-        $tokenRepo = new TokenRepository();
+        $tokenRepo = new TokenRepository('collection');
 
         $token = $tokenRepo->retrieve();
 
@@ -129,11 +138,12 @@ class TokenRepositoryTest extends TestCase
 
         $org_token = factory(Token::class)->create([
             'access_token' => $org_access_token,
+            'product' => 'collection',
         ]);
 
         // ...
 
-        $tokenRepo = new TokenRepository();
+        $tokenRepo = new TokenRepository('collection');
 
         $new_access_token = Str::random(60);
         $new_refresh_token = Str::random(60);
@@ -156,20 +166,22 @@ class TokenRepositoryTest extends TestCase
     public function test_can_delete_token()
     {
         $access_token = Str::random(60);
+        $product = 'collection';
 
         $token = factory(Token::class)->create([
             'access_token' => $access_token,
+            'product' => $product,
         ]);
 
         $table = $token->getTable();
 
-        $tokenRepo = new TokenRepository();
+        $tokenRepo = new TokenRepository('collection');
 
         $tokenRepo->delete($access_token);
 
         $this->assertSoftDeleted($table, [
             'access_token' => $access_token,
+            'product' => $product,
         ]);
     }
-
 }

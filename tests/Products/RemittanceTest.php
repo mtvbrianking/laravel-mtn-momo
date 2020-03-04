@@ -1,12 +1,12 @@
 <?php
 namespace Bmatovu\MtnMomo\Tests\Products;
 
-use Ramsey\Uuid\Uuid;
-use Illuminate\Support\Str;
-use GuzzleHttp\Psr7\Response;
-use Bmatovu\MtnMomo\Tests\TestCase;
 use Bmatovu\MtnMomo\Products\Product;
 use Bmatovu\MtnMomo\Products\Remittance;
+use Bmatovu\MtnMomo\Tests\TestCase;
+use GuzzleHttp\Psr7\Response;
+use Illuminate\Support\Str;
+use Ramsey\Uuid\Uuid;
 
 /**
  * @see \Bmatovu\MtnMomo\Products\Remittance
@@ -73,13 +73,13 @@ class RemittanceTest extends TestCase
             'externalId' => 947354,
             'payee' => [
                 'partyIdType' => 'MSISDN',
-                'partyId' => 4656473839
+                'partyId' => 4656473839,
             ],
             'status' => 'FAILED',
             'reason' => [
                 'code' => 'PAYER_NOT_FOUND',
-                'message' => 'Payee does not exist'
-            ]
+                'message' => 'Payee does not exist',
+            ],
         ];
 
         $response = new Response(200, [], json_encode($body));
@@ -99,7 +99,7 @@ class RemittanceTest extends TestCase
     {
         $body = [
             'availableBalance' => 100,
-            'currency' => 'EUR'
+            'currency' => 'EUR',
         ];
 
         $response = new Response(200, [], json_encode($body));
@@ -116,7 +116,7 @@ class RemittanceTest extends TestCase
     public function test_can_determine_if_account_is_active()
     {
         $body = [
-            'result' => true
+            'result' => true,
         ];
 
         $response = new Response(200, [], json_encode($body));

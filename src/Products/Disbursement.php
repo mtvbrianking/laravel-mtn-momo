@@ -19,6 +19,13 @@ use Ramsey\Uuid\Uuid;
 class Disbursement extends Product
 {
     /**
+     * Product.
+     *
+     * @var string
+     */
+    const PRODUCT = 'disbursement';
+
+    /**
      * Transact URI.
      *
      * @var string
@@ -116,6 +123,8 @@ class Disbursement extends Product
      * @param array $headers
      * @param array $middleware
      * @param \GuzzleHttp\ClientInterface $client
+     *
+     * @uses \Illuminate\Contracts\Config\Repository
      *
      * @throws \Exception
      */

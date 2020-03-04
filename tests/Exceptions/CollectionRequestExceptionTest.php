@@ -2,11 +2,11 @@
 
 namespace Bmatovu\MtnMomo\Tests\Exceptions;
 
+use Bmatovu\MtnMomo\Exceptions\CollectionRequestException;
+use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
-use GuzzleHttp\Exception\RequestException;
-use Bmatovu\MtnMomo\Exceptions\CollectionRequestException;
 
 class CollectionRequestExceptionTest extends TestCase
 {

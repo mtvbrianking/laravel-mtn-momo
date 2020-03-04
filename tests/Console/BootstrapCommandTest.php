@@ -1,10 +1,10 @@
 <?php
 namespace Bmatovu\MtnMomo\Tests\Console;
 
-use Mockery as m;
-use Illuminate\Container\Container;
 use Bmatovu\MtnMomo\Tests\TestCase;
+use Illuminate\Container\Container;
 use Illuminate\Contracts\Console\Kernel;
+use Mockery as m;
 
 /**
  * @see \Bmatovu\MtnMomo\Console\BootstrapCommand

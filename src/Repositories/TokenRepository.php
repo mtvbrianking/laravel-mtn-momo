@@ -15,11 +15,20 @@ use Carbon\Carbon;
 class TokenRepository implements TokenRepositoryInterface
 {
     /**
-     * Constructor.
+     * Product.
+     *
+     * @var string
      */
-    public function __constructor()
+    protected $product;
+
+    /**
+     * Constructor.
+     *
+     * @param string $product
+     */
+    public function __construct($product)
     {
-        // Silence is golden...
+        $this->product = $product;
     }
 
     /**
@@ -28,6 +37,7 @@ class TokenRepository implements TokenRepositoryInterface
     public function create(array $attributes)
     {
         $attributes['token_type'] = 'Bearer';
+        $attributes['product'] = $this->product;
 
         if (isset($attributes['expires_in'])) {
             $attributes['expires_at'] = Carbon::now()->addSeconds($attributes['expires_in']);
@@ -41,7 +51,7 @@ class TokenRepository implements TokenRepositoryInterface
      */
     public function retrieveAll()
     {
-        return Token::all();
+        return Token::where('product', $this->product)->get();
     }
 
     /**
@@ -50,7 +60,10 @@ class TokenRepository implements TokenRepositoryInterface
     public function retrieve($access_token = null)
     {
         if ($access_token) {
-            return Token::where('access_token', $access_token)->first();
+            return Token::query()
+                ->where('access_token', $access_token)
+                ->where('product', $this->product)
+                ->first();
         }
 
         return Token::latest('created_at')->first();
@@ -61,7 +74,10 @@ class TokenRepository implements TokenRepositoryInterface
      */
     public function update($access_token, array $attributes)
     {
-        $token = Token::where('access_token', $access_token)->first();
+        $token = Token::query()
+            ->where('access_token', $access_token)
+            ->where('product', $this->product)
+            ->first();
 
         $token->update($attributes);
 
@@ -73,6 +89,9 @@ class TokenRepository implements TokenRepositoryInterface
      */
     public function delete($access_token)
     {
-        Token::where('access_token', $access_token)->delete();
+        Token::query()
+            ->where('access_token', $access_token)
+            ->where('product', $this->product)
+            ->delete();
     }
 }

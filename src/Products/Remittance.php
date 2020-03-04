@@ -18,6 +18,13 @@ use Ramsey\Uuid\Uuid;
 class Remittance extends Product
 {
     /**
+     * Product.
+     *
+     * @var string
+     */
+    const PRODUCT = 'remittance';
+
+    /**
      * Transact URI.
      *
      * @var string

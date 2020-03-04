@@ -2,14 +2,14 @@
 
 namespace Bmatovu\MtnMomo\Tests\Products;
 
-use Ramsey\Uuid\Uuid;
-use Illuminate\Support\Str;
-use GuzzleHttp\Psr7\Response;
-use Bmatovu\MtnMomo\Tests\TestCase;
-use Bmatovu\MtnMomo\Products\Product;
-use Bmatovu\MtnMomo\Products\Disbursement;
-use GuzzleHttp\Exception\RequestException;
 use Bmatovu\MtnMomo\Exceptions\DisbursementRequestException;
+use Bmatovu\MtnMomo\Products\Disbursement;
+use Bmatovu\MtnMomo\Products\Product;
+use Bmatovu\MtnMomo\Tests\TestCase;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Psr7\Response;
+use Illuminate\Support\Str;
+use Ramsey\Uuid\Uuid;
 
 /**
  * @see \Bmatovu\MtnMomo\Products\Disbursement
@@ -31,7 +31,7 @@ class DisbursementTest extends TestCase
             'expires_in' => 3600,
         ];
 
-        $response =new Response(200, [],json_encode($body));
+        $response =new Response(200, [], json_encode($body));
 
         $mockClient = $this->mockGuzzleClient($response);
 
@@ -39,11 +39,11 @@ class DisbursementTest extends TestCase
 
         $token = $disbursement->getToken();
 
-        $this->assertEquals($token,$body);
+        $this->assertEquals($token, $body);
     }
 
-    public function test_can_transfer(){
-
+    public function test_can_transfer()
+    {
         $response = new Response(202, [], null);
 
         $mockClient = $this->mockGuzzleClient($response);
@@ -55,7 +55,6 @@ class DisbursementTest extends TestCase
         $momoTransactionId = $disbursement->transfer('transactionId', '07XXXXXXXX', 100);
 
         $this->assertTrue(Uuid::isValid($momoTransactionId));
-
     }
 
     public function test_throws_previous_transfer_disbursement_request_exception()
@@ -71,7 +70,7 @@ class DisbursementTest extends TestCase
         try {
             $momoTransactionId = $disbursement->transfer('transactionId', '07XXXXXXXX', 100);
             $this->assertNull($momoTransactionId);
-        } catch(DisbursementRequestException $e) {
+        } catch (DisbursementRequestException $e) {
             $this->assertInstanceOf(DisbursementRequestException::class, $e);
             $this->assertEquals($e->getCode(), 0);
             $this->assertEquals('Request to transfer transaction - unsuccessful.', $e->getMessage());
@@ -91,13 +90,13 @@ class DisbursementTest extends TestCase
             'externalId' => 947354,
             'payee' => [
                 'partyIdType' => 'MSISDN',
-                'partyId' => 4656473839
+                'partyId' => 4656473839,
             ],
             'status' => 'FAILED',
             'reason' => [
                 'code' => 'PAYER_NOT_FOUND',
-                'message' => 'Payee does not exist'
-            ]
+                'message' => 'Payee does not exist',
+            ],
         ];
 
         $response = new Response(200, [], json_encode($body));
@@ -117,7 +116,7 @@ class DisbursementTest extends TestCase
     {
         $body = [
             'availableBalance' => 100,
-            'currency' => 'EUR'
+            'currency' => 'EUR',
         ];
 
         $response = new Response(200, [], json_encode($body));
@@ -134,7 +133,7 @@ class DisbursementTest extends TestCase
     public function test_disbursement_can_determine_account_status()
     {
         $body = [
-            'result' => true
+            'result' => true,
         ];
 
         $response = new Response(200, [], json_encode($body));
