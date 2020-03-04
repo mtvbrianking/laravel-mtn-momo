@@ -11,7 +11,7 @@
 
 ### Introduction
 
-This package helps you integrate the [MTN MOMO API](https://momodeveloper.mtn.com) into your Laravel application. It provides a wrapper around the core MTN Momo API services, leaving you to worry about other parts of your application.
+This package helps you integrate the [MTN MOMO API](https://momodeveloper.mtn.com) into your Laravel application. It provides a wrapper around the core MTN MOMO API services, leaving you to worry about other parts of your application.
 
 ### [Installation](https://packagist.org/packages/bmatovu/laravel-mtn-momo)
 
@@ -25,7 +25,8 @@ To get started, install the package via the Composer package manager:
 |   5.6   |   1.6   | `composer require bmatovu/laravel-mtn-momo 1.6.*` |
 |   5.7   |   1.7   | `composer require bmatovu/laravel-mtn-momo 1.7.*` |
 |   5.8   |   1.8   | `composer require bmatovu/laravel-mtn-momo 1.8.*` |
-|   6.0   | master  | `composer require bmatovu/laravel-mtn-momo`       |
+|   6.0   |   2.0   | `composer require bmatovu/laravel-mtn-momo ^2.0` |
+|   7.0   | master  | `composer require bmatovu/laravel-mtn-momo`       |
 
 The service provider will be auto-discovered for Laravel 5.5 and above. You may manually register the service provider in your configuration `config/app.php` file:
 
@@ -61,7 +62,7 @@ You will need the following to get started with you integration...
 
 If you already subscribed to a product, the subscription key can be found in your [**profile**](https://momodeveloper.mtn.com/developer).
 
-### Getting started sanbox
+### Getting started
 
 Register you client details.
 
@@ -86,65 +87,15 @@ Then request for a client secret (key).
 ```bash
 php artisan mtn-momo:request-secret
 ```
-### Getting started in Production
-Once you have applied to go in production ,subscription to the product is done via paper work 
-1.Register you client details.
-
-```bash
-php artisan mtn-momo:init
-```
-2.Upon approval of your company documents
-Unlike sanbox , creating an API user (Client Id) and Secret (API KEY) in production is already handled for you via the [partner portal](https://mobilemoneyreadonly.mtn.co.ug/).
-
-You will receive an email from the Mobile Money Office in order to access the partner portal with  this [**link
-**](https://mobilemoneyreadonly.mtn.co.ug/)
-
- 
-
-Your username and one-time password  are indicated on the simpack picked from the Mtn Mobile Money Offices.
-Enter username and select ‘First Login’
-
-Once logged in navigate to the top right corner and create an API User.
-Use the Generated APIUSER as the client ID and API_KEY as the secret.
 
 ### Usage
-
-Update your Env file with the latest production credentials 
-```env
-MOMO_APP="Your App Name"
-
-MOMO_ENVIRONMENT="mtnuganda"
-
-MOMO_CURRENCY="UGX"
-
-MOMO_PRODUCT="collection" // can be disbursment or remittence
-
-MOMO_COLLECTION_SUBSCRIPTION_KEY="PRODUCT SUBSCRIPTION KEY"
-
-MOMO_API_BASE_URI = "https://ericssonbasicapi1.azure-api.net/"   // this is the production url
-
-MOMO_COLLECTION_REDIRECT_URI = "https://yourcallbackhost.com"
-
-MOMO_COLLECTION_ID = "APIUSER FROM PARTNER PORTAL"
-
-MOMO_COLLECTION_SECRET= "API KEY FROM PARTNER PORTAL"
-
-
-
-```
-
-#### In production ,make sure the phone number to collect funds from starts with international country code other than a leading Zero.
-
-Forexample, in uganada use '2567XXXXXXXX' instead of '07XXXXXXXX'  cameroon use '237XXXXXXXX' instead ot the leading Zero etc..
-
 
 ```php
 use Bmatovu\MtnMomo\Products\Collection;
 
 $collection = new Collection();
 
-
-$momoTransactionId = $collection->transact('transactionId', '07XXXXXXXX', 100);
+$momoTransactionId = $collection->requestToPay('transactionId', '07XXXXXXXX', 100);
 ```
 
 See [test numbers](https://momodeveloper.mtn.com/api-documentation/testing/#test-numbers)
@@ -158,8 +109,7 @@ use Bmatovu\MtnMomo\Exceptions\CollectionRequestException;
 try {
     $collection = new Collection();
     
-    // Request a user to pay
-    $momoTransactionId = $collection->transact('transactionId', '07XXXXXXXX', 100);
+    $momoTransactionId = $collection->requestToPay('transactionId', '07XXXXXXXX', 100);
 } catch(CollectionRequestException $e) {
     do {
         printf("\n\r%s:%d %s (%d) [%s]\n\r", 
@@ -172,10 +122,10 @@ try {
 
 **Collection**
 
-1. [Collect money](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Collection.html#method_transact)
+1. [Collect money](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Collection.html#method_requestToPay)
 
     ```php
-    $collection->transact($transactionId, $partyId, $amount)
+    $collection->requestToPay($transactionId, $partyId, $amount)
     ```
 
 2. [Check transaction status](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Collection.html#method_getTransactionStatus)
