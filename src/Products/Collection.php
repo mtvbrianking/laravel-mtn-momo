@@ -163,7 +163,7 @@ class Collection extends Product
      *
      * @return string                Auto generated payment reference. Format: UUID
      */
-    public function transact($transactionId, $partyId, $amount, $payerMessage = '', $payeeNote = '')
+    public function requestToPay($transactionId, $partyId, $amount, $payerMessage = '', $payeeNote = '')
     {
         $momoTransactionId = Uuid::uuid4()->toString();
 
