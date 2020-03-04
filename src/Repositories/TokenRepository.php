@@ -66,7 +66,10 @@ class TokenRepository implements TokenRepositoryInterface
                 ->first();
         }
 
-        return Token::latest('created_at')->first();
+        return Token::query()
+            ->where('product', $this->product)
+            ->latest('created_at')
+            ->first();
     }
 
     /**
