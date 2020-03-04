@@ -426,7 +426,7 @@ abstract class Product
         $clientCredGrant = new ClientCredentials($client, $config);
 
         // Create token repository
-        $tokenRepo = new TokenRepository(self::PRODUCT);
+        $tokenRepo = new TokenRepository(static::PRODUCT);
 
         // Tell the middleware to use both the client and refresh token grants
         return new OAuth2Middleware($clientCredGrant, null, $tokenRepo);
