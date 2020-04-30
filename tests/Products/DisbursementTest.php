@@ -31,7 +31,7 @@ class DisbursementTest extends TestCase
             'expires_in' => 3600,
         ];
 
-        $response =new Response(200, [], json_encode($body));
+        $response = new Response(200, [], json_encode($body));
 
         $mockClient = $this->mockGuzzleClient($response);
 
