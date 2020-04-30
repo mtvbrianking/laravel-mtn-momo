@@ -1,4 +1,5 @@
 <?php
+
 namespace Bmatovu\MtnMomo\Tests;
 
 use Bmatovu\MtnMomo\MtnMomoServiceProvider;

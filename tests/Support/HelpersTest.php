@@ -1,4 +1,5 @@
 <?php
+
 namespace Bmatovu\MtnMomo\Tests\Support;
 
 use Bmatovu\MtnMomo\Tests\TestCase;

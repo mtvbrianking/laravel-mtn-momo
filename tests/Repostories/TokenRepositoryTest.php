@@ -1,4 +1,5 @@
 <?php
+
 namespace Bmatovu\MtnMomo\Tests\Repositories;
 
 use Bmatovu\MtnMomo\Models\Token;

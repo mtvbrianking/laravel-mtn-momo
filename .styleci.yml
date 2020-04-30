@@ -8,11 +8,8 @@ risky: false
 
 finder:
   exclude:
-    - "config"
     - "coverage"
-    - "database"
     - "docs"
-    - "tests"
     - "vendor"
   name:
     - "*.php"

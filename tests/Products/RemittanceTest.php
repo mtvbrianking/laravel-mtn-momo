@@ -1,4 +1,5 @@
 <?php
+
 namespace Bmatovu\MtnMomo\Tests\Products;
 
 use Bmatovu\MtnMomo\Products\Product;

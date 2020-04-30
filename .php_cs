@@ -1,6 +1,6 @@
 <?php
 
-// https://mlocati.github.io/php-cs-fixer-configurator/
+// https://mlocati.github.io/php-cs-fixer-configurator
 
 $rules = [
     '@PSR2' => true,
@@ -10,6 +10,7 @@ $rules = [
         'strategy' => 'no_multi_line',
     ],
     'no_singleline_whitespace_before_semicolons' => true,
+    'single_blank_line_before_namespace' => true,
     'blank_line_before_statement' => [
         'statements' => ['return']
     ],

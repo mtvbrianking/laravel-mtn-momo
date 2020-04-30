@@ -1,4 +1,5 @@
 <?php
+
 namespace Bmatovu\MtnMomo\Exceptions;
 
 use Throwable;
