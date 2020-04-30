@@ -5,10 +5,12 @@
 
 namespace Bmatovu\MtnMomo\Exceptions;
 
+use RuntimeException;
+
 /**
  * Custom remittance request exception.
  */
-class RemittanceRequestException extends \RunTimeException
+class RemittanceRequestException extends RuntimeException implements MtnMomoRequestException
 {
     /**
      * Constructor.

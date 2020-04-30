@@ -5,10 +5,12 @@
 
 namespace Bmatovu\MtnMomo\Exceptions;
 
+use RuntimeException;
+
 /**
  * Custom disbursement request exception.
  */
-class DisbursementRequestException extends \RunTimeException
+class DisbursementRequestException extends RuntimeException implements MtnMomoRequestException
 {
     /**
      * Constructor.

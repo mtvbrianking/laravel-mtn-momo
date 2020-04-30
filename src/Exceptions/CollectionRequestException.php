@@ -5,10 +5,12 @@
 
 namespace Bmatovu\MtnMomo\Exceptions;
 
+use RuntimeException;
+
 /**
  * Custom collection request exception.
  */
-class CollectionRequestException extends \RunTimeException
+class CollectionRequestException extends RuntimeException implements MtnMomoRequestException
 {
     /**
      * Constructor.
