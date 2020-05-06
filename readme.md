@@ -109,7 +109,7 @@ use Bmatovu\MtnMomo\Exceptions\CollectionRequestException;
 try {
     $collection = new Collection();
     
-    $momoTransactionId = $collection->requestToPay('transactionId', '07XXXXXXXX', 100);
+    $momoTransactionId = $collection->requestToPay('transactionId', '46733123453', 100);
 } catch(CollectionRequestException $e) {
     do {
         printf("\n\r%s:%d %s (%d) [%s]\n\r", 
