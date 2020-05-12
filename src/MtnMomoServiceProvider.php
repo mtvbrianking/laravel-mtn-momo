@@ -89,7 +89,7 @@ class MtnMomoServiceProvider extends ServiceProvider
                 'Ocp-Apim-Subscription-Key' => $this->app['config']->get("mtn-momo.products.{$product}.key"),
             ],
             'json' => [
-                'body',
+                'non-empty-body',
             ],
         ], (array) $this->app['config']->get('mtn-momo.guzzle.options'));
 

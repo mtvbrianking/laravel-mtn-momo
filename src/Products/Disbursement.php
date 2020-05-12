@@ -215,8 +215,8 @@ class Disbursement extends Product
                         'partyIdType' => $this->partyIdType,
                         'partyId' => $partyId,
                     ],
-                    'payerMessage' => $payerMessage,
-                    'payeeNote' => $payeeNote,
+                    'payerMessage' => alphanumeric($payerMessage),
+                    'payeeNote' => alphanumeric($payeeNote),
                 ],
             ]);
 

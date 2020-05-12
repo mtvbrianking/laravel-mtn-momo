@@ -25,3 +25,19 @@ if (! function_exists('environment_file_path')) {
         return $app->basePath($envFile);
     }
 }
+
+if (! function_exists('alphanumeric')) {
+    /**
+     * Strip all symbols from a string.
+     *
+     * @see https://stackoverflow.com/a/16791863/2732184 Source
+     *
+     * @param string  $str
+     *
+     * @return string
+     */
+    function alphanumeric($str): string
+    {
+        return preg_replace('/[^\p{L}\p{N}\s]/u', '', $str);
+    }
+}
