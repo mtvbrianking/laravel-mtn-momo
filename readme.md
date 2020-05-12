@@ -95,7 +95,7 @@ use Bmatovu\MtnMomo\Products\Collection;
 
 $collection = new Collection();
 
-$momoTransactionId = $collection->requestToPay('transactionId', '07XXXXXXXX', 100);
+$momoTransactionId = $collection->requestToPay('transactionId', '46733123453', 100);
 ```
 
 See [test numbers](https://momodeveloper.mtn.com/api-documentation/testing/#test-numbers)
