@@ -11,6 +11,19 @@ namespace Bmatovu\MtnMomo\Traits;
 trait CommandUtilTrait
 {
     /**
+     * Write a string as standard output.
+     *
+     * @see \Illuminate\Console\Concerns\InteractsWithIO::line
+     *
+     * @param  string  $string
+     * @param  string|null  $style
+     * @param  int|string|null  $verbosity
+     *
+     * @return void
+     */
+    abstract public function line($string, $style = null, $verbosity = null);
+
+    /**
      * Warn user running command in production.
      *
      * @param  string $warning

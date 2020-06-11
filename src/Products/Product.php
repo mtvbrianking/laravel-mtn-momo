@@ -40,7 +40,7 @@ abstract class Product
     /**
      * HTTP client.
      *
-     * @var \GuzzleHttp\Client
+     * @var \GuzzleHttp\ClientInterface
      */
     protected $client;
 

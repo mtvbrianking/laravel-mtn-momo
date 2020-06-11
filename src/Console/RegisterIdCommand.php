@@ -171,7 +171,7 @@ class RegisterIdCommand extends Command
         // Validate Client Callback URI
         while ($callbackUri && ! filter_var($callbackUri, FILTER_VALIDATE_URL)) {
             $this->info(' Invalid URI. #IETF RFC3986');
-            $callbackUri = $this->ask('MOMO_CLIENT_CALLBACK_URI?', false);
+            $callbackUri = $this->ask('MOMO_CLIENT_CALLBACK_URI?');
         }
 
         return $callbackUri;
