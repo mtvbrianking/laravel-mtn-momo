@@ -25,8 +25,9 @@ To get started, install the package via the Composer package manager:
 |   5.6   |   1.6   | `composer require bmatovu/laravel-mtn-momo 1.6.*` |
 |   5.7   |   1.7   | `composer require bmatovu/laravel-mtn-momo 1.7.*` |
 |   5.8   |   1.8   | `composer require bmatovu/laravel-mtn-momo 1.8.*` |
-|   6.0   |   2.0   | `composer require bmatovu/laravel-mtn-momo ^2.0` |
-|   7.0   | master  | `composer require bmatovu/laravel-mtn-momo`       |
+|   6.0   |   2.0   | `composer require bmatovu/laravel-mtn-momo ^2.0`  |
+|   7.0   |   3.0   | `composer require bmatovu/laravel-mtn-momo ^3.0`  |
+|   8.0   | master  | `composer require bmatovu/laravel-mtn-momo`       |
 
 The service provider will be auto-discovered for Laravel 5.5 and above. You may manually register the service provider in your configuration `config/app.php` file:
 
