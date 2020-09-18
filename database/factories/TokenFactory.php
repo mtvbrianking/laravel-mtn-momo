@@ -1,15 +1,33 @@
 <?php
 
+namespace Bmatovu\MtnMomo\Database\Factories;
+
 use Bmatovu\MtnMomo\Models\Token;
-use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
-$factory->define(Token::class, function (Faker $faker) {
-    return [
-        'access_token' => Str::random(60),
-        'refresh_token' => Str::random(60),
-        'token_type' => $faker->randomElement(['Basic', 'Bearer']),
-        'product' => $faker->randomElement(['collection', 'disbursement', 'remittance']),
-        'expires_at' => $faker->dateTime('now', null),
-    ];
-});
+class TokenFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Token::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'access_token' => Str::random(60),
+            'refresh_token' => Str::random(60),
+            'token_type' => $this->faker->randomElement(['Basic', 'Bearer']),
+            'product' => $this->faker->randomElement(['collection', 'disbursement', 'remittance']),
+            'expires_at' => $this->faker->dateTime('now', null),
+        ];
+    }
+}

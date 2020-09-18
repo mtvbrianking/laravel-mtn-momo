@@ -5,8 +5,10 @@
 
 namespace Bmatovu\MtnMomo\Models;
 
+use Bmatovu\MtnMomo\Database\Factories\TokenFactory;
 use Bmatovu\MtnMomo\Traits\TokenUtilTrait;
 use Bmatovu\OAuthNegotiator\Models\TokenInterface;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model as BaseModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -15,7 +17,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Token extends BaseModel implements TokenInterface
 {
-    use SoftDeletes, TokenUtilTrait;
+    use HasFactory, SoftDeletes, TokenUtilTrait;
 
     /**
      * The table associated with the model.
@@ -46,4 +48,14 @@ class Token extends BaseModel implements TokenInterface
         'expires_at',
         'deleted_at',
     ];
+
+    /**
+     * Create a new factory instance for the model.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    public static function newFactory()
+    {
+        return TokenFactory::new();
+    }
 }

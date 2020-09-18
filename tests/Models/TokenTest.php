@@ -74,7 +74,7 @@ class TokenTest extends TestCase
 
     public function test_determines_expired()
     {
-        $token = factory(Token::class)->create([
+        $token = Token::factory()->create([
             'expires_at' => null,
         ]);
 
