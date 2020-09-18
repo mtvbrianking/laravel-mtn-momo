@@ -41,7 +41,7 @@ class TokenRepositoryTest extends TestCase
 
     public function test_doesnt_retrieve_deleted_tokens()
     {
-        factory(Token::class)->create([
+        Token::factory()->create([
             'product' => 'collection',
             'deleted_at' => Carbon::now(),
         ]);
@@ -57,7 +57,7 @@ class TokenRepositoryTest extends TestCase
 
     public function test_can_retrieve_all_tokens()
     {
-        factory(Token::class, 3)->create([
+        Token::factory()->count(3)->create([
             'product' => 'collection',
         ]);
 
@@ -72,13 +72,13 @@ class TokenRepositoryTest extends TestCase
 
     public function test_can_retrieve_token_access_token()
     {
-        factory(Token::class, 2)->create([
+        Token::factory()->count(2)->create([
             'product' => 'collection',
         ]);
 
         $access_token = Str::random(60);
 
-        factory(Token::class)->create([
+        Token::factory()->create([
             'product' => 'collection',
             'access_token' => $access_token,
         ]);
@@ -112,13 +112,13 @@ class TokenRepositoryTest extends TestCase
 
         // ...
 
-        factory(Token::class, 2)->create([
+        Token::factory()->count(2)->create([
             'product' => 'collection',
         ]);
 
         $access_token = Str::random(60);
 
-        factory(Token::class)->create([
+        Token::factory()->create([
             'access_token' => $access_token,
             'product' => 'collection',
             'created_at' => Carbon::now()->addSeconds(10),
@@ -137,7 +137,7 @@ class TokenRepositoryTest extends TestCase
     {
         $org_access_token = Str::random(60);
 
-        $org_token = factory(Token::class)->create([
+        $org_token = Token::factory()->create([
             'access_token' => $org_access_token,
             'product' => 'collection',
         ]);
@@ -169,7 +169,7 @@ class TokenRepositoryTest extends TestCase
         $access_token = Str::random(60);
         $product = 'collection';
 
-        $token = factory(Token::class)->create([
+        $token = Token::factory()->create([
             'access_token' => $access_token,
             'product' => $product,
         ]);
