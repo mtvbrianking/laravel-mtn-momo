@@ -82,23 +82,6 @@ trait CommandUtilTrait
     }
 
     /**
-     * Determine replacement regex pattern a setting.
-     *
-     * @deprecated 1.3 No longer used.
-     *
-     * @param  string $name ENV_VALUE, like; `APP_NAME`
-     * @param  string $key Compose setting name, like `app.name`
-     *
-     * @return string        Regex pattern
-     */
-    protected function getRegex($name, $key)
-    {
-        $escaped = preg_quote($this->laravel['config']->get($key), '/');
-
-        return "/^{$name}=[\"']?{$escaped}[\"']?/m";
-    }
-
-    /**
      * Write | replace setting in .env file.
      *
      * @param  string $name ENV_VALUE, like; `APP_NAME`

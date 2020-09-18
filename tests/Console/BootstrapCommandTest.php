@@ -54,6 +54,32 @@ class BootstrapCommandTest extends TestCase
         $this->assertEquals(1, preg_match($pattern, $env));
     }
 
+    public function test_update_env_settings_no_write()
+    {
+        $mockCommand = m::mock('Bmatovu\MtnMomo\Console\BootstrapCommand[ask,choice,line]')
+            ->shouldIgnoreMissing();
+
+        $mockCommand->shouldReceive('line')->with('<options=bold>Product</>');
+
+        $mockCommand->shouldReceive('choice')
+            ->once()
+            ->with('MOMO_PRODUCT', ['collection', 'disbursement', 'remittance'], 0)
+            ->andReturn('remittance');
+
+        Container::getInstance()->make(Kernel::class)->registerCommand($mockCommand);
+
+        $this->artisan('mtn-momo:init', [
+            '--no-write' => true,
+            '--no-interaction' => true,
+        ])->assertExitCode(0);
+
+        $env = file_get_contents(base_path('.env'));
+
+        $pattern = "/^MOMO_PRODUCT=[\"']?remittance[\"']?/m";
+
+        $this->assertEquals(0, preg_match($pattern, $env));
+    }
+
     public function test_set_product()
     {
         $mockCommand = m::mock('Bmatovu\MtnMomo\Console\BootstrapCommand[ask,choice,line]')

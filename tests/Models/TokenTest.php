@@ -75,12 +75,17 @@ class TokenTest extends TestCase
     public function test_determines_expired()
     {
         $token = factory(Token::class)->create([
-            'expires_at' => Carbon::now()->addSeconds(3600),
+            'expires_at' => null,
         ]);
 
         $this->assertFalse($token->isExpired());
 
-        $token->expires_at = Carbon::now()->subSeconds(3600);
+        $token->expires_at = Carbon::now()->addSeconds(3600);
+        $token->fresh();
+
+        $this->assertFalse($token->isExpired());
+
+        $token->expires_at = Carbon::now()->subSeconds(4800);
         $token->fresh();
 
         $this->assertTrue($token->isExpired());
