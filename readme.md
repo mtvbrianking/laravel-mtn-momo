@@ -63,7 +63,7 @@ You will need the following to get started with you integration...
 
 If you already subscribed to a product, the subscription key can be found in your [**profile**](https://momodeveloper.mtn.com/developer).
 
-### Getting started
+### Getting started (Sandbox)
 
 Register you client details.
 
