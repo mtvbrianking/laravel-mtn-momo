@@ -1,0 +1,217 @@
+{
+    "name": "Bmatovu\\MtnMomo\\Console\\ValidateIdCommand",
+    "line": 19,
+    "short_desc": "Get client APP API credentials.",
+    "long_desc": "",
+    "hint": null,
+    "tags": [],
+    "namespace": "Bmatovu\\MtnMomo\\Console",
+    "file": "\/home\/travis\/build\/mtvbrianking\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Console\/ValidateIdCommand.php",
+    "relative_file": "\/src\/Console\/ValidateIdCommand.php",
+    "hash": "817dc5be6cfc0d822310a376a1e7c4c25cd9de3d",
+    "parent": "Illuminate\\Console\\Command",
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": {
+        "Uuid": "Ramsey\\Uuid\\Uuid",
+        "ClientInterface": "GuzzleHttp\\ClientInterface",
+        "Command": "Illuminate\\Console\\Command",
+        "ClientException": "GuzzleHttp\\Exception\\ClientException",
+        "ServerException": "GuzzleHttp\\Exception\\ServerException",
+        "ConnectException": "GuzzleHttp\\Exception\\ConnectException",
+        "CommandUtilTrait": "Bmatovu\\MtnMomo\\Traits\\CommandUtilTrait"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": {
+        "Bmatovu\\MtnMomo\\Traits\\CommandUtilTrait": "Bmatovu\\MtnMomo\\Traits\\CommandUtilTrait"
+    },
+    "properties": {
+        "client": {
+            "name": "client",
+            "line": 28,
+            "short_desc": "Guzzle HTTP client instance.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\GuzzleHttp\\ClientInterface",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 2,
+            "default": null,
+            "errors": []
+        },
+        "signature": {
+            "name": "signature",
+            "line": 35,
+            "short_desc": "The name and signature of the console command.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 2,
+            "default": {
+                "nodeType": "Scalar_String",
+                "value": "mtn-momo:validate-id\n                                {--id= : Client APP ID.}\n                                {--product= : Product subscribed to.}",
+                "attributes": {
+                    "startLine": 35,
+                    "endLine": 37,
+                    "kind": 1
+                }
+            },
+            "errors": []
+        },
+        "description": {
+            "name": "description",
+            "line": 44,
+            "short_desc": "The console command description.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 2,
+            "default": {
+                "nodeType": "Scalar_String",
+                "value": "Validate client APP ID; 'apiuser'.",
+                "attributes": {
+                    "startLine": 44,
+                    "endLine": 44,
+                    "kind": 2
+                }
+            },
+            "errors": []
+        }
+    },
+    "methods": {
+        "__construct": {
+            "name": "__construct",
+            "line": 51,
+            "short_desc": "Create a new command instance.",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "client": {
+                    "name": "client",
+                    "line": 51,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\GuzzleHttp\\ClientInterface",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": {
+                        "nodeType": "Name_FullyQualified",
+                        "parts": [
+                            "GuzzleHttp",
+                            "ClientInterface"
+                        ],
+                        "attributes": {
+                            "startLine": 51,
+                            "endLine": 51
+                        }
+                    },
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "handle": {
+            "name": "handle",
+            "line": 65,
+            "short_desc": "Execute the console command.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "void",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [
+                [
+                    "\\GuzzleHttp\\Exception\\GuzzleException",
+                    ""
+                ]
+            ],
+            "errors": [],
+            "parameters": []
+        },
+        "requestClientInfo": {
+            "name": "requestClientInfo",
+            "line": 106,
+            "short_desc": "Request client credentials.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "void",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": {
+                "link": [
+                    [
+                        "https:\/\/momodeveloper.mtn.com\/docs\/services\/sandbox-provisioning-api\/operations\/get-v1_0-apiuser",
+                        "Documenation."
+                    ]
+                ]
+            },
+            "modifiers": 2,
+            "is_by_ref": "",
+            "exceptions": [
+                [
+                    "\\GuzzleHttp\\Exception\\GuzzleException",
+                    ""
+                ]
+            ],
+            "errors": [],
+            "parameters": {
+                "clientIdStatusUri": {
+                    "name": "clientIdStatusUri",
+                    "line": 106,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        }
+    },
+    "constants": []
+}

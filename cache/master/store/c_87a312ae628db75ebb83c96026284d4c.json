@@ -1,0 +1,94 @@
+{
+    "name": "Bmatovu\\MtnMomo\\Exceptions\\RemittanceRequestException",
+    "line": 13,
+    "short_desc": "Custom remittance request exception.",
+    "long_desc": "",
+    "hint": null,
+    "tags": [],
+    "namespace": "Bmatovu\\MtnMomo\\Exceptions",
+    "file": "\/home\/travis\/build\/mtvbrianking\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Exceptions\/RemittanceRequestException.php",
+    "relative_file": "\/src\/Exceptions\/RemittanceRequestException.php",
+    "hash": "976c9682410d6cc81d078e2fde197981f72f5379",
+    "parent": "RuntimeException",
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": {
+        "RuntimeException": "RuntimeException"
+    },
+    "errors": [],
+    "interfaces": {
+        "Bmatovu\\MtnMomo\\Exceptions\\MtnMomoRequestException": "Bmatovu\\MtnMomo\\Exceptions\\MtnMomoRequestException"
+    },
+    "traits": [],
+    "properties": [],
+    "methods": {
+        "__construct": {
+            "name": "__construct",
+            "line": 22,
+            "short_desc": "Constructor.",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "message": {
+                    "name": "message",
+                    "line": 22,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                },
+                "code": {
+                    "name": "code",
+                    "line": 22,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": "0",
+                    "variadic": false,
+                    "is_by_ref": false
+                },
+                "guzzle_exception": {
+                    "name": "guzzle_exception",
+                    "line": 22,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\GuzzleHttp\\Exception\\TransferException",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": "null",
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        }
+    },
+    "constants": []
+}

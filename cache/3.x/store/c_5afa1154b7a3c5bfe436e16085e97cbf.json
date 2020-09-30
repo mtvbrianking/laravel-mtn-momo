@@ -1,0 +1,190 @@
+{
+    "name": "Bmatovu\\MtnMomo\\Exceptions\\MtnMomoRequestException",
+    "line": 21,
+    "short_desc": "",
+    "long_desc": "",
+    "hint": null,
+    "tags": {
+        "method": [
+            [
+                "string",
+                "getMessage()"
+            ],
+            [
+                "\\Throwable|null",
+                "getPrevious()"
+            ],
+            [
+                "mixed",
+                "getCode()"
+            ],
+            [
+                "string",
+                "getFile()"
+            ],
+            [
+                "int",
+                "getLine()"
+            ],
+            [
+                "array",
+                "getTrace()"
+            ],
+            [
+                "string",
+                "getTraceAsString()"
+            ]
+        ]
+    },
+    "namespace": "Bmatovu\\MtnMomo\\Exceptions",
+    "file": "\/home\/travis\/build\/mtvbrianking\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Exceptions\/MtnMomoRequestException.php",
+    "relative_file": "\/src\/Exceptions\/MtnMomoRequestException.php",
+    "hash": "416ee96691c56cab3d89da90d2be5bdf545991bd",
+    "parent": null,
+    "modifiers": null,
+    "is_trait": false,
+    "is_interface": true,
+    "aliases": {
+        "Throwable": "Throwable"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": [],
+    "methods": {
+        "getMessage": {
+            "name": "getMessage",
+            "line": 21,
+            "short_desc": "",
+            "long_desc": null,
+            "hint": [
+                [
+                    "string",
+                    null
+                ]
+            ],
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": null,
+            "is_by_ref": null,
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "getPrevious": {
+            "name": "getPrevious",
+            "line": 21,
+            "short_desc": "",
+            "long_desc": null,
+            "hint": [
+                [
+                    "\\Throwable|null",
+                    null
+                ]
+            ],
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": null,
+            "is_by_ref": null,
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "getCode": {
+            "name": "getCode",
+            "line": 21,
+            "short_desc": "",
+            "long_desc": null,
+            "hint": [
+                [
+                    "mixed",
+                    null
+                ]
+            ],
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": null,
+            "is_by_ref": null,
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "getFile": {
+            "name": "getFile",
+            "line": 21,
+            "short_desc": "",
+            "long_desc": null,
+            "hint": [
+                [
+                    "string",
+                    null
+                ]
+            ],
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": null,
+            "is_by_ref": null,
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "getLine": {
+            "name": "getLine",
+            "line": 21,
+            "short_desc": "",
+            "long_desc": null,
+            "hint": [
+                [
+                    "int",
+                    null
+                ]
+            ],
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": null,
+            "is_by_ref": null,
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "getTrace": {
+            "name": "getTrace",
+            "line": 21,
+            "short_desc": "",
+            "long_desc": null,
+            "hint": [
+                [
+                    "array",
+                    null
+                ]
+            ],
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": null,
+            "is_by_ref": null,
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "getTraceAsString": {
+            "name": "getTraceAsString",
+            "line": 21,
+            "short_desc": "",
+            "long_desc": null,
+            "hint": [
+                [
+                    "string",
+                    null
+                ]
+            ],
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": null,
+            "is_by_ref": null,
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        }
+    },
+    "constants": []
+}

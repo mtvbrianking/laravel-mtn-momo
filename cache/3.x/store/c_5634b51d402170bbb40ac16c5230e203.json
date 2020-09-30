@@ -1,0 +1,716 @@
+{
+    "name": "Bmatovu\\MtnMomo\\Products\\Collection",
+    "line": 18,
+    "short_desc": "Collection service\/product.",
+    "long_desc": "",
+    "hint": null,
+    "tags": [],
+    "namespace": "Bmatovu\\MtnMomo\\Products",
+    "file": "\/home\/travis\/build\/mtvbrianking\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Products\/Collection.php",
+    "relative_file": "\/src\/Products\/Collection.php",
+    "hash": "12ea11ff778069c87143763626eab9c7d33dba07",
+    "parent": "Bmatovu\\MtnMomo\\Products\\Product",
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": {
+        "CollectionRequestException": "Bmatovu\\MtnMomo\\Exceptions\\CollectionRequestException",
+        "ClientInterface": "GuzzleHttp\\ClientInterface",
+        "RequestException": "GuzzleHttp\\Exception\\RequestException",
+        "Container": "Illuminate\\Container\\Container",
+        "Repository": "Illuminate\\Contracts\\Config\\Repository",
+        "Uuid": "Ramsey\\Uuid\\Uuid"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": {
+        "transactionUri": {
+            "name": "transactionUri",
+            "line": 32,
+            "short_desc": "Transact URI.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 2,
+            "default": null,
+            "errors": []
+        },
+        "transactionStatusUri": {
+            "name": "transactionStatusUri",
+            "line": 39,
+            "short_desc": "Transaction status URI.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 2,
+            "default": null,
+            "errors": []
+        },
+        "accountStatusUri": {
+            "name": "accountStatusUri",
+            "line": 46,
+            "short_desc": "Account status URI.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 2,
+            "default": null,
+            "errors": []
+        },
+        "accountBalanceUri": {
+            "name": "accountBalanceUri",
+            "line": 53,
+            "short_desc": "Account balance URI.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 2,
+            "default": null,
+            "errors": []
+        }
+    },
+    "methods": {
+        "getTransactionUri": {
+            "name": "getTransactionUri",
+            "line": 58,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "setTransactionUri": {
+            "name": "setTransactionUri",
+            "line": 66,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "transactionUri": {
+                    "name": "transactionUri",
+                    "line": 66,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "getTransactionStatusUri": {
+            "name": "getTransactionStatusUri",
+            "line": 74,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "setTransactionStatusUri": {
+            "name": "setTransactionStatusUri",
+            "line": 82,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "transactionStatusUri": {
+                    "name": "transactionStatusUri",
+                    "line": 82,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "getAccountStatusUri": {
+            "name": "getAccountStatusUri",
+            "line": 90,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "setAccountStatusUri": {
+            "name": "setAccountStatusUri",
+            "line": 98,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "accountStatusUri": {
+                    "name": "accountStatusUri",
+                    "line": 98,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "getAppAccountBalanceUri": {
+            "name": "getAppAccountBalanceUri",
+            "line": 106,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "setAppAccountBalanceUri": {
+            "name": "setAppAccountBalanceUri",
+            "line": 114,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "accountBalanceUri": {
+                    "name": "accountBalanceUri",
+                    "line": 114,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "__construct": {
+            "name": "__construct",
+            "line": 130,
+            "short_desc": "Constructor.",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": {
+                "uses": [
+                    [
+                        "\\Illuminate\\Contracts\\Config\\Repository"
+                    ]
+                ]
+            },
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [
+                [
+                    "\\Exception",
+                    ""
+                ]
+            ],
+            "errors": [],
+            "parameters": {
+                "headers": {
+                    "name": "headers",
+                    "line": 130,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "array",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": "[]",
+                    "variadic": false,
+                    "is_by_ref": false
+                },
+                "middleware": {
+                    "name": "middleware",
+                    "line": 130,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "array",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": "[]",
+                    "variadic": false,
+                    "is_by_ref": false
+                },
+                "client": {
+                    "name": "client",
+                    "line": 130,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\GuzzleHttp\\ClientInterface",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": {
+                        "nodeType": "Name_FullyQualified",
+                        "parts": [
+                            "GuzzleHttp",
+                            "ClientInterface"
+                        ],
+                        "attributes": {
+                            "startLine": 130,
+                            "endLine": 130
+                        }
+                    },
+                    "default": "null",
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "requestToPay": {
+            "name": "requestToPay",
+            "line": 166,
+            "short_desc": "Request payee to pay.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "Auto generated payment reference. Format: UUID",
+            "tags": {
+                "see": [
+                    [
+                        "https:\/\/momodeveloper.mtn.com\/docs\/services\/collection\/operations\/requesttopay-POST",
+                        "Documentation"
+                    ]
+                ]
+            },
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [
+                [
+                    "\\Bmatovu\\MtnMomo\\Exceptions\\CollectionRequestException",
+                    ""
+                ],
+                [
+                    "\\GuzzleHttp\\Exception\\GuzzleException",
+                    ""
+                ],
+                [
+                    "\\Exception",
+                    ""
+                ]
+            ],
+            "errors": [],
+            "parameters": {
+                "transactionId": {
+                    "name": "transactionId",
+                    "line": 166,
+                    "short_desc": "Your transaction reference ID, Say: order number.",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                },
+                "partyId": {
+                    "name": "partyId",
+                    "line": 166,
+                    "short_desc": "Account holder. Usually phone number if type is MSISDN.",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                },
+                "amount": {
+                    "name": "amount",
+                    "line": 166,
+                    "short_desc": "How much to debit the payer.",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                },
+                "payerMessage": {
+                    "name": "payerMessage",
+                    "line": 166,
+                    "short_desc": "Payer transaction history message.",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": "''",
+                    "variadic": false,
+                    "is_by_ref": false
+                },
+                "payeeNote": {
+                    "name": "payeeNote",
+                    "line": 166,
+                    "short_desc": "Payee transaction history message.",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": "''",
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "getTransactionStatus": {
+            "name": "getTransactionStatus",
+            "line": 213,
+            "short_desc": "Get transaction status.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "array",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": {
+                "see": [
+                    [
+                        "https:\/\/momodeveloper.mtn.com\/docs\/services\/collection\/operations\/requesttopay-referenceId-GET",
+                        "Documentation"
+                    ]
+                ]
+            },
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [
+                [
+                    "\\Bmatovu\\MtnMomo\\Exceptions\\CollectionRequestException",
+                    ""
+                ],
+                [
+                    "\\GuzzleHttp\\Exception\\GuzzleException",
+                    ""
+                ]
+            ],
+            "errors": [],
+            "parameters": {
+                "momoTransactionId": {
+                    "name": "momoTransactionId",
+                    "line": 213,
+                    "short_desc": "MTN Momo transaction ID. Returned from transact (requestToPay)",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "getToken": {
+            "name": "getToken",
+            "line": 240,
+            "short_desc": "Request collections access token.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "array",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": {
+                "see": [
+                    [
+                        "https:\/\/momodeveloper.mtn.com\/docs\/services\/collection\/operations\/token-POST",
+                        "Documentation"
+                    ]
+                ]
+            },
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [
+                [
+                    "\\Bmatovu\\MtnMomo\\Exceptions\\CollectionRequestException",
+                    ""
+                ],
+                [
+                    "\\GuzzleHttp\\Exception\\GuzzleException",
+                    ""
+                ]
+            ],
+            "errors": [],
+            "parameters": []
+        },
+        "getAccountBalance": {
+            "name": "getAccountBalance",
+            "line": 268,
+            "short_desc": "Get account balance.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "array",
+                    false
+                ]
+            ],
+            "hint_desc": "Account balance.",
+            "tags": {
+                "see": [
+                    [
+                        "https:\/\/momodeveloper.mtn.com\/docs\/services\/collection\/operations\/get-v1_0-account-balance",
+                        "Documentation"
+                    ]
+                ]
+            },
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [
+                [
+                    "\\Bmatovu\\MtnMomo\\Exceptions\\CollectionRequestException",
+                    ""
+                ],
+                [
+                    "\\GuzzleHttp\\Exception\\GuzzleException",
+                    ""
+                ]
+            ],
+            "errors": [],
+            "parameters": []
+        },
+        "isActive": {
+            "name": "isActive",
+            "line": 296,
+            "short_desc": "Determine if an account holder is registered and active.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "bool",
+                    false
+                ]
+            ],
+            "hint_desc": "True if account holder is registered and active, false if the account holder is not active or not found",
+            "tags": {
+                "see": [
+                    [
+                        "https:\/\/momodeveloper.mtn.com\/docs\/services\/collection\/operations\/get-v1_0-accountholder-accountholderidtype-accountholderid-active",
+                        "Documentation"
+                    ]
+                ]
+            },
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [
+                [
+                    "\\Bmatovu\\MtnMomo\\Exceptions\\CollectionRequestException",
+                    ""
+                ],
+                [
+                    "\\GuzzleHttp\\Exception\\GuzzleException",
+                    ""
+                ]
+            ],
+            "errors": [],
+            "parameters": {
+                "partyId": {
+                    "name": "partyId",
+                    "line": 296,
+                    "short_desc": "Party number - MSISDN, email, or code - UUID.",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                },
+                "partyIdType": {
+                    "name": "partyIdType",
+                    "line": 296,
+                    "short_desc": "Allowed values [msisdn, email, party_code].",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": "null",
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        }
+    },
+    "constants": {
+        "PRODUCT": {
+            "name": "PRODUCT",
+            "line": 25,
+            "short_desc": "Product.",
+            "long_desc": ""
+        }
+    }
+}

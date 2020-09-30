@@ -1,0 +1,123 @@
+{
+    "name": "Bmatovu\\MtnMomo\\MtnMomoServiceProvider",
+    "line": 24,
+    "short_desc": "Package service provider.",
+    "long_desc": "",
+    "hint": null,
+    "tags": [],
+    "namespace": "Bmatovu\\MtnMomo",
+    "file": "\/home\/travis\/build\/mtvbrianking\/laravel-mtn-momo\/laravel-mtn-momo\/src\/MtnMomoServiceProvider.php",
+    "relative_file": "\/src\/MtnMomoServiceProvider.php",
+    "hash": "2b42f38c34d233357da4f08c43687435b2ea674c",
+    "parent": "Illuminate\\Support\\ServiceProvider",
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": {
+        "Logger": "Monolog\\Logger",
+        "Client": "GuzzleHttp\\Client",
+        "Middleware": "GuzzleHttp\\Middleware",
+        "HandlerStack": "GuzzleHttp\\HandlerStack",
+        "ClientInterface": "GuzzleHttp\\ClientInterface",
+        "MessageFormatter": "GuzzleHttp\\MessageFormatter",
+        "StreamHandler": "Monolog\\Handler\\StreamHandler",
+        "ServiceProvider": "Illuminate\\Support\\ServiceProvider",
+        "BootstrapCommand": "Bmatovu\\MtnMomo\\Console\\BootstrapCommand",
+        "RegisterIdCommand": "Bmatovu\\MtnMomo\\Console\\RegisterIdCommand",
+        "ValidateIdCommand": "Bmatovu\\MtnMomo\\Console\\ValidateIdCommand",
+        "RequestSecretCommand": "Bmatovu\\MtnMomo\\Console\\RequestSecretCommand"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": [],
+    "methods": {
+        "boot": {
+            "name": "boot",
+            "line": 31,
+            "short_desc": "Bootstrap the application services.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "void",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "register": {
+            "name": "register",
+            "line": 54,
+            "short_desc": "Register the application services.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "void",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "commandClient": {
+            "name": "commandClient",
+            "line": 70,
+            "short_desc": "Create command's concrete client.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\GuzzleHttp\\ClientInterface",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 2,
+            "is_by_ref": "",
+            "exceptions": [
+                [
+                    "\\Exception",
+                    ""
+                ]
+            ],
+            "errors": [],
+            "parameters": []
+        },
+        "getLogMiddleware": {
+            "name": "getLogMiddleware",
+            "line": 104,
+            "short_desc": "Get log middleware.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "callable",
+                    false
+                ]
+            ],
+            "hint_desc": "GuzzleHttp Middleware",
+            "tags": [],
+            "modifiers": 2,
+            "is_by_ref": "",
+            "exceptions": [
+                [
+                    "\\Exception",
+                    ""
+                ]
+            ],
+            "errors": [],
+            "parameters": []
+        }
+    },
+    "constants": []
+}

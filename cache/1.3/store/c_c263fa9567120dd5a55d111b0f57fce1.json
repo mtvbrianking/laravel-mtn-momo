@@ -1,0 +1,123 @@
+{
+    "name": "Bmatovu\\MtnMomo\\Traits\\TokenUtilTrait",
+    "line": 11,
+    "short_desc": "Token model utilities.",
+    "long_desc": "",
+    "hint": null,
+    "tags": [],
+    "namespace": "Bmatovu\\MtnMomo\\Traits",
+    "file": "\/home\/travis\/build\/mtvbrianking\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Traits\/TokenUtilTrait.php",
+    "relative_file": "\/src\/Traits\/TokenUtilTrait.php",
+    "hash": "6a52f6e6663a27bb87ec0ac48011a2e3d3ef82c8",
+    "parent": null,
+    "modifiers": null,
+    "is_trait": true,
+    "is_interface": false,
+    "aliases": [],
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": [],
+    "methods": {
+        "getAccessToken": {
+            "name": "getAccessToken",
+            "line": 18,
+            "short_desc": "Get access token.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "getRefreshToken": {
+            "name": "getRefreshToken",
+            "line": 28,
+            "short_desc": "Get refresh token.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ],
+                [
+                    "null",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "getTokenType": {
+            "name": "getTokenType",
+            "line": 38,
+            "short_desc": "Get token type.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "getExpiresAt": {
+            "name": "getExpiresAt",
+            "line": 48,
+            "short_desc": "Get expires at.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "Datatime",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "isExpired": {
+            "name": "isExpired",
+            "line": 58,
+            "short_desc": "Determine if a token is expired.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "bool",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        }
+    },
+    "constants": []
+}

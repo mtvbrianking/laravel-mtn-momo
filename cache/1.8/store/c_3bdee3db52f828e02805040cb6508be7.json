@@ -1,0 +1,294 @@
+{
+    "name": "Bmatovu\\MtnMomo\\Console\\RegisterIdCommand",
+    "line": 22,
+    "short_desc": "Register client ID in sandbox environment.",
+    "long_desc": "The client application ID is a user generate UUID format 4,\nthat is then registered with MTN Momo API.",
+    "hint": null,
+    "tags": [],
+    "namespace": "Bmatovu\\MtnMomo\\Console",
+    "file": "\/home\/travis\/build\/mtvbrianking\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Console\/RegisterIdCommand.php",
+    "relative_file": "\/src\/Console\/RegisterIdCommand.php",
+    "hash": "c55fc69bb5ae1510a858093b1992e83761b23a30",
+    "parent": "Illuminate\\Console\\Command",
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": {
+        "Uuid": "Ramsey\\Uuid\\Uuid",
+        "ClientInterface": "GuzzleHttp\\ClientInterface",
+        "Command": "Illuminate\\Console\\Command",
+        "ClientException": "GuzzleHttp\\Exception\\ClientException",
+        "ServerException": "GuzzleHttp\\Exception\\ServerException",
+        "ConnectException": "GuzzleHttp\\Exception\\ConnectException",
+        "CommandUtilTrait": "Bmatovu\\MtnMomo\\Traits\\CommandUtilTrait"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": {
+        "Bmatovu\\MtnMomo\\Traits\\CommandUtilTrait": "Bmatovu\\MtnMomo\\Traits\\CommandUtilTrait"
+    },
+    "properties": {
+        "client": {
+            "name": "client",
+            "line": 31,
+            "short_desc": "Guzzle HTTP client instance.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\GuzzleHttp\\ClientInterface",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 2,
+            "default": null,
+            "errors": []
+        },
+        "product": {
+            "name": "product",
+            "line": 38,
+            "short_desc": "Product subscribed to.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 2,
+            "default": null,
+            "errors": []
+        },
+        "signature": {
+            "name": "signature",
+            "line": 45,
+            "short_desc": "The name and signature of the console command.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 2,
+            "default": {
+                "nodeType": "Scalar_String",
+                "value": "mtn-momo:register-id\n                                {--id= : Client APP ID.}\n                                {--callback= : Client APP redirect URI.}\n                                {--product= : Product subscribed to.}\n                                {--no-write= : Don't credentials to .env file.}\n                                {--f|force : Force the operation to run when in production.}",
+                "attributes": {
+                    "startLine": 45,
+                    "endLine": 50,
+                    "kind": 1
+                }
+            },
+            "errors": []
+        },
+        "description": {
+            "name": "description",
+            "line": 57,
+            "short_desc": "The console command description.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 2,
+            "default": {
+                "nodeType": "Scalar_String",
+                "value": "Register client APP ID; 'apiuser'",
+                "attributes": {
+                    "startLine": 57,
+                    "endLine": 57,
+                    "kind": 2
+                }
+            },
+            "errors": []
+        }
+    },
+    "methods": {
+        "__construct": {
+            "name": "__construct",
+            "line": 64,
+            "short_desc": "Create a new command instance.",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "client": {
+                    "name": "client",
+                    "line": 64,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\GuzzleHttp\\ClientInterface",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": {
+                        "nodeType": "Name_FullyQualified",
+                        "parts": [
+                            "GuzzleHttp",
+                            "ClientInterface"
+                        ],
+                        "attributes": {
+                            "startLine": 64,
+                            "endLine": 64
+                        }
+                    },
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "handle": {
+            "name": "handle",
+            "line": 78,
+            "short_desc": "Execute the console command.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "void",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [
+                [
+                    "\\GuzzleHttp\\Exception\\GuzzleException",
+                    ""
+                ]
+            ],
+            "errors": [],
+            "parameters": []
+        },
+        "getClientId": {
+            "name": "getClientId",
+            "line": 121,
+            "short_desc": "Determine client ID.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 2,
+            "is_by_ref": "",
+            "exceptions": [
+                [
+                    "\\Exception",
+                    ""
+                ]
+            ],
+            "errors": [],
+            "parameters": []
+        },
+        "getClientRedirectUri": {
+            "name": "getClientRedirectUri",
+            "line": 157,
+            "short_desc": "Determine client redirect URI.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 2,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "registerClientId": {
+            "name": "registerClientId",
+            "line": 195,
+            "short_desc": "Register client ID.",
+            "long_desc": "The redirect URI is implemented in sandbox environment,\nbut is still required when registering a client ID.",
+            "hint": [
+                [
+                    "bool",
+                    false
+                ]
+            ],
+            "hint_desc": "Is registered.",
+            "tags": {
+                "link": [
+                    [
+                        "https:\/\/momodeveloper.mtn.com\/docs\/services\/sandbox-provisioning-api\/operations\/post-v1_0-apiuser",
+                        "Documenation."
+                    ]
+                ]
+            },
+            "modifiers": 2,
+            "is_by_ref": "",
+            "exceptions": [
+                [
+                    "\\GuzzleHttp\\Exception\\GuzzleException",
+                    ""
+                ]
+            ],
+            "errors": [],
+            "parameters": {
+                "clientId": {
+                    "name": "clientId",
+                    "line": 195,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                },
+                "clientRedirectUri": {
+                    "name": "clientRedirectUri",
+                    "line": 195,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        }
+    },
+    "constants": []
+}

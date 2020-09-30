@@ -1,0 +1,699 @@
+{
+    "name": "Bmatovu\\MtnMomo\\Products\\Disbursement",
+    "line": 19,
+    "short_desc": "Class Disbursement.",
+    "long_desc": "",
+    "hint": null,
+    "tags": [],
+    "namespace": "Bmatovu\\MtnMomo\\Products",
+    "file": "\/home\/travis\/build\/mtvbrianking\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Products\/Disbursement.php",
+    "relative_file": "\/src\/Products\/Disbursement.php",
+    "hash": "c14faccd570a07e38201230d98269ed4152a8d91",
+    "parent": "Bmatovu\\MtnMomo\\Products\\Product",
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": {
+        "Uuid": "Ramsey\\Uuid\\Uuid",
+        "ClientInterface": "GuzzleHttp\\ClientInterface",
+        "Container": "Illuminate\\Container\\Container",
+        "RequestException": "GuzzleHttp\\Exception\\RequestException",
+        "Repository": "Illuminate\\Contracts\\Config\\Repository",
+        "DisbursementRequestException": "Bmatovu\\MtnMomo\\Exceptions\\DisbursementRequestException"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": {
+        "transactionUri": {
+            "name": "transactionUri",
+            "line": 26,
+            "short_desc": "Transact URI.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 2,
+            "default": null,
+            "errors": []
+        },
+        "transactionStatusUri": {
+            "name": "transactionStatusUri",
+            "line": 33,
+            "short_desc": "Transaction status URI.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 2,
+            "default": null,
+            "errors": []
+        },
+        "accountStatusUri": {
+            "name": "accountStatusUri",
+            "line": 40,
+            "short_desc": "Account status URI.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 2,
+            "default": null,
+            "errors": []
+        },
+        "accountBalanceUri": {
+            "name": "accountBalanceUri",
+            "line": 47,
+            "short_desc": "Account balance URI.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 2,
+            "default": null,
+            "errors": []
+        }
+    },
+    "methods": {
+        "getTransactionUri": {
+            "name": "getTransactionUri",
+            "line": 52,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "setTransactionUri": {
+            "name": "setTransactionUri",
+            "line": 60,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "transactionUri": {
+                    "name": "transactionUri",
+                    "line": 60,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "getTransactionStatusUri": {
+            "name": "getTransactionStatusUri",
+            "line": 68,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "setTransactionStatusUri": {
+            "name": "setTransactionStatusUri",
+            "line": 76,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "transactionStatusUri": {
+                    "name": "transactionStatusUri",
+                    "line": 76,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "getAccountStatusUri": {
+            "name": "getAccountStatusUri",
+            "line": 84,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "setAccountStatusUri": {
+            "name": "setAccountStatusUri",
+            "line": 92,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "accountStatusUri": {
+                    "name": "accountStatusUri",
+                    "line": 92,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "getAccountBalanceUri": {
+            "name": "getAccountBalanceUri",
+            "line": 100,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "setAccountBalanceUri": {
+            "name": "setAccountBalanceUri",
+            "line": 108,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "accountBalanceUri": {
+                    "name": "accountBalanceUri",
+                    "line": 108,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "__construct": {
+            "name": "__construct",
+            "line": 122,
+            "short_desc": "Disbursement constructor.",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [
+                [
+                    "\\Exception",
+                    ""
+                ]
+            ],
+            "errors": [],
+            "parameters": {
+                "headers": {
+                    "name": "headers",
+                    "line": 122,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "array",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": "array",
+                    "default": "[]",
+                    "variadic": false,
+                    "is_by_ref": false
+                },
+                "middleware": {
+                    "name": "middleware",
+                    "line": 122,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "array",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": "array",
+                    "default": "[]",
+                    "variadic": false,
+                    "is_by_ref": false
+                },
+                "client": {
+                    "name": "client",
+                    "line": 122,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\GuzzleHttp\\ClientInterface",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": {
+                        "nodeType": "Name_FullyQualified",
+                        "parts": [
+                            "GuzzleHttp",
+                            "ClientInterface"
+                        ],
+                        "attributes": {
+                            "startLine": 122,
+                            "endLine": 122
+                        }
+                    },
+                    "default": "null",
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "getToken": {
+            "name": "getToken",
+            "line": 150,
+            "short_desc": "Request disbursement access token.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "array",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": {
+                "see": [
+                    [
+                        "https:\/\/momodeveloper.mtn.com\/docs\/services\/disbursement\/operations\/token-POST",
+                        "Documentation"
+                    ]
+                ]
+            },
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [
+                [
+                    "\\GuzzleHttp\\Exception\\GuzzleException",
+                    ""
+                ]
+            ],
+            "errors": [],
+            "parameters": []
+        },
+        "transfer": {
+            "name": "transfer",
+            "line": 185,
+            "short_desc": "Transfer an amount to a payee account.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "$momoTransactionId                Auto generated payment reference. Format: UUID",
+            "tags": {
+                "see": [
+                    [
+                        "https:\/\/momodeveloper.mtn.com\/docs\/services\/disbursement\/operations\/transfer-POST",
+                        "Documentation"
+                    ]
+                ]
+            },
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [
+                [
+                    "\\Bmatovu\\MtnMomo\\Exceptions\\DisbursementRequestException",
+                    ""
+                ],
+                [
+                    "\\GuzzleHttp\\Exception\\GuzzleException",
+                    ""
+                ],
+                [
+                    "\\Exception",
+                    ""
+                ]
+            ],
+            "errors": [],
+            "parameters": {
+                "transactionId": {
+                    "name": "transactionId",
+                    "line": 185,
+                    "short_desc": "Transaction reference ID.",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                },
+                "partyId": {
+                    "name": "partyId",
+                    "line": 185,
+                    "short_desc": "Account holder. Usually phone number if type is MSISDN.",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                },
+                "amount": {
+                    "name": "amount",
+                    "line": 185,
+                    "short_desc": "How much to transfer to payee account.",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                },
+                "payerMessage": {
+                    "name": "payerMessage",
+                    "line": 185,
+                    "short_desc": "Payer transaction history message.",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": "''",
+                    "variadic": false,
+                    "is_by_ref": false
+                },
+                "payeeNote": {
+                    "name": "payeeNote",
+                    "line": 185,
+                    "short_desc": "Payee transaction history message.",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": "''",
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "getDisbursementTransactionStatus": {
+            "name": "getDisbursementTransactionStatus",
+            "line": 232,
+            "short_desc": "Get transaction status.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "array",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": {
+                "see": [
+                    [
+                        "https:\/\/momodeveloper.mtn.com\/docs\/services\/disbursement\/operations\/transfer-referenceId-GET",
+                        "Documentation"
+                    ]
+                ]
+            },
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [
+                [
+                    "\\Bmatovu\\MtnMomo\\Exceptions\\DisbursementRequestException",
+                    ""
+                ],
+                [
+                    "\\GuzzleHttp\\Exception\\GuzzleException",
+                    ""
+                ]
+            ],
+            "errors": [],
+            "parameters": {
+                "momoTransactionId": {
+                    "name": "momoTransactionId",
+                    "line": 232,
+                    "short_desc": "That was returned by transfer (transferAmount)",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "getAccountBalance": {
+            "name": "getAccountBalance",
+            "line": 259,
+            "short_desc": "Get account balance.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "array",
+                    false
+                ]
+            ],
+            "hint_desc": "Account balance.",
+            "tags": {
+                "see": [
+                    [
+                        "https:\/\/momodeveloper.mtn.com\/docs\/services\/disbursement\/operations\/get-v1_0-account-balance",
+                        "Documentation"
+                    ]
+                ]
+            },
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [
+                [
+                    "\\Bmatovu\\MtnMomo\\Exceptions\\DisbursementRequestException",
+                    ""
+                ],
+                [
+                    "\\GuzzleHttp\\Exception\\GuzzleException",
+                    ""
+                ]
+            ],
+            "errors": [],
+            "parameters": []
+        },
+        "isActive": {
+            "name": "isActive",
+            "line": 287,
+            "short_desc": "Determine if an account holder is registered and active.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "bool",
+                    false
+                ]
+            ],
+            "hint_desc": "True if account holder is registered and active, false if the account holder is not active or not found",
+            "tags": {
+                "see": [
+                    [
+                        "https:\/\/momodeveloper.mtn.com\/docs\/services\/disbursement\/operations\/get-v1_0-accountholder-accountholderidtype-accountholderid-active",
+                        "Documentation"
+                    ]
+                ]
+            },
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [
+                [
+                    "\\Bmatovu\\MtnMomo\\Exceptions\\DisbursementRequestException",
+                    ""
+                ],
+                [
+                    "\\GuzzleHttp\\Exception\\GuzzleException",
+                    ""
+                ]
+            ],
+            "errors": [],
+            "parameters": {
+                "partyId": {
+                    "name": "partyId",
+                    "line": 287,
+                    "short_desc": "Party number - MSISDN, email, or code - UUID.",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                },
+                "partyIdType": {
+                    "name": "partyIdType",
+                    "line": 287,
+                    "short_desc": "Specifies the type of the account ID. Allowed values [msisdn, email, party_code].",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": "null",
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        }
+    },
+    "constants": []
+}

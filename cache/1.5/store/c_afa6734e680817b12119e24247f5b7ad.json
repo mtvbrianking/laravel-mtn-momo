@@ -1,0 +1,257 @@
+{
+    "name": "Bmatovu\\MtnMomo\\Console\\RequestSecretCommand",
+    "line": 19,
+    "short_desc": "Request client app secret.",
+    "long_desc": "",
+    "hint": null,
+    "tags": [],
+    "namespace": "Bmatovu\\MtnMomo\\Console",
+    "file": "\/home\/travis\/build\/mtvbrianking\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Console\/RequestSecretCommand.php",
+    "relative_file": "\/src\/Console\/RequestSecretCommand.php",
+    "hash": "33386206a43162d310ed21ad46fa454f87d46257",
+    "parent": "Illuminate\\Console\\Command",
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": {
+        "Uuid": "Ramsey\\Uuid\\Uuid",
+        "ClientInterface": "GuzzleHttp\\ClientInterface",
+        "Command": "Illuminate\\Console\\Command",
+        "ClientException": "GuzzleHttp\\Exception\\ClientException",
+        "ServerException": "GuzzleHttp\\Exception\\ServerException",
+        "ConnectException": "GuzzleHttp\\Exception\\ConnectException",
+        "CommandUtilTrait": "Bmatovu\\MtnMomo\\Traits\\CommandUtilTrait"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": {
+        "Bmatovu\\MtnMomo\\Traits\\CommandUtilTrait": "Bmatovu\\MtnMomo\\Traits\\CommandUtilTrait"
+    },
+    "properties": {
+        "client": {
+            "name": "client",
+            "line": 28,
+            "short_desc": "Guzzle HTTP client instance.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\GuzzleHttp\\ClientInterface",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 2,
+            "default": null,
+            "errors": []
+        },
+        "product": {
+            "name": "product",
+            "line": 35,
+            "short_desc": "Product subscribed too.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 2,
+            "default": null,
+            "errors": []
+        },
+        "signature": {
+            "name": "signature",
+            "line": 42,
+            "short_desc": "The name and signature of the console command.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 2,
+            "default": {
+                "nodeType": "Scalar_String",
+                "value": "mtn-momo:request-secret\n                                {--id= : Client APP ID.}\n                                {--product= : Product subscribed to.}\n                                {--no-write= : Don't credentials to .env file.}\n                                {--f|force : Force the operation to run when in production.}",
+                "attributes": {
+                    "startLine": 42,
+                    "endLine": 46,
+                    "kind": 1
+                }
+            },
+            "errors": []
+        },
+        "description": {
+            "name": "description",
+            "line": 53,
+            "short_desc": "The console command description.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 2,
+            "default": {
+                "nodeType": "Scalar_String",
+                "value": "Request client APP secret; 'apikey'.",
+                "attributes": {
+                    "startLine": 53,
+                    "endLine": 53,
+                    "kind": 2
+                }
+            },
+            "errors": []
+        }
+    },
+    "methods": {
+        "__construct": {
+            "name": "__construct",
+            "line": 60,
+            "short_desc": "Create a new command instance.",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "client": {
+                    "name": "client",
+                    "line": 60,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\GuzzleHttp\\ClientInterface",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": {
+                        "nodeType": "Name_FullyQualified",
+                        "parts": [
+                            "GuzzleHttp",
+                            "ClientInterface"
+                        ],
+                        "attributes": {
+                            "startLine": 60,
+                            "endLine": 60
+                        }
+                    },
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "handle": {
+            "name": "handle",
+            "line": 74,
+            "short_desc": "Execute the console command.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "void",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [
+                [
+                    "\\GuzzleHttp\\Exception\\GuzzleException",
+                    ""
+                ]
+            ],
+            "errors": [],
+            "parameters": []
+        },
+        "getClientId": {
+            "name": "getClientId",
+            "line": 104,
+            "short_desc": "Determine client ID.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 2,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "requestClientSecret": {
+            "name": "requestClientSecret",
+            "line": 139,
+            "short_desc": "Request for client APP secret.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ],
+                [
+                    "null",
+                    false
+                ]
+            ],
+            "hint_desc": "Client Secret",
+            "tags": {
+                "link": [
+                    [
+                        "https:\/\/momodeveloper.mtn.com\/docs\/services\/sandbox-provisioning-api\/operations\/post-v1_0-apiuser-apikey",
+                        "Documentation"
+                    ]
+                ]
+            },
+            "modifiers": 2,
+            "is_by_ref": "",
+            "exceptions": [
+                [
+                    "\\GuzzleHttp\\Exception\\GuzzleException",
+                    ""
+                ]
+            ],
+            "errors": [],
+            "parameters": {
+                "clientId": {
+                    "name": "clientId",
+                    "line": 139,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        }
+    },
+    "constants": []
+}
