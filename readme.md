@@ -65,7 +65,7 @@ If you already subscribed to a product, the subscription key can be found in you
 
 ### Getting started (Sandbox)
 
-Register you client details.
+Register your client details.
 
 ```bash
 php artisan mtn-momo:init
