@@ -54,6 +54,13 @@ class Disbursement extends Product
     protected $accountBalanceUri;
 
     /**
+     * Account holder basic info URI.
+     *
+     * @var string
+     */
+    protected $accountHolderInfoUri;
+
+    /**
      * @return string
      */
     public function getTransactionUri()
@@ -118,6 +125,22 @@ class Disbursement extends Product
     }
 
     /**
+     * @return string
+     */
+    public function getAccountHolderInfoUri()
+    {
+        return $this->accountHolderInfoUri;
+    }
+
+    /**
+     * @param string $accountHolderInfoUri
+     */
+    public function setAccountHolderInfoUri($accountHolderInfoUri)
+    {
+        $this->accountHolderInfoUri = $accountHolderInfoUri;
+    }
+
+    /**
      * Disbursement constructor.
      *
      * @param array $headers
@@ -142,6 +165,7 @@ class Disbursement extends Product
         $this->transactionStatusUri = $config->get('mtn-momo.products.disbursement.transaction_status_uri');
         $this->accountStatusUri = $config->get('mtn-momo.products.disbursement.account_status_uri');
         $this->accountBalanceUri = $config->get('mtn-momo.products.disbursement.account_balance_uri');
+        $this->accountHolderInfoUri = $config->get('mtn-momo.products.disbursement.account_holder_info_uri');
         $this->partyIdType = $config->get('mtn-momo.products.disbursement.party_id_type');
 
         parent::__construct($headers, $middleware, $client);
@@ -161,7 +185,7 @@ class Disbursement extends Product
         try {
             $response = $this->client->request('POST', $this->tokenUri, [
                 'headers' => [
-                    'Authorization' => 'Basic '.base64_encode($this->clientId.':'.$this->clientSecret),
+                    'Authorization' => 'Basic ' . base64_encode($this->clientId . ':' . $this->clientSecret),
                 ],
                 'json' => [
                     'grant_type' => 'client_credentials',
@@ -319,6 +343,40 @@ class Disbursement extends Product
             $body = json_decode($response->getBody(), true);
 
             return (bool) $body['result'];
+        } catch (RequestException $ex) {
+            throw new DisbursementRequestException('Unable to get user account information.', 0, $ex);
+        }
+    }
+
+    /**
+     * Get basic info of an account holder.
+     *
+     * @see https://momodeveloper.mtn.com/docs/services/disbursement/operations/basicuserInfo-GET Documentation
+     *
+     * @param  string $partyId Party number - MSISDN.
+     *
+     * @throws \Bmatovu\MtnMomo\Exceptions\DisbursementRequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array account basic info
+     */
+    public function getAccountHolderBasicInfo($partyId)
+    {
+        $patterns = $replacements = [];
+
+        $patterns[] = '/(\{\bpartyId\b\})/';
+        $replacements[] = urlencode($partyId);
+
+        $accountHolderInfoUri = preg_replace($patterns, $replacements, $this->accountHolderInfoUri);
+
+        try {
+            $response = $this->client->request('GET', $accountHolderInfoUri, [
+                'headers' => [
+                    'X-Target-Environment' => $this->environment,
+                ],
+            ]);
+
+            return json_decode($response->getBody(), true);
         } catch (RequestException $ex) {
             throw new DisbursementRequestException('Unable to get user account information.', 0, $ex);
         }

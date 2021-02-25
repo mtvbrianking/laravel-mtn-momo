@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Remittance.
  */
@@ -51,6 +52,13 @@ class Remittance extends Product
      * @var string
      */
     protected $accountBalanceUri;
+
+    /**
+     * Account holder basic info URI.
+     *
+     * @var string
+     */
+    protected $accountHolderInfoUri;
 
     /**
      * @return string
@@ -117,6 +125,22 @@ class Remittance extends Product
     }
 
     /**
+     * @return string
+     */
+    public function getAccountHolderInfoUri()
+    {
+        return $this->accountHolderInfoUri;
+    }
+
+    /**
+     * @param string $accountHolderInfoUri
+     */
+    public function setAccountHolderInfoUri($accountHolderInfoUri)
+    {
+        $this->accountHolderInfoUri = $accountHolderInfoUri;
+    }
+
+    /**
      * Constructor.
      *
      * @param array $headers
@@ -141,6 +165,7 @@ class Remittance extends Product
         $this->transactionStatusUri = $config->get('mtn-momo.products.remittance.transaction_status_uri');
         $this->accountStatusUri = $config->get('mtn-momo.products.remittance.account_status_uri');
         $this->accountBalanceUri = $config->get('mtn-momo.products.remittance.account_balance_uri');
+        $this->accountHolderInfoUri = $config->get('mtn-momo.products.remittance.account_holder_info_uri');
         $this->partyIdType = $config->get('mtn-momo.products.remittance.party_id_type');
 
         parent::__construct($headers, $middleware, $client);
@@ -161,7 +186,7 @@ class Remittance extends Product
         try {
             $response = $this->client->request('POST', $this->tokenUri, [
                 'headers' => [
-                    'Authorization' => 'Basic '.base64_encode($this->clientId.':'.$this->clientSecret),
+                    'Authorization' => 'Basic ' . base64_encode($this->clientId . ':' . $this->clientSecret),
                 ],
                 'json' => [
                     'grant_type' => 'client_credentials',
@@ -321,6 +346,40 @@ class Remittance extends Product
             return (bool) $body['result'];
         } catch (RequestException $ex) {
             throw new RemittanceRequestException('Unable to get account status.', 0, $ex);
+        }
+    }
+
+    /**
+     * Get basic info of an account holder.
+     *
+     * @see https://momodeveloper.mtn.com/docs/services/remittance/operations/basicuserInfo-GET Documentation
+     *
+     * @param  string $partyId Party number - MSISDN.
+     *
+     * @throws \Bmatovu\MtnMomo\Exceptions\RemittanceRequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array account basic info
+     */
+    public function getAccountHolderBasicInfo($partyId)
+    {
+        $patterns = $replacements = [];
+
+        $patterns[] = '/(\{\bpartyId\b\})/';
+        $replacements[] = urlencode($partyId);
+
+        $accountHolderInfoUri = preg_replace($patterns, $replacements, $this->accountHolderInfoUri);
+
+        try {
+            $response = $this->client->request('GET', $accountHolderInfoUri, [
+                'headers' => [
+                    'X-Target-Environment' => $this->environment,
+                ],
+            ]);
+
+            return json_decode($response->getBody(), true);
+        } catch (RequestException $ex) {
+            throw new RemittanceRequestException('Unable to get user account information.', 0, $ex);
         }
     }
 }

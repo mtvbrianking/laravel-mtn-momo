@@ -102,6 +102,11 @@ return [
                 'MOMO_COLLECTION_USER_ACCOUNT_URI',
                 'collection/v1_0/accountholder/{partyIdType}/{partyId}/active'
             ),
+            // Account Holder Info
+            'account_holder_info_uri' => env(
+                'MOMO_COLLECTION_USER_ACCOUNT_HOLDER_INFO_URI',
+                'collection/v1_0/accountholder/msisdn/{partyId}/basicuserinfo'
+            )
         ],
         'disbursement' => [
             'id' => env('MOMO_DISBURSEMENT_ID'),
@@ -134,6 +139,12 @@ return [
                 'MOMO_DISBURSEMENT_USER_ACCOUNT_URI',
                 'disbursement/v1_0/accountholder/{partyIdType}/{partyId}/active'
             ),
+
+            // Account Holder Info
+            'account_holder_info_uri' => env(
+                'MOMO_DISBURSEMENT_USER_ACCOUNT_HOLDER_INFO_URI',
+                'disbursement/v1_0/accountholder/msisdn/{partyId}/basicuserinfo'
+            )
         ],
         'remittance' => [
             'id' => env('MOMO_REMITTANCE_ID'),
@@ -166,6 +177,12 @@ return [
                 'MOMO_REMITTANCE_USER_ACCOUNT_URI',
                 'remittance/v1_0/accountholder/{partyIdType}/{partyId}/active'
             ),
+
+            // Account Holder Info
+            'account_holder_info_uri' => env(
+                'MOMO_REMITTANCE_USER_ACCOUNT_HOLDER_INFO_URI',
+                'remittance/v1_0/accountholder/msisdn/{partyId}/basicuserinfo'
+            )
         ],
     ],
 

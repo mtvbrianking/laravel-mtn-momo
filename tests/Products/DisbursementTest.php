@@ -146,4 +146,30 @@ class DisbursementTest extends TestCase
 
         $this->assertTrue($isActive);
     }
+
+    public function test_can_get_account_holder_info()
+    {
+        $body = [
+            "sub" => "0",
+            "name" => "Sand Box",
+            "given_name" => "Sand",
+            "family_name" => "Box",
+            "birthdate" => "1976-08-13",
+            "locale" => "sv_SE",
+            "gender" => "MALE",
+            'status' => 'status',
+            "updated_at" => 1614243610
+        ];
+
+        $response = new Response(200, [], json_encode($body));
+
+
+        $mockClient = $this->mockGuzzleClient($response);
+
+        $disbursement = new Disbursement([], [], $mockClient);
+
+        $accountInfo = $disbursement->getAccountHolderBasicInfo('07XXXXXXXX');
+
+        $this->assertEquals($accountInfo, $body);
+    }
 }
