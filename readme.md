@@ -153,6 +153,12 @@ try {
     $collection->getToken()
     ```
 
+6. [Get Account Holder Info](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Collection.html#method_getAccountHolderBasicInfo)
+
+    ```php
+    $collection->getAccountHolderBasicInfo($partyId)
+    ```
+
 **Disbursement**
 
 1. [Disburse money](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Disbursement.html#method_transfer)
@@ -185,6 +191,12 @@ try {
     $disbursement->getToken()
     ```
 
+6. [Get Account Holder Info](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Collection.html#method_getAccountHolderBasicInfo)
+
+    ```php
+    $collection->getAccountHolderBasicInfo($partyId)
+    ```
+    
 **Remittance**
 
 1. [Remit money](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Remittance.html#method_transact)
@@ -217,6 +229,12 @@ try {
     $remittance->getToken()
     ```
 
+6. [Get Account Holder Info](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Collection.html#method_getAccountHolderBasicInfo)
+
+    ```php
+    $collection->getAccountHolderBasicInfo($partyId)
+    ```
+    
 ### Go live
 
 You will need to make some changes to your setup before going live. [Read more](https://github.com/mtvbrianking/laravel-mtn-momo/wiki/Go-Live).
