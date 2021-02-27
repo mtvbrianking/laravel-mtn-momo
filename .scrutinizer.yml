@@ -27,7 +27,8 @@ filter:
 # https://scrutinizer-ci.com/docs/tools/external-code-coverage/
 
 tools:
-  external_code_coverage: true
+  external_code_coverage:
+    timeout: 240 # Timeout in seconds.
 
 # Code Style
 # https://scrutinizer-ci.com/docs/configuration/coding_style
