@@ -339,8 +339,6 @@ abstract class Product
     /**
      * Request access token.
      *
-     * @throws \GuzzleHttp\Exception\RequestException;
-     *
      * @return array
      */
     abstract public function getToken();
