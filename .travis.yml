@@ -30,11 +30,8 @@ jobs:
       before_script:
         - git clone https://github.com/mtvbrianking/laravel-mtn-momo.git
 
-      install:
-        - curl -O http://get.sensiolabs.org/sami.phar
-
       script:
-       - php sami.phar update .sami.dist
+       - vendor/bin/doctum.php update doctum.php
 
       # https://docs.travis-ci.com/user/deployment/pages/
       deploy:

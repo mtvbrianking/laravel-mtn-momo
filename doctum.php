@@ -7,7 +7,7 @@ use Symfony\Component\Finder\Finder;
 use Doctum\Version\GitVersionCollection;
 use Doctum\RemoteRepository\GitHubRemoteRepository;
 
-$dir = __DIR__ . '/laravel-mtn-momo/src';
+$dir = __DIR__.'/src';
 
 $iterator = Finder::create()
     ->files()
