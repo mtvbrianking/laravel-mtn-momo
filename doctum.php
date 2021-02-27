@@ -1,9 +1,11 @@
 <?php
 
-use Sami\Sami;
+require __DIR__.'/vendor/autoload.php';
+
+use Doctum\Doctum;
 use Symfony\Component\Finder\Finder;
-use Sami\Version\GitVersionCollection;
-use Sami\RemoteRepository\GitHubRemoteRepository;
+use Doctum\Version\GitVersionCollection;
+use Doctum\RemoteRepository\GitHubRemoteRepository;
 
 $dir = __DIR__ . '/laravel-mtn-momo/src';
 
@@ -41,4 +43,4 @@ $options = [
     'default_opened_level' => 2,
 ];
 
-return new Sami($iterator, $options);
+return new Doctum($iterator, $options);

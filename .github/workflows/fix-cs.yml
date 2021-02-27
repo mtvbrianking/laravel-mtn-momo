@@ -1,0 +1,35 @@
+name: fix-cs
+
+# on:
+#   push:
+#     branches: [ $default-branch ]
+
+# https://levelup.gitconnected.com/how-to-manually-trigger-a-github-actions-workflow-4712542f1960
+on:
+  workflow_dispatch:
+
+jobs:
+  code-style:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Fix style
+        uses: docker://oskarstark/php-cs-fixer-ga
+        with:
+          args: --config=.php_cs --allow-risky=yes
+
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v2.3.0
+        with:
+          commit_message: Fix styling
+          branch: ${{ steps.extract_branch.outputs.branch }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

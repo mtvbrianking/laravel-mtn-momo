@@ -1,0 +1,99 @@
+name: run-tests
+
+# on:
+#   push:
+#     branches: [ $default-branch ]
+#   pull_request:
+#     branches: [ $default-branch ]
+
+# https://levelup.gitconnected.com/how-to-manually-trigger-a-github-actions-workflow-4712542f1960
+on:
+  workflow_dispatch:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      # matrix:
+      #   php: [7.3, 8.0]
+      #   laravel: [^7.0, ^8.0]
+      #   include:
+      #     - laravel: ^7.0
+      #       testbench: ^5.0
+      #     - laravel: ^8.0
+      #       testbench: ^6.0
+      matrix:
+        php: [8.0]
+        laravel: [^8.0]
+        include:
+          - laravel: ^8.0
+            testbench: ^6.0
+    name: Tests P${{ matrix.php }} - L${{ matrix.laravel }} - T${{ matrix.testbench }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick, pcov
+          tools: composer:v2
+          coverage: pcov
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.composer/cache/files
+          key: dependencies-laravel-${{ matrix.laravel }}-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
+
+      - name: Install dependencies
+        run: |
+          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-progress --no-update
+          composer update --prefer-dist --no-interaction --no-progress
+
+      - name: Create tests database
+        run: |
+          mkdir -p database
+          touch database/database.sqlite
+
+      # https://blog.shaharia.com/github-actions-workflows-ci-for-php-developer
+      - name: Execute tests, generate code coverage report
+        env:
+          DB_CONNECTION: sqlite
+          DB_DATABASE: database/database.sqlite
+        run: vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
+
+      - name: Save code coverage report
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage
+          path: coverage.clover
+
+  coverage:
+    needs: tests
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        php: [7.3]
+    name: Coverage P${{ matrix.php }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+
+      - name: Retrieve code coverage report
+        uses: actions/download-artifact@v2
+        with:
+          name: coverage
+
+      - name: Upload code coverage report
+        run: |
+          wget https://scrutinizer-ci.com/ocular.phar
+          php ocular.phar code-coverage:upload --format=php-clover coverage.clover
