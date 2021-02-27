@@ -6,7 +6,7 @@
     "hint": null,
     "tags": [],
     "namespace": "Bmatovu\\MtnMomo\\Traits",
-    "file": "\/home\/travis\/build\/mtvbrianking\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Traits\/TokenUtilTrait.php",
+    "file": "\/home\/runner\/work\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Traits\/TokenUtilTrait.php",
     "relative_file": "\/src\/Traits\/TokenUtilTrait.php",
     "hash": "6a52f6e6663a27bb87ec0ac48011a2e3d3ef82c8",
     "parent": null,
@@ -30,7 +30,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 1,
             "is_by_ref": "",
@@ -53,7 +53,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 1,
             "is_by_ref": "",
@@ -72,7 +72,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 1,
             "is_by_ref": "",
@@ -91,7 +91,7 @@
                     false
                 ]
             ],
-            "hint_desc": "Datatime",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 1,
             "is_by_ref": "",
@@ -110,7 +110,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 1,
             "is_by_ref": "",

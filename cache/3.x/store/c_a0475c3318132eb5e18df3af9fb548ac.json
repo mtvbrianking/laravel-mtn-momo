@@ -6,7 +6,7 @@
     "hint": null,
     "tags": [],
     "namespace": "Bmatovu\\MtnMomo\\Exceptions",
-    "file": "\/home\/travis\/build\/mtvbrianking\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Exceptions\/DisbursementRequestException.php",
+    "file": "\/home\/runner\/work\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Exceptions\/DisbursementRequestException.php",
     "relative_file": "\/src\/Exceptions\/DisbursementRequestException.php",
     "hash": "ebcb183b95c663ccf9c79e84d0e50dc50b00a398",
     "parent": "RuntimeException",
@@ -14,7 +14,7 @@
     "is_trait": false,
     "is_interface": false,
     "aliases": {
-        "RuntimeException": "RuntimeException"
+        "": "RuntimeException"
     },
     "errors": [],
     "interfaces": {

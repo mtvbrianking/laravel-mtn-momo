@@ -6,7 +6,7 @@
     "hint": null,
     "tags": [],
     "namespace": "Bmatovu\\MtnMomo\\Exceptions",
-    "file": "\/home\/travis\/build\/mtvbrianking\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Exceptions\/CollectionRequestException.php",
+    "file": "\/home\/runner\/work\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Exceptions\/CollectionRequestException.php",
     "relative_file": "\/src\/Exceptions\/CollectionRequestException.php",
     "hash": "13fe45eced3b752da851ba815322eb6a1a727717",
     "parent": "RuntimeException",
@@ -14,7 +14,7 @@
     "is_trait": false,
     "is_interface": false,
     "aliases": {
-        "RuntimeException": "RuntimeException"
+        "": "RuntimeException"
     },
     "errors": [],
     "interfaces": {

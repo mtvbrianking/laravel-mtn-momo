@@ -6,7 +6,7 @@
     "hint": null,
     "tags": [],
     "namespace": "Bmatovu\\MtnMomo\\Console",
-    "file": "\/home\/travis\/build\/mtvbrianking\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Console\/BootstrapCommand.php",
+    "file": "\/home\/runner\/work\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Console\/BootstrapCommand.php",
     "relative_file": "\/src\/Console\/BootstrapCommand.php",
     "hash": "eb116d9bbc8acf9f8977b7ec771117103af31129",
     "parent": "Illuminate\\Console\\Command",
@@ -14,8 +14,7 @@
     "is_trait": false,
     "is_interface": false,
     "aliases": {
-        "Command": "Illuminate\\Console\\Command",
-        "CommandUtilTrait": "Bmatovu\\MtnMomo\\Traits\\CommandUtilTrait"
+        "": "Bmatovu\\MtnMomo\\Traits\\CommandUtilTrait"
     },
     "errors": [],
     "interfaces": [],
@@ -34,7 +33,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": {
@@ -59,7 +58,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": {
@@ -100,7 +99,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 1,
             "is_by_ref": "",
@@ -119,7 +118,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "is_by_ref": "",
@@ -138,7 +137,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "is_by_ref": "",
@@ -157,7 +156,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "is_by_ref": "",
@@ -176,7 +175,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "is_by_ref": "",
@@ -195,7 +194,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "is_by_ref": "",

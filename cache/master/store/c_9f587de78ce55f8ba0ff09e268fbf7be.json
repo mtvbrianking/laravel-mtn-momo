@@ -6,7 +6,7 @@
     "hint": null,
     "tags": [],
     "namespace": "Bmatovu\\MtnMomo\\Console",
-    "file": "\/home\/travis\/build\/mtvbrianking\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Console\/ValidateIdCommand.php",
+    "file": "\/home\/runner\/work\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Console\/ValidateIdCommand.php",
     "relative_file": "\/src\/Console\/ValidateIdCommand.php",
     "hash": "5bc6ad10950cb13703b1a7488e2e30ac6edd2e98",
     "parent": "Illuminate\\Console\\Command",
@@ -14,13 +14,7 @@
     "is_trait": false,
     "is_interface": false,
     "aliases": {
-        "CommandUtilTrait": "Bmatovu\\MtnMomo\\Traits\\CommandUtilTrait",
-        "ClientInterface": "GuzzleHttp\\ClientInterface",
-        "ClientException": "GuzzleHttp\\Exception\\ClientException",
-        "ConnectException": "GuzzleHttp\\Exception\\ConnectException",
-        "ServerException": "GuzzleHttp\\Exception\\ServerException",
-        "Command": "Illuminate\\Console\\Command",
-        "Uuid": "Ramsey\\Uuid\\Uuid"
+        "": "Ramsey\\Uuid\\Uuid"
     },
     "errors": [],
     "interfaces": [],
@@ -39,7 +33,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": null,
@@ -56,7 +50,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": {
@@ -81,7 +75,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": {
@@ -150,7 +144,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 1,
             "is_by_ref": "",
@@ -174,7 +168,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": {
                 "link": [
                     [

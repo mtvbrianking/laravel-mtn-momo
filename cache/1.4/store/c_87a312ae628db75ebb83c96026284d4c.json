@@ -6,7 +6,7 @@
     "hint": null,
     "tags": [],
     "namespace": "Bmatovu\\MtnMomo\\Exceptions",
-    "file": "\/home\/travis\/build\/mtvbrianking\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Exceptions\/RemittanceRequestException.php",
+    "file": "\/home\/runner\/work\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Exceptions\/RemittanceRequestException.php",
     "relative_file": "\/src\/Exceptions\/RemittanceRequestException.php",
     "hash": "6e37b8e0432e5a04eae21e19f4f617634e997f6a",
     "parent": "RunTimeException",

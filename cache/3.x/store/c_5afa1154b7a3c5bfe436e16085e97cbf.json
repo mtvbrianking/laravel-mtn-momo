@@ -37,7 +37,7 @@
         ]
     },
     "namespace": "Bmatovu\\MtnMomo\\Exceptions",
-    "file": "\/home\/travis\/build\/mtvbrianking\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Exceptions\/MtnMomoRequestException.php",
+    "file": "\/home\/runner\/work\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Exceptions\/MtnMomoRequestException.php",
     "relative_file": "\/src\/Exceptions\/MtnMomoRequestException.php",
     "hash": "416ee96691c56cab3d89da90d2be5bdf545991bd",
     "parent": null,
@@ -45,7 +45,7 @@
     "is_trait": false,
     "is_interface": true,
     "aliases": {
-        "Throwable": "Throwable"
+        "": "Throwable"
     },
     "errors": [],
     "interfaces": [],

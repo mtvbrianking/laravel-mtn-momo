@@ -6,7 +6,7 @@
     "hint": null,
     "tags": [],
     "namespace": "Bmatovu\\MtnMomo",
-    "file": "\/home\/travis\/build\/mtvbrianking\/laravel-mtn-momo\/laravel-mtn-momo\/src\/MtnMomoServiceProvider.php",
+    "file": "\/home\/runner\/work\/laravel-mtn-momo\/laravel-mtn-momo\/src\/MtnMomoServiceProvider.php",
     "relative_file": "\/src\/MtnMomoServiceProvider.php",
     "hash": "a3f8d025e71d5670ec315d5b3049f07adc8b1350",
     "parent": "Illuminate\\Support\\ServiceProvider",
@@ -14,18 +14,7 @@
     "is_trait": false,
     "is_interface": false,
     "aliases": {
-        "Logger": "Monolog\\Logger",
-        "Client": "GuzzleHttp\\Client",
-        "Middleware": "GuzzleHttp\\Middleware",
-        "HandlerStack": "GuzzleHttp\\HandlerStack",
-        "ClientInterface": "GuzzleHttp\\ClientInterface",
-        "MessageFormatter": "GuzzleHttp\\MessageFormatter",
-        "StreamHandler": "Monolog\\Handler\\StreamHandler",
-        "ServiceProvider": "Illuminate\\Support\\ServiceProvider",
-        "BootstrapCommand": "Bmatovu\\MtnMomo\\Console\\BootstrapCommand",
-        "RegisterIdCommand": "Bmatovu\\MtnMomo\\Console\\RegisterIdCommand",
-        "ValidateIdCommand": "Bmatovu\\MtnMomo\\Console\\ValidateIdCommand",
-        "RequestSecretCommand": "Bmatovu\\MtnMomo\\Console\\RequestSecretCommand"
+        "": "Bmatovu\\MtnMomo\\Console\\RequestSecretCommand"
     },
     "errors": [],
     "interfaces": [],
@@ -43,7 +32,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 1,
             "is_by_ref": "",
@@ -62,7 +51,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 1,
             "is_by_ref": "",
@@ -81,7 +70,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "is_by_ref": "",
@@ -105,7 +94,7 @@
                     false
                 ]
             ],
-            "hint_desc": "GuzzleHttp Middleware",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "is_by_ref": "",

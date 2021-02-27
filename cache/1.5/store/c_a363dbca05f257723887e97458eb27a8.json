@@ -6,7 +6,7 @@
     "hint": null,
     "tags": [],
     "namespace": "Bmatovu\\MtnMomo\\Products",
-    "file": "\/home\/travis\/build\/mtvbrianking\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Products\/Remittance.php",
+    "file": "\/home\/runner\/work\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Products\/Remittance.php",
     "relative_file": "\/src\/Products\/Remittance.php",
     "hash": "0160c105fabf73bdf6b01a264e97e1fe6c0c8b63",
     "parent": "Bmatovu\\MtnMomo\\Products\\Product",
@@ -14,12 +14,7 @@
     "is_trait": false,
     "is_interface": false,
     "aliases": {
-        "Uuid": "Ramsey\\Uuid\\Uuid",
-        "ClientInterface": "GuzzleHttp\\ClientInterface",
-        "Container": "Illuminate\\Container\\Container",
-        "RequestException": "GuzzleHttp\\Exception\\RequestException",
-        "Repository": "Illuminate\\Contracts\\Config\\Repository",
-        "RemittanceRequestException": "Bmatovu\\MtnMomo\\Exceptions\\RemittanceRequestException"
+        "": "Bmatovu\\MtnMomo\\Exceptions\\RemittanceRequestException"
     },
     "errors": [],
     "interfaces": [],
@@ -36,7 +31,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": null,
@@ -53,7 +48,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": null,
@@ -70,7 +65,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": null,
@@ -87,7 +82,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": null,
@@ -106,7 +101,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 1,
             "is_by_ref": "",
@@ -157,7 +152,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 1,
             "is_by_ref": "",
@@ -208,7 +203,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 1,
             "is_by_ref": "",
@@ -259,7 +254,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 1,
             "is_by_ref": "",
@@ -397,7 +392,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": {
                 "see": [
                     [
@@ -432,7 +427,7 @@
                     false
                 ]
             ],
-            "hint_desc": "Auto generated transaction reference. Format: UUID",
+            "hint_desc": null,
             "tags": {
                 "see": [
                     [
@@ -557,11 +552,11 @@
                     false
                 ]
             ],
-            "hint_desc": "Auto generated transaction reference. Format: UUID",
+            "hint_desc": null,
             "tags": {
                 "see": [
                     [
-                        "Remittance::transact"
+                        "\\Remittance::transact"
                     ],
                     [
                         "https:\/\/momodeveloper.mtn.com\/docs\/services\/remittance\/operations\/transfer-POST",
@@ -685,7 +680,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": {
                 "see": [
                     [
@@ -738,7 +733,7 @@
                     false
                 ]
             ],
-            "hint_desc": "Account balance.",
+            "hint_desc": null,
             "tags": {
                 "see": [
                     [
@@ -773,7 +768,7 @@
                     false
                 ]
             ],
-            "hint_desc": "True if account holder is registered and active, false if the account holder is not active or not found",
+            "hint_desc": null,
             "tags": {
                 "see": [
                     [

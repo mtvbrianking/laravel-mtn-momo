@@ -6,7 +6,7 @@
     "hint": null,
     "tags": [],
     "namespace": "Bmatovu\\MtnMomo\\Models",
-    "file": "\/home\/travis\/build\/mtvbrianking\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Models\/Token.php",
+    "file": "\/home\/runner\/work\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Models\/Token.php",
     "relative_file": "\/src\/Models\/Token.php",
     "hash": "ae880b8cb1aeed687277246d5cc16ee525cad579",
     "parent": "Illuminate\\Database\\Eloquent\\Model",
@@ -14,12 +14,8 @@
     "is_trait": false,
     "is_interface": false,
     "aliases": {
-        "TokenFactory": "Bmatovu\\MtnMomo\\Database\\Factories\\TokenFactory",
-        "TokenUtilTrait": "Bmatovu\\MtnMomo\\Traits\\TokenUtilTrait",
-        "TokenInterface": "Bmatovu\\OAuthNegotiator\\Models\\TokenInterface",
-        "HasFactory": "Illuminate\\Database\\Eloquent\\Factories\\HasFactory",
-        "BaseModel": "Illuminate\\Database\\Eloquent\\Model",
-        "SoftDeletes": "Illuminate\\Database\\Eloquent\\SoftDeletes"
+        "": "Illuminate\\Database\\Eloquent\\SoftDeletes",
+        "BaseModel": "Illuminate\\Database\\Eloquent\\Model"
     },
     "errors": [],
     "interfaces": {
@@ -42,7 +38,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": {
@@ -67,7 +63,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": {
@@ -86,6 +82,7 @@
                             }
                         },
                         "byRef": false,
+                        "unpack": false,
                         "attributes": {
                             "startLine": 35,
                             "endLine": 35
@@ -104,6 +101,7 @@
                             }
                         },
                         "byRef": false,
+                        "unpack": false,
                         "attributes": {
                             "startLine": 36,
                             "endLine": 36
@@ -122,6 +120,7 @@
                             }
                         },
                         "byRef": false,
+                        "unpack": false,
                         "attributes": {
                             "startLine": 37,
                             "endLine": 37
@@ -140,6 +139,7 @@
                             }
                         },
                         "byRef": false,
+                        "unpack": false,
                         "attributes": {
                             "startLine": 38,
                             "endLine": 38
@@ -158,6 +158,7 @@
                             }
                         },
                         "byRef": false,
+                        "unpack": false,
                         "attributes": {
                             "startLine": 39,
                             "endLine": 39
@@ -183,7 +184,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": {
@@ -202,6 +203,7 @@
                             }
                         },
                         "byRef": false,
+                        "unpack": false,
                         "attributes": {
                             "startLine": 48,
                             "endLine": 48
@@ -220,6 +222,7 @@
                             }
                         },
                         "byRef": false,
+                        "unpack": false,
                         "attributes": {
                             "startLine": 49,
                             "endLine": 49
@@ -247,7 +250,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 9,
             "is_by_ref": "",

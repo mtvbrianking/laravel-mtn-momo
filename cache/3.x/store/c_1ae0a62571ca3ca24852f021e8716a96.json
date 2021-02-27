@@ -6,26 +6,15 @@
     "hint": null,
     "tags": [],
     "namespace": "Bmatovu\\MtnMomo\\Products",
-    "file": "\/home\/travis\/build\/mtvbrianking\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Products\/Product.php",
+    "file": "\/home\/runner\/work\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Products\/Product.php",
     "relative_file": "\/src\/Products\/Product.php",
-    "hash": "9b21d5f89db6e6ab6cd2a453a10a35395ef70fa6",
+    "hash": "a867b23d2853a35efe3395d00ea3e94e701c682c",
     "parent": null,
     "modifiers": 16,
     "is_trait": false,
     "is_interface": false,
     "aliases": {
-        "TokenRepository": "Bmatovu\\MtnMomo\\Repositories\\TokenRepository",
-        "ClientCredentials": "Bmatovu\\OAuthNegotiator\\GrantTypes\\ClientCredentials",
-        "OAuth2Middleware": "Bmatovu\\OAuthNegotiator\\OAuth2Middleware",
-        "Client": "GuzzleHttp\\Client",
-        "ClientInterface": "GuzzleHttp\\ClientInterface",
-        "HandlerStack": "GuzzleHttp\\HandlerStack",
-        "MessageFormatter": "GuzzleHttp\\MessageFormatter",
-        "Middleware": "GuzzleHttp\\Middleware",
-        "Container": "Illuminate\\Container\\Container",
-        "Repository": "Illuminate\\Contracts\\Config\\Repository",
-        "StreamHandler": "Monolog\\Handler\\StreamHandler",
-        "Logger": "Monolog\\Logger"
+        "": "Monolog\\Logger"
     },
     "errors": [],
     "interfaces": [],
@@ -42,7 +31,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": null,
@@ -59,7 +48,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": null,
@@ -76,7 +65,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": null,
@@ -93,7 +82,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": null,
@@ -110,7 +99,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": null,
@@ -127,7 +116,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": null,
@@ -144,7 +133,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": null,
@@ -161,7 +150,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": null,
@@ -178,7 +167,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": null,
@@ -195,7 +184,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": null,
@@ -212,7 +201,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": null,
@@ -229,7 +218,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": null,
@@ -248,7 +237,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 1,
             "is_by_ref": "",
@@ -299,7 +288,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 1,
             "is_by_ref": "",
@@ -350,7 +339,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 1,
             "is_by_ref": "",
@@ -401,7 +390,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 1,
             "is_by_ref": "",
@@ -452,7 +441,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 1,
             "is_by_ref": "",
@@ -503,7 +492,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 1,
             "is_by_ref": "",
@@ -554,7 +543,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 1,
             "is_by_ref": "",
@@ -605,7 +594,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 1,
             "is_by_ref": "",
@@ -656,7 +645,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 1,
             "is_by_ref": "",
@@ -707,7 +696,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 1,
             "is_by_ref": "",
@@ -758,7 +747,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 1,
             "is_by_ref": "",
@@ -881,7 +870,7 @@
         },
         "getToken": {
             "name": "getToken",
-            "line": 353,
+            "line": 351,
             "short_desc": "Request access token.",
             "long_desc": "",
             "hint": [
@@ -890,22 +879,17 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 17,
             "is_by_ref": "",
-            "exceptions": [
-                [
-                    "\\GuzzleHttp\\Exception\\RequestException;",
-                    ""
-                ]
-            ],
+            "exceptions": [],
             "errors": [],
             "parameters": []
         },
         "getLogMiddleware": {
             "name": "getLogMiddleware",
-            "line": 377,
+            "line": 375,
             "short_desc": "Get log middleware.",
             "long_desc": "",
             "hint": [
@@ -914,7 +898,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "is_by_ref": "",
@@ -929,7 +913,7 @@
         },
         "getAuthBroker": {
             "name": "getAuthBroker",
-            "line": 398,
+            "line": 396,
             "short_desc": "Get authentication broker.",
             "long_desc": "",
             "hint": [
@@ -938,7 +922,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": {
                 "link": [
                     [
@@ -959,7 +943,7 @@
             "parameters": {
                 "headers": {
                     "name": "headers",
-                    "line": 398,
+                    "line": 396,
                     "short_desc": "HTTP request headers",
                     "long_desc": null,
                     "hint": [

@@ -6,7 +6,7 @@
     "hint": null,
     "tags": [],
     "namespace": "Bmatovu\\MtnMomo\\Repositories",
-    "file": "\/home\/travis\/build\/mtvbrianking\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Repositories\/TokenRepository.php",
+    "file": "\/home\/runner\/work\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Repositories\/TokenRepository.php",
     "relative_file": "\/src\/Repositories\/TokenRepository.php",
     "hash": "31c5cbf3612d6fe8377dad19805ea66d3c40c169",
     "parent": null,
@@ -14,9 +14,7 @@
     "is_trait": false,
     "is_interface": false,
     "aliases": {
-        "Carbon": "Carbon\\Carbon",
-        "Token": "Bmatovu\\MtnMomo\\Models\\Token",
-        "TokenRepositoryInterface": "Bmatovu\\OAuthNegotiator\\Repositories\\TokenRepositoryInterface"
+        "": "Bmatovu\\OAuthNegotiator\\Repositories\\TokenRepositoryInterface"
     },
     "errors": [],
     "interfaces": {
@@ -64,7 +62,14 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": "array",
+                    "modifiers": {
+                        "nodeType": "Identifier",
+                        "name": "array",
+                        "attributes": {
+                            "startLine": 28,
+                            "endLine": 28
+                        }
+                    },
                     "default": null,
                     "variadic": false,
                     "is_by_ref": false
@@ -149,7 +154,14 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": "array",
+                    "modifiers": {
+                        "nodeType": "Identifier",
+                        "name": "array",
+                        "attributes": {
+                            "startLine": 62,
+                            "endLine": 62
+                        }
+                    },
                     "default": null,
                     "variadic": false,
                     "is_by_ref": false

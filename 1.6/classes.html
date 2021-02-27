@@ -7,24 +7,23 @@
 
             <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
-        <link rel="stylesheet" type="text/css" href="css/sami.css">
-        <script src="js/jquery-1.11.1.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
+        <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="js/bootstrap.min.js"></script>
         <script src="js/typeahead.min.js"></script>
-        <script src="sami.js"></script>
+        <script src="doctum.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-    
-    
     </head>
 
     <body id="classes" data-name="" data-root-path="">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                    <form action="#" method="GET">
-                <select id="version-switcher" name="version">
+                    <form action="#">
+                <select  class="form-control" id="version-switcher" name="version">
                                             <option value="../1.3/index.html" data-version="1.3">v1.3</option>
                                             <option value="../1.4/index.html" data-version="1.4">v1.4</option>
                                             <option value="../1.5/index.html" data-version="1.5">v1.5</option>
@@ -36,11 +35,8 @@
                                             <option value="../master/index.html" data-version="master">Master</option>
                                     </select>
             </form>
-                <script>
-            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
-        </script>
-        <form id="search-form" action="search.html" method="GET">
-            <span class="glyphicon glyphicon-search"></span>
+                <form id="search-form" action="search.html">
+            <span class="icon icon-search"></span>
             <input name="search"
                    class="typeahead form-control"
                    type="search"
@@ -66,8 +62,8 @@
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
                     <li><a href="classes.html">Classes</a></li>
-                                            <li><a href="namespaces.html">Namespaces</a></li>
-                                        <li><a href="interfaces.html">Interfaces</a></li>
+                    <li><a href="namespaces.html">Namespaces</a></li>
+                    <li><a href="interfaces.html">Interfaces</a></li>
                     <li><a href="traits.html">Traits</a></li>
                     <li><a href="doc-index.html">Index</a></li>
                     <li><a href="search.html">Search</a></li>
@@ -85,155 +81,87 @@
     <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-6">
-                                            <a href="Bmatovu/MtnMomo/Console/BootstrapCommand.html"><abbr title="Bmatovu\MtnMomo\Console\BootstrapCommand">BootstrapCommand</abbr></a>
-                                            
-                </div>
-                <div class="col-md-6">
-                    Bootstrap integration.
-                </div>
+                    <a href="Bmatovu/MtnMomo/Console/BootstrapCommand.html"><abbr title="Bmatovu\MtnMomo\Console\BootstrapCommand">BootstrapCommand</abbr></a>    </div>
+                <div class="col-md-6">Bootstrap integration.</div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <a href="Bmatovu/MtnMomo/Console/RegisterIdCommand.html"><abbr title="Bmatovu\MtnMomo\Console\RegisterIdCommand">RegisterIdCommand</abbr></a>
-                                            
-                </div>
-                <div class="col-md-6">
-                    Register client ID in sandbox environment.
-                </div>
+                    <a href="Bmatovu/MtnMomo/Console/RegisterIdCommand.html"><abbr title="Bmatovu\MtnMomo\Console\RegisterIdCommand">RegisterIdCommand</abbr></a>    </div>
+                <div class="col-md-6">Register client ID in sandbox environment.</div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <a href="Bmatovu/MtnMomo/Console/RequestSecretCommand.html"><abbr title="Bmatovu\MtnMomo\Console\RequestSecretCommand">RequestSecretCommand</abbr></a>
-                                            
-                </div>
-                <div class="col-md-6">
-                    Request client app secret.
-                </div>
+                    <a href="Bmatovu/MtnMomo/Console/RequestSecretCommand.html"><abbr title="Bmatovu\MtnMomo\Console\RequestSecretCommand">RequestSecretCommand</abbr></a>    </div>
+                <div class="col-md-6">Request client app secret.</div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <a href="Bmatovu/MtnMomo/Console/ValidateIdCommand.html"><abbr title="Bmatovu\MtnMomo\Console\ValidateIdCommand">ValidateIdCommand</abbr></a>
-                                            
-                </div>
-                <div class="col-md-6">
-                    Get client APP API credentials.
-                </div>
+                    <a href="Bmatovu/MtnMomo/Console/ValidateIdCommand.html"><abbr title="Bmatovu\MtnMomo\Console\ValidateIdCommand">ValidateIdCommand</abbr></a>    </div>
+                <div class="col-md-6">Get client APP API credentials.</div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <a href="Bmatovu/MtnMomo/Exceptions/CollectionRequestException.html"><abbr title="Bmatovu\MtnMomo\Exceptions\CollectionRequestException">CollectionRequestException</abbr></a>
-                                            
-                </div>
-                <div class="col-md-6">
-                    Custom collection request exception.
-                </div>
+                    <a href="Bmatovu/MtnMomo/Exceptions/CollectionRequestException.html"><abbr title="Bmatovu\MtnMomo\Exceptions\CollectionRequestException">CollectionRequestException</abbr></a>    </div>
+                <div class="col-md-6">Custom collection request exception.</div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <a href="Bmatovu/MtnMomo/Exceptions/DisbursementRequestException.html"><abbr title="Bmatovu\MtnMomo\Exceptions\DisbursementRequestException">DisbursementRequestException</abbr></a>
-                                            
-                </div>
-                <div class="col-md-6">
-                    Custom disbursement request exception.
-                </div>
+                    <a href="Bmatovu/MtnMomo/Exceptions/DisbursementRequestException.html"><abbr title="Bmatovu\MtnMomo\Exceptions\DisbursementRequestException">DisbursementRequestException</abbr></a>    </div>
+                <div class="col-md-6">Custom disbursement request exception.</div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <a href="Bmatovu/MtnMomo/Exceptions/RemittanceRequestException.html"><abbr title="Bmatovu\MtnMomo\Exceptions\RemittanceRequestException">RemittanceRequestException</abbr></a>
-                                            
-                </div>
-                <div class="col-md-6">
-                    Custom remittance request exception.
-                </div>
+                    <a href="Bmatovu/MtnMomo/Exceptions/RemittanceRequestException.html"><abbr title="Bmatovu\MtnMomo\Exceptions\RemittanceRequestException">RemittanceRequestException</abbr></a>    </div>
+                <div class="col-md-6">Custom remittance request exception.</div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <a href="Bmatovu/MtnMomo/Models/Token.html"><abbr title="Bmatovu\MtnMomo\Models\Token">Token</abbr></a>
-                                            
-                </div>
-                <div class="col-md-6">
-                    Token model.
-                </div>
+                    <a href="Bmatovu/MtnMomo/Models/Token.html"><abbr title="Bmatovu\MtnMomo\Models\Token">Token</abbr></a>    </div>
+                <div class="col-md-6">Token model.</div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <a href="Bmatovu/MtnMomo/MtnMomoServiceProvider.html"><abbr title="Bmatovu\MtnMomo\MtnMomoServiceProvider">MtnMomoServiceProvider</abbr></a>
-                                            
-                </div>
-                <div class="col-md-6">
-                    Package service provider.
-                </div>
+                    <a href="Bmatovu/MtnMomo/MtnMomoServiceProvider.html"><abbr title="Bmatovu\MtnMomo\MtnMomoServiceProvider">MtnMomoServiceProvider</abbr></a>    </div>
+                <div class="col-md-6">Package service provider.</div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <a href="Bmatovu/MtnMomo/Products/Collection.html"><abbr title="Bmatovu\MtnMomo\Products\Collection">Collection</abbr></a>
-                                            
-                </div>
-                <div class="col-md-6">
-                    Collection service/product.
-                </div>
+                    <a href="Bmatovu/MtnMomo/Products/Collection.html"><abbr title="Bmatovu\MtnMomo\Products\Collection">Collection</abbr></a>    </div>
+                <div class="col-md-6">Collection service/product.</div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <a href="Bmatovu/MtnMomo/Products/Disbursement.html"><abbr title="Bmatovu\MtnMomo\Products\Disbursement">Disbursement</abbr></a>
-                                            
-                </div>
-                <div class="col-md-6">
-                    Class Disbursement.
-                </div>
+                    <a href="Bmatovu/MtnMomo/Products/Disbursement.html"><abbr title="Bmatovu\MtnMomo\Products\Disbursement">Disbursement</abbr></a>    </div>
+                <div class="col-md-6">Class Disbursement.</div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <a href="Bmatovu/MtnMomo/Products/Product.html"><abbr title="Bmatovu\MtnMomo\Products\Product">Product</abbr></a>
-                                            
-                </div>
-                <div class="col-md-6">
-                    Generic product/service.
-                </div>
+                    <a href="Bmatovu/MtnMomo/Products/Product.html"><abbr title="Bmatovu\MtnMomo\Products\Product">Product</abbr></a>    </div>
+                <div class="col-md-6">Generic product/service.</div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <a href="Bmatovu/MtnMomo/Products/Remittance.html"><abbr title="Bmatovu\MtnMomo\Products\Remittance">Remittance</abbr></a>
-                                            
-                </div>
-                <div class="col-md-6">
-                    Remittance service/product.
-                </div>
+                    <a href="Bmatovu/MtnMomo/Products/Remittance.html"><abbr title="Bmatovu\MtnMomo\Products\Remittance">Remittance</abbr></a>    </div>
+                <div class="col-md-6">Remittance service/product.</div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <a href="Bmatovu/MtnMomo/Repositories/TokenRepository.html"><abbr title="Bmatovu\MtnMomo\Repositories\TokenRepository">TokenRepository</abbr></a>
-                                            
-                </div>
-                <div class="col-md-6">
-                    Token repository.
-                </div>
+                    <a href="Bmatovu/MtnMomo/Repositories/TokenRepository.html"><abbr title="Bmatovu\MtnMomo\Repositories\TokenRepository">TokenRepository</abbr></a>    </div>
+                <div class="col-md-6">Token repository.</div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <a href="Bmatovu/MtnMomo/Traits/CommandUtilTrait.html"><abbr title="Bmatovu\MtnMomo\Traits\CommandUtilTrait">CommandUtilTrait</abbr></a>
-                                            
-                </div>
-                <div class="col-md-6">
-                    Console commands utilities.
-                </div>
+                    <a href="Bmatovu/MtnMomo/Traits/CommandUtilTrait.html"><abbr title="Bmatovu\MtnMomo\Traits\CommandUtilTrait">CommandUtilTrait</abbr></a>    </div>
+                <div class="col-md-6">Console commands utilities.</div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <a href="Bmatovu/MtnMomo/Traits/TokenUtilTrait.html"><abbr title="Bmatovu\MtnMomo\Traits\TokenUtilTrait">TokenUtilTrait</abbr></a>
-                                            
-                </div>
-                <div class="col-md-6">
-                    Token model utilities.
-                </div>
+                    <a href="Bmatovu/MtnMomo/Traits/TokenUtilTrait.html"><abbr title="Bmatovu\MtnMomo\Traits\TokenUtilTrait">TokenUtilTrait</abbr></a>    </div>
+                <div class="col-md-6">Token model utilities.</div>
             </div>
             </div>
-            </div>
-                <div id="footer">
-        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
-    </div>
-
-        </div>
+            </div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.</div></div>
     </div>
     </body>
 

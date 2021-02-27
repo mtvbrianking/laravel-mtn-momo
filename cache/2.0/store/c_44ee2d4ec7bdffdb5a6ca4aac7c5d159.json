@@ -6,7 +6,7 @@
     "hint": null,
     "tags": [],
     "namespace": "Bmatovu\\MtnMomo\\Models",
-    "file": "\/home\/travis\/build\/mtvbrianking\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Models\/Token.php",
+    "file": "\/home\/runner\/work\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Models\/Token.php",
     "relative_file": "\/src\/Models\/Token.php",
     "hash": "1e752e88839458859b1136c41a4770a7b4eb25bc",
     "parent": "Illuminate\\Database\\Eloquent\\Model",
@@ -14,10 +14,8 @@
     "is_trait": false,
     "is_interface": false,
     "aliases": {
-        "TokenUtilTrait": "Bmatovu\\MtnMomo\\Traits\\TokenUtilTrait",
-        "TokenInterface": "Bmatovu\\OAuthNegotiator\\Models\\TokenInterface",
-        "BaseModel": "Illuminate\\Database\\Eloquent\\Model",
-        "SoftDeletes": "Illuminate\\Database\\Eloquent\\SoftDeletes"
+        "": "Illuminate\\Database\\Eloquent\\SoftDeletes",
+        "BaseModel": "Illuminate\\Database\\Eloquent\\Model"
     },
     "errors": [],
     "interfaces": {
@@ -39,7 +37,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": {
@@ -64,7 +62,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": {
@@ -83,6 +81,7 @@
                             }
                         },
                         "byRef": false,
+                        "unpack": false,
                         "attributes": {
                             "startLine": 33,
                             "endLine": 33
@@ -101,6 +100,7 @@
                             }
                         },
                         "byRef": false,
+                        "unpack": false,
                         "attributes": {
                             "startLine": 34,
                             "endLine": 34
@@ -119,6 +119,7 @@
                             }
                         },
                         "byRef": false,
+                        "unpack": false,
                         "attributes": {
                             "startLine": 35,
                             "endLine": 35
@@ -137,6 +138,7 @@
                             }
                         },
                         "byRef": false,
+                        "unpack": false,
                         "attributes": {
                             "startLine": 36,
                             "endLine": 36
@@ -162,7 +164,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": {
@@ -181,6 +183,7 @@
                             }
                         },
                         "byRef": false,
+                        "unpack": false,
                         "attributes": {
                             "startLine": 45,
                             "endLine": 45
@@ -199,6 +202,7 @@
                             }
                         },
                         "byRef": false,
+                        "unpack": false,
                         "attributes": {
                             "startLine": 46,
                             "endLine": 46

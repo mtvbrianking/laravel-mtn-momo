@@ -6,7 +6,7 @@
     "hint": null,
     "tags": [],
     "namespace": "Bmatovu\\MtnMomo\\Traits",
-    "file": "\/home\/travis\/build\/mtvbrianking\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Traits\/CommandUtilTrait.php",
+    "file": "\/home\/runner\/work\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Traits\/CommandUtilTrait.php",
     "relative_file": "\/src\/Traits\/CommandUtilTrait.php",
     "hash": "cbb6d78cc887932535d58737b85de1150ce45b8a",
     "parent": null,
@@ -30,7 +30,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": {
                 "see": [
                     [
@@ -119,7 +119,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "is_by_ref": "",
@@ -156,7 +156,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "is_by_ref": "",
@@ -214,7 +214,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "is_by_ref": "",

@@ -6,7 +6,7 @@
     "hint": null,
     "tags": [],
     "namespace": "Bmatovu\\MtnMomo\\Products",
-    "file": "\/home\/travis\/build\/mtvbrianking\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Products\/Disbursement.php",
+    "file": "\/home\/runner\/work\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Products\/Disbursement.php",
     "relative_file": "\/src\/Products\/Disbursement.php",
     "hash": "234b336f966315fb4adcb0a593f13cb5ba410094",
     "parent": "Bmatovu\\MtnMomo\\Products\\Product",
@@ -14,12 +14,7 @@
     "is_trait": false,
     "is_interface": false,
     "aliases": {
-        "DisbursementRequestException": "Bmatovu\\MtnMomo\\Exceptions\\DisbursementRequestException",
-        "ClientInterface": "GuzzleHttp\\ClientInterface",
-        "RequestException": "GuzzleHttp\\Exception\\RequestException",
-        "Container": "Illuminate\\Container\\Container",
-        "Repository": "Illuminate\\Contracts\\Config\\Repository",
-        "Uuid": "Ramsey\\Uuid\\Uuid"
+        "": "Ramsey\\Uuid\\Uuid"
     },
     "errors": [],
     "interfaces": [],
@@ -36,7 +31,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": null,
@@ -53,7 +48,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": null,
@@ -70,7 +65,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": null,
@@ -87,7 +82,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": null,
@@ -106,7 +101,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 1,
             "is_by_ref": "",
@@ -157,7 +152,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 1,
             "is_by_ref": "",
@@ -208,7 +203,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 1,
             "is_by_ref": "",
@@ -259,7 +254,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 1,
             "is_by_ref": "",
@@ -335,7 +330,14 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": "array",
+                    "modifiers": {
+                        "nodeType": "Identifier",
+                        "name": "array",
+                        "attributes": {
+                            "startLine": 131,
+                            "endLine": 131
+                        }
+                    },
                     "default": "[]",
                     "variadic": false,
                     "is_by_ref": false
@@ -352,7 +354,14 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": "array",
+                    "modifiers": {
+                        "nodeType": "Identifier",
+                        "name": "array",
+                        "attributes": {
+                            "startLine": 131,
+                            "endLine": 131
+                        }
+                    },
                     "default": "[]",
                     "variadic": false,
                     "is_by_ref": false
@@ -397,7 +406,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": {
                 "see": [
                     [
@@ -428,7 +437,7 @@
                     false
                 ]
             ],
-            "hint_desc": "$momoTransactionId                Auto generated payment reference. Format: UUID",
+            "hint_desc": null,
             "tags": {
                 "see": [
                     [
@@ -553,7 +562,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": {
                 "see": [
                     [
@@ -606,7 +615,7 @@
                     false
                 ]
             ],
-            "hint_desc": "Account balance.",
+            "hint_desc": null,
             "tags": {
                 "see": [
                     [
@@ -641,7 +650,7 @@
                     false
                 ]
             ],
-            "hint_desc": "True if account holder is registered and active, false if the account holder is not active or not found",
+            "hint_desc": null,
             "tags": {
                 "see": [
                     [

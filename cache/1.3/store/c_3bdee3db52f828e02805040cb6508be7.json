@@ -6,7 +6,7 @@
     "hint": null,
     "tags": [],
     "namespace": "Bmatovu\\MtnMomo\\Console",
-    "file": "\/home\/travis\/build\/mtvbrianking\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Console\/RegisterIdCommand.php",
+    "file": "\/home\/runner\/work\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Console\/RegisterIdCommand.php",
     "relative_file": "\/src\/Console\/RegisterIdCommand.php",
     "hash": "c55fc69bb5ae1510a858093b1992e83761b23a30",
     "parent": "Illuminate\\Console\\Command",
@@ -14,13 +14,7 @@
     "is_trait": false,
     "is_interface": false,
     "aliases": {
-        "Uuid": "Ramsey\\Uuid\\Uuid",
-        "ClientInterface": "GuzzleHttp\\ClientInterface",
-        "Command": "Illuminate\\Console\\Command",
-        "ClientException": "GuzzleHttp\\Exception\\ClientException",
-        "ServerException": "GuzzleHttp\\Exception\\ServerException",
-        "ConnectException": "GuzzleHttp\\Exception\\ConnectException",
-        "CommandUtilTrait": "Bmatovu\\MtnMomo\\Traits\\CommandUtilTrait"
+        "": "Bmatovu\\MtnMomo\\Traits\\CommandUtilTrait"
     },
     "errors": [],
     "interfaces": [],
@@ -39,7 +33,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": null,
@@ -56,7 +50,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": null,
@@ -73,7 +67,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": {
@@ -98,7 +92,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": {
@@ -167,7 +161,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 1,
             "is_by_ref": "",
@@ -191,7 +185,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "is_by_ref": "",
@@ -215,7 +209,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "is_by_ref": "",
@@ -234,7 +228,7 @@
                     false
                 ]
             ],
-            "hint_desc": "Is registered.",
+            "hint_desc": null,
             "tags": {
                 "link": [
                     [

@@ -6,7 +6,7 @@
     "hint": null,
     "tags": [],
     "namespace": "Bmatovu\\MtnMomo\\Products",
-    "file": "\/home\/travis\/build\/mtvbrianking\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Products\/Collection.php",
+    "file": "\/home\/runner\/work\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Products\/Collection.php",
     "relative_file": "\/src\/Products\/Collection.php",
     "hash": "436e1741d2dd131ace520025bd06bc0cdc92fc91",
     "parent": "Bmatovu\\MtnMomo\\Products\\Product",
@@ -14,12 +14,7 @@
     "is_trait": false,
     "is_interface": false,
     "aliases": {
-        "CollectionRequestException": "Bmatovu\\MtnMomo\\Exceptions\\CollectionRequestException",
-        "ClientInterface": "GuzzleHttp\\ClientInterface",
-        "RequestException": "GuzzleHttp\\Exception\\RequestException",
-        "Container": "Illuminate\\Container\\Container",
-        "Repository": "Illuminate\\Contracts\\Config\\Repository",
-        "Uuid": "Ramsey\\Uuid\\Uuid"
+        "": "Ramsey\\Uuid\\Uuid"
     },
     "errors": [],
     "interfaces": [],
@@ -36,7 +31,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": null,
@@ -53,7 +48,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": null,
@@ -70,7 +65,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": null,
@@ -87,7 +82,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 2,
             "default": null,
@@ -106,7 +101,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 1,
             "is_by_ref": "",
@@ -157,7 +152,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 1,
             "is_by_ref": "",
@@ -208,7 +203,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 1,
             "is_by_ref": "",
@@ -259,7 +254,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": [],
             "modifiers": 1,
             "is_by_ref": "",
@@ -397,7 +392,7 @@
                     false
                 ]
             ],
-            "hint_desc": "Auto generated payment reference. Format: UUID",
+            "hint_desc": null,
             "tags": {
                 "see": [
                     [
@@ -522,7 +517,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": {
                 "see": [
                     [
@@ -575,7 +570,7 @@
                     false
                 ]
             ],
-            "hint_desc": "",
+            "hint_desc": null,
             "tags": {
                 "see": [
                     [
@@ -610,7 +605,7 @@
                     false
                 ]
             ],
-            "hint_desc": "Account balance.",
+            "hint_desc": null,
             "tags": {
                 "see": [
                     [
@@ -645,7 +640,7 @@
                     false
                 ]
             ],
-            "hint_desc": "True if account holder is registered and active, false if the account holder is not active or not found",
+            "hint_desc": null,
             "tags": {
                 "see": [
                     [
