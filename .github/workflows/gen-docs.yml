@@ -2,7 +2,8 @@ name: gen-docs
 
 on:
   push:
-    branches: [ $default-branch ]
+    tags:
+      - '*'
 
 # on:
 #   workflow_dispatch:
