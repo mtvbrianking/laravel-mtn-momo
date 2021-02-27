@@ -20,9 +20,9 @@
         }
     ],
     "require": {
-        "php": ">=7.2",
+        "php": ">=7.2|^8.0",
         "ext-json": "*",
-        "bmatovu/oauth-negotiator": "~1.0.0",
+        "bmatovu/oauth-negotiator": "^1.1",
         "guzzlehttp/guzzle": "^6.3",
         "illuminate/console": "^6.0",
         "illuminate/container": "^6.0",
@@ -35,7 +35,7 @@
     "require-dev": {
         "mockery/mockery": "^1.2.3",
         "orchestra/testbench": "^4.0",
-        "phpunit/phpunit": "^8.0"
+        "phpunit/phpunit": "^8.4|^9.3.3"
     },
     "suggest": {
         "monolog/monolog": "For more comprehensive logging."
