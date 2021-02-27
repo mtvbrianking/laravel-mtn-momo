@@ -1,12 +1,12 @@
 name: fix-cs
 
-# on:
-#   push:
-#     branches: [ $default-branch ]
-
-# https://levelup.gitconnected.com/how-to-manually-trigger-a-github-actions-workflow-4712542f1960
 on:
-  workflow_dispatch:
+  push:
+    branches: [ $default-branch ]
+
+# # https://levelup.gitconnected.com/how-to-manually-trigger-a-github-actions-workflow-4712542f1960
+# on:
+#   workflow_dispatch:
 
 jobs:
   code-style:

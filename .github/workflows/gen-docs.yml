@@ -1,11 +1,11 @@
 name: gen-docs
 
-# on:
-#   push:
-#     branches: [ $default-branch ]
-
 on:
-  workflow_dispatch:
+  push:
+    branches: [ $default-branch ]
+
+# on:
+#   workflow_dispatch:
 
 jobs:
   docs:
