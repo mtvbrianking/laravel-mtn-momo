@@ -186,7 +186,7 @@ class Remittance extends Product
         try {
             $response = $this->client->request('POST', $this->tokenUri, [
                 'headers' => [
-                    'Authorization' => 'Basic ' . base64_encode($this->clientId . ':' . $this->clientSecret),
+                    'Authorization' => 'Basic '.base64_encode($this->clientId.':'.$this->clientSecret),
                 ],
                 'json' => [
                     'grant_type' => 'client_credentials',
