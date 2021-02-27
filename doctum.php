@@ -3,9 +3,9 @@
 require __DIR__.'/vendor/autoload.php';
 
 use Doctum\Doctum;
-use Symfony\Component\Finder\Finder;
-use Doctum\Version\GitVersionCollection;
 use Doctum\RemoteRepository\GitHubRemoteRepository;
+use Doctum\Version\GitVersionCollection;
+use Symfony\Component\Finder\Finder;
 
 $dir = __DIR__.'/src';
 
