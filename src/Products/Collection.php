@@ -197,7 +197,7 @@ class Collection extends Product
             'X-Target-Environment' => $this->environment,
         ];
 
-        if ($this->environment != 'sandbox') {
+        if ($this->environment != 'sandbox' && $this->clientCallbackUri) {
             $headers['X-Callback-Url'] = $this->clientCallbackUri;
         }
 
