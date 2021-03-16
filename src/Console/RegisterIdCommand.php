@@ -166,6 +166,11 @@ class RegisterIdCommand extends Command
             $callbackUri = $this->laravel['config']->get("mtn-momo.products.{$this->product}.callback_uri");
         }
 
+        // Use any...
+        if (! $callbackUri) {
+            $callbackUri = 'http://localhost:8000/mtn-momo/callback';
+        }
+
         $callbackUri = $this->ask('Use client app callback URI?', $callbackUri);
 
         // Validate Client Callback URI
