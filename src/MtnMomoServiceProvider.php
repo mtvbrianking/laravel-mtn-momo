@@ -12,11 +12,7 @@ use Bmatovu\MtnMomo\Console\ValidateIdCommand;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\HandlerStack;
-use GuzzleHttp\MessageFormatter;
-use GuzzleHttp\Middleware;
 use Illuminate\Support\ServiceProvider;
-use Monolog\Handler\StreamHandler;
-use Monolog\Logger;
 
 /**
  * Package service provider.
@@ -71,9 +67,7 @@ class MtnMomoServiceProvider extends ServiceProvider
     {
         $handlerStack = HandlerStack::create();
 
-        if ($this->app['config']->get('app.debug')) {
-            $handlerStack->push($this->getLogMiddleware());
-        }
+        $handlerStack = append_log_middleware($handlerStack);
 
         $product = $this->app['config']->get('mtn-momo.product');
 
@@ -94,22 +88,5 @@ class MtnMomoServiceProvider extends ServiceProvider
         ], (array) $this->app['config']->get('mtn-momo.guzzle.options'));
 
         return new Client($options);
-    }
-
-    /**
-     * Get log middleware.
-     *
-     * @throws \Exception
-     *
-     * @return callable GuzzleHttp Middleware
-     */
-    protected function getLogMiddleware()
-    {
-        $logger = $this->app['log']->getLogger();
-        $streamHandler = new StreamHandler(storage_path('logs/mtn-momo.log'));
-        $logger->pushHandler($streamHandler, Logger::DEBUG);
-        $messageFormatter = new MessageFormatter(MessageFormatter::DEBUG);
-
-        return Middleware::log($logger, $messageFormatter);
     }
 }

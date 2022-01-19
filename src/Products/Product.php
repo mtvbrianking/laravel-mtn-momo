@@ -11,12 +11,9 @@ use Bmatovu\OAuthNegotiator\OAuth2Middleware;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\HandlerStack;
-use GuzzleHttp\MessageFormatter;
 use GuzzleHttp\Middleware;
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Config\Repository;
-use Monolog\Handler\StreamHandler;
-use Monolog\Logger;
 
 /**
  * Generic product/service.
@@ -329,9 +326,7 @@ abstract class Product
 
         $handlerStack->push($this->getAuthBroker($headers));
 
-        if ($this->config->get('app.debug')) {
-            $handlerStack->push($this->getLogMiddleware());
-        }
+        $handlerStack = append_log_middleware($handlerStack);
 
         $options = array_merge([
             'handler' => $handlerStack,
@@ -366,23 +361,6 @@ abstract class Product
     }
 
     /**
-     * Get log middleware.
-     *
-     * @throws \Exception
-     *
-     * @return callable
-     */
-    protected function getLogMiddleware()
-    {
-        $logger = new Logger('Logger');
-        $streamHandler = new StreamHandler(storage_path('logs/'.$this->logFile));
-        $logger->pushHandler($streamHandler);
-        $messageFormatter = new MessageFormatter("\r\n[Request] {request} \r\n[Response] {response} \r\n[Error] {error}.");
-
-        return Middleware::log($logger, $messageFormatter);
-    }
-
-    /**
      * Get authentication broker.
      *
      * @link https://momodeveloper.mtn.com/api-documentation/api-description/#oauth-2-0 Documentation
@@ -397,9 +375,7 @@ abstract class Product
     {
         $handlerStack = HandlerStack::create();
 
-        if ($this->config->get('app.debug')) {
-            $handlerStack->push($this->getLogMiddleware());
-        }
+        $handlerStack = append_log_middleware($handlerStack);
 
         $options = array_merge([
             'base_uri' => $this->baseUri,

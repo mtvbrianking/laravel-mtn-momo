@@ -28,9 +28,6 @@ return [
      */
     'product' => env('MOMO_PRODUCT', 'collection'),
 
-    // Momo API requests' log file.
-    'log' => env('MOMO_LOG', 'mtn-momo.log'),
-
     'api' => [
         // API base URI.
         'base_uri' => env('MOMO_API_BASE_URI', 'https://sandbox.momodeveloper.mtn.com/'),
