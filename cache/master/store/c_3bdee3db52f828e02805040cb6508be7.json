@@ -8,13 +8,20 @@
     "namespace": "Bmatovu\\MtnMomo\\Console",
     "file": "\/home\/runner\/work\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Console\/RegisterIdCommand.php",
     "relative_file": "\/src\/Console\/RegisterIdCommand.php",
-    "hash": "d80ee35e4c24f95952994111f01c7764ef90b948",
+    "hash": "c394453d7ea7675ccf6166351ba25d59a47dd96b",
     "parent": "Illuminate\\Console\\Command",
     "modifiers": 0,
     "is_trait": false,
     "is_interface": false,
+    "is_read_only": false,
     "aliases": {
-        "": "Ramsey\\Uuid\\Uuid"
+        "CommandUtilTrait": "Bmatovu\\MtnMomo\\Traits\\CommandUtilTrait",
+        "ClientInterface": "GuzzleHttp\\ClientInterface",
+        "ClientException": "GuzzleHttp\\Exception\\ClientException",
+        "ConnectException": "GuzzleHttp\\Exception\\ConnectException",
+        "ServerException": "GuzzleHttp\\Exception\\ServerException",
+        "Command": "Illuminate\\Console\\Command",
+        "Uuid": "Ramsey\\Uuid\\Uuid"
     },
     "errors": [],
     "interfaces": [],
@@ -33,11 +40,13 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
             "modifiers": 2,
             "default": null,
-            "errors": []
+            "errors": [],
+            "is_read_only": false,
+            "is_write_only": false
         },
         "product": {
             "name": "product",
@@ -50,11 +59,13 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
             "modifiers": 2,
             "default": null,
-            "errors": []
+            "errors": [],
+            "is_read_only": false,
+            "is_write_only": false
         },
         "signature": {
             "name": "signature",
@@ -67,19 +78,21 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
             "modifiers": 2,
             "default": {
                 "nodeType": "Scalar_String",
-                "value": "mtn-momo:register-id\n                                {--id= : Client APP ID.}\n                                {--callback= : Client APP Callback URI.}\n                                {--product= : Product subscribed to.}\n                                {--no-write= : Don't credentials to .env file.}\n                                {--f|force : Force the operation to run when in production.}",
                 "attributes": {
                     "startLine": 45,
                     "endLine": 50,
                     "kind": 1
-                }
+                },
+                "value": "mtn-momo:register-id\n                                {--id= : Client APP ID.}\n                                {--callback= : Client APP Callback URI.}\n                                {--product= : Product subscribed to.}\n                                {--no-write= : Don't credentials to .env file.}\n                                {--f|force : Force the operation to run when in production.}"
             },
-            "errors": []
+            "errors": [],
+            "is_read_only": false,
+            "is_write_only": false
         },
         "description": {
             "name": "description",
@@ -92,19 +105,21 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
             "modifiers": 2,
             "default": {
                 "nodeType": "Scalar_String",
-                "value": "Register client APP ID; 'apiuser'",
                 "attributes": {
                     "startLine": 57,
                     "endLine": 57,
                     "kind": 2
-                }
+                },
+                "value": "Register client APP ID; 'apiuser'"
             },
-            "errors": []
+            "errors": [],
+            "is_read_only": false,
+            "is_write_only": false
         }
     },
     "methods": {
@@ -116,6 +131,7 @@
             "hint": null,
             "hint_desc": null,
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -133,20 +149,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": {
-                        "nodeType": "Name_FullyQualified",
-                        "parts": [
-                            "GuzzleHttp",
-                            "ClientInterface"
-                        ],
-                        "attributes": {
-                            "startLine": 64,
-                            "endLine": 64
-                        }
-                    },
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
@@ -161,8 +168,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [
@@ -185,8 +193,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 2,
             "is_by_ref": "",
             "exceptions": [
@@ -209,8 +218,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 2,
             "is_by_ref": "",
             "exceptions": [],
@@ -219,7 +229,7 @@
         },
         "registerClientId": {
             "name": "registerClientId",
-            "line": 195,
+            "line": 200,
             "short_desc": "Register client ID.",
             "long_desc": "The Callback URI is implemented in sandbox environment,\nbut is still required when registering a client ID.",
             "hint": [
@@ -228,7 +238,7 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "Is registered.",
             "tags": {
                 "link": [
                     [
@@ -237,6 +247,7 @@
                     ]
                 ]
             },
+            "see": [],
             "modifiers": 2,
             "is_by_ref": "",
             "exceptions": [
@@ -249,7 +260,7 @@
             "parameters": {
                 "clientId": {
                     "name": "clientId",
-                    "line": 195,
+                    "line": 200,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [
@@ -259,14 +270,15 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 },
                 "clientCallbackUri": {
                     "name": "clientCallbackUri",
-                    "line": 195,
+                    "line": 200,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [
@@ -276,10 +288,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         }

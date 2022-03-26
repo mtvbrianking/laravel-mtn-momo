@@ -13,6 +13,7 @@
     "modifiers": 0,
     "is_trait": false,
     "is_interface": false,
+    "is_read_only": false,
     "aliases": [],
     "errors": [],
     "interfaces": [],
@@ -27,6 +28,7 @@
             "hint": null,
             "hint_desc": null,
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -44,10 +46,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 },
                 "code": {
                     "name": "code",
@@ -61,10 +64,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": "0",
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 },
                 "guzzle_exception": {
                     "name": "guzzle_exception",
@@ -78,10 +82,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": "null",
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         }

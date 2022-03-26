@@ -13,8 +13,20 @@
     "modifiers": 0,
     "is_trait": false,
     "is_interface": false,
+    "is_read_only": false,
     "aliases": {
-        "": "Bmatovu\\MtnMomo\\Console\\RequestSecretCommand"
+        "Logger": "Monolog\\Logger",
+        "Client": "GuzzleHttp\\Client",
+        "Middleware": "GuzzleHttp\\Middleware",
+        "HandlerStack": "GuzzleHttp\\HandlerStack",
+        "ClientInterface": "GuzzleHttp\\ClientInterface",
+        "MessageFormatter": "GuzzleHttp\\MessageFormatter",
+        "StreamHandler": "Monolog\\Handler\\StreamHandler",
+        "ServiceProvider": "Illuminate\\Support\\ServiceProvider",
+        "BootstrapCommand": "Bmatovu\\MtnMomo\\Console\\BootstrapCommand",
+        "RegisterIdCommand": "Bmatovu\\MtnMomo\\Console\\RegisterIdCommand",
+        "ValidateIdCommand": "Bmatovu\\MtnMomo\\Console\\ValidateIdCommand",
+        "RequestSecretCommand": "Bmatovu\\MtnMomo\\Console\\RequestSecretCommand"
     },
     "errors": [],
     "interfaces": [],
@@ -32,8 +44,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -51,8 +64,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -70,8 +84,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 2,
             "is_by_ref": "",
             "exceptions": [
@@ -94,8 +109,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "GuzzleHttp Middleware",
             "tags": [],
+            "see": [],
             "modifiers": 2,
             "is_by_ref": "",
             "exceptions": [

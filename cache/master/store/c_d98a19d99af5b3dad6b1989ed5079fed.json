@@ -10,9 +10,10 @@
     "relative_file": "\/src\/Traits\/CommandUtilTrait.php",
     "hash": "cbb6d78cc887932535d58737b85de1150ce45b8a",
     "parent": null,
-    "modifiers": null,
+    "modifiers": 0,
     "is_trait": true,
     "is_interface": false,
+    "is_read_only": false,
     "aliases": [],
     "errors": [],
     "interfaces": [],
@@ -30,7 +31,7 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": {
                 "see": [
                     [
@@ -38,6 +39,15 @@
                     ]
                 ]
             },
+            "see": [
+                [
+                    "\\Illuminate\\Console\\Concerns\\InteractsWithIO::line",
+                    "",
+                    "\\Illuminate\\Console\\Concerns\\InteractsWithIO::line",
+                    false,
+                    false
+                ]
+            ],
             "modifiers": 17,
             "is_by_ref": "",
             "exceptions": [],
@@ -55,10 +65,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 },
                 "style": {
                     "name": "style",
@@ -76,10 +87,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": "null",
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 },
                 "verbosity": {
                     "name": "verbosity",
@@ -101,10 +113,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": "null",
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
@@ -119,8 +132,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 2,
             "is_by_ref": "",
             "exceptions": [],
@@ -138,10 +152,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": "'Application In Production!'",
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
@@ -156,8 +171,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 2,
             "is_by_ref": "",
             "exceptions": [],
@@ -175,10 +191,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 },
                 "body": {
                     "name": "body",
@@ -196,10 +213,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": "null",
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
@@ -214,8 +232,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 2,
             "is_by_ref": "",
             "exceptions": [],
@@ -233,10 +252,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 },
                 "key": {
                     "name": "key",
@@ -250,10 +270,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 },
                 "value": {
                     "name": "value",
@@ -267,10 +288,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         }

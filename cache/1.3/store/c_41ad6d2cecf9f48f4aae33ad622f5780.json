@@ -13,8 +13,14 @@
     "modifiers": 0,
     "is_trait": false,
     "is_interface": false,
+    "is_read_only": false,
     "aliases": {
-        "": "Bmatovu\\MtnMomo\\Exceptions\\DisbursementRequestException"
+        "Uuid": "Ramsey\\Uuid\\Uuid",
+        "ClientInterface": "GuzzleHttp\\ClientInterface",
+        "Container": "Illuminate\\Container\\Container",
+        "RequestException": "GuzzleHttp\\Exception\\RequestException",
+        "Repository": "Illuminate\\Contracts\\Config\\Repository",
+        "DisbursementRequestException": "Bmatovu\\MtnMomo\\Exceptions\\DisbursementRequestException"
     },
     "errors": [],
     "interfaces": [],
@@ -31,11 +37,13 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
             "modifiers": 2,
             "default": null,
-            "errors": []
+            "errors": [],
+            "is_read_only": false,
+            "is_write_only": false
         },
         "transactionStatusUri": {
             "name": "transactionStatusUri",
@@ -48,11 +56,13 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
             "modifiers": 2,
             "default": null,
-            "errors": []
+            "errors": [],
+            "is_read_only": false,
+            "is_write_only": false
         },
         "accountStatusUri": {
             "name": "accountStatusUri",
@@ -65,11 +75,13 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
             "modifiers": 2,
             "default": null,
-            "errors": []
+            "errors": [],
+            "is_read_only": false,
+            "is_write_only": false
         },
         "accountBalanceUri": {
             "name": "accountBalanceUri",
@@ -82,11 +94,13 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
             "modifiers": 2,
             "default": null,
-            "errors": []
+            "errors": [],
+            "is_read_only": false,
+            "is_write_only": false
         }
     },
     "methods": {
@@ -101,8 +115,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -117,6 +132,7 @@
             "hint": null,
             "hint_desc": null,
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -134,10 +150,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
@@ -152,8 +169,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -168,6 +186,7 @@
             "hint": null,
             "hint_desc": null,
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -185,10 +204,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
@@ -203,8 +223,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -219,6 +240,7 @@
             "hint": null,
             "hint_desc": null,
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -236,10 +258,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
@@ -254,8 +277,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -270,6 +294,7 @@
             "hint": null,
             "hint_desc": null,
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -287,10 +312,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
@@ -302,6 +328,7 @@
             "hint": null,
             "hint_desc": null,
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [
@@ -324,17 +351,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": {
-                        "nodeType": "Identifier",
-                        "name": "array",
-                        "attributes": {
-                            "startLine": 122,
-                            "endLine": 122
-                        }
-                    },
+                    "modifiers": 0,
                     "default": "[]",
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 },
                 "middleware": {
                     "name": "middleware",
@@ -348,17 +369,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": {
-                        "nodeType": "Identifier",
-                        "name": "array",
-                        "attributes": {
-                            "startLine": 122,
-                            "endLine": 122
-                        }
-                    },
+                    "modifiers": 0,
                     "default": "[]",
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 },
                 "client": {
                     "name": "client",
@@ -372,20 +387,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": {
-                        "nodeType": "Name_FullyQualified",
-                        "parts": [
-                            "GuzzleHttp",
-                            "ClientInterface"
-                        ],
-                        "attributes": {
-                            "startLine": 122,
-                            "endLine": 122
-                        }
-                    },
+                    "modifiers": 0,
                     "default": "null",
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
@@ -400,7 +406,7 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": {
                 "see": [
                     [
@@ -409,6 +415,15 @@
                     ]
                 ]
             },
+            "see": [
+                [
+                    "https:\/\/momodeveloper.mtn.com\/docs\/services\/disbursement\/operations\/token-POST",
+                    "Documentation",
+                    false,
+                    false,
+                    "https:\/\/momodeveloper.mtn.com\/docs\/services\/disbursement\/operations\/token-POST"
+                ]
+            ],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [
@@ -431,7 +446,7 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "$momoTransactionId                Auto generated payment reference. Format: UUID",
             "tags": {
                 "see": [
                     [
@@ -440,6 +455,15 @@
                     ]
                 ]
             },
+            "see": [
+                [
+                    "https:\/\/momodeveloper.mtn.com\/docs\/services\/disbursement\/operations\/transfer-POST",
+                    "Documentation",
+                    false,
+                    false,
+                    "https:\/\/momodeveloper.mtn.com\/docs\/services\/disbursement\/operations\/transfer-POST"
+                ]
+            ],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [
@@ -470,10 +494,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 },
                 "partyId": {
                     "name": "partyId",
@@ -487,10 +512,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 },
                 "amount": {
                     "name": "amount",
@@ -504,10 +530,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 },
                 "payerMessage": {
                     "name": "payerMessage",
@@ -521,10 +548,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": "''",
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 },
                 "payeeNote": {
                     "name": "payeeNote",
@@ -538,10 +566,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": "''",
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
@@ -556,7 +585,7 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": {
                 "see": [
                     [
@@ -565,6 +594,15 @@
                     ]
                 ]
             },
+            "see": [
+                [
+                    "https:\/\/momodeveloper.mtn.com\/docs\/services\/disbursement\/operations\/transfer-referenceId-GET",
+                    "Documentation",
+                    false,
+                    false,
+                    "https:\/\/momodeveloper.mtn.com\/docs\/services\/disbursement\/operations\/transfer-referenceId-GET"
+                ]
+            ],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [
@@ -591,10 +629,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
@@ -609,7 +648,7 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "Account balance.",
             "tags": {
                 "see": [
                     [
@@ -618,6 +657,15 @@
                     ]
                 ]
             },
+            "see": [
+                [
+                    "https:\/\/momodeveloper.mtn.com\/docs\/services\/disbursement\/operations\/get-v1_0-account-balance",
+                    "Documentation",
+                    false,
+                    false,
+                    "https:\/\/momodeveloper.mtn.com\/docs\/services\/disbursement\/operations\/get-v1_0-account-balance"
+                ]
+            ],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [
@@ -644,7 +692,7 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "True if account holder is registered and active, false if the account holder is not active or not found",
             "tags": {
                 "see": [
                     [
@@ -653,6 +701,15 @@
                     ]
                 ]
             },
+            "see": [
+                [
+                    "https:\/\/momodeveloper.mtn.com\/docs\/services\/disbursement\/operations\/get-v1_0-accountholder-accountholderidtype-accountholderid-active",
+                    "Documentation",
+                    false,
+                    false,
+                    "https:\/\/momodeveloper.mtn.com\/docs\/services\/disbursement\/operations\/get-v1_0-accountholder-accountholderidtype-accountholderid-active"
+                ]
+            ],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [
@@ -679,10 +736,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 },
                 "partyIdType": {
                     "name": "partyIdType",
@@ -696,10 +754,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": "null",
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         }

@@ -10,37 +10,68 @@
         <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
         <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
         <script async defer src="../../../js/bootstrap.min.js"></script>
-        <script src="../../../js/typeahead.min.js"></script>
-        <script src="../../../doctum.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
     </head>
 
-    <body id="class" data-name="class:Bmatovu_MtnMomo_Repositories_TokenRepository" data-root-path="../../../">
+    <body id="class" data-name="class:Bmatovu_MtnMomo_Repositories_TokenRepository" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
                     <form action="#">
-                <select  class="form-control" id="version-switcher" name="version">
-                                            <option value="../../../../1.3/index.html" data-version="1.3">v1.3</option>
-                                            <option value="../../../../1.4/index.html" data-version="1.4">v1.4</option>
-                                            <option value="../../../../1.5/index.html" data-version="1.5">v1.5</option>
-                                            <option value="../../../../1.6/index.html" data-version="1.6">v1.6</option>
-                                            <option value="../../../../1.7/index.html" data-version="1.7">v1.7</option>
-                                            <option value="../../../../1.8/index.html" data-version="1.8">v1.8</option>
-                                            <option value="../../../../2.0/index.html" data-version="2.0">v2.0</option>
-                                            <option value="../../../../3.x/index.html" data-version="3.x">v3.x</option>
-                                            <option value="../../../../master/index.html" data-version="master">Master</option>
+                <select class="form-control" id="version-switcher" name="version">
+                                            <option
+                            value="../../../../1.3/index.html"
+                            data-version="1.3" >v1.3</option>
+                                            <option
+                            value="../../../../1.4/index.html"
+                            data-version="1.4" >v1.4</option>
+                                            <option
+                            value="../../../../1.5/index.html"
+                            data-version="1.5" >v1.5</option>
+                                            <option
+                            value="../../../../1.6/index.html"
+                            data-version="1.6" >v1.6</option>
+                                            <option
+                            value="../../../../1.7/index.html"
+                            data-version="1.7" >v1.7</option>
+                                            <option
+                            value="../../../../1.8/index.html"
+                            data-version="1.8" >v1.8</option>
+                                            <option
+                            value="../../../../2.0/index.html"
+                            data-version="2.0" >v2.0</option>
+                                            <option
+                            value="../../../../3.x/index.html"
+                            data-version="3.x" >v3.x</option>
+                                            <option
+                            value="../../../../master/index.html"
+                            data-version="master" selected>Master</option>
                                     </select>
             </form>
-                <form id="search-form" action="../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -61,6 +92,22 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
+                                        <li role="presentation" class="dropdown visible-xs-block visible-sm-block">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"
+                            role="button" aria-haspopup="true" aria-expanded="false">Versions&nbsp;<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                        <li ><a href="../../../../1.3/index.html" data-version="1.3">v1.3</a></li>
+                        <li ><a href="../../../../1.4/index.html" data-version="1.4">v1.4</a></li>
+                        <li ><a href="../../../../1.5/index.html" data-version="1.5">v1.5</a></li>
+                        <li ><a href="../../../../1.6/index.html" data-version="1.6">v1.6</a></li>
+                        <li ><a href="../../../../1.7/index.html" data-version="1.7">v1.7</a></li>
+                        <li ><a href="../../../../1.8/index.html" data-version="1.8">v1.8</a></li>
+                        <li ><a href="../../../../2.0/index.html" data-version="2.0">v2.0</a></li>
+                        <li ><a href="../../../../3.x/index.html" data-version="3.x">v3.x</a></li>
+                        <li class="active"><a href="../../../../master/index.html" data-version="master">Master</a></li>
+                        </ul>
+                    </li>
                     <li><a href="../../../classes.html">Classes</a></li>
                     <li><a href="../../../namespaces.html">Namespaces</a></li>
                     <li><a href="../../../interfaces.html">Interfaces</a></li>
@@ -79,26 +126,24 @@
             </ol>
         </div>
                 <div id="page-content">
-                
     <div class="page-header">
-        <h1>
-            TokenRepository
-                
-        </h1>
+        <h1>TokenRepository    
+            </h1>
     </div>
 
+    
     <p>        class
-    <strong>TokenRepository</strong>        implements
-        <abbr title="Bmatovu\OAuthNegotiator\Repositories\TokenRepositoryInterface">TokenRepositoryInterface</abbr>        (<a href="https://github.com/mtvbrianking/laravel-mtn-momo/blob/master/src/Repositories/TokenRepository.php">View source</a>)
+    <strong>TokenRepository</strong>        implements        <abbr title="Bmatovu\OAuthNegotiator\Repositories\TokenRepositoryInterface">TokenRepositoryInterface</abbr>        (<a href="https://github.com/mtvbrianking/laravel-mtn-momo/blob/master/src/Repositories/TokenRepository.php">View source</a>)
 </p>
 
         
     
+        
 
             <div class="description">
-            <p>Token repository.</p>                                </div>
-    
-    
+            <p><p>Token repository.</p></p>                    </div>
+            
+        
     
             <h2>Properties</h2>
 
@@ -106,7 +151,8 @@
                     <tr>
                 <td class="type" id="property_product">
                                         protected                                        string
-                </td>
+                                                                                
+                                    </td>
                 <td>$product</td>
                 <td class="last">Product.</td>
                 <td></td>
@@ -121,7 +167,7 @@
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method___construct">__construct</a>(string $product)
         
                                             <p>Constructor.</p>                </div>
@@ -131,7 +177,7 @@
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_create">create</a>(array $attributes)
         
                                             <p>{@inheritdoc}</p>                </div>
@@ -141,7 +187,7 @@
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_retrieveAll">retrieveAll</a>()
         
                                             <p>{@inheritdoc}</p>                </div>
@@ -151,7 +197,7 @@
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_retrieve">retrieve</a>($access_token = null)
         
                                             <p>{@inheritdoc}</p>                </div>
@@ -161,7 +207,7 @@
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_update">update</a>($access_token, array $attributes)
         
                                             <p>{@inheritdoc}</p>                </div>
@@ -171,7 +217,7 @@
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_delete">delete</a>($access_token)
         
                                             <p>{@inheritdoc}</p>                </div>
@@ -190,13 +236,14 @@
     <strong>__construct</strong>(string $product)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Constructor.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p>Constructor.</p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -207,6 +254,7 @@
             </tr>
             </table>
 
+            
             
             
             
@@ -221,13 +269,14 @@
     <strong>create</strong>(array $attributes)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>{@inheritdoc}</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p>{@inheritdoc}</p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -238,6 +287,7 @@
             </tr>
             </table>
 
+            
             
             
             
@@ -252,13 +302,15 @@
     <strong>retrieveAll</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>{@inheritdoc}</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p>{@inheritdoc}</p>                        
+        </div>
+        <div class="tags">
+            
             
             
             
@@ -273,13 +325,14 @@
     <strong>retrieve</strong>($access_token = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>{@inheritdoc}</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p>{@inheritdoc}</p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -290,6 +343,7 @@
             </tr>
             </table>
 
+            
             
             
             
@@ -304,13 +358,14 @@
     <strong>update</strong>($access_token, array $attributes)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>{@inheritdoc}</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p>{@inheritdoc}</p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -329,6 +384,7 @@
             
             
             
+            
                     </div>
     </div>
 
@@ -340,13 +396,14 @@
     <strong>delete</strong>($access_token)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>{@inheritdoc}</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p>{@inheritdoc}</p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -360,6 +417,7 @@
             
             
             
+            
                     </div>
     </div>
 
@@ -367,7 +425,7 @@
             </div>
 
     
-            </div><div id="footer">
+</div><div id="footer">
         Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.</div></div>
     </div>
     </body>

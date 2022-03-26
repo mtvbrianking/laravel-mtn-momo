@@ -1,0 +1,52 @@
+{
+    "namespace": "",
+    "name": "append_log_middleware",
+    "line": 91,
+    "file": "\/home\/runner\/work\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Support\/helpers.php",
+    "relative_file": "\/src\/Support\/helpers.php",
+    "short_desc": "Add log middleware to handler stack.",
+    "long_desc": "",
+    "hint": [
+        [
+            "\\GuzzleHttp\\HandlerStack",
+            false
+        ]
+    ],
+    "hint_desc": "",
+    "tags": {
+        "see": [
+            [
+                "https:\/\/github.com\/guzzle\/guzzle\/blob\/master\/src\/MessageFormatter.php"
+            ]
+        ]
+    },
+    "modifiers": 0,
+    "is_by_ref": "",
+    "exceptions": [
+        [
+            "\\Exception",
+            ""
+        ]
+    ],
+    "errors": [],
+    "parameters": {
+        "handlerStack": {
+            "name": "handlerStack",
+            "line": 91,
+            "short_desc": "",
+            "long_desc": null,
+            "hint": [
+                [
+                    "\\GuzzleHttp\\HandlerStack",
+                    false
+                ]
+            ],
+            "tags": [],
+            "modifiers": 0,
+            "default": null,
+            "variadic": false,
+            "is_by_ref": false,
+            "is_read_only": false
+        }
+    }
+}

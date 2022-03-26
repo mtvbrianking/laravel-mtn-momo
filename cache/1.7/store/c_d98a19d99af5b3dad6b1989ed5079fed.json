@@ -10,9 +10,10 @@
     "relative_file": "\/src\/Traits\/CommandUtilTrait.php",
     "hash": "2bce885928941e6715604d9686de4ced579087bd",
     "parent": null,
-    "modifiers": null,
+    "modifiers": 0,
     "is_trait": true,
     "is_interface": false,
+    "is_read_only": false,
     "aliases": [],
     "errors": [],
     "interfaces": [],
@@ -30,8 +31,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 2,
             "is_by_ref": "",
             "exceptions": [],
@@ -49,10 +51,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": "'Application In Production!'",
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
@@ -67,8 +70,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 2,
             "is_by_ref": "",
             "exceptions": [],
@@ -86,10 +90,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 },
                 "body": {
                     "name": "body",
@@ -107,10 +112,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": "null",
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
@@ -125,7 +131,7 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "Regex pattern",
             "tags": {
                 "deprecated": [
                     [
@@ -136,6 +142,7 @@
                     ]
                 ]
             },
+            "see": [],
             "modifiers": 2,
             "is_by_ref": "",
             "exceptions": [],
@@ -153,10 +160,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 },
                 "key": {
                     "name": "key",
@@ -170,10 +178,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
@@ -188,8 +197,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 2,
             "is_by_ref": "",
             "exceptions": [],
@@ -207,10 +217,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 },
                 "key": {
                     "name": "key",
@@ -224,10 +235,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 },
                 "value": {
                     "name": "value",
@@ -241,10 +253,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         }

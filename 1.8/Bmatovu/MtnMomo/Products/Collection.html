@@ -10,37 +10,68 @@
         <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
         <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
         <script async defer src="../../../js/bootstrap.min.js"></script>
-        <script src="../../../js/typeahead.min.js"></script>
-        <script src="../../../doctum.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
     </head>
 
-    <body id="class" data-name="class:Bmatovu_MtnMomo_Products_Collection" data-root-path="../../../">
+    <body id="class" data-name="class:Bmatovu_MtnMomo_Products_Collection" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
                     <form action="#">
-                <select  class="form-control" id="version-switcher" name="version">
-                                            <option value="../../../../1.3/index.html" data-version="1.3">v1.3</option>
-                                            <option value="../../../../1.4/index.html" data-version="1.4">v1.4</option>
-                                            <option value="../../../../1.5/index.html" data-version="1.5">v1.5</option>
-                                            <option value="../../../../1.6/index.html" data-version="1.6">v1.6</option>
-                                            <option value="../../../../1.7/index.html" data-version="1.7">v1.7</option>
-                                            <option value="../../../../1.8/index.html" data-version="1.8">v1.8</option>
-                                            <option value="../../../../2.0/index.html" data-version="2.0">v2.0</option>
-                                            <option value="../../../../3.x/index.html" data-version="3.x">v3.x</option>
-                                            <option value="../../../../master/index.html" data-version="master">Master</option>
+                <select class="form-control" id="version-switcher" name="version">
+                                            <option
+                            value="../../../../1.3/index.html"
+                            data-version="1.3" >v1.3</option>
+                                            <option
+                            value="../../../../1.4/index.html"
+                            data-version="1.4" >v1.4</option>
+                                            <option
+                            value="../../../../1.5/index.html"
+                            data-version="1.5" >v1.5</option>
+                                            <option
+                            value="../../../../1.6/index.html"
+                            data-version="1.6" >v1.6</option>
+                                            <option
+                            value="../../../../1.7/index.html"
+                            data-version="1.7" >v1.7</option>
+                                            <option
+                            value="../../../../1.8/index.html"
+                            data-version="1.8" selected>v1.8</option>
+                                            <option
+                            value="../../../../2.0/index.html"
+                            data-version="2.0" >v2.0</option>
+                                            <option
+                            value="../../../../3.x/index.html"
+                            data-version="3.x" >v3.x</option>
+                                            <option
+                            value="../../../../master/index.html"
+                            data-version="master" >Master</option>
                                     </select>
             </form>
-                <form id="search-form" action="../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -61,6 +92,22 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
+                                        <li role="presentation" class="dropdown visible-xs-block visible-sm-block">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"
+                            role="button" aria-haspopup="true" aria-expanded="false">Versions&nbsp;<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                        <li ><a href="../../../../1.3/index.html" data-version="1.3">v1.3</a></li>
+                        <li ><a href="../../../../1.4/index.html" data-version="1.4">v1.4</a></li>
+                        <li ><a href="../../../../1.5/index.html" data-version="1.5">v1.5</a></li>
+                        <li ><a href="../../../../1.6/index.html" data-version="1.6">v1.6</a></li>
+                        <li ><a href="../../../../1.7/index.html" data-version="1.7">v1.7</a></li>
+                        <li class="active"><a href="../../../../1.8/index.html" data-version="1.8">v1.8</a></li>
+                        <li ><a href="../../../../2.0/index.html" data-version="2.0">v2.0</a></li>
+                        <li ><a href="../../../../3.x/index.html" data-version="3.x">v3.x</a></li>
+                        <li ><a href="../../../../master/index.html" data-version="master">Master</a></li>
+                        </ul>
+                    </li>
                     <li><a href="../../../classes.html">Classes</a></li>
                     <li><a href="../../../namespaces.html">Namespaces</a></li>
                     <li><a href="../../../interfaces.html">Interfaces</a></li>
@@ -79,25 +126,24 @@
             </ol>
         </div>
                 <div id="page-content">
-                
     <div class="page-header">
-        <h1>
-            Collection
-                
-        </h1>
+        <h1>Collection    
+            </h1>
     </div>
 
+    
     <p>        class
     <strong>Collection</strong>        extends <a href="../../../Bmatovu/MtnMomo/Products/Product.html"><abbr title="Bmatovu\MtnMomo\Products\Product">Product</abbr></a>        (<a href="https://github.com/mtvbrianking/laravel-mtn-momo/blob/1.8/src/Products/Collection.php">View source</a>)
 </p>
 
         
     
+        
 
             <div class="description">
-            <p>Collection service/product.</p>                                </div>
-    
-    
+            <p><p>Collection service/product.</p></p>                    </div>
+            
+        
     
             <h2>Properties</h2>
 
@@ -105,7 +151,8 @@
                     <tr>
                 <td class="type" id="property_config">
                                         protected                                        <abbr title="Illuminate\Contracts\Config\Repository">Repository</abbr>
-                </td>
+                                                                                
+                                    </td>
                 <td>$config</td>
                 <td class="last">Configuration.</td>
                 <td><small>from&nbsp;<a href="../../../Bmatovu/MtnMomo/Products/Product.html#property_config">
@@ -114,70 +161,78 @@
                     <tr>
                 <td class="type" id="property_client">
                                         protected                                        <abbr title="GuzzleHttp\Client">Client</abbr>
-                </td>
+                                                                                
+                                    </td>
                 <td>$client</td>
-                <td class="last">HTTP client.</td>
+                <td class="last"><p>HTTP client.</p></td>
                 <td><small>from&nbsp;<a href="../../../Bmatovu/MtnMomo/Products/Product.html#property_client">
 <abbr title="Bmatovu\MtnMomo\Products\Product">Product</abbr></a></small></td>
             </tr>
                     <tr>
                 <td class="type" id="property_baseUri">
                                         protected                                        string
-                </td>
+                                                                                
+                                    </td>
                 <td>$baseUri</td>
-                <td class="last">Base URI.</td>
+                <td class="last"><p>Base URI.</p></td>
                 <td><small>from&nbsp;<a href="../../../Bmatovu/MtnMomo/Products/Product.html#property_baseUri">
 <abbr title="Bmatovu\MtnMomo\Products\Product">Product</abbr></a></small></td>
             </tr>
                     <tr>
                 <td class="type" id="property_tokenUri">
                                         protected                                        string
-                </td>
+                                                                                
+                                    </td>
                 <td>$tokenUri</td>
-                <td class="last">Token URI.</td>
+                <td class="last"><p>Token URI.</p></td>
                 <td><small>from&nbsp;<a href="../../../Bmatovu/MtnMomo/Products/Product.html#property_tokenUri">
 <abbr title="Bmatovu\MtnMomo\Products\Product">Product</abbr></a></small></td>
             </tr>
                     <tr>
                 <td class="type" id="property_subscriptionKey">
                                         protected                                        string
-                </td>
+                                                                                
+                                    </td>
                 <td>$subscriptionKey</td>
-                <td class="last">Subscription key.</td>
+                <td class="last"><p>Subscription key.</p></td>
                 <td><small>from&nbsp;<a href="../../../Bmatovu/MtnMomo/Products/Product.html#property_subscriptionKey">
 <abbr title="Bmatovu\MtnMomo\Products\Product">Product</abbr></a></small></td>
             </tr>
                     <tr>
                 <td class="type" id="property_clientId">
                                         protected                                        string
-                </td>
+                                                                                
+                                    </td>
                 <td>$clientId</td>
-                <td class="last">Client ID.</td>
+                <td class="last"><p>Client ID.</p></td>
                 <td><small>from&nbsp;<a href="../../../Bmatovu/MtnMomo/Products/Product.html#property_clientId">
 <abbr title="Bmatovu\MtnMomo\Products\Product">Product</abbr></a></small></td>
             </tr>
                     <tr>
                 <td class="type" id="property_clientSecret">
                                         protected                                        string
-                </td>
+                                                                                
+                                    </td>
                 <td>$clientSecret</td>
-                <td class="last">Client secret.</td>
+                <td class="last"><p>Client secret.</p></td>
                 <td><small>from&nbsp;<a href="../../../Bmatovu/MtnMomo/Products/Product.html#property_clientSecret">
 <abbr title="Bmatovu\MtnMomo\Products\Product">Product</abbr></a></small></td>
             </tr>
                     <tr>
                 <td class="type" id="property_clientRedirectUri">
                                         protected                                        string
-                </td>
+                                                                                
+                                    </td>
                 <td>$clientRedirectUri</td>
-                <td class="last">Client redirect URI.</td>
+                <td class="last"><p>Client redirect URI.</p></td>
                 <td><small>from&nbsp;<a href="../../../Bmatovu/MtnMomo/Products/Product.html#property_clientRedirectUri">
 <abbr title="Bmatovu\MtnMomo\Products\Product">Product</abbr></a></small></td>
             </tr>
                     <tr>
                 <td class="type" id="property_currency">
                                         protected                                        string
-                </td>
+                                                                                
+                                    </td>
                 <td>$currency</td>
                 <td class="last">Currency.</td>
                 <td><small>from&nbsp;<a href="../../../Bmatovu/MtnMomo/Products/Product.html#property_currency">
@@ -186,7 +241,8 @@
                     <tr>
                 <td class="type" id="property_environment">
                                         protected                                        string
-                </td>
+                                                                                
+                                    </td>
                 <td>$environment</td>
                 <td class="last">Environment.</td>
                 <td><small>from&nbsp;<a href="../../../Bmatovu/MtnMomo/Products/Product.html#property_environment">
@@ -195,51 +251,57 @@
                     <tr>
                 <td class="type" id="property_partyIdType">
                                         protected                                        string
-                </td>
+                                                                                
+                                    </td>
                 <td>$partyIdType</td>
-                <td class="last">Party ID type.</td>
+                <td class="last"><p>Party ID type.</p></td>
                 <td><small>from&nbsp;<a href="../../../Bmatovu/MtnMomo/Products/Product.html#property_partyIdType">
 <abbr title="Bmatovu\MtnMomo\Products\Product">Product</abbr></a></small></td>
             </tr>
                     <tr>
                 <td class="type" id="property_logFile">
                                         protected                                        string
-                </td>
+                                                                                
+                                    </td>
                 <td>$logFile</td>
-                <td class="last">Log file.</td>
+                <td class="last"><p>Log file.</p></td>
                 <td><small>from&nbsp;<a href="../../../Bmatovu/MtnMomo/Products/Product.html#property_logFile">
 <abbr title="Bmatovu\MtnMomo\Products\Product">Product</abbr></a></small></td>
             </tr>
                     <tr>
                 <td class="type" id="property_transactionUri">
                                         protected                                        string
-                </td>
+                                                                                
+                                    </td>
                 <td>$transactionUri</td>
-                <td class="last">Transact URI.</td>
+                <td class="last"><p>Transact URI.</p></td>
                 <td></td>
             </tr>
                     <tr>
                 <td class="type" id="property_transactionStatusUri">
                                         protected                                        string
-                </td>
+                                                                                
+                                    </td>
                 <td>$transactionStatusUri</td>
-                <td class="last">Transaction status URI.</td>
+                <td class="last"><p>Transaction status URI.</p></td>
                 <td></td>
             </tr>
                     <tr>
                 <td class="type" id="property_accountStatusUri">
                                         protected                                        string
-                </td>
+                                                                                
+                                    </td>
                 <td>$accountStatusUri</td>
-                <td class="last">Account status URI.</td>
+                <td class="last"><p>Account status URI.</p></td>
                 <td></td>
             </tr>
                     <tr>
                 <td class="type" id="property_accountBalanceUri">
                                         protected                                        string
-                </td>
+                                                                                
+                                    </td>
                 <td>$accountBalanceUri</td>
-                <td class="last">Account balance URI.</td>
+                <td class="last"><p>Account balance URI.</p></td>
                 <td></td>
             </tr>
             </table>
@@ -252,7 +314,7 @@
                 <div class="col-md-2 type">
                     <abbr title="GuzzleHttp\ClientInterface">ClientInterface</abbr>
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getClient">getClient</a>()
         
                                             <p class="no-description">No description</p>
@@ -264,7 +326,7 @@
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_setClient">setClient</a>(<abbr title="GuzzleHttp\ClientInterface">ClientInterface</abbr> $client)
         
                                             <p class="no-description">No description</p>
@@ -276,7 +338,7 @@
                 <div class="col-md-2 type">
                     string
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getBaseUri">getBaseUri</a>()
         
                                             <p class="no-description">No description</p>
@@ -288,7 +350,7 @@
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_setBaseUri">setBaseUri</a>(string $baseUri)
         
                                             <p class="no-description">No description</p>
@@ -300,7 +362,7 @@
                 <div class="col-md-2 type">
                     string
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getTokenUri">getTokenUri</a>()
         
                                             <p class="no-description">No description</p>
@@ -312,7 +374,7 @@
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_setTokenUri">setTokenUri</a>(string $tokenUri)
         
                                             <p class="no-description">No description</p>
@@ -324,7 +386,7 @@
                 <div class="col-md-2 type">
                     string
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getSubscriptionKey">getSubscriptionKey</a>()
         
                                             <p class="no-description">No description</p>
@@ -336,7 +398,7 @@
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_setSubscriptionKey">setSubscriptionKey</a>(string $subscriptionKey)
         
                                             <p class="no-description">No description</p>
@@ -348,7 +410,7 @@
                 <div class="col-md-2 type">
                     string
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getClientId">getClientId</a>()
         
                                             <p class="no-description">No description</p>
@@ -360,7 +422,7 @@
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_setClientId">setClientId</a>(string $clientId)
         
                                             <p class="no-description">No description</p>
@@ -372,7 +434,7 @@
                 <div class="col-md-2 type">
                     string
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getClientSecret">getClientSecret</a>()
         
                                             <p class="no-description">No description</p>
@@ -384,7 +446,7 @@
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_setClientSecret">setClientSecret</a>(string $clientSecret)
         
                                             <p class="no-description">No description</p>
@@ -396,7 +458,7 @@
                 <div class="col-md-2 type">
                     string
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getClientRedirectUri">getClientRedirectUri</a>()
         
                                             <p class="no-description">No description</p>
@@ -408,7 +470,7 @@
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_setClientRedirectUri">setClientRedirectUri</a>(string $clientRedirectUri)
         
                                             <p class="no-description">No description</p>
@@ -420,7 +482,7 @@
                 <div class="col-md-2 type">
                     string
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getCurrency">getCurrency</a>()
         
                                             <p class="no-description">No description</p>
@@ -432,7 +494,7 @@
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_setCurrency">setCurrency</a>(string $currency)
         
                                             <p class="no-description">No description</p>
@@ -444,7 +506,7 @@
                 <div class="col-md-2 type">
                     string
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getEnvironment">getEnvironment</a>()
         
                                             <p class="no-description">No description</p>
@@ -456,7 +518,7 @@
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_setEnvironment">setEnvironment</a>(string $environment)
         
                                             <p class="no-description">No description</p>
@@ -468,7 +530,7 @@
                 <div class="col-md-2 type">
                     string
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getPartyIdType">getPartyIdType</a>()
         
                                             <p class="no-description">No description</p>
@@ -480,7 +542,7 @@
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_setPartyIdType">setPartyIdType</a>(string $partyIdType)
         
                                             <p class="no-description">No description</p>
@@ -492,7 +554,7 @@
                 <div class="col-md-2 type">
                     string
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getLogFile">getLogFile</a>()
         
                                             <p class="no-description">No description</p>
@@ -504,7 +566,7 @@
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_setLogFile">setLogFile</a>(string $logFile)
         
                                             <p class="no-description">No description</p>
@@ -516,7 +578,7 @@
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method___construct">__construct</a>(array $headers = [], array $middleware = [], <abbr title="GuzzleHttp\ClientInterface">ClientInterface</abbr> $client = null)
         
                                             <p>Constructor.</p>                </div>
@@ -526,20 +588,20 @@
                 <div class="col-md-2 type">
                     array
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getToken">getToken</a>()
         
-                                            <p>Request collections access token.</p>                </div>
+                                            <p><p>Request collections access token.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     callable
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getLogMiddleware">getLogMiddleware</a>()
         
-                                            <p>Get log middleware.</p>                </div>
+                                            <p><p>Get log middleware.</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Bmatovu/MtnMomo/Products/Product.html#method_getLogMiddleware">
 <abbr title="Bmatovu\MtnMomo\Products\Product">Product</abbr></a></small></div>
             </div>
@@ -547,10 +609,10 @@
                 <div class="col-md-2 type">
                     <abbr title="Bmatovu\OAuthNegotiator\OAuth2Middleware">OAuth2Middleware</abbr>
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getAuthBroker">getAuthBroker</a>(array $headers)
         
-                                            <p>Get authentication broker.</p>                </div>
+                                            <p><p>Get authentication broker.</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Bmatovu/MtnMomo/Products/Product.html#method_getAuthBroker">
 <abbr title="Bmatovu\MtnMomo\Products\Product">Product</abbr></a></small></div>
             </div>
@@ -558,7 +620,7 @@
                 <div class="col-md-2 type">
                     string
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getTransactionUri">getTransactionUri</a>()
         
                                             <p class="no-description">No description</p>
@@ -569,7 +631,7 @@
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_setTransactionUri">setTransactionUri</a>(string $transactionUri)
         
                                             <p class="no-description">No description</p>
@@ -580,7 +642,7 @@
                 <div class="col-md-2 type">
                     string
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getTransactionStatusUri">getTransactionStatusUri</a>()
         
                                             <p class="no-description">No description</p>
@@ -591,7 +653,7 @@
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_setTransactionStatusUri">setTransactionStatusUri</a>(string $transactionStatusUri)
         
                                             <p class="no-description">No description</p>
@@ -602,7 +664,7 @@
                 <div class="col-md-2 type">
                     string
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getAccountStatusUri">getAccountStatusUri</a>()
         
                                             <p class="no-description">No description</p>
@@ -613,7 +675,7 @@
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_setAccountStatusUri">setAccountStatusUri</a>(string $accountStatusUri)
         
                                             <p class="no-description">No description</p>
@@ -624,7 +686,7 @@
                 <div class="col-md-2 type">
                     string
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getAppAccountBalanceUri">getAppAccountBalanceUri</a>()
         
                                             <p class="no-description">No description</p>
@@ -635,7 +697,7 @@
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_setAppAccountBalanceUri">setAppAccountBalanceUri</a>(string $accountBalanceUri)
         
                                             <p class="no-description">No description</p>
@@ -646,40 +708,40 @@
                 <div class="col-md-2 type">
                     string
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_transact">transact</a>(string $transactionId, string $partyId, int $amount, string $payerMessage = &#039;&#039;, string $payeeNote = &#039;&#039;)
         
-                                            <p>Request payee to pay.</p>                </div>
+                                            <p><p>Request payee to pay.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     array
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getTransactionStatus">getTransactionStatus</a>(string $momoTransactionId)
         
-                                            <p>Get transaction status.</p>                </div>
+                                            <p><p>Get transaction status.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     array
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getAccountBalance">getAccountBalance</a>()
         
-                                            <p>Get account balance.</p>                </div>
+                                            <p><p>Get account balance.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     bool
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_isActive">isActive</a>(string $partyId, string $partyIdType = null)
         
-                                            <p>Determine if an account holder is registered and active.</p>                </div>
+                                            <p><p>Determine if an account holder is registered and active.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -696,11 +758,15 @@
     <strong>getClient</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -711,6 +777,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -725,11 +792,15 @@
     <strong>setClient</strong>(<abbr title="GuzzleHttp\ClientInterface">ClientInterface</abbr> $client)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -740,6 +811,7 @@
             </tr>
             </table>
 
+            
             
             
             
@@ -755,11 +827,15 @@
     <strong>getBaseUri</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -770,6 +846,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -784,11 +861,15 @@
     <strong>setBaseUri</strong>(string $baseUri)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -799,6 +880,7 @@
             </tr>
             </table>
 
+            
             
             
             
@@ -814,11 +896,15 @@
     <strong>getTokenUri</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -829,6 +915,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -843,11 +930,15 @@
     <strong>setTokenUri</strong>(string $tokenUri)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -858,6 +949,7 @@
             </tr>
             </table>
 
+            
             
             
             
@@ -873,11 +965,15 @@
     <strong>getSubscriptionKey</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -888,6 +984,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -902,11 +999,15 @@
     <strong>setSubscriptionKey</strong>(string $subscriptionKey)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -917,6 +1018,7 @@
             </tr>
             </table>
 
+            
             
             
             
@@ -932,11 +1034,15 @@
     <strong>getClientId</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -947,6 +1053,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -961,11 +1068,15 @@
     <strong>setClientId</strong>(string $clientId)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -976,6 +1087,7 @@
             </tr>
             </table>
 
+            
             
             
             
@@ -991,11 +1103,15 @@
     <strong>getClientSecret</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -1006,6 +1122,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -1020,11 +1137,15 @@
     <strong>setClientSecret</strong>(string $clientSecret)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -1035,6 +1156,7 @@
             </tr>
             </table>
 
+            
             
             
             
@@ -1050,11 +1172,15 @@
     <strong>getClientRedirectUri</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -1065,6 +1191,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -1079,11 +1206,15 @@
     <strong>setClientRedirectUri</strong>(string $clientRedirectUri)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -1094,6 +1225,7 @@
             </tr>
             </table>
 
+            
             
             
             
@@ -1109,11 +1241,15 @@
     <strong>getCurrency</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -1124,6 +1260,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -1138,11 +1275,15 @@
     <strong>setCurrency</strong>(string $currency)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -1153,6 +1294,7 @@
             </tr>
             </table>
 
+            
             
             
             
@@ -1168,11 +1310,15 @@
     <strong>getEnvironment</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -1183,6 +1329,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -1197,11 +1344,15 @@
     <strong>setEnvironment</strong>(string $environment)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -1212,6 +1363,7 @@
             </tr>
             </table>
 
+            
             
             
             
@@ -1227,11 +1379,15 @@
     <strong>getPartyIdType</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -1242,6 +1398,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -1256,11 +1413,15 @@
     <strong>setPartyIdType</strong>(string $partyIdType)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -1271,6 +1432,7 @@
             </tr>
             </table>
 
+            
             
             
             
@@ -1286,11 +1448,15 @@
     <strong>getLogFile</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -1301,6 +1467,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -1315,11 +1482,15 @@
     <strong>setLogFile</strong>(string $logFile)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -1330,6 +1501,7 @@
             </tr>
             </table>
 
+            
             
             
             
@@ -1344,13 +1516,14 @@
     <strong>__construct</strong>(array $headers = [], array $middleware = [], <abbr title="GuzzleHttp\ClientInterface">ClientInterface</abbr> $client = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Constructor.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p>Constructor.</p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -1383,6 +1556,7 @@
             </table>
 
             
+            
                     </div>
     </div>
 
@@ -1394,13 +1568,14 @@
     <strong>getToken</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Request collections access token.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Request collections access token.</p></p>                        
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -1437,6 +1612,7 @@
             </tr>
             </table>
 
+            
                     </div>
     </div>
 
@@ -1449,13 +1625,14 @@
     <strong>getLogMiddleware</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Get log middleware.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Get log middleware.</p></p>                        
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -1477,6 +1654,7 @@
             </table>
 
             
+            
                     </div>
     </div>
 
@@ -1489,20 +1667,21 @@
     <strong>getAuthBroker</strong>(array $headers)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Get authentication broker.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Get authentication broker.</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>array</td>
                 <td>$headers</td>
-                <td>HTTP request headers</td>
+                <td><p>HTTP request headers</p></td>
             </tr>
             </table>
 
@@ -1527,6 +1706,7 @@
             </table>
 
             
+            
                     </div>
     </div>
 
@@ -1538,11 +1718,15 @@
     <strong>getTransactionUri</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -1553,6 +1737,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -1566,11 +1751,15 @@
     <strong>setTransactionUri</strong>(string $transactionUri)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -1581,6 +1770,7 @@
             </tr>
             </table>
 
+            
             
             
             
@@ -1595,11 +1785,15 @@
     <strong>getTransactionStatusUri</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -1610,6 +1804,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -1623,11 +1818,15 @@
     <strong>setTransactionStatusUri</strong>(string $transactionStatusUri)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -1638,6 +1837,7 @@
             </tr>
             </table>
 
+            
             
             
             
@@ -1652,11 +1852,15 @@
     <strong>getAccountStatusUri</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -1667,6 +1871,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -1680,11 +1885,15 @@
     <strong>setAccountStatusUri</strong>(string $accountStatusUri)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -1695,6 +1904,7 @@
             </tr>
             </table>
 
+            
             
             
             
@@ -1709,11 +1919,15 @@
     <strong>getAppAccountBalanceUri</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -1724,6 +1938,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -1737,11 +1952,15 @@
     <strong>setAppAccountBalanceUri</strong>(string $accountBalanceUri)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -1752,6 +1971,7 @@
             </tr>
             </table>
 
+            
             
             
             
@@ -1766,40 +1986,41 @@
     <strong>transact</strong>(string $transactionId, string $partyId, int $amount, string $payerMessage = &#039;&#039;, string $payeeNote = &#039;&#039;)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Request payee to pay.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Request payee to pay.</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$transactionId</td>
-                <td>Your transaction reference ID, Say: order number.</td>
+                <td><p>Your transaction reference ID, Say: order number.</p></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$partyId</td>
-                <td>Account holder. Usually phone number if type is MSISDN.</td>
+                <td><p>Account holder. Usually phone number if type is MSISDN.</p></td>
             </tr>
                     <tr>
                 <td>int</td>
                 <td>$amount</td>
-                <td>How much to debit the payer.</td>
+                <td><p>How much to debit the payer.</p></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$payerMessage</td>
-                <td>Payer transaction history message.</td>
+                <td><p>Payer transaction history message.</p></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$payeeNote</td>
-                <td>Payee transaction history message.</td>
+                <td><p>Payee transaction history message.</p></td>
             </tr>
             </table>
 
@@ -1809,7 +2030,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>string</td>
-            <td></td>
+            <td><p>Auto generated payment reference. Format: UUID</p></td>
         </tr>
     </table>
 
@@ -1843,6 +2064,7 @@
             </tr>
             </table>
 
+            
                     </div>
     </div>
 
@@ -1854,20 +2076,21 @@
     <strong>getTransactionStatus</strong>(string $momoTransactionId)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Get transaction status.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Get transaction status.</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$momoTransactionId</td>
-                <td>MTN Momo transaction ID. Returned from transact (requestToPay)</td>
+                <td><p>MTN Momo transaction ID. Returned from transact (requestToPay)</p></td>
             </tr>
             </table>
 
@@ -1907,6 +2130,7 @@
             </tr>
             </table>
 
+            
                     </div>
     </div>
 
@@ -1918,20 +2142,21 @@
     <strong>getAccountBalance</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Get account balance.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Get account balance.</p></p>                        
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
             <td>array</td>
-            <td></td>
+            <td><p>Account balance.</p></td>
         </tr>
     </table>
 
@@ -1961,6 +2186,7 @@
             </tr>
             </table>
 
+            
                     </div>
     </div>
 
@@ -1972,25 +2198,26 @@
     <strong>isActive</strong>(string $partyId, string $partyIdType = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Determine if an account holder is registered and active.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Determine if an account holder is registered and active.</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$partyId</td>
-                <td>Party number - MSISDN, email, or code - UUID.</td>
+                <td><p>Party number - MSISDN, email, or code - UUID.</p></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$partyIdType</td>
-                <td>Allowed values [msisdn, email, party_code].</td>
+                <td><p>Allowed values [msisdn, email, party_code].</p></td>
             </tr>
             </table>
 
@@ -2000,7 +2227,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td></td>
+            <td><p>True if account holder is registered and active, false if the account holder is not active or not found</p></td>
         </tr>
     </table>
 
@@ -2030,6 +2257,7 @@
             </tr>
             </table>
 
+            
                     </div>
     </div>
 
@@ -2037,7 +2265,7 @@
             </div>
 
     
-            </div><div id="footer">
+</div><div id="footer">
         Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.</div></div>
     </div>
     </body>

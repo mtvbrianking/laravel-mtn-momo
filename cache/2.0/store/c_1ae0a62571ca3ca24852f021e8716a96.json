@@ -13,8 +13,20 @@
     "modifiers": 16,
     "is_trait": false,
     "is_interface": false,
+    "is_read_only": false,
     "aliases": {
-        "": "Monolog\\Logger"
+        "TokenRepository": "Bmatovu\\MtnMomo\\Repositories\\TokenRepository",
+        "ClientCredentials": "Bmatovu\\OAuthNegotiator\\GrantTypes\\ClientCredentials",
+        "OAuth2Middleware": "Bmatovu\\OAuthNegotiator\\OAuth2Middleware",
+        "Client": "GuzzleHttp\\Client",
+        "ClientInterface": "GuzzleHttp\\ClientInterface",
+        "HandlerStack": "GuzzleHttp\\HandlerStack",
+        "MessageFormatter": "GuzzleHttp\\MessageFormatter",
+        "Middleware": "GuzzleHttp\\Middleware",
+        "Container": "Illuminate\\Container\\Container",
+        "Repository": "Illuminate\\Contracts\\Config\\Repository",
+        "StreamHandler": "Monolog\\Handler\\StreamHandler",
+        "Logger": "Monolog\\Logger"
     },
     "errors": [],
     "interfaces": [],
@@ -31,11 +43,13 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
             "modifiers": 2,
             "default": null,
-            "errors": []
+            "errors": [],
+            "is_read_only": false,
+            "is_write_only": false
         },
         "client": {
             "name": "client",
@@ -48,11 +62,13 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
             "modifiers": 2,
             "default": null,
-            "errors": []
+            "errors": [],
+            "is_read_only": false,
+            "is_write_only": false
         },
         "baseUri": {
             "name": "baseUri",
@@ -65,11 +81,13 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
             "modifiers": 2,
             "default": null,
-            "errors": []
+            "errors": [],
+            "is_read_only": false,
+            "is_write_only": false
         },
         "tokenUri": {
             "name": "tokenUri",
@@ -82,11 +100,13 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
             "modifiers": 2,
             "default": null,
-            "errors": []
+            "errors": [],
+            "is_read_only": false,
+            "is_write_only": false
         },
         "subscriptionKey": {
             "name": "subscriptionKey",
@@ -99,11 +119,13 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
             "modifiers": 2,
             "default": null,
-            "errors": []
+            "errors": [],
+            "is_read_only": false,
+            "is_write_only": false
         },
         "clientId": {
             "name": "clientId",
@@ -116,11 +138,13 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
             "modifiers": 2,
             "default": null,
-            "errors": []
+            "errors": [],
+            "is_read_only": false,
+            "is_write_only": false
         },
         "clientSecret": {
             "name": "clientSecret",
@@ -133,11 +157,13 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
             "modifiers": 2,
             "default": null,
-            "errors": []
+            "errors": [],
+            "is_read_only": false,
+            "is_write_only": false
         },
         "clientRedirectUri": {
             "name": "clientRedirectUri",
@@ -150,11 +176,13 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
             "modifiers": 2,
             "default": null,
-            "errors": []
+            "errors": [],
+            "is_read_only": false,
+            "is_write_only": false
         },
         "currency": {
             "name": "currency",
@@ -167,11 +195,13 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
             "modifiers": 2,
             "default": null,
-            "errors": []
+            "errors": [],
+            "is_read_only": false,
+            "is_write_only": false
         },
         "environment": {
             "name": "environment",
@@ -184,11 +214,13 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
             "modifiers": 2,
             "default": null,
-            "errors": []
+            "errors": [],
+            "is_read_only": false,
+            "is_write_only": false
         },
         "partyIdType": {
             "name": "partyIdType",
@@ -201,11 +233,13 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
             "modifiers": 2,
             "default": null,
-            "errors": []
+            "errors": [],
+            "is_read_only": false,
+            "is_write_only": false
         },
         "logFile": {
             "name": "logFile",
@@ -218,11 +252,13 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
             "modifiers": 2,
             "default": null,
-            "errors": []
+            "errors": [],
+            "is_read_only": false,
+            "is_write_only": false
         }
     },
     "methods": {
@@ -237,8 +273,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -253,6 +290,7 @@
             "hint": null,
             "hint_desc": null,
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -270,10 +308,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
@@ -288,8 +327,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -304,6 +344,7 @@
             "hint": null,
             "hint_desc": null,
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -321,10 +362,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
@@ -339,8 +381,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -355,6 +398,7 @@
             "hint": null,
             "hint_desc": null,
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -372,10 +416,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
@@ -390,8 +435,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -406,6 +452,7 @@
             "hint": null,
             "hint_desc": null,
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -423,10 +470,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
@@ -441,8 +489,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -457,6 +506,7 @@
             "hint": null,
             "hint_desc": null,
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -474,10 +524,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
@@ -492,8 +543,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -508,6 +560,7 @@
             "hint": null,
             "hint_desc": null,
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -525,10 +578,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
@@ -543,8 +597,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -559,6 +614,7 @@
             "hint": null,
             "hint_desc": null,
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -576,10 +632,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
@@ -594,8 +651,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -610,6 +668,7 @@
             "hint": null,
             "hint_desc": null,
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -627,10 +686,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
@@ -645,8 +705,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -661,6 +722,7 @@
             "hint": null,
             "hint_desc": null,
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -678,10 +740,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
@@ -696,8 +759,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -712,6 +776,7 @@
             "hint": null,
             "hint_desc": null,
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -729,10 +794,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
@@ -747,8 +813,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -763,6 +830,7 @@
             "hint": null,
             "hint_desc": null,
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -780,10 +848,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
@@ -795,6 +864,7 @@
             "hint": null,
             "hint_desc": null,
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [
@@ -817,10 +887,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": "[]",
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 },
                 "middleware": {
                     "name": "middleware",
@@ -834,10 +905,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": "[]",
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 },
                 "client": {
                     "name": "client",
@@ -851,20 +923,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": {
-                        "nodeType": "Name_FullyQualified",
-                        "parts": [
-                            "GuzzleHttp",
-                            "ClientInterface"
-                        ],
-                        "attributes": {
-                            "startLine": 295,
-                            "endLine": 295
-                        }
-                    },
+                    "modifiers": 0,
                     "default": "null",
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
@@ -879,8 +942,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 17,
             "is_by_ref": "",
             "exceptions": [],
@@ -898,8 +962,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 2,
             "is_by_ref": "",
             "exceptions": [
@@ -922,7 +987,7 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": {
                 "link": [
                     [
@@ -931,6 +996,7 @@
                     ]
                 ]
             },
+            "see": [],
             "modifiers": 2,
             "is_by_ref": "",
             "exceptions": [
@@ -953,10 +1019,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         }

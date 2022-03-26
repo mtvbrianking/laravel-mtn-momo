@@ -13,8 +13,11 @@
     "modifiers": 0,
     "is_trait": false,
     "is_interface": false,
+    "is_read_only": false,
     "aliases": {
-        "": "Bmatovu\\OAuthNegotiator\\Repositories\\TokenRepositoryInterface"
+        "Carbon": "Carbon\\Carbon",
+        "Token": "Bmatovu\\MtnMomo\\Models\\Token",
+        "TokenRepositoryInterface": "Bmatovu\\OAuthNegotiator\\Repositories\\TokenRepositoryInterface"
     },
     "errors": [],
     "interfaces": {
@@ -31,6 +34,7 @@
             "hint": null,
             "hint_desc": null,
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -45,6 +49,7 @@
             "hint": null,
             "hint_desc": null,
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -62,17 +67,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": {
-                        "nodeType": "Identifier",
-                        "name": "array",
-                        "attributes": {
-                            "startLine": 28,
-                            "endLine": 28
-                        }
-                    },
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
@@ -84,6 +83,7 @@
             "hint": null,
             "hint_desc": null,
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -98,6 +98,7 @@
             "hint": null,
             "hint_desc": null,
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -110,10 +111,11 @@
                     "long_desc": null,
                     "hint": null,
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": "null",
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
@@ -125,6 +127,7 @@
             "hint": null,
             "hint_desc": null,
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -137,10 +140,11 @@
                     "long_desc": null,
                     "hint": null,
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 },
                 "attributes": {
                     "name": "attributes",
@@ -154,17 +158,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": {
-                        "nodeType": "Identifier",
-                        "name": "array",
-                        "attributes": {
-                            "startLine": 62,
-                            "endLine": 62
-                        }
-                    },
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
@@ -176,6 +174,7 @@
             "hint": null,
             "hint_desc": null,
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -188,10 +187,11 @@
                     "long_desc": null,
                     "hint": null,
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         }

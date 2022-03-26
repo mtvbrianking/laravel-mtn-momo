@@ -13,8 +13,11 @@
     "modifiers": 0,
     "is_trait": false,
     "is_interface": false,
+    "is_read_only": false,
     "aliases": {
-        "": "Bmatovu\\OAuthNegotiator\\Models\\TokenInterface",
+        "TokenUtilTrait": "Bmatovu\\MtnMomo\\Traits\\TokenUtilTrait",
+        "SoftDeletes": "Illuminate\\Database\\Eloquent\\SoftDeletes",
+        "TokenInterface": "Bmatovu\\OAuthNegotiator\\Models\\TokenInterface",
         "BaseModel": "Illuminate\\Database\\Eloquent\\Model"
     },
     "errors": [],
@@ -37,19 +40,21 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
             "modifiers": 2,
             "default": {
                 "nodeType": "Scalar_String",
-                "value": "mtn_momo_tokens",
                 "attributes": {
                     "startLine": 25,
                     "endLine": 25,
                     "kind": 1
-                }
+                },
+                "value": "mtn_momo_tokens"
             },
-            "errors": []
+            "errors": [],
+            "is_read_only": false,
+            "is_write_only": false
         },
         "fillable": {
             "name": "fillable",
@@ -62,96 +67,98 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
             "modifiers": 2,
             "default": {
                 "nodeType": "Expr_Array",
-                "items": [
-                    {
-                        "nodeType": "Expr_ArrayItem",
-                        "key": null,
-                        "value": {
-                            "nodeType": "Scalar_String",
-                            "value": "access_token",
-                            "attributes": {
-                                "startLine": 33,
-                                "endLine": 33,
-                                "kind": 1
-                            }
-                        },
-                        "byRef": false,
-                        "unpack": false,
-                        "attributes": {
-                            "startLine": 33,
-                            "endLine": 33
-                        }
-                    },
-                    {
-                        "nodeType": "Expr_ArrayItem",
-                        "key": null,
-                        "value": {
-                            "nodeType": "Scalar_String",
-                            "value": "refresh_token",
-                            "attributes": {
-                                "startLine": 34,
-                                "endLine": 34,
-                                "kind": 1
-                            }
-                        },
-                        "byRef": false,
-                        "unpack": false,
-                        "attributes": {
-                            "startLine": 34,
-                            "endLine": 34
-                        }
-                    },
-                    {
-                        "nodeType": "Expr_ArrayItem",
-                        "key": null,
-                        "value": {
-                            "nodeType": "Scalar_String",
-                            "value": "token_type",
-                            "attributes": {
-                                "startLine": 35,
-                                "endLine": 35,
-                                "kind": 1
-                            }
-                        },
-                        "byRef": false,
-                        "unpack": false,
-                        "attributes": {
-                            "startLine": 35,
-                            "endLine": 35
-                        }
-                    },
-                    {
-                        "nodeType": "Expr_ArrayItem",
-                        "key": null,
-                        "value": {
-                            "nodeType": "Scalar_String",
-                            "value": "expires_at",
-                            "attributes": {
-                                "startLine": 36,
-                                "endLine": 36,
-                                "kind": 1
-                            }
-                        },
-                        "byRef": false,
-                        "unpack": false,
-                        "attributes": {
-                            "startLine": 36,
-                            "endLine": 36
-                        }
-                    }
-                ],
                 "attributes": {
                     "startLine": 32,
                     "endLine": 37,
                     "kind": 2
-                }
+                },
+                "items": [
+                    {
+                        "nodeType": "Expr_ArrayItem",
+                        "attributes": {
+                            "startLine": 33,
+                            "endLine": 33
+                        },
+                        "key": null,
+                        "value": {
+                            "nodeType": "Scalar_String",
+                            "attributes": {
+                                "startLine": 33,
+                                "endLine": 33,
+                                "kind": 1
+                            },
+                            "value": "access_token"
+                        },
+                        "byRef": false,
+                        "unpack": false
+                    },
+                    {
+                        "nodeType": "Expr_ArrayItem",
+                        "attributes": {
+                            "startLine": 34,
+                            "endLine": 34
+                        },
+                        "key": null,
+                        "value": {
+                            "nodeType": "Scalar_String",
+                            "attributes": {
+                                "startLine": 34,
+                                "endLine": 34,
+                                "kind": 1
+                            },
+                            "value": "refresh_token"
+                        },
+                        "byRef": false,
+                        "unpack": false
+                    },
+                    {
+                        "nodeType": "Expr_ArrayItem",
+                        "attributes": {
+                            "startLine": 35,
+                            "endLine": 35
+                        },
+                        "key": null,
+                        "value": {
+                            "nodeType": "Scalar_String",
+                            "attributes": {
+                                "startLine": 35,
+                                "endLine": 35,
+                                "kind": 1
+                            },
+                            "value": "token_type"
+                        },
+                        "byRef": false,
+                        "unpack": false
+                    },
+                    {
+                        "nodeType": "Expr_ArrayItem",
+                        "attributes": {
+                            "startLine": 36,
+                            "endLine": 36
+                        },
+                        "key": null,
+                        "value": {
+                            "nodeType": "Scalar_String",
+                            "attributes": {
+                                "startLine": 36,
+                                "endLine": 36,
+                                "kind": 1
+                            },
+                            "value": "expires_at"
+                        },
+                        "byRef": false,
+                        "unpack": false
+                    }
+                ]
             },
-            "errors": []
+            "errors": [],
+            "is_read_only": false,
+            "is_write_only": false
         },
         "dates": {
             "name": "dates",
@@ -164,58 +171,60 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
             "modifiers": 2,
             "default": {
                 "nodeType": "Expr_Array",
-                "items": [
-                    {
-                        "nodeType": "Expr_ArrayItem",
-                        "key": null,
-                        "value": {
-                            "nodeType": "Scalar_String",
-                            "value": "expires_at",
-                            "attributes": {
-                                "startLine": 45,
-                                "endLine": 45,
-                                "kind": 1
-                            }
-                        },
-                        "byRef": false,
-                        "unpack": false,
-                        "attributes": {
-                            "startLine": 45,
-                            "endLine": 45
-                        }
-                    },
-                    {
-                        "nodeType": "Expr_ArrayItem",
-                        "key": null,
-                        "value": {
-                            "nodeType": "Scalar_String",
-                            "value": "deleted_at",
-                            "attributes": {
-                                "startLine": 46,
-                                "endLine": 46,
-                                "kind": 1
-                            }
-                        },
-                        "byRef": false,
-                        "unpack": false,
-                        "attributes": {
-                            "startLine": 46,
-                            "endLine": 46
-                        }
-                    }
-                ],
                 "attributes": {
                     "startLine": 44,
                     "endLine": 47,
                     "kind": 2
-                }
+                },
+                "items": [
+                    {
+                        "nodeType": "Expr_ArrayItem",
+                        "attributes": {
+                            "startLine": 45,
+                            "endLine": 45
+                        },
+                        "key": null,
+                        "value": {
+                            "nodeType": "Scalar_String",
+                            "attributes": {
+                                "startLine": 45,
+                                "endLine": 45,
+                                "kind": 1
+                            },
+                            "value": "expires_at"
+                        },
+                        "byRef": false,
+                        "unpack": false
+                    },
+                    {
+                        "nodeType": "Expr_ArrayItem",
+                        "attributes": {
+                            "startLine": 46,
+                            "endLine": 46
+                        },
+                        "key": null,
+                        "value": {
+                            "nodeType": "Scalar_String",
+                            "attributes": {
+                                "startLine": 46,
+                                "endLine": 46,
+                                "kind": 1
+                            },
+                            "value": "deleted_at"
+                        },
+                        "byRef": false,
+                        "unpack": false
+                    }
+                ]
             },
-            "errors": []
+            "errors": [],
+            "is_read_only": false,
+            "is_write_only": false
         }
     },
     "methods": [],

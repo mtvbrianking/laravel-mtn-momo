@@ -1,6 +1,6 @@
 {
     "name": "Bmatovu\\MtnMomo\\Products\\Collection",
-    "line": 18,
+    "line": 19,
     "short_desc": "Collection service\/product.",
     "long_desc": "",
     "hint": null,
@@ -8,13 +8,19 @@
     "namespace": "Bmatovu\\MtnMomo\\Products",
     "file": "\/home\/runner\/work\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Products\/Collection.php",
     "relative_file": "\/src\/Products\/Collection.php",
-    "hash": "12ea11ff778069c87143763626eab9c7d33dba07",
+    "hash": "791e43a24f56fae28f3401ea36922fa661283bec",
     "parent": "Bmatovu\\MtnMomo\\Products\\Product",
     "modifiers": 0,
     "is_trait": false,
     "is_interface": false,
+    "is_read_only": false,
     "aliases": {
-        "": "Ramsey\\Uuid\\Uuid"
+        "CollectionRequestException": "Bmatovu\\MtnMomo\\Exceptions\\CollectionRequestException",
+        "ClientInterface": "GuzzleHttp\\ClientInterface",
+        "RequestException": "GuzzleHttp\\Exception\\RequestException",
+        "Container": "Illuminate\\Container\\Container",
+        "Repository": "Illuminate\\Contracts\\Config\\Repository",
+        "Uuid": "Ramsey\\Uuid\\Uuid"
     },
     "errors": [],
     "interfaces": [],
@@ -22,7 +28,7 @@
     "properties": {
         "transactionUri": {
             "name": "transactionUri",
-            "line": 32,
+            "line": 33,
             "short_desc": "Transact URI.",
             "long_desc": "",
             "hint": [
@@ -31,15 +37,17 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
             "modifiers": 2,
             "default": null,
-            "errors": []
+            "errors": [],
+            "is_read_only": false,
+            "is_write_only": false
         },
         "transactionStatusUri": {
             "name": "transactionStatusUri",
-            "line": 39,
+            "line": 40,
             "short_desc": "Transaction status URI.",
             "long_desc": "",
             "hint": [
@@ -48,15 +56,17 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
             "modifiers": 2,
             "default": null,
-            "errors": []
+            "errors": [],
+            "is_read_only": false,
+            "is_write_only": false
         },
         "accountStatusUri": {
             "name": "accountStatusUri",
-            "line": 46,
+            "line": 47,
             "short_desc": "Account status URI.",
             "long_desc": "",
             "hint": [
@@ -65,15 +75,17 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
             "modifiers": 2,
             "default": null,
-            "errors": []
+            "errors": [],
+            "is_read_only": false,
+            "is_write_only": false
         },
         "accountBalanceUri": {
             "name": "accountBalanceUri",
-            "line": 53,
+            "line": 54,
             "short_desc": "Account balance URI.",
             "long_desc": "",
             "hint": [
@@ -82,17 +94,38 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
             "modifiers": 2,
             "default": null,
-            "errors": []
+            "errors": [],
+            "is_read_only": false,
+            "is_write_only": false
+        },
+        "accountHolderInfoUri": {
+            "name": "accountHolderInfoUri",
+            "line": 61,
+            "short_desc": "Account holder basic info URI.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 2,
+            "default": null,
+            "errors": [],
+            "is_read_only": false,
+            "is_write_only": false
         }
     },
     "methods": {
         "getTransactionUri": {
             "name": "getTransactionUri",
-            "line": 58,
+            "line": 66,
             "short_desc": "",
             "long_desc": "",
             "hint": [
@@ -101,8 +134,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -111,12 +145,13 @@
         },
         "setTransactionUri": {
             "name": "setTransactionUri",
-            "line": 66,
+            "line": 74,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
             "hint_desc": null,
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -124,7 +159,7 @@
             "parameters": {
                 "transactionUri": {
                     "name": "transactionUri",
-                    "line": 66,
+                    "line": 74,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [
@@ -134,16 +169,17 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
         "getTransactionStatusUri": {
             "name": "getTransactionStatusUri",
-            "line": 74,
+            "line": 82,
             "short_desc": "",
             "long_desc": "",
             "hint": [
@@ -152,8 +188,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -162,12 +199,13 @@
         },
         "setTransactionStatusUri": {
             "name": "setTransactionStatusUri",
-            "line": 82,
+            "line": 90,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
             "hint_desc": null,
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -175,7 +213,7 @@
             "parameters": {
                 "transactionStatusUri": {
                     "name": "transactionStatusUri",
-                    "line": 82,
+                    "line": 90,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [
@@ -185,16 +223,17 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
         "getAccountStatusUri": {
             "name": "getAccountStatusUri",
-            "line": 90,
+            "line": 98,
             "short_desc": "",
             "long_desc": "",
             "hint": [
@@ -203,8 +242,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -213,12 +253,13 @@
         },
         "setAccountStatusUri": {
             "name": "setAccountStatusUri",
-            "line": 98,
+            "line": 106,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
             "hint_desc": null,
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -226,7 +267,7 @@
             "parameters": {
                 "accountStatusUri": {
                     "name": "accountStatusUri",
-                    "line": 98,
+                    "line": 106,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [
@@ -236,16 +277,17 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
         "getAppAccountBalanceUri": {
             "name": "getAppAccountBalanceUri",
-            "line": 106,
+            "line": 114,
             "short_desc": "",
             "long_desc": "",
             "hint": [
@@ -254,8 +296,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -264,12 +307,13 @@
         },
         "setAppAccountBalanceUri": {
             "name": "setAppAccountBalanceUri",
-            "line": 114,
+            "line": 122,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
             "hint_desc": null,
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -277,7 +321,7 @@
             "parameters": {
                 "accountBalanceUri": {
                     "name": "accountBalanceUri",
-                    "line": 114,
+                    "line": 122,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [
@@ -287,16 +331,71 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
+                }
+            }
+        },
+        "getAccountHolderInfoUri": {
+            "name": "getAccountHolderInfoUri",
+            "line": 130,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "setAccountHolderInfoUri": {
+            "name": "setAccountHolderInfoUri",
+            "line": 138,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "accountHolderInfoUri": {
+                    "name": "accountHolderInfoUri",
+                    "line": 138,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
         "__construct": {
             "name": "__construct",
-            "line": 130,
+            "line": 154,
             "short_desc": "Constructor.",
             "long_desc": "",
             "hint": null,
@@ -308,6 +407,7 @@
                     ]
                 ]
             },
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [
@@ -320,7 +420,7 @@
             "parameters": {
                 "headers": {
                     "name": "headers",
-                    "line": 130,
+                    "line": 154,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [
@@ -330,14 +430,15 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": "[]",
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 },
                 "middleware": {
                     "name": "middleware",
-                    "line": 130,
+                    "line": 154,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [
@@ -347,14 +448,15 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": "[]",
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 },
                 "client": {
                     "name": "client",
-                    "line": 130,
+                    "line": 154,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [
@@ -364,26 +466,17 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": {
-                        "nodeType": "Name_FullyQualified",
-                        "parts": [
-                            "GuzzleHttp",
-                            "ClientInterface"
-                        ],
-                        "attributes": {
-                            "startLine": 130,
-                            "endLine": 130
-                        }
-                    },
+                    "modifiers": 0,
                     "default": "null",
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
         "requestToPay": {
             "name": "requestToPay",
-            "line": 166,
+            "line": 191,
             "short_desc": "Request payee to pay.",
             "long_desc": "",
             "hint": [
@@ -392,7 +485,7 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "Auto generated payment reference. Format: UUID",
             "tags": {
                 "see": [
                     [
@@ -401,6 +494,15 @@
                     ]
                 ]
             },
+            "see": [
+                [
+                    "https:\/\/momodeveloper.mtn.com\/docs\/services\/collection\/operations\/requesttopay-POST",
+                    "Documentation",
+                    false,
+                    false,
+                    "https:\/\/momodeveloper.mtn.com\/docs\/services\/collection\/operations\/requesttopay-POST"
+                ]
+            ],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [
@@ -421,7 +523,7 @@
             "parameters": {
                 "transactionId": {
                     "name": "transactionId",
-                    "line": 166,
+                    "line": 191,
                     "short_desc": "Your transaction reference ID, Say: order number.",
                     "long_desc": null,
                     "hint": [
@@ -431,14 +533,15 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 },
                 "partyId": {
                     "name": "partyId",
-                    "line": 166,
+                    "line": 191,
                     "short_desc": "Account holder. Usually phone number if type is MSISDN.",
                     "long_desc": null,
                     "hint": [
@@ -448,14 +551,15 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 },
                 "amount": {
                     "name": "amount",
-                    "line": 166,
+                    "line": 191,
                     "short_desc": "How much to debit the payer.",
                     "long_desc": null,
                     "hint": [
@@ -465,14 +569,15 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 },
                 "payerMessage": {
                     "name": "payerMessage",
-                    "line": 166,
+                    "line": 191,
                     "short_desc": "Payer transaction history message.",
                     "long_desc": null,
                     "hint": [
@@ -482,14 +587,15 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": "''",
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 },
                 "payeeNote": {
                     "name": "payeeNote",
-                    "line": 166,
+                    "line": 191,
                     "short_desc": "Payee transaction history message.",
                     "long_desc": null,
                     "hint": [
@@ -499,16 +605,17 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": "''",
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
         "getTransactionStatus": {
             "name": "getTransactionStatus",
-            "line": 213,
+            "line": 238,
             "short_desc": "Get transaction status.",
             "long_desc": "",
             "hint": [
@@ -517,7 +624,7 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": {
                 "see": [
                     [
@@ -526,6 +633,15 @@
                     ]
                 ]
             },
+            "see": [
+                [
+                    "https:\/\/momodeveloper.mtn.com\/docs\/services\/collection\/operations\/requesttopay-referenceId-GET",
+                    "Documentation",
+                    false,
+                    false,
+                    "https:\/\/momodeveloper.mtn.com\/docs\/services\/collection\/operations\/requesttopay-referenceId-GET"
+                ]
+            ],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [
@@ -542,7 +658,7 @@
             "parameters": {
                 "momoTransactionId": {
                     "name": "momoTransactionId",
-                    "line": 213,
+                    "line": 238,
                     "short_desc": "MTN Momo transaction ID. Returned from transact (requestToPay)",
                     "long_desc": null,
                     "hint": [
@@ -552,16 +668,17 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
         "getToken": {
             "name": "getToken",
-            "line": 240,
+            "line": 265,
             "short_desc": "Request collections access token.",
             "long_desc": "",
             "hint": [
@@ -570,7 +687,7 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": {
                 "see": [
                     [
@@ -579,6 +696,15 @@
                     ]
                 ]
             },
+            "see": [
+                [
+                    "https:\/\/momodeveloper.mtn.com\/docs\/services\/collection\/operations\/token-POST",
+                    "Documentation",
+                    false,
+                    false,
+                    "https:\/\/momodeveloper.mtn.com\/docs\/services\/collection\/operations\/token-POST"
+                ]
+            ],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [
@@ -596,7 +722,7 @@
         },
         "getAccountBalance": {
             "name": "getAccountBalance",
-            "line": 268,
+            "line": 293,
             "short_desc": "Get account balance.",
             "long_desc": "",
             "hint": [
@@ -605,7 +731,7 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "Account balance.",
             "tags": {
                 "see": [
                     [
@@ -614,6 +740,15 @@
                     ]
                 ]
             },
+            "see": [
+                [
+                    "https:\/\/momodeveloper.mtn.com\/docs\/services\/collection\/operations\/get-v1_0-account-balance",
+                    "Documentation",
+                    false,
+                    false,
+                    "https:\/\/momodeveloper.mtn.com\/docs\/services\/collection\/operations\/get-v1_0-account-balance"
+                ]
+            ],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [
@@ -631,7 +766,7 @@
         },
         "isActive": {
             "name": "isActive",
-            "line": 296,
+            "line": 321,
             "short_desc": "Determine if an account holder is registered and active.",
             "long_desc": "",
             "hint": [
@@ -640,7 +775,7 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "True if account holder is registered and active, false if the account holder is not active or not found",
             "tags": {
                 "see": [
                     [
@@ -649,6 +784,15 @@
                     ]
                 ]
             },
+            "see": [
+                [
+                    "https:\/\/momodeveloper.mtn.com\/docs\/services\/collection\/operations\/get-v1_0-accountholder-accountholderidtype-accountholderid-active",
+                    "Documentation",
+                    false,
+                    false,
+                    "https:\/\/momodeveloper.mtn.com\/docs\/services\/collection\/operations\/get-v1_0-accountholder-accountholderidtype-accountholderid-active"
+                ]
+            ],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [
@@ -665,7 +809,7 @@
             "parameters": {
                 "partyId": {
                     "name": "partyId",
-                    "line": 296,
+                    "line": 321,
                     "short_desc": "Party number - MSISDN, email, or code - UUID.",
                     "long_desc": null,
                     "hint": [
@@ -675,14 +819,15 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 },
                 "partyIdType": {
                     "name": "partyIdType",
-                    "line": 296,
+                    "line": 321,
                     "short_desc": "Allowed values [msisdn, email, party_code].",
                     "long_desc": null,
                     "hint": [
@@ -692,10 +837,74 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": "null",
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
+                }
+            }
+        },
+        "getAccountHolderBasicInfo": {
+            "name": "getAccountHolderBasicInfo",
+            "line": 364,
+            "short_desc": "Get basic info of an account holder.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "array",
+                    false
+                ]
+            ],
+            "hint_desc": "account basic info",
+            "tags": {
+                "see": [
+                    [
+                        "https:\/\/momodeveloper.mtn.com\/docs\/services\/collection\/operations\/basicuserInfo-GET",
+                        "Documentation"
+                    ]
+                ]
+            },
+            "see": [
+                [
+                    "https:\/\/momodeveloper.mtn.com\/docs\/services\/collection\/operations\/basicuserInfo-GET",
+                    "Documentation",
+                    false,
+                    false,
+                    "https:\/\/momodeveloper.mtn.com\/docs\/services\/collection\/operations\/basicuserInfo-GET"
+                ]
+            ],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [
+                [
+                    "\\Bmatovu\\MtnMomo\\Exceptions\\CollectionRequestException",
+                    ""
+                ],
+                [
+                    "\\GuzzleHttp\\Exception\\GuzzleException",
+                    ""
+                ]
+            ],
+            "errors": [],
+            "parameters": {
+                "partyId": {
+                    "name": "partyId",
+                    "line": 364,
+                    "short_desc": "Party number - MSISDN.",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         }
@@ -703,9 +912,11 @@
     "constants": {
         "PRODUCT": {
             "name": "PRODUCT",
-            "line": 25,
+            "line": 26,
             "short_desc": "Product.",
-            "long_desc": ""
+            "long_desc": "",
+            "modifiers": 0,
+            "tags": []
         }
     }
 }

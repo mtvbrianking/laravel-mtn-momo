@@ -10,9 +10,10 @@
     "relative_file": "\/src\/Traits\/TokenUtilTrait.php",
     "hash": "6648549bd2d713b5f77afc1e08059c005c6b350b",
     "parent": null,
-    "modifiers": null,
+    "modifiers": 0,
     "is_trait": true,
     "is_interface": false,
+    "is_read_only": false,
     "aliases": [],
     "errors": [],
     "interfaces": [],
@@ -30,8 +31,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -53,8 +55,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -72,8 +75,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -91,8 +95,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -110,8 +115,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "Datatime",
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -129,8 +135,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],

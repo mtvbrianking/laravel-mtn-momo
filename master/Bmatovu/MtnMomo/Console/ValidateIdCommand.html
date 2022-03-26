@@ -10,37 +10,68 @@
         <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
         <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
         <script async defer src="../../../js/bootstrap.min.js"></script>
-        <script src="../../../js/typeahead.min.js"></script>
-        <script src="../../../doctum.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
     </head>
 
-    <body id="class" data-name="class:Bmatovu_MtnMomo_Console_ValidateIdCommand" data-root-path="../../../">
+    <body id="class" data-name="class:Bmatovu_MtnMomo_Console_ValidateIdCommand" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
                     <form action="#">
-                <select  class="form-control" id="version-switcher" name="version">
-                                            <option value="../../../../1.3/index.html" data-version="1.3">v1.3</option>
-                                            <option value="../../../../1.4/index.html" data-version="1.4">v1.4</option>
-                                            <option value="../../../../1.5/index.html" data-version="1.5">v1.5</option>
-                                            <option value="../../../../1.6/index.html" data-version="1.6">v1.6</option>
-                                            <option value="../../../../1.7/index.html" data-version="1.7">v1.7</option>
-                                            <option value="../../../../1.8/index.html" data-version="1.8">v1.8</option>
-                                            <option value="../../../../2.0/index.html" data-version="2.0">v2.0</option>
-                                            <option value="../../../../3.x/index.html" data-version="3.x">v3.x</option>
-                                            <option value="../../../../master/index.html" data-version="master">Master</option>
+                <select class="form-control" id="version-switcher" name="version">
+                                            <option
+                            value="../../../../1.3/index.html"
+                            data-version="1.3" >v1.3</option>
+                                            <option
+                            value="../../../../1.4/index.html"
+                            data-version="1.4" >v1.4</option>
+                                            <option
+                            value="../../../../1.5/index.html"
+                            data-version="1.5" >v1.5</option>
+                                            <option
+                            value="../../../../1.6/index.html"
+                            data-version="1.6" >v1.6</option>
+                                            <option
+                            value="../../../../1.7/index.html"
+                            data-version="1.7" >v1.7</option>
+                                            <option
+                            value="../../../../1.8/index.html"
+                            data-version="1.8" >v1.8</option>
+                                            <option
+                            value="../../../../2.0/index.html"
+                            data-version="2.0" >v2.0</option>
+                                            <option
+                            value="../../../../3.x/index.html"
+                            data-version="3.x" >v3.x</option>
+                                            <option
+                            value="../../../../master/index.html"
+                            data-version="master" selected>Master</option>
                                     </select>
             </form>
-                <form id="search-form" action="../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -61,6 +92,22 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
+                                        <li role="presentation" class="dropdown visible-xs-block visible-sm-block">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"
+                            role="button" aria-haspopup="true" aria-expanded="false">Versions&nbsp;<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                        <li ><a href="../../../../1.3/index.html" data-version="1.3">v1.3</a></li>
+                        <li ><a href="../../../../1.4/index.html" data-version="1.4">v1.4</a></li>
+                        <li ><a href="../../../../1.5/index.html" data-version="1.5">v1.5</a></li>
+                        <li ><a href="../../../../1.6/index.html" data-version="1.6">v1.6</a></li>
+                        <li ><a href="../../../../1.7/index.html" data-version="1.7">v1.7</a></li>
+                        <li ><a href="../../../../1.8/index.html" data-version="1.8">v1.8</a></li>
+                        <li ><a href="../../../../2.0/index.html" data-version="2.0">v2.0</a></li>
+                        <li ><a href="../../../../3.x/index.html" data-version="3.x">v3.x</a></li>
+                        <li class="active"><a href="../../../../master/index.html" data-version="master">Master</a></li>
+                        </ul>
+                    </li>
                     <li><a href="../../../classes.html">Classes</a></li>
                     <li><a href="../../../namespaces.html">Namespaces</a></li>
                     <li><a href="../../../interfaces.html">Interfaces</a></li>
@@ -79,32 +126,31 @@
             </ol>
         </div>
                 <div id="page-content">
-                
     <div class="page-header">
-        <h1>
-            ValidateIdCommand
-                
-        </h1>
+        <h1>ValidateIdCommand    
+            </h1>
     </div>
 
+    
     <p>        class
     <strong>ValidateIdCommand</strong>        extends <abbr title="Illuminate\Console\Command">Command</abbr>        (<a href="https://github.com/mtvbrianking/laravel-mtn-momo/blob/master/src/Console/ValidateIdCommand.php">View source</a>)
 </p>
 
         
     
+        
 
             <div class="description">
-            <p>Get client APP API credentials.</p>                                </div>
-    
-            <h2>Traits</h2>
+            <p><p>Get client APP API credentials.</p></p>                    </div>
+            
+                <h2>Traits</h2>
 
         
     <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-6">
                     <a href="../../../Bmatovu/MtnMomo/Traits/CommandUtilTrait.html"><abbr title="Bmatovu\MtnMomo\Traits\CommandUtilTrait">CommandUtilTrait</abbr></a>    </div>
-                <div class="col-md-6">Console commands utilities.</div>
+                <div class="col-md-6"><p>Console commands utilities.</p></div>
             </div>
             </div>
     
@@ -115,25 +161,28 @@
                     <tr>
                 <td class="type" id="property_client">
                                         protected                                        <abbr title="GuzzleHttp\ClientInterface">ClientInterface</abbr>
-                </td>
+                                                                                
+                                    </td>
                 <td>$client</td>
-                <td class="last">Guzzle HTTP client instance.</td>
+                <td class="last"><p>Guzzle HTTP client instance.</p></td>
                 <td></td>
             </tr>
                     <tr>
                 <td class="type" id="property_signature">
                                         protected                                        string
-                </td>
+                                                                                
+                                    </td>
                 <td>$signature</td>
-                <td class="last">The name and signature of the console command.</td>
+                <td class="last"><p>The name and signature of the console command.</p></td>
                 <td></td>
             </tr>
                     <tr>
                 <td class="type" id="property_description">
                                         protected                                        string
-                </td>
+                                                                                
+                                    </td>
                 <td>$description</td>
-                <td class="last">The console command description.</td>
+                <td class="last"><p>The console command description.</p></td>
                 <td></td>
             </tr>
             </table>
@@ -146,10 +195,10 @@
                 <div class="col-md-2 type">
                     void
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_line">line</a>(string $string, string|null $style = null, int|string|null $verbosity = null)
         
-                                            <p>Write a string as standard output.</p>                </div>
+                                            <p><p>Write a string as standard output.</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Bmatovu/MtnMomo/Traits/CommandUtilTrait.html#method_line">
 <abbr title="Bmatovu\MtnMomo\Traits\CommandUtilTrait">CommandUtilTrait</abbr></a></small></div>
             </div>
@@ -157,10 +206,10 @@
                 <div class="col-md-2 type">
                     bool
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_runInProduction">runInProduction</a>(string $warning = &#039;Application In Production!&#039;)
         
-                                            <p>Warn user running command in production.</p>                </div>
+                                            <p><p>Warn user running command in production.</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Bmatovu/MtnMomo/Traits/CommandUtilTrait.html#method_runInProduction">
 <abbr title="Bmatovu\MtnMomo\Traits\CommandUtilTrait">CommandUtilTrait</abbr></a></small></div>
             </div>
@@ -168,10 +217,10 @@
                 <div class="col-md-2 type">
                     void
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_printLabels">printLabels</a>(string $title, array|string $body = null)
         
-                                            <p>Print formatted labels.</p>                </div>
+                                            <p><p>Print formatted labels.</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Bmatovu/MtnMomo/Traits/CommandUtilTrait.html#method_printLabels">
 <abbr title="Bmatovu\MtnMomo\Traits\CommandUtilTrait">CommandUtilTrait</abbr></a></small></div>
             </div>
@@ -179,10 +228,10 @@
                 <div class="col-md-2 type">
                     void
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_updateSetting">updateSetting</a>(string $name, string $key, string $value)
         
-                                            <p>Write | replace setting in .env file.</p>                </div>
+                                            <p><p>Write | replace setting in .env file.</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Bmatovu/MtnMomo/Traits/CommandUtilTrait.html#method_updateSetting">
 <abbr title="Bmatovu\MtnMomo\Traits\CommandUtilTrait">CommandUtilTrait</abbr></a></small></div>
             </div>
@@ -190,30 +239,30 @@
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method___construct">__construct</a>(<abbr title="GuzzleHttp\ClientInterface">ClientInterface</abbr> $client)
         
-                                            <p>Create a new command instance.</p>                </div>
+                                            <p><p>Create a new command instance.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     void
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_handle">handle</a>()
         
-                                            <p>Execute the console command.</p>                </div>
+                                            <p><p>Execute the console command.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     void
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_requestClientInfo">requestClientInfo</a>(string $clientIdStatusUri)
         
-                                            <p>Request client credentials.</p>                </div>
+                                            <p><p>Request client credentials.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -230,13 +279,14 @@
     <strong>line</strong>(string $string, string|null $style = null, int|string|null $verbosity = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Write a string as standard output.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Write a string as standard output.</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -280,6 +330,7 @@
             </tr>
             </table>
 
+            
                     </div>
     </div>
 
@@ -292,13 +343,14 @@
     <strong>runInProduction</strong>(string $warning = &#039;Application In Production!&#039;)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Warn user running command in production.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Warn user running command in production.</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -321,6 +373,7 @@
 
             
             
+            
                     </div>
     </div>
 
@@ -333,13 +386,14 @@
     <strong>printLabels</strong>(string $title, array|string $body = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Print formatted labels.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Print formatted labels.</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -367,6 +421,7 @@
 
             
             
+            
                     </div>
     </div>
 
@@ -379,30 +434,31 @@
     <strong>updateSetting</strong>(string $name, string $key, string $value)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Write | replace setting in .env file.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Write | replace setting in .env file.</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$name</td>
-                <td>ENV_VALUE, like; <code>APP_NAME</code></td>
+                <td><p>ENV_VALUE, like; <code>APP_NAME</code></p></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$key</td>
-                <td>Compose setting name, like <code>app.name</code></td>
+                <td><p>Compose setting name, like <code>app.name</code></p></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$value</td>
-                <td>Setting value</td>
+                <td><p>Setting value</p></td>
             </tr>
             </table>
 
@@ -418,6 +474,7 @@
 
             
             
+            
                     </div>
     </div>
 
@@ -429,13 +486,14 @@
     <strong>__construct</strong>(<abbr title="GuzzleHttp\ClientInterface">ClientInterface</abbr> $client)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Create a new command instance.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Create a new command instance.</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -446,6 +504,7 @@
             </tr>
             </table>
 
+            
             
             
             
@@ -460,13 +519,14 @@
     <strong>handle</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Execute the console command.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Execute the console command.</p></p>                        
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -488,6 +548,7 @@
             </table>
 
             
+            
                     </div>
     </div>
 
@@ -499,13 +560,14 @@
     <strong>requestClientInfo</strong>(string $clientIdStatusUri)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Request client credentials.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Request client credentials.</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -537,6 +599,7 @@
             </table>
 
             
+            
                     </div>
     </div>
 
@@ -544,7 +607,7 @@
             </div>
 
     
-            </div><div id="footer">
+</div><div id="footer">
         Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.</div></div>
     </div>
     </body>

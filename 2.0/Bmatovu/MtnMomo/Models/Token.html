@@ -10,37 +10,68 @@
         <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
         <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
         <script async defer src="../../../js/bootstrap.min.js"></script>
-        <script src="../../../js/typeahead.min.js"></script>
-        <script src="../../../doctum.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
     </head>
 
-    <body id="class" data-name="class:Bmatovu_MtnMomo_Models_Token" data-root-path="../../../">
+    <body id="class" data-name="class:Bmatovu_MtnMomo_Models_Token" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
                     <form action="#">
-                <select  class="form-control" id="version-switcher" name="version">
-                                            <option value="../../../../1.3/index.html" data-version="1.3">v1.3</option>
-                                            <option value="../../../../1.4/index.html" data-version="1.4">v1.4</option>
-                                            <option value="../../../../1.5/index.html" data-version="1.5">v1.5</option>
-                                            <option value="../../../../1.6/index.html" data-version="1.6">v1.6</option>
-                                            <option value="../../../../1.7/index.html" data-version="1.7">v1.7</option>
-                                            <option value="../../../../1.8/index.html" data-version="1.8">v1.8</option>
-                                            <option value="../../../../2.0/index.html" data-version="2.0">v2.0</option>
-                                            <option value="../../../../3.x/index.html" data-version="3.x">v3.x</option>
-                                            <option value="../../../../master/index.html" data-version="master">Master</option>
+                <select class="form-control" id="version-switcher" name="version">
+                                            <option
+                            value="../../../../1.3/index.html"
+                            data-version="1.3" >v1.3</option>
+                                            <option
+                            value="../../../../1.4/index.html"
+                            data-version="1.4" >v1.4</option>
+                                            <option
+                            value="../../../../1.5/index.html"
+                            data-version="1.5" >v1.5</option>
+                                            <option
+                            value="../../../../1.6/index.html"
+                            data-version="1.6" >v1.6</option>
+                                            <option
+                            value="../../../../1.7/index.html"
+                            data-version="1.7" >v1.7</option>
+                                            <option
+                            value="../../../../1.8/index.html"
+                            data-version="1.8" >v1.8</option>
+                                            <option
+                            value="../../../../2.0/index.html"
+                            data-version="2.0" selected>v2.0</option>
+                                            <option
+                            value="../../../../3.x/index.html"
+                            data-version="3.x" >v3.x</option>
+                                            <option
+                            value="../../../../master/index.html"
+                            data-version="master" >Master</option>
                                     </select>
             </form>
-                <form id="search-form" action="../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -61,6 +92,22 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
+                                        <li role="presentation" class="dropdown visible-xs-block visible-sm-block">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"
+                            role="button" aria-haspopup="true" aria-expanded="false">Versions&nbsp;<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                        <li ><a href="../../../../1.3/index.html" data-version="1.3">v1.3</a></li>
+                        <li ><a href="../../../../1.4/index.html" data-version="1.4">v1.4</a></li>
+                        <li ><a href="../../../../1.5/index.html" data-version="1.5">v1.5</a></li>
+                        <li ><a href="../../../../1.6/index.html" data-version="1.6">v1.6</a></li>
+                        <li ><a href="../../../../1.7/index.html" data-version="1.7">v1.7</a></li>
+                        <li ><a href="../../../../1.8/index.html" data-version="1.8">v1.8</a></li>
+                        <li class="active"><a href="../../../../2.0/index.html" data-version="2.0">v2.0</a></li>
+                        <li ><a href="../../../../3.x/index.html" data-version="3.x">v3.x</a></li>
+                        <li ><a href="../../../../master/index.html" data-version="master">Master</a></li>
+                        </ul>
+                    </li>
                     <li><a href="../../../classes.html">Classes</a></li>
                     <li><a href="../../../namespaces.html">Namespaces</a></li>
                     <li><a href="../../../interfaces.html">Interfaces</a></li>
@@ -79,26 +126,24 @@
             </ol>
         </div>
                 <div id="page-content">
-                
     <div class="page-header">
-        <h1>
-            Token
-                
-        </h1>
+        <h1>Token    
+            </h1>
     </div>
 
+    
     <p>        class
-    <strong>Token</strong>        extends <abbr title="Illuminate\Database\Eloquent\Model">Model</abbr>        implements
-        <abbr title="Bmatovu\OAuthNegotiator\Models\TokenInterface">TokenInterface</abbr>        (<a href="https://github.com/mtvbrianking/laravel-mtn-momo/blob/2.0/src/Models/Token.php">View source</a>)
+    <strong>Token</strong>        extends <abbr title="Illuminate\Database\Eloquent\Model">Model</abbr>        implements        <abbr title="Bmatovu\OAuthNegotiator\Models\TokenInterface">TokenInterface</abbr>        (<a href="https://github.com/mtvbrianking/laravel-mtn-momo/blob/2.0/src/Models/Token.php">View source</a>)
 </p>
 
         
     
+        
 
             <div class="description">
-            <p>Token model.</p>                                </div>
-    
-            <h2>Traits</h2>
+            <p><p>Token model.</p></p>                    </div>
+            
+                <h2>Traits</h2>
 
         
     <div class="container-fluid underlined">
@@ -110,7 +155,7 @@
                     <div class="row">
                 <div class="col-md-6">
                     <a href="../../../Bmatovu/MtnMomo/Traits/TokenUtilTrait.html"><abbr title="Bmatovu\MtnMomo\Traits\TokenUtilTrait">TokenUtilTrait</abbr></a>    </div>
-                <div class="col-md-6">Token model utilities.</div>
+                <div class="col-md-6"><p>Token model utilities.</p></div>
             </div>
             </div>
     
@@ -121,25 +166,28 @@
                     <tr>
                 <td class="type" id="property_table">
                                         protected                                        string
-                </td>
+                                                                                
+                                    </td>
                 <td>$table</td>
-                <td class="last">The table associated with the model.</td>
+                <td class="last"><p>The table associated with the model.</p></td>
                 <td></td>
             </tr>
                     <tr>
                 <td class="type" id="property_fillable">
                                         protected                                        array
-                </td>
+                                                                                
+                                    </td>
                 <td>$fillable</td>
-                <td class="last">The attributes that are mass assignable.</td>
+                <td class="last"><p>The attributes that are mass assignable.</p></td>
                 <td></td>
             </tr>
                     <tr>
                 <td class="type" id="property_dates">
                                         protected                                        array
-                </td>
+                                                                                
+                                    </td>
                 <td>$dates</td>
-                <td class="last">The attributes that should be mutated to dates.</td>
+                <td class="last"><p>The attributes that should be mutated to dates.</p></td>
                 <td></td>
             </tr>
             </table>
@@ -152,10 +200,10 @@
                 <div class="col-md-2 type">
                     string
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getAccessToken">getAccessToken</a>()
         
-                                            <p>Get access token.</p>                </div>
+                                            <p><p>Get access token.</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Bmatovu/MtnMomo/Traits/TokenUtilTrait.html#method_getAccessToken">
 <abbr title="Bmatovu\MtnMomo\Traits\TokenUtilTrait">TokenUtilTrait</abbr></a></small></div>
             </div>
@@ -163,10 +211,10 @@
                 <div class="col-md-2 type">
                     string|null
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getRefreshToken">getRefreshToken</a>()
         
-                                            <p>Get refresh token.</p>                </div>
+                                            <p><p>Get refresh token.</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Bmatovu/MtnMomo/Traits/TokenUtilTrait.html#method_getRefreshToken">
 <abbr title="Bmatovu\MtnMomo\Traits\TokenUtilTrait">TokenUtilTrait</abbr></a></small></div>
             </div>
@@ -174,10 +222,10 @@
                 <div class="col-md-2 type">
                     string
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getTokenType">getTokenType</a>()
         
-                                            <p>Get token type.</p>                </div>
+                                            <p><p>Get token type.</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Bmatovu/MtnMomo/Traits/TokenUtilTrait.html#method_getTokenType">
 <abbr title="Bmatovu\MtnMomo\Traits\TokenUtilTrait">TokenUtilTrait</abbr></a></small></div>
             </div>
@@ -185,10 +233,10 @@
                 <div class="col-md-2 type">
                     string
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getExpiresAt">getExpiresAt</a>()
         
-                                            <p>Get expires at.</p>                </div>
+                                            <p><p>Get expires at.</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Bmatovu/MtnMomo/Traits/TokenUtilTrait.html#method_getExpiresAt">
 <abbr title="Bmatovu\MtnMomo\Traits\TokenUtilTrait">TokenUtilTrait</abbr></a></small></div>
             </div>
@@ -196,10 +244,10 @@
                 <div class="col-md-2 type">
                     bool
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_isExpired">isExpired</a>()
         
-                                            <p>Determine if a token is expired.</p>                </div>
+                                            <p><p>Determine if a token is expired.</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Bmatovu/MtnMomo/Traits/TokenUtilTrait.html#method_isExpired">
 <abbr title="Bmatovu\MtnMomo\Traits\TokenUtilTrait">TokenUtilTrait</abbr></a></small></div>
             </div>
@@ -217,13 +265,14 @@
     <strong>getAccessToken</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Get access token.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Get access token.</p></p>                        
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -234,6 +283,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -248,13 +298,14 @@
     <strong>getRefreshToken</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Get refresh token.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Get refresh token.</p></p>                        
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -265,6 +316,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -279,13 +331,14 @@
     <strong>getTokenType</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Get token type.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Get token type.</p></p>                        
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -296,6 +349,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -310,23 +364,25 @@
     <strong>getExpiresAt</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Get expires at.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Get expires at.</p></p>                        
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
             <td>string</td>
-            <td></td>
+            <td>Datatime</td>
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -341,13 +397,14 @@
     <strong>isExpired</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Determine if a token is expired.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Determine if a token is expired.</p></p>                        
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -360,6 +417,7 @@
 
             
             
+            
                     </div>
     </div>
 
@@ -367,7 +425,7 @@
             </div>
 
     
-            </div><div id="footer">
+</div><div id="footer">
         Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.</div></div>
     </div>
     </body>

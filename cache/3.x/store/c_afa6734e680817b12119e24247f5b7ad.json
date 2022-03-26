@@ -13,8 +13,15 @@
     "modifiers": 0,
     "is_trait": false,
     "is_interface": false,
+    "is_read_only": false,
     "aliases": {
-        "": "Ramsey\\Uuid\\Uuid"
+        "CommandUtilTrait": "Bmatovu\\MtnMomo\\Traits\\CommandUtilTrait",
+        "ClientInterface": "GuzzleHttp\\ClientInterface",
+        "ClientException": "GuzzleHttp\\Exception\\ClientException",
+        "ConnectException": "GuzzleHttp\\Exception\\ConnectException",
+        "ServerException": "GuzzleHttp\\Exception\\ServerException",
+        "Command": "Illuminate\\Console\\Command",
+        "Uuid": "Ramsey\\Uuid\\Uuid"
     },
     "errors": [],
     "interfaces": [],
@@ -33,11 +40,13 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
             "modifiers": 2,
             "default": null,
-            "errors": []
+            "errors": [],
+            "is_read_only": false,
+            "is_write_only": false
         },
         "product": {
             "name": "product",
@@ -50,11 +59,13 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
             "modifiers": 2,
             "default": null,
-            "errors": []
+            "errors": [],
+            "is_read_only": false,
+            "is_write_only": false
         },
         "signature": {
             "name": "signature",
@@ -67,19 +78,21 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
             "modifiers": 2,
             "default": {
                 "nodeType": "Scalar_String",
-                "value": "mtn-momo:request-secret\n                                {--id= : Client APP ID.}\n                                {--product= : Product subscribed to.}\n                                {--no-write= : Don't credentials to .env file.}\n                                {--f|force : Force the operation to run when in production.}",
                 "attributes": {
                     "startLine": 42,
                     "endLine": 46,
                     "kind": 1
-                }
+                },
+                "value": "mtn-momo:request-secret\n                                {--id= : Client APP ID.}\n                                {--product= : Product subscribed to.}\n                                {--no-write= : Don't credentials to .env file.}\n                                {--f|force : Force the operation to run when in production.}"
             },
-            "errors": []
+            "errors": [],
+            "is_read_only": false,
+            "is_write_only": false
         },
         "description": {
             "name": "description",
@@ -92,19 +105,21 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
             "modifiers": 2,
             "default": {
                 "nodeType": "Scalar_String",
-                "value": "Request client APP secret; 'apikey'.",
                 "attributes": {
                     "startLine": 53,
                     "endLine": 53,
                     "kind": 2
-                }
+                },
+                "value": "Request client APP secret; 'apikey'."
             },
-            "errors": []
+            "errors": [],
+            "is_read_only": false,
+            "is_write_only": false
         }
     },
     "methods": {
@@ -116,6 +131,7 @@
             "hint": null,
             "hint_desc": null,
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -133,20 +149,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": {
-                        "nodeType": "Name_FullyQualified",
-                        "parts": [
-                            "GuzzleHttp",
-                            "ClientInterface"
-                        ],
-                        "attributes": {
-                            "startLine": 60,
-                            "endLine": 60
-                        }
-                    },
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         },
@@ -161,8 +168,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [
@@ -185,8 +193,9 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "",
             "tags": [],
+            "see": [],
             "modifiers": 2,
             "is_by_ref": "",
             "exceptions": [],
@@ -208,7 +217,7 @@
                     false
                 ]
             ],
-            "hint_desc": null,
+            "hint_desc": "Client Secret",
             "tags": {
                 "link": [
                     [
@@ -217,6 +226,7 @@
                     ]
                 ]
             },
+            "see": [],
             "modifiers": 2,
             "is_by_ref": "",
             "exceptions": [
@@ -239,10 +249,11 @@
                         ]
                     ],
                     "tags": [],
-                    "modifiers": null,
+                    "modifiers": 0,
                     "default": null,
                     "variadic": false,
-                    "is_by_ref": false
+                    "is_by_ref": false,
+                    "is_read_only": false
                 }
             }
         }
