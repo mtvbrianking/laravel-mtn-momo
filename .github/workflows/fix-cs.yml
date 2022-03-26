@@ -1,13 +1,6 @@
 name: fix-cs
 
-on:
-  push:
-    tags:
-      - '*'
-
-# # https://levelup.gitconnected.com/how-to-manually-trigger-a-github-actions-workflow-4712542f1960
-# on:
-#   workflow_dispatch:
+on: [workflow_dispatch, pull_request]
 
 jobs:
   code-style:
