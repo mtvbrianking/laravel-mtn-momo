@@ -17,7 +17,7 @@ jobs:
         include:
           - laravel: ^8.0
             testbench: ^6.0
-          - laravel: ^8.0
+          - laravel: ^9.0
             testbench: ^7.0
       # matrix:
       #   php: [8.0]
