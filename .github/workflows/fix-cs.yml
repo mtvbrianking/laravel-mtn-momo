@@ -1,6 +1,9 @@
 name: fix-cs
 
-on: [push, pull_request]
+on:
+  push:
+    tags:
+      - '*'
 
 # # https://levelup.gitconnected.com/how-to-manually-trigger-a-github-actions-workflow-4712542f1960
 # on:
