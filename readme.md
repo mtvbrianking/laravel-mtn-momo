@@ -14,21 +14,11 @@ This package helps you integrate the [MTN MOMO API](https://momodeveloper.mtn.co
 
 To get started, install the package via the Composer package manager:
 
-| Laravel | Package | Installation                                      |
-| :-----: | :-----: | ------------------------------------------------- |
-|   6.0   |   2.0   | `composer require bmatovu/laravel-mtn-momo ^2.0`  |
-|   7.0   |   3.0   | `composer require bmatovu/laravel-mtn-momo ^3.0`  |
-|   8.0   |   4.0   | `composer require bmatovu/laravel-mtn-momo ^4.0`  |
-|   9.0   | master  | `composer require bmatovu/laravel-mtn-momo`       |
-
-Optional: The service provider will be auto-discovered for Laravel 5.5 and above. You may manually register the service provider in your configuration `config/app.php` file:
-
-```php
-'providers' => [
-   // ...
-   Bmatovu\MtnMomo\MtnMomoServiceProvider::class,
-],
-```
+| Laravel      | Package | Installation                                      |
+| :----------: | :-----: | ------------------------------------------------- |
+| ^6.0         | 2.0     | `composer require bmatovu/laravel-mtn-momo ^2.0`  |
+| ^7.0         | 3.0     | `composer require bmatovu/laravel-mtn-momo ^3.0`  |
+| ^8.0 \| ^9.0 | master  | `composer require bmatovu/laravel-mtn-momo`       |
 
 **Configuration customization**
 
@@ -189,6 +179,7 @@ try {
     $collection->getAccountHolderBasicInfo($partyId)
     ```
     
+
 **Remittance**
 
 1. [Remit money](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Remittance.html#method_transact)
