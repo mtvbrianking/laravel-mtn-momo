@@ -3,6 +3,8 @@
 [![Total Downloads](https://poser.pugx.org/bmatovu/laravel-mtn-momo/downloads)](https://packagist.org/packages/bmatovu/laravel-mtn-momo)
 [![Latest Stable Version](https://poser.pugx.org/bmatovu/laravel-mtn-momo/v/stable)](https://packagist.org/packages/bmatovu/laravel-mtn-momo)
 [![License](https://poser.pugx.org/bmatovu/laravel-mtn-momo/license)](https://packagist.org/packages/bmatovu/laravel-mtn-momo)
+[![Code Quality](https://scrutinizer-ci.com/g/mtvbrianking/laravel-mtn-momo/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mtvbrianking/laravel-mtn-momo/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/mtvbrianking/laravel-mtn-momo/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/mtvbrianking/laravel-mtn-momo/?branch=master)
 [![Tests](https://github.com/mtvbrianking/laravel-mtn-momo/workflows/run-tests/badge.svg)](https://github.com/mtvbrianking/laravel-mtn-momo/actions?query=workflow:run-tests)
 [![Documentation](https://github.com/mtvbrianking/laravel-mtn-momo/workflows/gen-docs/badge.svg)](https://mtvbrianking.github.io/laravel-mtn-momo/master)
 
