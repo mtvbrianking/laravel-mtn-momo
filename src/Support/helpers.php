@@ -4,6 +4,7 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\MessageFormatter;
 use GuzzleHttp\Middleware;
 use Illuminate\Container\Container;
+use Illuminate\Support\Str;
 
 if (! function_exists('environment_file_path')) {
     /**
@@ -90,20 +91,24 @@ if (! function_exists('append_log_middleware')) {
      */
     function append_log_middleware(HandlerStack $handlerStack)
     {
+        $id = Str::random(10);
+
         $messageFormats = [
-            '[Request Headers] {req_headers}',
-            '[Request Body] {req_body}',
-            '[Response Headers] {res_headers}',
-            '[Response Body] {res_body}',
-            '[Error] {error}',
+            "HTTP_OUT_{$id} [Request] {method} {target}" => 'info',
+            "HTTP_OUT_{$id} [Request] [Headers] \n{req_headers}" => 'debug',
+            "HTTP_OUT_{$id} [Request] [Body] {req_body}" => 'debug',
+            "HTTP_OUT_{$id} [Response] HTTP/{version} {code} {phrase} Size: {res_header_Content-Length}" => 'info',
+            "HTTP_OUT_{$id} [Response] [Headers] \n{res_headers}" => 'debug',
+            "HTTP_OUT_{$id} [Response] [Body] {res_body}" => 'debug',
+            "HTTP_OUT_{$id} [Error] {error}" => 'error',
         ];
-        
+
         $logger = Container::getInstance()->get('log');
 
-        collect($messageFormats)->each(function ($messageFormat) use ($logger, $handlerStack) {
-            $messageFormatter = new MessageFormatter($messageFormat);
+        collect($messageFormats)->each(function ($level, $format) use ($logger, $handlerStack) {
+            $messageFormatter = new MessageFormatter($format);
 
-            $logMiddleware = Middleware::log($logger, $messageFormatter);
+            $logMiddleware = Middleware::log($logger, $messageFormatter, $level);
 
             $handlerStack->unshift($logMiddleware);
         });
