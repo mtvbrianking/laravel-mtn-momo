@@ -124,7 +124,7 @@ class RegisterIdCommandTest extends TestCase
 
         $mockCommand->shouldReceive('info')->once()->with('Client APP ID - [X-Reference-Id, api_user_id]');
 
-        $mockCommand->shouldReceive('info')->once()->with('Client APP callback URI - [X-Callback-Url, providerCallbackHost]');
+        $mockCommand->shouldReceive('info')->once()->with('Client APP callback URI - [X-Callback-Url]');
 
         $mockCommand->shouldReceive('ask')
             ->once()
@@ -153,11 +153,12 @@ class RegisterIdCommandTest extends TestCase
 
         $mockClient = $this->mockGuzzleClient($apiResponse);
 
-        $mockCommand = m::mock('Bmatovu\MtnMomo\Console\RegisterIdCommand[ask,info,line,confirm]', [$mockClient]);
+        $mockCommand = m::mock('Bmatovu\MtnMomo\Console\RegisterIdCommand[ask,info,line,confirm]', [$mockClient])
+            ->shouldIgnoreMissing();
 
         $mockCommand->shouldReceive('info')->once()->with('Client APP ID - [X-Reference-Id, api_user_id]');
 
-        $mockCommand->shouldReceive('info')->once()->with('Client APP callback URI - [X-Callback-Url, providerCallbackHost]');
+        $mockCommand->shouldReceive('info')->once()->with('Client APP callback URI - [X-Callback-Url]');
 
         $mockCommand->shouldReceive('ask')
             ->once()
