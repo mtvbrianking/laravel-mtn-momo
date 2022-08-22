@@ -28,6 +28,13 @@ return [
      */
     'product' => env('MOMO_PRODUCT', 'collection'),
 
+    /*
+     * Provider Callback Host.
+     *
+     * It's basically the host for your server domain.
+     */
+    'provider_callback_host' => env('MOMO_PROVIDER_CALLBACK_HOST', 'localhost'),
+
     'api' => [
         // API base URI.
         'base_uri' => env('MOMO_API_BASE_URI', 'https://sandbox.momodeveloper.mtn.com/'),

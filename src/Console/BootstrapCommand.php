@@ -56,22 +56,20 @@ class BootstrapCommand extends Command
             'These settings will be written to your .env',
         ]);
 
-        // Client APP name
         $this->setClientName();
 
-        // Environment
         $this->setEnvironment();
 
-        // Currency
         $this->setCurrency();
 
-        // Product
+        $this->setProviderCallbackHost();
+
         $this->setProductName();
 
-        // Product key
         $this->setProductSubscriptionKey();
 
-        $this->info("\r\nComplete...");
+        $this->info("\r\nNext: Register your client application's ID.");
+        $this->line("\r\n>>> php artisan mtn-momo:register-id");
     }
 
     /**
@@ -126,6 +124,21 @@ class BootstrapCommand extends Command
         $currency = $this->ask('MOMO_CURRENCY', $currency);
 
         $this->updateSetting('MOMO_CURRENCY', 'mtn-momo.currency', strtoupper($currency));
+    }
+
+    /**
+     * Create/update currency.
+     *
+     * @return void
+     */
+    protected function setProviderCallbackHost()
+    {
+        $this->printLabels('Provider Callback Host', ['Your server hostname']);
+
+        $providerCallbackHost = $this->laravel['config']->get('mtn-momo.provider_callback_host');
+        $providerCallbackHost = $this->ask('MOMO_PROVIDER_CALLBACK_HOST', $providerCallbackHost);
+
+        $this->updateSetting('MOMO_PROVIDER_CALLBACK_HOST', 'mtn-momo.provider_callback_host', $providerCallbackHost);
     }
 
     /**
