@@ -290,7 +290,7 @@ that is then registered with MTN Momo API.</p></p>        </div>
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_registerClientId">registerClientId</a>(string $clientId, string $clientCallbackUri)
+                    <a href="#method_registerClientId">registerClientId</a>(string $clientId, string $providerCallbackHost)
         
                                             <p><p>Register client ID.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -585,7 +585,7 @@ that is then registered with MTN Momo API.</p></p>        </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getClientId">
-        <div class="location"><a href="https://github.com/mtvbrianking/laravel-mtn-momo/blob/master/src/Console/RegisterIdCommand.php#L121">at line 121</a></div>
+        <div class="location"><a href="https://github.com/mtvbrianking/laravel-mtn-momo/blob/master/src/Console/RegisterIdCommand.php#L129">at line 129</a></div>
         <code>            protected        string
     <strong>getClientId</strong>()
         </code>
@@ -626,7 +626,7 @@ that is then registered with MTN Momo API.</p></p>        </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getClientCallbackUri">
-        <div class="location"><a href="https://github.com/mtvbrianking/laravel-mtn-momo/blob/master/src/Console/RegisterIdCommand.php#L157">at line 157</a></div>
+        <div class="location"><a href="https://github.com/mtvbrianking/laravel-mtn-momo/blob/master/src/Console/RegisterIdCommand.php#L160">at line 160</a></div>
         <code>            protected        string
     <strong>getClientCallbackUri</strong>()
         </code>
@@ -658,9 +658,9 @@ that is then registered with MTN Momo API.</p></p>        </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_registerClientId">
-        <div class="location"><a href="https://github.com/mtvbrianking/laravel-mtn-momo/blob/master/src/Console/RegisterIdCommand.php#L200">at line 200</a></div>
+        <div class="location"><a href="https://github.com/mtvbrianking/laravel-mtn-momo/blob/master/src/Console/RegisterIdCommand.php#L199">at line 199</a></div>
         <code>            protected        bool
-    <strong>registerClientId</strong>(string $clientId, string $clientCallbackUri)
+    <strong>registerClientId</strong>(string $clientId, string $providerCallbackHost)
         </code>
     </h3>
     <div class="details">    
@@ -682,7 +682,7 @@ but is still required when registering a client ID.</p></p>
             </tr>
                     <tr>
                 <td>string</td>
-                <td>$clientCallbackUri</td>
+                <td>$providerCallbackHost</td>
                 <td></td>
             </tr>
             </table>

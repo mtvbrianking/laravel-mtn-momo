@@ -13,7 +13,7 @@ use Twig\Source;
 use Twig\Template;
 
 /* macros.twig */
-class __TwigTemplate_992c51e0a3e70de7c2ceddaae2230262 extends Template
+class __TwigTemplate_a5e60a522f12bbaae74f8eb195dc93f8 extends Template
 {
     private $source;
     private $macros = [];
@@ -172,7 +172,7 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("trait");
                 echo "\">";
             }
             // line 18
-            echo call_user_func_array($this->env->getFunction('abbr_class')->getCallable(), [(isset($context["class"]) || array_key_exists("class", $context) ? $context["class"] : (function () { throw new RuntimeError('Variable "class" does not exist.', 18, $this->source); })()), ((array_key_exists("absolute", $context)) ? (_twig_default_filter((isset($context["absolute"]) || array_key_exists("absolute", $context) ? $context["absolute"] : (function () { throw new RuntimeError('Variable "absolute" does not exist.', 18, $this->source); })()), false)) : (false))]);
+            echo $this->env->getFunction('abbr_class')->getCallable()((isset($context["class"]) || array_key_exists("class", $context) ? $context["class"] : (function () { throw new RuntimeError('Variable "class" does not exist.', 18, $this->source); })()), ((array_key_exists("absolute", $context)) ? (_twig_default_filter((isset($context["absolute"]) || array_key_exists("absolute", $context) ? $context["absolute"] : (function () { throw new RuntimeError('Variable "absolute" does not exist.', 18, $this->source); })()), false)) : (false)));
             // line 19
             if ((twig_get_attribute($this->env, $this->source, (isset($context["class"]) || array_key_exists("class", $context) ? $context["class"] : (function () { throw new RuntimeError('Variable "class" does not exist.', 19, $this->source); })()), "isProjectClass", [], "method", false, false, false, 19) || twig_get_attribute($this->env, $this->source, (isset($context["class"]) || array_key_exists("class", $context) ? $context["class"] : (function () { throw new RuntimeError('Variable "class" does not exist.', 19, $this->source); })()), "isPhpClass", [], "method", false, false, false, 19))) {
                 echo "</a>";
@@ -205,7 +205,7 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("trait");
             echo "\">
 ";
             // line 24
-            echo call_user_func_array($this->env->getFunction('abbr_class')->getCallable(), [twig_get_attribute($this->env, $this->source, (isset($context["method"]) || array_key_exists("method", $context) ? $context["method"] : (function () { throw new RuntimeError('Variable "method" does not exist.', 24, $this->source); })()), "class", [], "any", false, false, false, 24)]);
+            echo $this->env->getFunction('abbr_class')->getCallable()(twig_get_attribute($this->env, $this->source, (isset($context["method"]) || array_key_exists("method", $context) ? $context["method"] : (function () { throw new RuntimeError('Variable "method" does not exist.', 24, $this->source); })()), "class", [], "any", false, false, false, 24));
             if ( !((array_key_exists("classonly", $context)) ? (_twig_default_filter((isset($context["classonly"]) || array_key_exists("classonly", $context) ? $context["classonly"] : (function () { throw new RuntimeError('Variable "classonly" does not exist.', 24, $this->source); })()), false)) : (false))) {
                 echo "::";
                 echo twig_get_attribute($this->env, $this->source, (isset($context["method"]) || array_key_exists("method", $context) ? $context["method"] : (function () { throw new RuntimeError('Variable "method" does not exist.', 24, $this->source); })()), "name", [], "any", false, false, false, 24);
@@ -240,7 +240,7 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("trait");
             echo "\">
 ";
             // line 30
-            echo call_user_func_array($this->env->getFunction('abbr_class')->getCallable(), [twig_get_attribute($this->env, $this->source, (isset($context["property"]) || array_key_exists("property", $context) ? $context["property"] : (function () { throw new RuntimeError('Variable "property" does not exist.', 30, $this->source); })()), "class", [], "any", false, false, false, 30)]);
+            echo $this->env->getFunction('abbr_class')->getCallable()(twig_get_attribute($this->env, $this->source, (isset($context["property"]) || array_key_exists("property", $context) ? $context["property"] : (function () { throw new RuntimeError('Variable "property" does not exist.', 30, $this->source); })()), "class", [], "any", false, false, false, 30));
             if ( !((array_key_exists("classonly", $context)) ? (_twig_default_filter((isset($context["classonly"]) || array_key_exists("classonly", $context) ? $context["classonly"] : (function () { throw new RuntimeError('Variable "classonly" does not exist.', 30, $this->source); })()), false)) : (false))) {
                 echo "#";
                 echo twig_get_attribute($this->env, $this->source, (isset($context["property"]) || array_key_exists("property", $context) ? $context["property"] : (function () { throw new RuntimeError('Variable "property" does not exist.', 30, $this->source); })()), "name", [], "any", false, false, false, 30);
@@ -295,7 +295,7 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("trait");
                     } elseif (twig_get_attribute($this->env, $this->source,                     // line 41
 $context["hint"], "name", [], "any", false, false, false, 41)) {
                         // line 42
-                        echo call_user_func_array($this->env->getFunction('abbr_class')->getCallable(), [twig_get_attribute($this->env, $this->source, $context["hint"], "name", [], "any", false, false, false, 42)]);
+                        echo $this->env->getFunction('abbr_class')->getCallable()(twig_get_attribute($this->env, $this->source, $context["hint"], "name", [], "any", false, false, false, 42));
                     }
                     // line 44
                     if (twig_get_attribute($this->env, $this->source, $context["hint"], "array", [], "any", false, false, false, 44)) {

@@ -8,7 +8,7 @@
     "namespace": "Bmatovu\\MtnMomo\\Products",
     "file": "\/home\/runner\/work\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Products\/Collection.php",
     "relative_file": "\/src\/Products\/Collection.php",
-    "hash": "791e43a24f56fae28f3401ea36922fa661283bec",
+    "hash": "4e57b6a7b1276ab969319d51a68354b454d02671",
     "parent": "Bmatovu\\MtnMomo\\Products\\Product",
     "modifiers": 0,
     "is_trait": false,
@@ -615,7 +615,7 @@
         },
         "getTransactionStatus": {
             "name": "getTransactionStatus",
-            "line": 238,
+            "line": 235,
             "short_desc": "Get transaction status.",
             "long_desc": "",
             "hint": [
@@ -658,7 +658,7 @@
             "parameters": {
                 "momoTransactionId": {
                     "name": "momoTransactionId",
-                    "line": 238,
+                    "line": 235,
                     "short_desc": "MTN Momo transaction ID. Returned from transact (requestToPay)",
                     "long_desc": null,
                     "hint": [
@@ -678,7 +678,7 @@
         },
         "getToken": {
             "name": "getToken",
-            "line": 265,
+            "line": 262,
             "short_desc": "Request collections access token.",
             "long_desc": "",
             "hint": [
@@ -722,7 +722,7 @@
         },
         "getAccountBalance": {
             "name": "getAccountBalance",
-            "line": 293,
+            "line": 290,
             "short_desc": "Get account balance.",
             "long_desc": "",
             "hint": [
@@ -766,7 +766,7 @@
         },
         "isActive": {
             "name": "isActive",
-            "line": 321,
+            "line": 318,
             "short_desc": "Determine if an account holder is registered and active.",
             "long_desc": "",
             "hint": [
@@ -809,7 +809,7 @@
             "parameters": {
                 "partyId": {
                     "name": "partyId",
-                    "line": 321,
+                    "line": 318,
                     "short_desc": "Party number - MSISDN, email, or code - UUID.",
                     "long_desc": null,
                     "hint": [
@@ -827,7 +827,7 @@
                 },
                 "partyIdType": {
                     "name": "partyIdType",
-                    "line": 321,
+                    "line": 318,
                     "short_desc": "Allowed values [msisdn, email, party_code].",
                     "long_desc": null,
                     "hint": [
@@ -847,7 +847,7 @@
         },
         "getAccountHolderBasicInfo": {
             "name": "getAccountHolderBasicInfo",
-            "line": 364,
+            "line": 361,
             "short_desc": "Get basic info of an account holder.",
             "long_desc": "",
             "hint": [
@@ -890,7 +890,7 @@
             "parameters": {
                 "partyId": {
                     "name": "partyId",
-                    "line": 364,
+                    "line": 361,
                     "short_desc": "Party number - MSISDN.",
                     "long_desc": null,
                     "hint": [

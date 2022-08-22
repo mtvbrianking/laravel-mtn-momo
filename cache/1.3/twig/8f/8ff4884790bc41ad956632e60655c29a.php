@@ -13,7 +13,7 @@ use Twig\Source;
 use Twig\Template;
 
 /* doctum.js.twig */
-class __TwigTemplate_95d10098c1fca51fe663aab7d38508e3 extends Template
+class __TwigTemplate_156f4118aed7ffec87b4f2d8fcb4eb05 extends Template
 {
     private $source;
     private $macros = [];

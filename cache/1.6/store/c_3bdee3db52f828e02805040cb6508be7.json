@@ -86,7 +86,8 @@
                 "attributes": {
                     "startLine": 45,
                     "endLine": 50,
-                    "kind": 1
+                    "kind": 1,
+                    "rawValue": "'mtn-momo:register-id\n                                {--id= : Client APP ID.}\n                                {--callback= : Client APP redirect URI.}\n                                {--product= : Product subscribed to.}\n                                {--no-write= : Don\\'t credentials to .env file.}\n                                {--f|force : Force the operation to run when in production.}'"
                 },
                 "value": "mtn-momo:register-id\n                                {--id= : Client APP ID.}\n                                {--callback= : Client APP redirect URI.}\n                                {--product= : Product subscribed to.}\n                                {--no-write= : Don't credentials to .env file.}\n                                {--f|force : Force the operation to run when in production.}"
             },
@@ -113,7 +114,8 @@
                 "attributes": {
                     "startLine": 57,
                     "endLine": 57,
-                    "kind": 2
+                    "kind": 2,
+                    "rawValue": "\"Register client APP ID; 'apiuser'\""
                 },
                 "value": "Register client APP ID; 'apiuser'"
             },

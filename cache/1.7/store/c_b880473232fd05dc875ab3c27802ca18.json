@@ -43,7 +43,8 @@
                 "attributes": {
                     "startLine": 23,
                     "endLine": 25,
-                    "kind": 1
+                    "kind": 1,
+                    "rawValue": "'mtn-momo:init\n                                {--no-write= : Don\\'t credentials to .env file.}\n                                {--f|force : Force the operation to run when in production.}'"
                 },
                 "value": "mtn-momo:init\n                                {--no-write= : Don't credentials to .env file.}\n                                {--f|force : Force the operation to run when in production.}"
             },
@@ -70,7 +71,8 @@
                 "attributes": {
                     "startLine": 32,
                     "endLine": 32,
-                    "kind": 1
+                    "kind": 1,
+                    "rawValue": "'Bootstrap\/setup integration.'"
                 },
                 "value": "Bootstrap\/setup integration."
             },

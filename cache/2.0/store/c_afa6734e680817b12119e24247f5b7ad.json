@@ -86,7 +86,8 @@
                 "attributes": {
                     "startLine": 42,
                     "endLine": 46,
-                    "kind": 1
+                    "kind": 1,
+                    "rawValue": "'mtn-momo:request-secret\n                                {--id= : Client APP ID.}\n                                {--product= : Product subscribed to.}\n                                {--no-write= : Don\\'t credentials to .env file.}\n                                {--f|force : Force the operation to run when in production.}'"
                 },
                 "value": "mtn-momo:request-secret\n                                {--id= : Client APP ID.}\n                                {--product= : Product subscribed to.}\n                                {--no-write= : Don't credentials to .env file.}\n                                {--f|force : Force the operation to run when in production.}"
             },
@@ -113,7 +114,8 @@
                 "attributes": {
                     "startLine": 53,
                     "endLine": 53,
-                    "kind": 2
+                    "kind": 2,
+                    "rawValue": "\"Request client APP secret; 'apikey'.\""
                 },
                 "value": "Request client APP secret; 'apikey'."
             },

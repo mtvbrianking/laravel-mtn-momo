@@ -67,7 +67,8 @@
                 "attributes": {
                     "startLine": 35,
                     "endLine": 37,
-                    "kind": 1
+                    "kind": 1,
+                    "rawValue": "'mtn-momo:validate-id\n                                {--id= : Client APP ID.}\n                                {--product= : Product subscribed to.}'"
                 },
                 "value": "mtn-momo:validate-id\n                                {--id= : Client APP ID.}\n                                {--product= : Product subscribed to.}"
             },
@@ -94,7 +95,8 @@
                 "attributes": {
                     "startLine": 44,
                     "endLine": 44,
-                    "kind": 2
+                    "kind": 2,
+                    "rawValue": "\"Validate client APP ID; 'apiuser'.\""
                 },
                 "value": "Validate client APP ID; 'apiuser'."
             },

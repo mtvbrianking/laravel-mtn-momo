@@ -8,7 +8,7 @@
     "namespace": "Bmatovu\\MtnMomo\\Console",
     "file": "\/home\/runner\/work\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Console\/BootstrapCommand.php",
     "relative_file": "\/src\/Console\/BootstrapCommand.php",
-    "hash": "f18632a83f48cbde19916235f18e47dbd6e6f1c0",
+    "hash": "27c9e532d1ca0e19741176b657306215a1dfc485",
     "parent": "Illuminate\\Console\\Command",
     "modifiers": 0,
     "is_trait": false,
@@ -43,7 +43,8 @@
                 "attributes": {
                     "startLine": 23,
                     "endLine": 25,
-                    "kind": 1
+                    "kind": 1,
+                    "rawValue": "'mtn-momo:init\n                                {--no-write= : Don\\'t write credentials to .env file.}\n                                {--f|force : Force the operation to run when in production.}'"
                 },
                 "value": "mtn-momo:init\n                                {--no-write= : Don't write credentials to .env file.}\n                                {--f|force : Force the operation to run when in production.}"
             },
@@ -70,7 +71,8 @@
                 "attributes": {
                     "startLine": 32,
                     "endLine": 32,
-                    "kind": 1
+                    "kind": 1,
+                    "rawValue": "'Bootstrap\/setup integration.'"
                 },
                 "value": "Bootstrap\/setup integration."
             },
@@ -117,7 +119,7 @@
         },
         "setClientName": {
             "name": "setClientName",
-            "line": 82,
+            "line": 80,
             "short_desc": "Create\/update client APP name.",
             "long_desc": "",
             "hint": [
@@ -137,7 +139,7 @@
         },
         "setEnvironment": {
             "name": "setEnvironment",
-            "line": 99,
+            "line": 97,
             "short_desc": "Create\/update target environment.",
             "long_desc": "",
             "hint": [
@@ -157,7 +159,27 @@
         },
         "setCurrency": {
             "name": "setCurrency",
-            "line": 119,
+            "line": 117,
+            "short_desc": "Create\/update currency.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "void",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "see": [],
+            "modifiers": 2,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "setProviderCallbackHost": {
+            "name": "setProviderCallbackHost",
+            "line": 134,
             "short_desc": "Create\/update currency.",
             "long_desc": "",
             "hint": [
@@ -177,7 +199,7 @@
         },
         "setProductName": {
             "name": "setProductName",
-            "line": 136,
+            "line": 149,
             "short_desc": "Create\/update target product subscribed too.",
             "long_desc": "",
             "hint": [
@@ -197,7 +219,7 @@
         },
         "setProductSubscriptionKey": {
             "name": "setProductSubscriptionKey",
-            "line": 155,
+            "line": 168,
             "short_desc": "Create\/update product subscription key.",
             "long_desc": "",
             "hint": [

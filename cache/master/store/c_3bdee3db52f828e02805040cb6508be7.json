@@ -8,7 +8,7 @@
     "namespace": "Bmatovu\\MtnMomo\\Console",
     "file": "\/home\/runner\/work\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Console\/RegisterIdCommand.php",
     "relative_file": "\/src\/Console\/RegisterIdCommand.php",
-    "hash": "c394453d7ea7675ccf6166351ba25d59a47dd96b",
+    "hash": "1c042ee517635dce771a8f0f512236bc437f9a31",
     "parent": "Illuminate\\Console\\Command",
     "modifiers": 0,
     "is_trait": false,
@@ -86,7 +86,8 @@
                 "attributes": {
                     "startLine": 45,
                     "endLine": 50,
-                    "kind": 1
+                    "kind": 1,
+                    "rawValue": "'mtn-momo:register-id\n                                {--id= : Client APP ID.}\n                                {--callback= : Client APP Callback URI.}\n                                {--product= : Product subscribed to.}\n                                {--no-write= : Don\\'t credentials to .env file.}\n                                {--f|force : Force the operation to run when in production.}'"
                 },
                 "value": "mtn-momo:register-id\n                                {--id= : Client APP ID.}\n                                {--callback= : Client APP Callback URI.}\n                                {--product= : Product subscribed to.}\n                                {--no-write= : Don't credentials to .env file.}\n                                {--f|force : Force the operation to run when in production.}"
             },
@@ -113,7 +114,8 @@
                 "attributes": {
                     "startLine": 57,
                     "endLine": 57,
-                    "kind": 2
+                    "kind": 2,
+                    "rawValue": "\"Register client APP ID; 'apiuser'\""
                 },
                 "value": "Register client APP ID; 'apiuser'"
             },
@@ -184,7 +186,7 @@
         },
         "getClientId": {
             "name": "getClientId",
-            "line": 121,
+            "line": 129,
             "short_desc": "Determine client ID.",
             "long_desc": "",
             "hint": [
@@ -209,7 +211,7 @@
         },
         "getClientCallbackUri": {
             "name": "getClientCallbackUri",
-            "line": 157,
+            "line": 160,
             "short_desc": "Determine client Callback URI.",
             "long_desc": "",
             "hint": [
@@ -229,7 +231,7 @@
         },
         "registerClientId": {
             "name": "registerClientId",
-            "line": 200,
+            "line": 199,
             "short_desc": "Register client ID.",
             "long_desc": "The Callback URI is implemented in sandbox environment,\nbut is still required when registering a client ID.",
             "hint": [
@@ -260,7 +262,7 @@
             "parameters": {
                 "clientId": {
                     "name": "clientId",
-                    "line": 200,
+                    "line": 199,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [
@@ -276,9 +278,9 @@
                     "is_by_ref": false,
                     "is_read_only": false
                 },
-                "clientCallbackUri": {
-                    "name": "clientCallbackUri",
-                    "line": 200,
+                "providerCallbackHost": {
+                    "name": "providerCallbackHost",
+                    "line": 199,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [

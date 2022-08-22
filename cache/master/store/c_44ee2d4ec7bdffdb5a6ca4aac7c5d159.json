@@ -51,7 +51,8 @@
                 "attributes": {
                     "startLine": 27,
                     "endLine": 27,
-                    "kind": 1
+                    "kind": 1,
+                    "rawValue": "'mtn_momo_tokens'"
                 },
                 "value": "mtn_momo_tokens"
             },
@@ -93,7 +94,8 @@
                             "attributes": {
                                 "startLine": 35,
                                 "endLine": 35,
-                                "kind": 1
+                                "kind": 1,
+                                "rawValue": "'access_token'"
                             },
                             "value": "access_token"
                         },
@@ -112,7 +114,8 @@
                             "attributes": {
                                 "startLine": 36,
                                 "endLine": 36,
-                                "kind": 1
+                                "kind": 1,
+                                "rawValue": "'refresh_token'"
                             },
                             "value": "refresh_token"
                         },
@@ -131,7 +134,8 @@
                             "attributes": {
                                 "startLine": 37,
                                 "endLine": 37,
-                                "kind": 1
+                                "kind": 1,
+                                "rawValue": "'token_type'"
                             },
                             "value": "token_type"
                         },
@@ -150,7 +154,8 @@
                             "attributes": {
                                 "startLine": 38,
                                 "endLine": 38,
-                                "kind": 1
+                                "kind": 1,
+                                "rawValue": "'product'"
                             },
                             "value": "product"
                         },
@@ -169,7 +174,8 @@
                             "attributes": {
                                 "startLine": 39,
                                 "endLine": 39,
-                                "kind": 1
+                                "kind": 1,
+                                "rawValue": "'expires_at'"
                             },
                             "value": "expires_at"
                         },
@@ -216,7 +222,8 @@
                             "attributes": {
                                 "startLine": 48,
                                 "endLine": 48,
-                                "kind": 1
+                                "kind": 1,
+                                "rawValue": "'expires_at'"
                             },
                             "value": "expires_at"
                         },
@@ -235,7 +242,8 @@
                             "attributes": {
                                 "startLine": 49,
                                 "endLine": 49,
-                                "kind": 1
+                                "kind": 1,
+                                "rawValue": "'deleted_at'"
                             },
                             "value": "deleted_at"
                         },

@@ -1,7 +1,7 @@
 {
     "namespace": "",
     "name": "append_log_middleware",
-    "line": 91,
+    "line": 92,
     "file": "\/home\/runner\/work\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Support\/helpers.php",
     "relative_file": "\/src\/Support\/helpers.php",
     "short_desc": "Add log middleware to handler stack.",
@@ -32,7 +32,7 @@
     "parameters": {
         "handlerStack": {
             "name": "handlerStack",
-            "line": 91,
+            "line": 92,
             "short_desc": "",
             "long_desc": null,
             "hint": [
