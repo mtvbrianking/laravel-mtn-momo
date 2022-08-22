@@ -109,7 +109,7 @@ trait CommandUtilTrait
         if (preg_match($pattern, file_get_contents($env))) {
             file_put_contents($env, preg_replace($pattern, "{$name}=\"{$value}\"", file_get_contents($env)));
         } else {
-            $setting = "\r\n{$name}=\"{$value}\"\r\n";
+            $setting = "\r\n{$name}=\"{$value}\"";
             file_put_contents($env, file_get_contents($env).$setting);
         }
     }
