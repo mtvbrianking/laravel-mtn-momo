@@ -91,7 +91,7 @@ class RegisterIdCommand extends Command
 
         $callbackUri = $this->getClientCallbackUri();
 
-        $providerCallbackHost = parse_url($callbackUri)['host'];
+        $providerCallbackHost = parse_url($callbackUri)['host'] ?? '';
 
         $isRegistered = $this->registerClientId($id, $providerCallbackHost);
 
@@ -102,7 +102,7 @@ class RegisterIdCommand extends Command
         $this->info('Writing configurations to .env file...');
 
         $this->updateSetting("MOMO_{$this->product}_ID", "mtn-momo.products.{$this->product}.id", $id);
-        $this->updateSetting('MOMO_PROVIDER_CALLBACK_HOST', 'mtn-momo.provider-callback-host', $providerCallbackHost);
+        $this->updateSetting('MOMO_PROVIDER_CALLBACK_HOST', 'mtn-momo.provider_callback_host', $providerCallbackHost);
         $this->updateSetting("MOMO_{$this->product}_CALLBACK_URI", "mtn-momo.products.{$this->product}.callback_uri", $callbackUri);
 
         if (! $this->confirm('Do you wish to request for the app secret?', true)) {
@@ -130,25 +130,20 @@ class RegisterIdCommand extends Command
     {
         $this->info('Client APP ID - [X-Reference-Id, api_user_id]');
 
-        // Client ID from command options.
         $id = $this->option('id');
 
-        // Client ID from .env
         if (! $id) {
             $id = $this->laravel['config']->get("mtn-momo.products.{$this->product}.id");
         }
 
-        // Auto-generate client ID
         if (! $id) {
             $this->comment('> Generating random client ID...');
 
             $id = Uuid::uuid4()->toString();
         }
 
-        // Confirm Client ID
         $id = $this->ask('Use client app ID?', $id);
 
-        // Validate Client ID
         while (! Uuid::isValid($id)) {
             $this->info(' Invalid UUID (Format: 4). #IETF RFC4122');
             $id = $this->ask('MOMO_CLIENT_ID');
@@ -166,22 +161,18 @@ class RegisterIdCommand extends Command
     {
         $this->info('Client APP callback URI - [X-Callback-Url]');
 
-        // Client Callback URI from command options.
         $callbackUri = $this->option('callback');
 
-        // Client Callback URI from .env
         if (! $callbackUri) {
             $callbackUri = $this->laravel['config']->get("mtn-momo.products.{$this->product}.callback_uri");
         }
 
-        // Default to the app URL
         if (! $callbackUri) {
             $callbackUri = $this->laravel['config']->get('app.url');
         }
 
         $callbackUri = $this->ask('Use client app callback URI?', $callbackUri);
 
-        // Validate Client Callback URI
         while ($callbackUri && ! filter_var($callbackUri, FILTER_VALIDATE_URL)) {
             $this->info(' Invalid URI. #IETF RFC3986');
             $callbackUri = $this->ask('MOMO_CLIENT_CALLBACK_URI?');
