@@ -195,11 +195,8 @@ class Collection extends Product
         $headers = [
             'X-Reference-Id' => $momoTransactionId,
             'X-Target-Environment' => $this->environment,
+            'X-Callback-Url' => $this->clientCallbackUri,
         ];
-
-        if ($this->environment != 'sandbox' && $this->clientCallbackUri) {
-            $headers['X-Callback-Url'] = $this->clientCallbackUri;
-        }
 
         try {
             $this->client->request('POST', $this->transactionUri, [

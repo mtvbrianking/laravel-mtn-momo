@@ -91,7 +91,9 @@ class RegisterIdCommand extends Command
 
         $callbackUri = $this->getClientCallbackUri();
 
-        $isRegistered = $this->registerClientId($id, $callbackUri);
+        $providerCallbackHost = parse_url($callbackUri)['host'];
+
+        $isRegistered = $this->registerClientId($id, $providerCallbackHost);
 
         if (! $isRegistered) {
             return;
@@ -100,15 +102,21 @@ class RegisterIdCommand extends Command
         $this->info('Writing configurations to .env file...');
 
         $this->updateSetting("MOMO_{$this->product}_ID", "mtn-momo.products.{$this->product}.id", $id);
+        $this->updateSetting('MOMO_PROVIDER_CALLBACK_HOST', 'mtn-momo.provider-callback-host', $providerCallbackHost);
         $this->updateSetting("MOMO_{$this->product}_CALLBACK_URI", "mtn-momo.products.{$this->product}.callback_uri", $callbackUri);
 
-        if ($this->confirm('Do you wish to request for the app secret?', true)) {
-            $this->call('mtn-momo:request-secret', [
-                '--id' => $id,
-                '--product' => $this->option('product'),
-                '--force' => $this->option('force'),
-            ]);
+        if (! $this->confirm('Do you wish to request for the app secret?', true)) {
+            $this->info("\r\nNext: Validate your client application's ID.");
+            $this->line("\r\n>>> php artisan mtn-momo:validate-id");
+
+            return;
         }
+
+        $this->call('mtn-momo:request-secret', [
+            '--id' => $id,
+            '--product' => $this->option('product'),
+            '--force' => $this->option('force'),
+        ]);
     }
 
     /**
@@ -156,7 +164,7 @@ class RegisterIdCommand extends Command
      */
     protected function getClientCallbackUri()
     {
-        $this->info('Client APP callback URI - [X-Callback-Url, providerCallbackHost]');
+        $this->info('Client APP callback URI - [X-Callback-Url]');
 
         // Client Callback URI from command options.
         $callbackUri = $this->option('callback');
@@ -166,9 +174,9 @@ class RegisterIdCommand extends Command
             $callbackUri = $this->laravel['config']->get("mtn-momo.products.{$this->product}.callback_uri");
         }
 
-        // Use any...
+        // Default to the app URL
         if (! $callbackUri) {
-            $callbackUri = 'http://localhost:8000/mtn-momo/callback';
+            $callbackUri = $this->laravel['config']->get('app.url');
         }
 
         $callbackUri = $this->ask('Use client app callback URI?', $callbackUri);
@@ -191,13 +199,13 @@ class RegisterIdCommand extends Command
      * @link https://momodeveloper.mtn.com/docs/services/sandbox-provisioning-api/operations/post-v1_0-apiuser Documenation.
      *
      * @param string $clientId
-     * @param string $clientCallbackUri
+     * @param string $providerCallbackHost
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return bool Is registered.
      */
-    protected function registerClientId($clientId, $clientCallbackUri)
+    protected function registerClientId($clientId, $providerCallbackHost)
     {
         $this->info('Registering Client ID');
 
@@ -209,7 +217,7 @@ class RegisterIdCommand extends Command
                     'X-Reference-Id' => $clientId,
                 ],
                 'json' => [
-                    'providerCallbackHost' => $clientCallbackUri,
+                    'providerCallbackHost' => $providerCallbackHost,
                 ],
             ]);
 
