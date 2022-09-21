@@ -178,7 +178,7 @@ try {
 6. [Get Account Holder Info](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Collection.html#method_getAccountHolderBasicInfo)
 
     ```php
-    $collection->getAccountHolderBasicInfo($partyId)
+    $disbursement->getAccountHolderBasicInfo($partyId)
     ```
     
 
@@ -217,7 +217,7 @@ try {
 6. [Get Account Holder Info](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Collection.html#method_getAccountHolderBasicInfo)
 
     ```php
-    $collection->getAccountHolderBasicInfo($partyId)
+    $remittance->getAccountHolderBasicInfo($partyId)
     ```
     
 ### Go live
