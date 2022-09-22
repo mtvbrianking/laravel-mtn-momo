@@ -46,7 +46,7 @@ class RegisterIdCommand extends Command
                                 {--id= : Client APP ID.}
                                 {--callback= : Client APP Callback URI.}
                                 {--product= : Product subscribed to.}
-                                {--no-write= : Don\'t credentials to .env file.}
+                                {--no-write : Don\'t credentials to .env file.}
                                 {--f|force : Force the operation to run when in production.}';
 
     /**

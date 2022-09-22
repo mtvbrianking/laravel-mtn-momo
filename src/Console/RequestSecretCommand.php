@@ -42,7 +42,7 @@ class RequestSecretCommand extends Command
     protected $signature = 'mtn-momo:request-secret
                                 {--id= : Client APP ID.}
                                 {--product= : Product subscribed to.}
-                                {--no-write= : Don\'t credentials to .env file.}
+                                {--no-write : Don\'t credentials to .env file.}
                                 {--f|force : Force the operation to run when in production.}';
 
     /**

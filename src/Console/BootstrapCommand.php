@@ -21,7 +21,7 @@ class BootstrapCommand extends Command
      * @var string
      */
     protected $signature = 'mtn-momo:init
-                                {--no-write= : Don\'t write credentials to .env file.}
+                                {--no-write : Don\'t write credentials to .env file.}
                                 {--f|force : Force the operation to run when in production.}';
 
     /**
