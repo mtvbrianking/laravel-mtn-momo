@@ -1,4 +1,5 @@
 <?php
+
 /**
  * TokenUtilTrait.
  */
@@ -53,7 +54,7 @@ trait TokenUtilTrait
     /**
      * Get expires at.
      *
-     * @return string Datatime
+     * @return string|\Datetime
      */
     public function getExpiresAt()
     {

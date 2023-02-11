@@ -15,7 +15,7 @@
     {
       "name": "Brian Matovu",
       "email": "mtvbrianking@gmail.com",
-      "homepage": "http://bmatovu.com",
+      "homepage": "https://bmatovu.com",
       "role": "Developer"
     }
   ],
@@ -23,21 +23,22 @@
     "php": "^7.3|^8.0",
     "ext-json": "*",
     "bmatovu/oauth-negotiator": "^2.0",
-    "guzzlehttp/guzzle": "^7.0",
-    "illuminate/console": "^8.0|^9.0",
-    "illuminate/container": "^8.0|^9.0",
-    "illuminate/contracts": "^8.0|^9.0",
-    "illuminate/database": "^8.0|^9.0",
-    "illuminate/support": "^8.0|^9.0",
-    "nesbot/carbon": "^2.53.1",
-    "ramsey/uuid": "^4.2.2"
+    "guzzlehttp/guzzle": "^7.5",
+    "illuminate/console": "^8.0|^9.0|^10.0",
+    "illuminate/container": "^8.0|^9.0|^10.0",
+    "illuminate/contracts": "^8.0|^9.0|^10.0",
+    "illuminate/database": "^8.0|^9.0|^10.0",
+    "illuminate/support": "^8.0|^9.0|^10.0",
+    "nesbot/carbon": "^2.62.1",
+    "ramsey/uuid": "^4.7"
   },
   "require-dev": {
-    "code-lts/doctum": "^5.3",
-    "friendsofphp/php-cs-fixer": "^3.0",
-    "mockery/mockery": "^1.4.2",
-    "orchestra/testbench": "^6.0|^7.0",
-    "phpunit/phpunit": "^9.3"
+    "code-lts/doctum": "^5.5",
+    "friendsofphp/php-cs-fixer": "^3.14",
+    "laravel/framework": "^10.0",
+    "mockery/mockery": "^1.5",
+    "orchestra/testbench": "^8.0",
+    "phpunit/phpunit": "^9.3|^10.0"
   },
   "suggest": {
     "monolog/monolog": "For more comprehensive logging."
@@ -69,6 +70,9 @@
     "sort-packages": true
   },
   "extra": {
+    "branch-alias": {
+      "dev-master": "5.x-dev"
+    },
     "laravel": {
       "providers": [
         "Bmatovu\\MtnMomo\\MtnMomoServiceProvider"
