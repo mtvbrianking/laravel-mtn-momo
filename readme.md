@@ -20,7 +20,7 @@ To get started, install the package via the Composer package manager:
 | :----------: | :-----: | ------------------------------------------------- |
 | ^6.0         | 2.0     | `composer require bmatovu/laravel-mtn-momo ^2.0`  |
 | ^7.0         | 3.0     | `composer require bmatovu/laravel-mtn-momo ^3.0`  |
-| ^8.0 \| ^9.0 | master  | `composer require bmatovu/laravel-mtn-momo`       |
+| ^8.0 ... ^10.0 | master  | `composer require bmatovu/laravel-mtn-momo`       |
 
 **Configuration customization**
 
