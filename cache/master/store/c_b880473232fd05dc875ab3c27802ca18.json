@@ -8,7 +8,7 @@
     "namespace": "Bmatovu\\MtnMomo\\Console",
     "file": "\/home\/runner\/work\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Console\/BootstrapCommand.php",
     "relative_file": "\/src\/Console\/BootstrapCommand.php",
-    "hash": "27c9e532d1ca0e19741176b657306215a1dfc485",
+    "hash": "fa34ed11ecd79c4bbdfc33bbf4fe28f7d939f1f4",
     "parent": "Illuminate\\Console\\Command",
     "modifiers": 0,
     "is_trait": false,
@@ -44,9 +44,9 @@
                     "startLine": 23,
                     "endLine": 25,
                     "kind": 1,
-                    "rawValue": "'mtn-momo:init\n                                {--no-write= : Don\\'t write credentials to .env file.}\n                                {--f|force : Force the operation to run when in production.}'"
+                    "rawValue": "'mtn-momo:init\n                                {--no-write : Don\\'t write credentials to .env file.}\n                                {--f|force : Force the operation to run when in production.}'"
                 },
-                "value": "mtn-momo:init\n                                {--no-write= : Don't write credentials to .env file.}\n                                {--f|force : Force the operation to run when in production.}"
+                "value": "mtn-momo:init\n                                {--no-write : Don't write credentials to .env file.}\n                                {--f|force : Force the operation to run when in production.}"
             },
             "errors": [],
             "is_read_only": false,

@@ -8,7 +8,7 @@
     "namespace": "Bmatovu\\MtnMomo\\Console",
     "file": "\/home\/runner\/work\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Console\/RequestSecretCommand.php",
     "relative_file": "\/src\/Console\/RequestSecretCommand.php",
-    "hash": "f82e56fb46019eb91e72ba3b681b973455dd9faa",
+    "hash": "241fe403f733eae60ed04041d21a512c307c6f79",
     "parent": "Illuminate\\Console\\Command",
     "modifiers": 0,
     "is_trait": false,
@@ -87,9 +87,9 @@
                     "startLine": 42,
                     "endLine": 46,
                     "kind": 1,
-                    "rawValue": "'mtn-momo:request-secret\n                                {--id= : Client APP ID.}\n                                {--product= : Product subscribed to.}\n                                {--no-write= : Don\\'t credentials to .env file.}\n                                {--f|force : Force the operation to run when in production.}'"
+                    "rawValue": "'mtn-momo:request-secret\n                                {--id= : Client APP ID.}\n                                {--product= : Product subscribed to.}\n                                {--no-write : Don\\'t credentials to .env file.}\n                                {--f|force : Force the operation to run when in production.}'"
                 },
-                "value": "mtn-momo:request-secret\n                                {--id= : Client APP ID.}\n                                {--product= : Product subscribed to.}\n                                {--no-write= : Don't credentials to .env file.}\n                                {--f|force : Force the operation to run when in production.}"
+                "value": "mtn-momo:request-secret\n                                {--id= : Client APP ID.}\n                                {--product= : Product subscribed to.}\n                                {--no-write : Don't credentials to .env file.}\n                                {--f|force : Force the operation to run when in production.}"
             },
             "errors": [],
             "is_read_only": false,

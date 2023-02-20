@@ -12,8 +12,8 @@ use Twig\Sandbox\SecurityNotAllowedFunctionError;
 use Twig\Source;
 use Twig\Template;
 
-/* classes.twig */
-class __TwigTemplate_e54b30096ec1df5b62494361e14ce426 extends Template
+/* interfaces.twig */
+class __TwigTemplate_81dc85b9ff84bd0959719a74811162b4 extends Template
 {
     private $source;
     private $macros = [];
@@ -41,9 +41,9 @@ class __TwigTemplate_e54b30096ec1df5b62494361e14ce426 extends Template
     {
         $macros = $this->macros;
         // line 2
-        $macros["__internal_parse_8"] = $this->macros["__internal_parse_8"] = $this->loadTemplate("macros.twig", "classes.twig", 2)->unwrap();
+        $macros["__internal_parse_9"] = $this->macros["__internal_parse_9"] = $this->loadTemplate("macros.twig", "interfaces.twig", 2)->unwrap();
         // line 1
-        $this->parent = $this->loadTemplate("layout/layout.twig", "classes.twig", 1);
+        $this->parent = $this->loadTemplate("layout/layout.twig", "interfaces.twig", 1);
         $this->parent->display($context, array_merge($this->blocks, $blocks));
     }
 
@@ -51,7 +51,7 @@ class __TwigTemplate_e54b30096ec1df5b62494361e14ce426 extends Template
     public function block_title($context, array $blocks = [])
     {
         $macros = $this->macros;
-echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("All Classes");
+echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("Interfaces");
         echo " | ";
         $this->displayParentBlock("title", $context, $blocks);
     }
@@ -60,7 +60,7 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("All Classes");
     public function block_body_class($context, array $blocks = [])
     {
         $macros = $this->macros;
-        echo "classes";
+        echo "interfaces";
     }
 
     // line 6
@@ -70,21 +70,21 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("All Classes");
         // line 7
         echo "    <div class=\"page-header\">
         <h1>";
-echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("Classes");
+echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("Interfaces");
         // line 8
         echo "</h1>
     </div>
 
     ";
         // line 11
-        echo twig_call_macro($macros["__internal_parse_8"], "macro_render_classes", [(isset($context["classes"]) || array_key_exists("classes", $context) ? $context["classes"] : (function () { throw new RuntimeError('Variable "classes" does not exist.', 11, $this->source); })())], 11, $context, $this->getSourceContext());
+        echo twig_call_macro($macros["__internal_parse_9"], "macro_render_classes", [(isset($context["interfaces"]) || array_key_exists("interfaces", $context) ? $context["interfaces"] : (function () { throw new RuntimeError('Variable "interfaces" does not exist.', 11, $this->source); })())], 11, $context, $this->getSourceContext());
         echo "
 ";
     }
 
     public function getTemplateName()
     {
-        return "classes.twig";
+        return "interfaces.twig";
     }
 
     public function isTraitable()
@@ -101,16 +101,16 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("Classes");
     {
         return new Source("{% extends \"layout/layout.twig\" %}
 {% from \"macros.twig\" import render_classes %}
-{% block title %}{% trans 'All Classes' %} | {{ parent() }}{% endblock %}
-{% block body_class 'classes' %}
+{% block title %}{% trans 'Interfaces' %} | {{ parent() }}{% endblock %}
+{% block body_class 'interfaces' %}
 
 {% block page_content %}
     <div class=\"page-header\">
-        <h1>{% trans 'Classes' %}</h1>
+        <h1>{% trans 'Interfaces' %}</h1>
     </div>
 
-    {{ render_classes(classes) }}
+    {{ render_classes(interfaces) }}
 {% endblock %}
-", "classes.twig", "/home/runner/work/laravel-mtn-momo/laravel-mtn-momo/vendor/code-lts/doctum/src/Resources/themes/default/classes.twig");
+", "interfaces.twig", "/home/runner/work/laravel-mtn-momo/laravel-mtn-momo/vendor/code-lts/doctum/src/Resources/themes/default/interfaces.twig");
     }
 }

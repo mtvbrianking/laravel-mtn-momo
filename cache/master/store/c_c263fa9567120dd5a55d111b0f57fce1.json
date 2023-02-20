@@ -1,6 +1,6 @@
 {
     "name": "Bmatovu\\MtnMomo\\Traits\\TokenUtilTrait",
-    "line": 11,
+    "line": 12,
     "short_desc": "Token model utilities.",
     "long_desc": "",
     "hint": null,
@@ -8,7 +8,7 @@
     "namespace": "Bmatovu\\MtnMomo\\Traits",
     "file": "\/home\/runner\/work\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Traits\/TokenUtilTrait.php",
     "relative_file": "\/src\/Traits\/TokenUtilTrait.php",
-    "hash": "6648549bd2d713b5f77afc1e08059c005c6b350b",
+    "hash": "372b64f2ed843e8783f1dc89cd862ff61492c6f2",
     "parent": null,
     "modifiers": 0,
     "is_trait": true,
@@ -22,7 +22,7 @@
     "methods": {
         "getAccessToken": {
             "name": "getAccessToken",
-            "line": 18,
+            "line": 19,
             "short_desc": "Get access token.",
             "long_desc": "",
             "hint": [
@@ -42,7 +42,7 @@
         },
         "getRefreshToken": {
             "name": "getRefreshToken",
-            "line": 28,
+            "line": 29,
             "short_desc": "Get refresh token.",
             "long_desc": "",
             "hint": [
@@ -66,7 +66,7 @@
         },
         "getTokenType": {
             "name": "getTokenType",
-            "line": 38,
+            "line": 39,
             "short_desc": "Get token type.",
             "long_desc": "",
             "hint": [
@@ -86,7 +86,7 @@
         },
         "getProduct": {
             "name": "getProduct",
-            "line": 48,
+            "line": 49,
             "short_desc": "Get product.",
             "long_desc": "",
             "hint": [
@@ -106,16 +106,20 @@
         },
         "getExpiresAt": {
             "name": "getExpiresAt",
-            "line": 58,
+            "line": 59,
             "short_desc": "Get expires at.",
             "long_desc": "",
             "hint": [
                 [
                     "string",
                     false
+                ],
+                [
+                    "\\Datetime",
+                    false
                 ]
             ],
-            "hint_desc": "Datatime",
+            "hint_desc": "",
             "tags": [],
             "see": [],
             "modifiers": 1,
@@ -126,7 +130,7 @@
         },
         "isExpired": {
             "name": "isExpired",
-            "line": 68,
+            "line": 69,
             "short_desc": "Determine if a token is expired.",
             "long_desc": "",
             "hint": [

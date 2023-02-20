@@ -8,7 +8,7 @@
     "namespace": "Bmatovu\\MtnMomo\\Console",
     "file": "\/home\/runner\/work\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Console\/RegisterIdCommand.php",
     "relative_file": "\/src\/Console\/RegisterIdCommand.php",
-    "hash": "1c042ee517635dce771a8f0f512236bc437f9a31",
+    "hash": "6906f10121ee5cd8934a12b0291701aad55435fd",
     "parent": "Illuminate\\Console\\Command",
     "modifiers": 0,
     "is_trait": false,
@@ -87,9 +87,9 @@
                     "startLine": 45,
                     "endLine": 50,
                     "kind": 1,
-                    "rawValue": "'mtn-momo:register-id\n                                {--id= : Client APP ID.}\n                                {--callback= : Client APP Callback URI.}\n                                {--product= : Product subscribed to.}\n                                {--no-write= : Don\\'t credentials to .env file.}\n                                {--f|force : Force the operation to run when in production.}'"
+                    "rawValue": "'mtn-momo:register-id\n                                {--id= : Client APP ID.}\n                                {--callback= : Client APP Callback URI.}\n                                {--product= : Product subscribed to.}\n                                {--no-write : Don\\'t credentials to .env file.}\n                                {--f|force : Force the operation to run when in production.}'"
                 },
-                "value": "mtn-momo:register-id\n                                {--id= : Client APP ID.}\n                                {--callback= : Client APP Callback URI.}\n                                {--product= : Product subscribed to.}\n                                {--no-write= : Don't credentials to .env file.}\n                                {--f|force : Force the operation to run when in production.}"
+                "value": "mtn-momo:register-id\n                                {--id= : Client APP ID.}\n                                {--callback= : Client APP Callback URI.}\n                                {--product= : Product subscribed to.}\n                                {--no-write : Don't credentials to .env file.}\n                                {--f|force : Force the operation to run when in production.}"
             },
             "errors": [],
             "is_read_only": false,

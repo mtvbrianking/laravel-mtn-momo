@@ -13,7 +13,7 @@ use Twig\Source;
 use Twig\Template;
 
 /* traits.twig */
-class __TwigTemplate_1c505a1d78b808d915292d6e0dbe9879 extends Template
+class __TwigTemplate_b969d266dba7ec650a2e52e66cce3b8c extends Template
 {
     private $source;
     private $macros = [];
