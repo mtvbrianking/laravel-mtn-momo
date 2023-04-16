@@ -224,6 +224,10 @@ try {
 
 You will need to make some changes to your setup before going live. [Read more](https://github.com/mtvbrianking/laravel-mtn-momo/wiki/Go-Live).
 
+### Support Groups
+
+Join MTN's Skype & WhatsApp support groups. [Here](https://momodeveloper.mtn.com/contact-support)
+
 ### Reporting bugs
 
 If you've stumbled across a bug, please help us by leaving as much information about the bug as possible, e.g.
