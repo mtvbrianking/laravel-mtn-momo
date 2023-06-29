@@ -80,7 +80,7 @@ use Bmatovu\MtnMomo\Products\Collection;
 
 $collection = new Collection();
 
-$momoTransactionId = $collection->requestToPay('transactionId', '46733123454', 100);
+$referenceId = $collection->requestToPay('yourTransactionId', '46733123454', 100);
 ```
 
 See [test numbers](https://momodeveloper.mtn.com/api-documentation/testing/#test-numbers)
@@ -94,7 +94,7 @@ use Bmatovu\MtnMomo\Exceptions\CollectionRequestException;
 try {
     $collection = new Collection();
     
-    $momoTransactionId = $collection->requestToPay('transactionId', '46733123453', 100);
+    $referenceId = $collection->requestToPay('yourTransactionId', '46733123453', 100);
 } catch(CollectionRequestException $e) {
     do {
         printf("\n\r%s:%d %s (%d) [%s]\n\r", 
@@ -110,13 +110,13 @@ try {
 1. [Collect money](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Collection.html#method_requestToPay)
 
     ```php
-    $collection->requestToPay($transactionId, $partyId, $amount)
+    $collection->requestToPay($yourTransactionId, $partyId, $amount)
     ```
 
 2. [Check transaction status](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Collection.html#method_getTransactionStatus)
 
     ```php
-    $collection->getTransactionStatus($momoTransactionId)
+    $collection->getTransactionStatus($referenceId)
     ```
 
 3. [Check account balance](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Collection.html#method_getAccountBalance)
@@ -148,13 +148,13 @@ try {
 1. [Disburse money](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Disbursement.html#method_transfer)
 
     ```php
-    $disbursement->transfer($transactionId, $partyId, $amount)
+    $disbursement->transfer($yourTransactionId, $partyId, $amount)
     ```
 
 2. [Check transaction status](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Disbursement.html#method_getTransactionStatus)
 
     ```php
-    $disbursement->getTransactionStatus($momoTransactionId)
+    $disbursement->getTransactionStatus($referenceId)
     ```
 
 3. [Check account balance](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Disbursement.html#method_getAccountBalance)
@@ -187,13 +187,13 @@ try {
 1. [Remit money](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Remittance.html#method_transact)
 
     ```php
-    $remittance->transfer($transactionId, $partyId, $amount)
+    $remittance->transfer($yourTransactionId, $partyId, $amount)
     ```
 
 2. [Check transaction status](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Remittance.html#method_getTransactionStatus)
 
     ```php
-    $remittance->getTransactionStatus($momoTransactionId)
+    $remittance->getTransactionStatus($referenceId)
     ```
 
 3. [Check account balance](https://mtvbrianking.github.io/laravel-mtn-momo/master/Bmatovu/MtnMomo/Products/Remittance.html#method_getAccountBalance)
