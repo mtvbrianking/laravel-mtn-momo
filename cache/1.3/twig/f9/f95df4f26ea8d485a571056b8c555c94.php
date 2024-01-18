@@ -13,7 +13,7 @@ use Twig\Source;
 use Twig\Template;
 
 /* search.twig */
-class __TwigTemplate_a9713b06385098b2c3252d4adc53f089 extends Template
+class __TwigTemplate_2dbe550be037a32190dcc64c8b16ff61 extends Template
 {
     private $source;
     private $macros = [];
@@ -363,16 +363,25 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("Search Results");
 ";
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function getTemplateName()
     {
         return "search.twig";
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function isTraitable()
     {
         return false;
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function getDebugInfo()
     {
         return array (  338 => 200,  324 => 189,  241 => 109,  196 => 67,  192 => 66,  188 => 65,  184 => 64,  180 => 63,  176 => 62,  169 => 58,  165 => 57,  161 => 56,  157 => 55,  153 => 54,  149 => 53,  134 => 40,  130 => 39,  123 => 35,  111 => 25,  105 => 22,  100 => 20,  96 => 19,  90 => 17,  86 => 15,  77 => 9,  72 => 7,  68 => 6,  61 => 4,  52 => 3,  47 => 1,  45 => 2,  38 => 1,);

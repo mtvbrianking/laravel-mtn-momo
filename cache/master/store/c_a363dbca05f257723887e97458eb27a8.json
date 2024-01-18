@@ -43,7 +43,8 @@
             "default": null,
             "errors": [],
             "is_read_only": false,
-            "is_write_only": false
+            "is_write_only": false,
+            "is_intersection_type": false
         },
         "transactionStatusUri": {
             "name": "transactionStatusUri",
@@ -62,7 +63,8 @@
             "default": null,
             "errors": [],
             "is_read_only": false,
-            "is_write_only": false
+            "is_write_only": false,
+            "is_intersection_type": false
         },
         "accountStatusUri": {
             "name": "accountStatusUri",
@@ -81,7 +83,8 @@
             "default": null,
             "errors": [],
             "is_read_only": false,
-            "is_write_only": false
+            "is_write_only": false,
+            "is_intersection_type": false
         },
         "accountBalanceUri": {
             "name": "accountBalanceUri",
@@ -100,7 +103,8 @@
             "default": null,
             "errors": [],
             "is_read_only": false,
-            "is_write_only": false
+            "is_write_only": false,
+            "is_intersection_type": false
         },
         "accountHolderInfoUri": {
             "name": "accountHolderInfoUri",
@@ -119,7 +123,8 @@
             "default": null,
             "errors": [],
             "is_read_only": false,
-            "is_write_only": false
+            "is_write_only": false,
+            "is_intersection_type": false
         }
     },
     "methods": {
@@ -139,6 +144,7 @@
             "see": [],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": []
@@ -154,6 +160,7 @@
             "see": [],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": {
@@ -173,7 +180,8 @@
                     "default": null,
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 }
             }
         },
@@ -193,6 +201,7 @@
             "see": [],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": []
@@ -208,6 +217,7 @@
             "see": [],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": {
@@ -227,7 +237,8 @@
                     "default": null,
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 }
             }
         },
@@ -247,6 +258,7 @@
             "see": [],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": []
@@ -262,6 +274,7 @@
             "see": [],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": {
@@ -281,7 +294,8 @@
                     "default": null,
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 }
             }
         },
@@ -301,6 +315,7 @@
             "see": [],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": []
@@ -316,6 +331,7 @@
             "see": [],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": {
@@ -335,7 +351,8 @@
                     "default": null,
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 }
             }
         },
@@ -355,6 +372,7 @@
             "see": [],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": []
@@ -370,6 +388,7 @@
             "see": [],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": {
@@ -389,7 +408,8 @@
                     "default": null,
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 }
             }
         },
@@ -410,6 +430,7 @@
             "see": [],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [
                 [
                     "\\Exception",
@@ -434,7 +455,8 @@
                     "default": "[]",
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 },
                 "middleware": {
                     "name": "middleware",
@@ -452,7 +474,8 @@
                     "default": "[]",
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 },
                 "client": {
                     "name": "client",
@@ -470,7 +493,8 @@
                     "default": "null",
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 }
             }
         },
@@ -505,6 +529,7 @@
             ],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [
                 [
                     "\\Bmatovu\\MtnMomo\\Exceptions\\RemittanceRequestException",
@@ -549,6 +574,7 @@
             ],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [
                 [
                     "\\Bmatovu\\MtnMomo\\Exceptions\\RemittanceRequestException",
@@ -581,7 +607,8 @@
                     "default": null,
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 },
                 "partyId": {
                     "name": "partyId",
@@ -599,7 +626,8 @@
                     "default": null,
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 },
                 "amount": {
                     "name": "amount",
@@ -617,7 +645,8 @@
                     "default": null,
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 },
                 "payerMessage": {
                     "name": "payerMessage",
@@ -635,7 +664,8 @@
                     "default": "''",
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 },
                 "payeeNote": {
                     "name": "payeeNote",
@@ -653,7 +683,8 @@
                     "default": "''",
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 }
             }
         },
@@ -688,6 +719,7 @@
             ],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [
                 [
                     "\\Bmatovu\\MtnMomo\\Exceptions\\RemittanceRequestException",
@@ -716,7 +748,8 @@
                     "default": null,
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 }
             }
         },
@@ -751,6 +784,7 @@
             ],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [
                 [
                     "\\Bmatovu\\MtnMomo\\Exceptions\\RemittanceRequestException",
@@ -795,6 +829,7 @@
             ],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [
                 [
                     "\\Bmatovu\\MtnMomo\\Exceptions\\RemittanceRequestException",
@@ -823,7 +858,8 @@
                     "default": null,
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 },
                 "partyIdType": {
                     "name": "partyIdType",
@@ -841,7 +877,8 @@
                     "default": "null",
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 }
             }
         },
@@ -876,6 +913,7 @@
             ],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [
                 [
                     "\\Bmatovu\\MtnMomo\\Exceptions\\RemittanceRequestException",
@@ -904,7 +942,8 @@
                     "default": null,
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 }
             }
         }

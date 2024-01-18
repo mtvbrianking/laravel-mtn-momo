@@ -13,7 +13,7 @@ use Twig\Source;
 use Twig\Template;
 
 /* layout/base.twig */
-class __TwigTemplate_2247c08d9d0fdcc351228fb38f4a1d4c extends Template
+class __TwigTemplate_20ec0e5849e22442e2091b441a427d1a extends Template
 {
     private $source;
     private $macros = [];
@@ -43,7 +43,7 @@ class __TwigTemplate_2247c08d9d0fdcc351228fb38f4a1d4c extends Template
         echo "<!DOCTYPE html>
 <html lang=\"";
         // line 2
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["project"]) || array_key_exists("project", $context) ? $context["project"] : (function () { throw new RuntimeError('Variable "project" does not exist.', 2, $this->source); })()), "config", [0 => "language"], "method", false, false, false, 2), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["project"]) || array_key_exists("project", $context) ? $context["project"] : (function () { throw new RuntimeError('Variable "project" does not exist.', 2, $this->source); })()), "config", ["language"], "method", false, false, false, 2), "html", null, true);
         echo "\">
 <head>
     <meta charset=\"UTF-8\" />
@@ -60,10 +60,10 @@ class __TwigTemplate_2247c08d9d0fdcc351228fb38f4a1d4c extends Template
         echo "
 ";
         // line 22
-        if (twig_get_attribute($this->env, $this->source, (isset($context["project"]) || array_key_exists("project", $context) ? $context["project"] : (function () { throw new RuntimeError('Variable "project" does not exist.', 22, $this->source); })()), "config", [0 => "favicon"], "method", false, false, false, 22)) {
+        if (twig_get_attribute($this->env, $this->source, (isset($context["project"]) || array_key_exists("project", $context) ? $context["project"] : (function () { throw new RuntimeError('Variable "project" does not exist.', 22, $this->source); })()), "config", ["favicon"], "method", false, false, false, 22)) {
             // line 23
             echo "        <link rel=\"shortcut icon\" href=\"";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["project"]) || array_key_exists("project", $context) ? $context["project"] : (function () { throw new RuntimeError('Variable "project" does not exist.', 23, $this->source); })()), "config", [0 => "favicon"], "method", false, false, false, 23), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["project"]) || array_key_exists("project", $context) ? $context["project"] : (function () { throw new RuntimeError('Variable "project" does not exist.', 23, $this->source); })()), "config", ["favicon"], "method", false, false, false, 23), "html", null, true);
             echo "\" />";
         }
         // line 25
@@ -89,7 +89,7 @@ class __TwigTemplate_2247c08d9d0fdcc351228fb38f4a1d4c extends Template
     ";
                 // line 31
                 echo "      title=\"";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["project"]) || array_key_exists("project", $context) ? $context["project"] : (function () { throw new RuntimeError('Variable "project" does not exist.', 31, $this->source); })()), "config", [0 => "title"], "method", false, false, false, 31), "html", null, true);
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["project"]) || array_key_exists("project", $context) ? $context["project"] : (function () { throw new RuntimeError('Variable "project" does not exist.', 31, $this->source); })()), "config", ["title"], "method", false, false, false, 31), "html", null, true);
                 echo " (";
                 echo twig_escape_filter($this->env, $context["version"], "html", null, true);
                 echo ")\" />
@@ -115,7 +115,7 @@ class __TwigTemplate_2247c08d9d0fdcc351228fb38f4a1d4c extends Template
     public function block_title($context, array $blocks = [])
     {
         $macros = $this->macros;
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["project"]) || array_key_exists("project", $context) ? $context["project"] : (function () { throw new RuntimeError('Variable "project" does not exist.', 6, $this->source); })()), "config", [0 => "title"], "method", false, false, false, 6), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["project"]) || array_key_exists("project", $context) ? $context["project"] : (function () { throw new RuntimeError('Variable "project" does not exist.', 6, $this->source); })()), "config", ["title"], "method", false, false, false, 6), "html", null, true);
     }
 
     // line 8
@@ -201,16 +201,25 @@ class __TwigTemplate_2247c08d9d0fdcc351228fb38f4a1d4c extends Template
         echo "";
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function getTemplateName()
     {
         return "layout/base.twig";
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function isTraitable()
     {
         return false;
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function getDebugInfo()
     {
         return array (  198 => 38,  185 => 37,  180 => 39,  178 => 38,  167 => 37,  163 => 36,  155 => 16,  151 => 15,  147 => 14,  143 => 13,  139 => 12,  135 => 11,  131 => 10,  126 => 9,  122 => 8,  115 => 6,  109 => 41,  107 => 36,  103 => 34,  91 => 31,  86 => 30,  83 => 29,  80 => 28,  75 => 27,  73 => 26,  70 => 25,  65 => 23,  63 => 22,  60 => 21,  58 => 8,  53 => 6,  46 => 2,  43 => 1,);

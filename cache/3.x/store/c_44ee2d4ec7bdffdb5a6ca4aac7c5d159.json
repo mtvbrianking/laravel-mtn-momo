@@ -55,7 +55,8 @@
             },
             "errors": [],
             "is_read_only": false,
-            "is_write_only": false
+            "is_write_only": false,
+            "is_intersection_type": false
         },
         "fillable": {
             "name": "fillable",
@@ -183,7 +184,8 @@
             },
             "errors": [],
             "is_read_only": false,
-            "is_write_only": false
+            "is_write_only": false,
+            "is_intersection_type": false
         },
         "dates": {
             "name": "dates",
@@ -251,7 +253,8 @@
             },
             "errors": [],
             "is_read_only": false,
-            "is_write_only": false
+            "is_write_only": false,
+            "is_intersection_type": false
         }
     },
     "methods": [],

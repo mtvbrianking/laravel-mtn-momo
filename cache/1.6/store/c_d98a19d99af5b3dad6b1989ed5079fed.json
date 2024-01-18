@@ -36,6 +36,7 @@
             "see": [],
             "modifiers": 2,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": {
@@ -55,7 +56,8 @@
                     "default": "'Application In Production!'",
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 }
             }
         },
@@ -75,6 +77,7 @@
             "see": [],
             "modifiers": 2,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": {
@@ -94,7 +97,8 @@
                     "default": null,
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 },
                 "body": {
                     "name": "body",
@@ -116,7 +120,8 @@
                     "default": "null",
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 }
             }
         },
@@ -145,6 +150,7 @@
             "see": [],
             "modifiers": 2,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": {
@@ -164,7 +170,8 @@
                     "default": null,
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 },
                 "key": {
                     "name": "key",
@@ -182,7 +189,8 @@
                     "default": null,
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 }
             }
         },
@@ -202,6 +210,7 @@
             "see": [],
             "modifiers": 2,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": {
@@ -221,7 +230,8 @@
                     "default": null,
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 },
                 "key": {
                     "name": "key",
@@ -239,7 +249,8 @@
                     "default": null,
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 },
                 "value": {
                     "name": "value",
@@ -257,7 +268,8 @@
                     "default": null,
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 }
             }
         }

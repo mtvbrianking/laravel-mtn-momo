@@ -13,7 +13,7 @@ use Twig\Source;
 use Twig\Template;
 
 /* classes.twig */
-class __TwigTemplate_9bc4fa18a84b3c6e04b3d9feb9b0e590 extends Template
+class __TwigTemplate_ae06476593c265e98b528d547f5e2448 extends Template
 {
     private $source;
     private $macros = [];
@@ -82,16 +82,25 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("Classes");
 ";
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function getTemplateName()
     {
         return "classes.twig";
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function isTraitable()
     {
         return false;
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function getDebugInfo()
     {
         return array (  80 => 11,  75 => 8,  71 => 7,  67 => 6,  60 => 4,  51 => 3,  46 => 1,  44 => 2,  37 => 1,);

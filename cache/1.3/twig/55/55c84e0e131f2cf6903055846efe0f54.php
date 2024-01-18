@@ -13,7 +13,7 @@ use Twig\Source;
 use Twig\Template;
 
 /* namespaces.twig */
-class __TwigTemplate_5a32546adfcfd716add547702d0f67bc extends Template
+class __TwigTemplate_e95d681f468ae59626adc8c875345e2a extends Template
 {
     private $source;
     private $macros = [];
@@ -132,16 +132,25 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("Namespaces");
 ";
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function getTemplateName()
     {
         return "namespaces.twig";
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function isTraitable()
     {
         return false;
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function getDebugInfo()
     {
         return array (  131 => 29,  125 => 25,  116 => 23,  113 => 22,  111 => 21,  106 => 19,  103 => 18,  98 => 17,  95 => 16,  92 => 15,  87 => 14,  85 => 13,  82 => 12,  80 => 11,  75 => 8,  71 => 7,  67 => 6,  60 => 4,  51 => 3,  46 => 1,  44 => 2,  37 => 1,);

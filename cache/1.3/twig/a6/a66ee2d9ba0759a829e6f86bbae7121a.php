@@ -13,7 +13,7 @@ use Twig\Source;
 use Twig\Template;
 
 /* doc-index.twig */
-class __TwigTemplate_e40c5a3439c11e6a59aa2d269befd4d5 extends Template
+class __TwigTemplate_eafaa1f653b6b1b259522d8bf9c6c63f extends Template
 {
     private $source;
     private $macros = [];
@@ -190,16 +190,25 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("Index");
         $context = array_intersect_key($context, $_parent) + $_parent;
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function getTemplateName()
     {
         return "doc-index.twig";
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function isTraitable()
     {
         return false;
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function getDebugInfo()
     {
         return array (  186 => 45,  178 => 42,  175 => 41,  173 => 40,  169 => 39,  167 => 38,  164 => 37,  161 => 36,  159 => 35,  155 => 34,  153 => 33,  150 => 32,  147 => 31,  144 => 30,  139 => 29,  137 => 28,  135 => 27,  133 => 26,  129 => 25,  126 => 24,  119 => 23,  115 => 22,  111 => 20,  105 => 19,  97 => 17,  89 => 15,  86 => 14,  82 => 13,  76 => 9,  71 => 7,  67 => 6,  60 => 4,  51 => 3,  46 => 1,  44 => 2,  37 => 1,);

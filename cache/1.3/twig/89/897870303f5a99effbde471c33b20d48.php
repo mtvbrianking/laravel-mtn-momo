@@ -13,7 +13,7 @@ use Twig\Source;
 use Twig\Template;
 
 /* layout/layout.twig */
-class __TwigTemplate_6c42a400450ef2d030801d3cba9b4cda extends Template
+class __TwigTemplate_c298c0e09fb4786c684f24ea9fcf733f extends Template
 {
     private $source;
     private $macros = [];
@@ -121,7 +121,7 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("Toggle navigation");
         // line 30
         echo twig_escape_filter($this->env, $this->extensions['Doctum\Renderer\TwigExtension']->pathForStaticFile($context, "index.html"), "html", null, true);
         echo "\">";
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["project"]) || array_key_exists("project", $context) ? $context["project"] : (function () { throw new RuntimeError('Variable "project" does not exist.', 30, $this->source); })()), "config", [0 => "title"], "method", false, false, false, 30), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["project"]) || array_key_exists("project", $context) ? $context["project"] : (function () { throw new RuntimeError('Variable "project" does not exist.', 30, $this->source); })()), "config", ["title"], "method", false, false, false, 30), "html", null, true);
         echo "</a>
             </div>
             <div class=\"collapse navbar-collapse\" id=\"navbar-elements\">
@@ -330,16 +330,25 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("Search");
         echo "</div>";
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function getTemplateName()
     {
         return "layout/layout.twig";
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function isTraitable()
     {
         return false;
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function getDebugInfo()
     {
         return array (  330 => 114,  327 => 112,  314 => 110,  312 => 109,  310 => 108,  308 => 107,  306 => 106,  304 => 105,  302 => 102,  299 => 101,  295 => 100,  283 => 90,  273 => 84,  265 => 78,  260 => 75,  248 => 73,  244 => 72,  241 => 71,  237 => 70,  233 => 68,  231 => 67,  228 => 66,  224 => 65,  219 => 62,  215 => 61,  203 => 54,  197 => 53,  191 => 52,  184 => 51,  176 => 49,  174 => 48,  167 => 47,  162 => 44,  147 => 42,  143 => 41,  138 => 38,  133 => 35,  131 => 34,  122 => 30,  115 => 25,  108 => 21,  104 => 20,  97 => 13,  90 => 11,  84 => 16,  82 => 15,  80 => 14,  78 => 13,  76 => 12,  74 => 11,  70 => 10,  64 => 7,  60 => 6,  56 => 4,  52 => 3,  41 => 1,);

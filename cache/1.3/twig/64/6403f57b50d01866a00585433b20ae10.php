@@ -13,7 +13,7 @@ use Twig\Source;
 use Twig\Template;
 
 /* class.twig */
-class __TwigTemplate_b8e6e03a8bc371d24d89aa43a65502cc extends Template
+class __TwigTemplate_f4d2d41fc51f38285aae0bf860dd7aa1 extends Template
 {
     private $source;
     private $macros = [];
@@ -389,7 +389,7 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("implements");
         }
         // line 110
         echo "    ";
-        echo twig_call_macro($macros["__internal_parse_13"], "macro_hint_link", [twig_get_attribute($this->env, $this->source, (isset($context["method"]) || array_key_exists("method", $context) ? $context["method"] : (function () { throw new RuntimeError('Variable "method" does not exist.', 110, $this->source); })()), "hint", [], "any", false, false, false, 110)], 110, $context, $this->getSourceContext());
+        echo twig_call_macro($macros["__internal_parse_13"], "macro_hint_link", [twig_get_attribute($this->env, $this->source, (isset($context["method"]) || array_key_exists("method", $context) ? $context["method"] : (function () { throw new RuntimeError('Variable "method" does not exist.', 110, $this->source); })()), "hint", [], "any", false, false, false, 110), twig_get_attribute($this->env, $this->source, (isset($context["method"]) || array_key_exists("method", $context) ? $context["method"] : (function () { throw new RuntimeError('Variable "method" does not exist.', 110, $this->source); })()), "isIntersectionType", [], "method", false, false, false, 110)], 110, $context, $this->getSourceContext());
         echo "
     <strong>";
         // line 111
@@ -428,7 +428,7 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("implements");
                 <td>";
             // line 124
             if (twig_get_attribute($this->env, $this->source, $context["parameter"], "hint", [], "any", false, false, false, 124)) {
-                echo twig_call_macro($macros["__internal_parse_13"], "macro_hint_link", [twig_get_attribute($this->env, $this->source, $context["parameter"], "hint", [], "any", false, false, false, 124)], 124, $context, $this->getSourceContext());
+                echo twig_call_macro($macros["__internal_parse_13"], "macro_hint_link", [twig_get_attribute($this->env, $this->source, $context["parameter"], "hint", [], "any", false, false, false, 124), twig_get_attribute($this->env, $this->source, $context["parameter"], "isIntersectionType", [], "method", false, false, false, 124)], 124, $context, $this->getSourceContext());
             }
             echo "</td>
                 <td>";
@@ -463,7 +463,7 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("implements");
         <tr>
             <td>";
         // line 135
-        echo twig_call_macro($macros["__internal_parse_13"], "macro_hint_link", [twig_get_attribute($this->env, $this->source, (isset($context["method"]) || array_key_exists("method", $context) ? $context["method"] : (function () { throw new RuntimeError('Variable "method" does not exist.', 135, $this->source); })()), "hint", [], "any", false, false, false, 135)], 135, $context, $this->getSourceContext());
+        echo twig_call_macro($macros["__internal_parse_13"], "macro_hint_link", [twig_get_attribute($this->env, $this->source, (isset($context["method"]) || array_key_exists("method", $context) ? $context["method"] : (function () { throw new RuntimeError('Variable "method" does not exist.', 135, $this->source); })()), "hint", [], "any", false, false, false, 135), twig_get_attribute($this->env, $this->source, (isset($context["method"]) || array_key_exists("method", $context) ? $context["method"] : (function () { throw new RuntimeError('Variable "method" does not exist.', 135, $this->source); })()), "isIntersectionType", [], "method", false, false, false, 135)], 135, $context, $this->getSourceContext());
         echo "</td>
             <td>";
         // line 136
@@ -521,7 +521,7 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("implements");
             echo "            <tr>
                 <td><pre class=\"examples\">";
             // line 157
-            echo twig_nl2br(twig_escape_filter($this->env, twig_join_filter($context["example"], " "), "html", null, true));
+            echo twig_escape_filter($this->env, twig_join_filter($context["example"], " "), "html", null, true);
             // line 158
             echo "</pre></td>
             </tr>
@@ -710,7 +710,7 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("deprecated");
             }
             // line 219
             echo "                    ";
-            echo twig_call_macro($macros["__internal_parse_13"], "macro_hint_link", [twig_get_attribute($this->env, $this->source, $context["property"], "hint", [], "any", false, false, false, 219)], 219, $context, $this->getSourceContext());
+            echo twig_call_macro($macros["__internal_parse_13"], "macro_hint_link", [twig_get_attribute($this->env, $this->source, $context["property"], "hint", [], "any", false, false, false, 219), twig_get_attribute($this->env, $this->source, $context["property"], "isIntersectionType", [], "method", false, false, false, 219)], 219, $context, $this->getSourceContext());
             echo "
                     ";
             // line 220
@@ -817,7 +817,7 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("write-only");
             if (twig_get_attribute($this->env, $this->source, $context["method"], "static", [], "any", false, false, false, 247)) {
                 echo "static&nbsp;";
             }
-            echo twig_call_macro($macros["__internal_parse_13"], "macro_hint_link", [twig_get_attribute($this->env, $this->source, $context["method"], "hint", [], "any", false, false, false, 247)], 247, $context, $this->getSourceContext());
+            echo twig_call_macro($macros["__internal_parse_13"], "macro_hint_link", [twig_get_attribute($this->env, $this->source, $context["method"], "hint", [], "any", false, false, false, 247), twig_get_attribute($this->env, $this->source, $context["method"], "isIntersectionType", [], "method", false, false, false, 247)], 247, $context, $this->getSourceContext());
             echo "
                 </div>
                 <div class=\"col-md-8\">
@@ -1045,7 +1045,7 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("Exceptions");
         echo "
             ";
         // line 322
-        if (twig_get_attribute($this->env, $this->source, (isset($context["method"]) || array_key_exists("method", $context) ? $context["method"] : (function () { throw new RuntimeError('Variable "method" does not exist.', 322, $this->source); })()), "tags", [0 => "see"], "method", false, false, false, 322)) {
+        if (twig_get_attribute($this->env, $this->source, (isset($context["method"]) || array_key_exists("method", $context) ? $context["method"] : (function () { throw new RuntimeError('Variable "method" does not exist.', 322, $this->source); })()), "tags", ["see"], "method", false, false, false, 322)) {
             // line 323
             echo "                <h4>";
 echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("See also");
@@ -1079,16 +1079,25 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("Examples");
 ";
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function getTemplateName()
     {
         return "class.twig";
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function isTraitable()
     {
         return false;
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function getDebugInfo()
     {
         return array (  1077 => 333,  1072 => 331,  1066 => 329,  1064 => 328,  1061 => 327,  1056 => 325,  1050 => 323,  1048 => 322,  1045 => 321,  1040 => 319,  1034 => 317,  1032 => 316,  1029 => 315,  1024 => 313,  1018 => 311,  1016 => 310,  1013 => 309,  1008 => 307,  1002 => 305,  1000 => 304,  996 => 302,  994 => 301,  988 => 298,  985 => 297,  980 => 295,  977 => 294,  971 => 292,  969 => 291,  963 => 288,  959 => 287,  951 => 284,  949 => 283,  944 => 280,  936 => 279,  931 => 278,  927 => 277,  922 => 274,  905 => 271,  902 => 270,  885 => 269,  882 => 268,  878 => 267,  873 => 264,  857 => 261,  852 => 259,  850 => 258,  847 => 256,  842 => 254,  836 => 252,  834 => 251,  826 => 250,  817 => 247,  813 => 245,  796 => 244,  793 => 243,  789 => 242,  784 => 239,  776 => 236,  771 => 234,  769 => 233,  765 => 231,  761 => 230,  758 => 229,  749 => 226,  747 => 225,  744 => 224,  737 => 223,  730 => 222,  723 => 221,  717 => 220,  712 => 219,  707 => 218,  702 => 217,  698 => 216,  694 => 215,  691 => 214,  687 => 213,  684 => 212,  680 => 211,  675 => 208,  665 => 204,  661 => 203,  657 => 201,  648 => 198,  646 => 197,  641 => 196,  634 => 195,  627 => 194,  623 => 193,  618 => 192,  616 => 191,  612 => 188,  608 => 187,  605 => 186,  601 => 185,  596 => 182,  587 => 179,  584 => 178,  578 => 176,  572 => 174,  570 => 173,  565 => 172,  563 => 171,  556 => 170,  554 => 169,  550 => 167,  546 => 166,  543 => 165,  539 => 164,  534 => 161,  526 => 158,  524 => 157,  521 => 155,  517 => 154,  514 => 153,  510 => 152,  505 => 149,  496 => 146,  492 => 145,  489 => 144,  485 => 143,  482 => 142,  478 => 141,  470 => 136,  466 => 135,  462 => 133,  458 => 132,  453 => 129,  444 => 126,  436 => 125,  430 => 124,  427 => 123,  423 => 122,  420 => 121,  416 => 120,  412 => 117,  408 => 116,  406 => 115,  402 => 114,  396 => 111,  391 => 110,  386 => 109,  381 => 108,  376 => 107,  371 => 106,  367 => 105,  363 => 104,  357 => 101,  347 => 98,  342 => 97,  340 => 96,  323 => 93,  321 => 92,  303 => 91,  300 => 90,  298 => 89,  292 => 87,  290 => 86,  287 => 85,  282 => 84,  277 => 83,  273 => 82,  269 => 81,  264 => 78,  259 => 76,  255 => 74,  249 => 72,  243 => 70,  241 => 69,  238 => 68,  233 => 66,  227 => 64,  225 => 63,  222 => 62,  217 => 60,  213 => 58,  211 => 57,  208 => 56,  203 => 54,  197 => 52,  195 => 51,  193 => 49,  189 => 47,  184 => 45,  181 => 44,  176 => 42,  174 => 41,  171 => 40,  169 => 39,  164 => 37,  160 => 36,  155 => 34,  152 => 33,  143 => 30,  141 => 29,  136 => 26,  130 => 25,  126 => 24,  124 => 23,  120 => 20,  116 => 19,  106 => 13,  104 => 12,  100 => 11,  96 => 9,  93 => 8,  89 => 7,  82 => 5,  75 => 4,  66 => 3,  61 => 1,  59 => 2,  52 => 1,);
@@ -1205,7 +1214,7 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("Examples");
     {% if method.static %}static{% endif %}
     {% if method.protected %}protected{% endif %}
     {% if method.private %}private{% endif %}
-    {{ hint_link(method.hint) }}
+    {{ hint_link(method.hint, method.isIntersectionType()) }}
     <strong>{{ method.name|raw }}</strong>{{ block('method_parameters_signature') }}
 {%- endblock %}
 
@@ -1219,7 +1228,7 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("Examples");
     <table class=\"table table-condensed\">
         {% for parameter in method.parameters %}
             <tr>
-                <td>{% if parameter.hint %}{{ hint_link(parameter.hint) }}{% endif %}</td>
+                <td>{% if parameter.hint %}{{ hint_link(parameter.hint, parameter.isIntersectionType()) }}{% endif %}</td>
                 <td>{%- if parameter.variadic %}...{% endif %}\${{ parameter.name|raw }}</td>
                 <td>{{ parameter.shortdesc|desc(class)|md_to_html }}</td>
             </tr>
@@ -1230,7 +1239,7 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("Examples");
 {% block return %}
     <table class=\"table table-condensed\">
         <tr>
-            <td>{{ hint_link(method.hint) }}</td>
+            <td>{{ hint_link(method.hint, method.isIntersectionType()) }}</td>
             <td>{{ method.hintDesc|desc(class)|md_to_html }}</td>
         </tr>
     </table>
@@ -1252,7 +1261,7 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("Examples");
         {% for example in method.getExamples() %}
             <tr>
                 <td><pre class=\"examples\">
-                    {{- example|join(' ')|nl2br -}}
+                    {{- example|join(' ') -}}
                 </pre></td>
             </tr>
         {% endfor %}
@@ -1314,7 +1323,7 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("Examples");
                     {% if property.isStatic() %}static{% endif %}
                     {% if property.isProtected() %}protected{% endif %}
                     {% if property.isPrivate() %}private{% endif %}
-                    {{ hint_link(property.hint) }}
+                    {{ hint_link(property.hint, property.isIntersectionType()) }}
                     {% if property.isInternal() %}<span class=\"label label-warning\">{% trans 'internal' %}</span>{% endif %}
                     {% if property.isDeprecated() %}<span class=\"label label-danger\">{% trans 'deprecated' %}</span>{% endif %}
                     {% if property.isReadOnly() %}<span class=\"label label-primary\">{% trans 'read-only' %}</span>{% endif %}
@@ -1342,7 +1351,7 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("Examples");
         {% for method in methods %}
             <div class=\"row\">
                 <div class=\"col-md-2 type\">
-                    {% if method.static %}static&nbsp;{% endif %}{{ hint_link(method.hint) }}
+                    {% if method.static %}static&nbsp;{% endif %}{{ hint_link(method.hint, method.isIntersectionType()) }}
                 </div>
                 <div class=\"col-md-8\">
                     <a href=\"#method_{{ method.name|raw }}\">{{ method.name|raw }}</a>{{ block('method_parameters_signature') }}

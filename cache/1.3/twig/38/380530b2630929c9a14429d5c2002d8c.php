@@ -13,7 +13,7 @@ use Twig\Source;
 use Twig\Template;
 
 /* doctum-search.json.twig */
-class __TwigTemplate_ccf7041d61ec0c2b7b9e5c48028b2ad3 extends Template
+class __TwigTemplate_cc6328aa08e32f10280fef0a8c1af15a extends Template
 {
     private $source;
     private $macros = [];
@@ -39,16 +39,25 @@ class __TwigTemplate_ccf7041d61ec0c2b7b9e5c48028b2ad3 extends Template
 ";
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function getTemplateName()
     {
         return "doctum-search.json.twig";
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function isTraitable()
     {
         return false;
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function getDebugInfo()
     {
         return array (  37 => 1,);

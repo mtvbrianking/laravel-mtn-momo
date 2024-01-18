@@ -13,7 +13,7 @@ use Twig\Source;
 use Twig\Template;
 
 /* macros.twig */
-class __TwigTemplate_c86f25aedf034651e06e66161f8383c9 extends Template
+class __TwigTemplate_150517831cc518bb967a69787878964a extends Template
 {
     private $source;
     private $macros = [];
@@ -255,11 +255,12 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("trait");
     }
 
     // line 34
-    public function macro_hint_link($__hints__ = null, ...$__varargs__)
+    public function macro_hint_link($__hints__ = null, $__isIntersectionType__ = false, ...$__varargs__)
     {
         $macros = $this->macros;
         $context = $this->env->mergeGlobals([
             "hints" => $__hints__,
+            "isIntersectionType" => $__isIntersectionType__,
             "varargs" => $__varargs__,
         ]);
 
@@ -303,7 +304,11 @@ $context["hint"], "name", [], "any", false, false, false, 41)) {
                     }
                     // line 45
                     if ( !twig_get_attribute($this->env, $this->source, $context["loop"], "last", [], "any", false, false, false, 45)) {
-                        echo "|";
+                        if ((isset($context["isIntersectionType"]) || array_key_exists("isIntersectionType", $context) ? $context["isIntersectionType"] : (function () { throw new RuntimeError('Variable "isIntersectionType" does not exist.', 45, $this->source); })())) {
+                            echo "&";
+                        } else {
+                            echo "|";
+                        }
                     }
                     ++$context['loop']['index0'];
                     ++$context['loop']['index'];
@@ -426,7 +431,7 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("View source");
             foreach ($context['_seq'] as $context["_key"] => $context["parameter"]) {
                 // line 74
                 if (twig_get_attribute($this->env, $this->source, $context["parameter"], "hashint", [], "any", false, false, false, 74)) {
-                    echo twig_call_macro($macros["__internal_parse_2"], "macro_hint_link", [twig_get_attribute($this->env, $this->source, $context["parameter"], "hint", [], "any", false, false, false, 74)], 74, $context, $this->getSourceContext());
+                    echo twig_call_macro($macros["__internal_parse_2"], "macro_hint_link", [twig_get_attribute($this->env, $this->source, $context["parameter"], "hint", [], "any", false, false, false, 74), twig_get_attribute($this->env, $this->source, $context["parameter"], "isIntersectionType", [], "method", false, false, false, 74)], 74, $context, $this->getSourceContext());
                     echo " ";
                 }
                 // line 75
@@ -501,7 +506,7 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("View source");
             foreach ($context['_seq'] as $context["_key"] => $context["parameter"]) {
                 // line 86
                 if (twig_get_attribute($this->env, $this->source, $context["parameter"], "hashint", [], "any", false, false, false, 86)) {
-                    echo twig_call_macro($macros["__internal_parse_3"], "macro_hint_link", [twig_get_attribute($this->env, $this->source, $context["parameter"], "hint", [], "any", false, false, false, 86)], 86, $context, $this->getSourceContext());
+                    echo twig_call_macro($macros["__internal_parse_3"], "macro_hint_link", [twig_get_attribute($this->env, $this->source, $context["parameter"], "hint", [], "any", false, false, false, 86), twig_get_attribute($this->env, $this->source, $context["parameter"], "isIntersectionType", [], "method", false, false, false, 86)], 86, $context, $this->getSourceContext());
                     echo " ";
                 }
                 // line 87
@@ -801,7 +806,7 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("internal");
         try {
             // line 163
             echo "        ";
-            if ((twig_get_attribute($this->env, $this->source, (isset($context["project"]) || array_key_exists("project", $context) ? $context["project"] : (function () { throw new RuntimeError('Variable "project" does not exist.', 163, $this->source); })()), "config", [0 => "insert_todos"], "method", false, false, false, 163) == true)) {
+            if ((twig_get_attribute($this->env, $this->source, (isset($context["project"]) || array_key_exists("project", $context) ? $context["project"] : (function () { throw new RuntimeError('Variable "project" does not exist.', 163, $this->source); })()), "config", ["insert_todos"], "method", false, false, false, 163) == true)) {
                 // line 164
                 echo "            ";
                 if (twig_get_attribute($this->env, $this->source, (isset($context["reflection"]) || array_key_exists("reflection", $context) ? $context["reflection"] : (function () { throw new RuntimeError('Variable "reflection" does not exist.', 164, $this->source); })()), "todo", [], "any", false, false, false, 164)) {
@@ -878,19 +883,28 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("todo");
         }
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function getTemplateName()
     {
         return "macros.twig";
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function isTraitable()
     {
         return false;
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function getDebugInfo()
     {
-        return array (  871 => 180,  862 => 177,  858 => 176,  855 => 175,  851 => 174,  847 => 173,  844 => 172,  842 => 171,  839 => 170,  836 => 169,  823 => 168,  813 => 165,  806 => 164,  803 => 163,  790 => 162,  779 => 158,  767 => 154,  764 => 153,  759 => 151,  754 => 150,  751 => 149,  738 => 148,  727 => 144,  718 => 141,  714 => 140,  711 => 139,  707 => 138,  703 => 137,  700 => 136,  698 => 135,  695 => 134,  692 => 133,  679 => 132,  665 => 129,  652 => 128,  635 => 124,  632 => 122,  629 => 120,  627 => 119,  622 => 118,  619 => 117,  606 => 116,  597 => 113,  589 => 110,  587 => 109,  584 => 107,  582 => 106,  579 => 104,  573 => 102,  571 => 101,  567 => 99,  563 => 98,  559 => 96,  557 => 95,  544 => 94,  535 => 91,  519 => 89,  514 => 88,  508 => 87,  503 => 86,  486 => 85,  484 => 84,  482 => 83,  469 => 82,  460 => 79,  444 => 77,  439 => 76,  433 => 75,  428 => 74,  411 => 73,  409 => 72,  407 => 71,  394 => 70,  384 => 65,  383 => 64,  380 => 61,  378 => 60,  374 => 59,  372 => 57,  359 => 56,  345 => 52,  343 => 51,  329 => 50,  305 => 45,  301 => 44,  298 => 42,  296 => 41,  294 => 40,  292 => 39,  275 => 38,  273 => 37,  271 => 35,  258 => 34,  249 => 31,  243 => 30,  238 => 29,  223 => 28,  214 => 25,  208 => 24,  203 => 23,  188 => 22,  177 => 19,  175 => 18,  170 => 16,  168 => 15,  164 => 14,  162 => 13,  148 => 12,  135 => 9,  122 => 8,  111 => 5,  107 => 4,  103 => 3,  90 => 2,  85 => 167,  82 => 161,  79 => 147,  76 => 131,  73 => 127,  70 => 115,  67 => 93,  64 => 81,  61 => 69,  58 => 55,  55 => 49,  52 => 33,  49 => 27,  46 => 21,  43 => 11,  40 => 7,  37 => 1,);
+        return array (  876 => 180,  867 => 177,  863 => 176,  860 => 175,  856 => 174,  852 => 173,  849 => 172,  847 => 171,  844 => 170,  841 => 169,  828 => 168,  818 => 165,  811 => 164,  808 => 163,  795 => 162,  784 => 158,  772 => 154,  769 => 153,  764 => 151,  759 => 150,  756 => 149,  743 => 148,  732 => 144,  723 => 141,  719 => 140,  716 => 139,  712 => 138,  708 => 137,  705 => 136,  703 => 135,  700 => 134,  697 => 133,  684 => 132,  670 => 129,  657 => 128,  640 => 124,  637 => 122,  634 => 120,  632 => 119,  627 => 118,  624 => 117,  611 => 116,  602 => 113,  594 => 110,  592 => 109,  589 => 107,  587 => 106,  584 => 104,  578 => 102,  576 => 101,  572 => 99,  568 => 98,  564 => 96,  562 => 95,  549 => 94,  540 => 91,  524 => 89,  519 => 88,  513 => 87,  508 => 86,  491 => 85,  489 => 84,  487 => 83,  474 => 82,  465 => 79,  449 => 77,  444 => 76,  438 => 75,  433 => 74,  416 => 73,  414 => 72,  412 => 71,  399 => 70,  389 => 65,  388 => 64,  385 => 61,  383 => 60,  379 => 59,  377 => 57,  364 => 56,  350 => 52,  348 => 51,  334 => 50,  306 => 45,  302 => 44,  299 => 42,  297 => 41,  295 => 40,  293 => 39,  276 => 38,  274 => 37,  272 => 35,  258 => 34,  249 => 31,  243 => 30,  238 => 29,  223 => 28,  214 => 25,  208 => 24,  203 => 23,  188 => 22,  177 => 19,  175 => 18,  170 => 16,  168 => 15,  164 => 14,  162 => 13,  148 => 12,  135 => 9,  122 => 8,  111 => 5,  107 => 4,  103 => 3,  90 => 2,  85 => 167,  82 => 161,  79 => 147,  76 => 131,  73 => 127,  70 => 115,  67 => 93,  64 => 81,  61 => 69,  58 => 55,  55 => 49,  52 => 33,  49 => 27,  46 => 21,  43 => 11,  40 => 7,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -928,7 +942,7 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("todo");
 {#  #}</a>
 {%- endmacro %}
 
-{% macro hint_link(hints) -%}
+{% macro hint_link(hints, isIntersectionType = false) -%}
     {%- from _self import class_link %}
 
     {%- if hints %}
@@ -939,7 +953,7 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("todo");
                 {{- abbr_class(hint.name) }}
             {%- endif %}
             {%- if hint.array %}[]{% endif %}
-            {%- if not loop.last %}|{% endif %}
+            {%- if not loop.last %}{%- if isIntersectionType %}&{% else %}|{% endif %}{% endif %}
         {%- endfor %}
     {%- endif %}
 {%- endmacro %}
@@ -968,7 +982,7 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("todo");
     {%- from \"macros.twig\" import hint_link -%}
     (
         {%- for parameter in method.parameters %}
-            {%- if parameter.hashint %}{{ hint_link(parameter.hint) }} {% endif -%}
+            {%- if parameter.hashint %}{{ hint_link(parameter.hint, parameter.isIntersectionType()) }} {% endif -%}
             {%- if parameter.variadic %}...{% endif %}\${{ parameter.name|raw }}
             {%- if parameter.default is not null %} = {{ parameter.default }}{% endif %}
             {%- if not loop.last %}, {% endif %}
@@ -980,7 +994,7 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("todo");
     {%- from \"macros.twig\" import hint_link -%}
     (
         {%- for parameter in method.parameters %}
-            {%- if parameter.hashint %}{{ hint_link(parameter.hint) }} {% endif -%}
+            {%- if parameter.hashint %}{{ hint_link(parameter.hint, parameter.isIntersectionType()) }} {% endif -%}
             {%- if parameter.variadic %}...{% endif %}\${{ parameter.name|raw }}
             {%- if parameter.default is not null %} = {{ parameter.default }}{% endif %}
             {%- if not loop.last %}, {% endif %}

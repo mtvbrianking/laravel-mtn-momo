@@ -13,7 +13,7 @@ use Twig\Source;
 use Twig\Template;
 
 /* index.twig */
-class __TwigTemplate_ae4eb0cfebb7157aaa71144fd474a171 extends Template
+class __TwigTemplate_ce50a39b628963d57de1a767c61427de extends Template
 {
     private $source;
     private $macros = [];
@@ -57,16 +57,25 @@ class __TwigTemplate_ae4eb0cfebb7157aaa71144fd474a171 extends Template
         echo "index";
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function getTemplateName()
     {
         return "index.twig";
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function isTraitable()
     {
         return false;
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function getDebugInfo()
     {
         return array (  54 => 9,  50 => 7,  47 => 4,  44 => 2,  42 => 1,  35 => 7,);

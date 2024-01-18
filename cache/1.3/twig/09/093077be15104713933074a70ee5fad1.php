@@ -13,7 +13,7 @@ use Twig\Source;
 use Twig\Template;
 
 /* namespace.twig */
-class __TwigTemplate_03053f3222de7bbaeef12e7ff320f2a3 extends Template
+class __TwigTemplate_74b28c8fd15ac7e962113b65d732c5c7 extends Template
 {
     private $source;
     private $macros = [];
@@ -285,16 +285,25 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("Exceptions");
 ";
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function getTemplateName()
     {
         return "namespace.twig";
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function isTraitable()
     {
         return false;
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function getDebugInfo()
     {
         return array (  284 => 83,  281 => 81,  277 => 80,  275 => 79,  272 => 78,  268 => 76,  257 => 71,  250 => 70,  248 => 69,  244 => 66,  239 => 64,  233 => 62,  230 => 61,  221 => 58,  218 => 57,  211 => 56,  205 => 55,  202 => 54,  200 => 53,  198 => 52,  191 => 49,  186 => 48,  181 => 47,  177 => 46,  171 => 44,  167 => 43,  160 => 40,  158 => 39,  155 => 38,  152 => 36,  148 => 35,  146 => 34,  143 => 33,  140 => 31,  136 => 30,  134 => 29,  131 => 28,  127 => 26,  118 => 25,  112 => 23,  110 => 22,  104 => 19,  100 => 17,  96 => 16,  88 => 11,  85 => 10,  80 => 8,  76 => 7,  69 => 5,  62 => 4,  53 => 3,  48 => 1,  46 => 2,  39 => 1,);

@@ -13,7 +13,7 @@ use Twig\Source;
 use Twig\Template;
 
 /* doctum.js.twig */
-class __TwigTemplate_e1a0b5d63075a25d9b10c4c3252af902 extends Template
+class __TwigTemplate_a22f063fc8c3cb144d4fd670b4c7098d extends Template
 {
     private $source;
     private $macros = [];
@@ -301,7 +301,7 @@ class __TwigTemplate_e1a0b5d63075a25d9b10c4c3252af902 extends Template
         // First: search if the query has the keywords in sequence
         // Second: replace the keywords by a mark and leave all the text in between non marked
         ";
-        // line 339
+        // line 342
         echo "
         if (record.match(new RegExp('(' + query.replace(/\\s/g, ').*(') + ')', 'gi')) === null) {
             return '';// Does not match
@@ -320,10 +320,13 @@ class __TwigTemplate_e1a0b5d63075a25d9b10c4c3252af902 extends Template
     /**
      * Clean the search query
      *
-     * @param string query
+     * @param string|null query
      * @return string
      */
     cleanSearchQuery: function (query) {
+        if (typeof query !== 'string') {
+            return '';
+        }
         // replace any chars that could lead to injecting code in our regex
         // remove start or end spaces
         // replace backslashes by an escaped version, use case in search: \\myRootFunction
@@ -376,19 +379,28 @@ window.addEventListener('load', Doctum.pageFullyLoaded, false);
 ";
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function getTemplateName()
     {
         return "doctum.js.twig";
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function isTraitable()
     {
         return false;
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function getDebugInfo()
     {
-        return array (  305 => 339,  130 => 259,  128 => 84,  119 => 77,  117 => 76,  44 => 75,  40 => 2,  37 => 1,);
+        return array (  305 => 342,  130 => 259,  128 => 84,  119 => 77,  117 => 76,  44 => 75,  40 => 2,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -677,10 +689,13 @@ window.addEventListener('load', Doctum.pageFullyLoaded, false);
     /**
      * Clean the search query
      *
-     * @param string query
+     * @param string|null query
      * @return string
      */
     cleanSearchQuery: function (query) {
+        if (typeof query !== 'string') {
+            return '';
+        }
         // replace any chars that could lead to injecting code in our regex
         // remove start or end spaces
         // replace backslashes by an escaped version, use case in search: \\myRootFunction

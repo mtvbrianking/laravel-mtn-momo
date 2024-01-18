@@ -69,6 +69,7 @@
             "see": [],
             "modifiers": null,
             "is_by_ref": null,
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": []
@@ -89,6 +90,7 @@
             "see": [],
             "modifiers": null,
             "is_by_ref": null,
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": []
@@ -109,6 +111,7 @@
             "see": [],
             "modifiers": null,
             "is_by_ref": null,
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": []
@@ -129,6 +132,7 @@
             "see": [],
             "modifiers": null,
             "is_by_ref": null,
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": []
@@ -149,6 +153,7 @@
             "see": [],
             "modifiers": null,
             "is_by_ref": null,
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": []
@@ -169,6 +174,7 @@
             "see": [],
             "modifiers": null,
             "is_by_ref": null,
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": []
@@ -189,6 +195,7 @@
             "see": [],
             "modifiers": null,
             "is_by_ref": null,
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": []

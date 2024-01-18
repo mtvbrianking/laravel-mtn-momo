@@ -16,6 +16,7 @@
     "tags": [],
     "modifiers": 0,
     "is_by_ref": "",
+    "is_intersection_type": false,
     "exceptions": [],
     "errors": [],
     "parameters": {
@@ -35,7 +36,8 @@
             "default": "'environmentFilePath'",
             "variadic": false,
             "is_by_ref": false,
-            "is_read_only": false
+            "is_read_only": false,
+            "is_intersection_type": false
         },
         "envFile": {
             "name": "envFile",
@@ -53,7 +55,8 @@
             "default": "'.env'",
             "variadic": false,
             "is_by_ref": false,
-            "is_read_only": false
+            "is_read_only": false,
+            "is_intersection_type": false
         }
     }
 }

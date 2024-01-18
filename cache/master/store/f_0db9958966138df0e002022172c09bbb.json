@@ -27,6 +27,7 @@
     },
     "modifiers": 0,
     "is_by_ref": "",
+    "is_intersection_type": false,
     "exceptions": [],
     "errors": [],
     "parameters": {
@@ -46,7 +47,8 @@
             "default": null,
             "variadic": false,
             "is_by_ref": false,
-            "is_read_only": false
+            "is_read_only": false,
+            "is_intersection_type": false
         },
         "array2": {
             "name": "array2",
@@ -64,7 +66,8 @@
             "default": null,
             "variadic": false,
             "is_by_ref": false,
-            "is_read_only": false
+            "is_read_only": false,
+            "is_intersection_type": false
         }
     }
 }

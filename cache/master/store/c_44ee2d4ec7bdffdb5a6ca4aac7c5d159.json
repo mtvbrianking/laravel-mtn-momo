@@ -1,6 +1,6 @@
 {
     "name": "Bmatovu\\MtnMomo\\Models\\Token",
-    "line": 18,
+    "line": 19,
     "short_desc": "Token model.",
     "long_desc": "",
     "hint": null,
@@ -8,7 +8,7 @@
     "namespace": "Bmatovu\\MtnMomo\\Models",
     "file": "\/home\/runner\/work\/laravel-mtn-momo\/laravel-mtn-momo\/src\/Models\/Token.php",
     "relative_file": "\/src\/Models\/Token.php",
-    "hash": "ae880b8cb1aeed687277246d5cc16ee525cad579",
+    "hash": "07b273383118a7081c66280c5bfad0da3ede9e43",
     "parent": "Illuminate\\Database\\Eloquent\\Model",
     "modifiers": 0,
     "is_trait": false,
@@ -34,7 +34,7 @@
     "properties": {
         "table": {
             "name": "table",
-            "line": 27,
+            "line": 28,
             "short_desc": "The table associated with the model.",
             "long_desc": "",
             "hint": [
@@ -49,8 +49,8 @@
             "default": {
                 "nodeType": "Scalar_String",
                 "attributes": {
-                    "startLine": 27,
-                    "endLine": 27,
+                    "startLine": 28,
+                    "endLine": 28,
                     "kind": 1,
                     "rawValue": "'mtn_momo_tokens'"
                 },
@@ -58,11 +58,12 @@
             },
             "errors": [],
             "is_read_only": false,
-            "is_write_only": false
+            "is_write_only": false,
+            "is_intersection_type": false
         },
         "fillable": {
             "name": "fillable",
-            "line": 34,
+            "line": 35,
             "short_desc": "The attributes that are mass assignable.",
             "long_desc": "",
             "hint": [
@@ -77,31 +78,11 @@
             "default": {
                 "nodeType": "Expr_Array",
                 "attributes": {
-                    "startLine": 34,
-                    "endLine": 40,
+                    "startLine": 35,
+                    "endLine": 41,
                     "kind": 2
                 },
                 "items": [
-                    {
-                        "nodeType": "Expr_ArrayItem",
-                        "attributes": {
-                            "startLine": 35,
-                            "endLine": 35
-                        },
-                        "key": null,
-                        "value": {
-                            "nodeType": "Scalar_String",
-                            "attributes": {
-                                "startLine": 35,
-                                "endLine": 35,
-                                "kind": 1,
-                                "rawValue": "'access_token'"
-                            },
-                            "value": "access_token"
-                        },
-                        "byRef": false,
-                        "unpack": false
-                    },
                     {
                         "nodeType": "Expr_ArrayItem",
                         "attributes": {
@@ -115,9 +96,9 @@
                                 "startLine": 36,
                                 "endLine": 36,
                                 "kind": 1,
-                                "rawValue": "'refresh_token'"
+                                "rawValue": "'access_token'"
                             },
-                            "value": "refresh_token"
+                            "value": "access_token"
                         },
                         "byRef": false,
                         "unpack": false
@@ -135,9 +116,9 @@
                                 "startLine": 37,
                                 "endLine": 37,
                                 "kind": 1,
-                                "rawValue": "'token_type'"
+                                "rawValue": "'refresh_token'"
                             },
-                            "value": "token_type"
+                            "value": "refresh_token"
                         },
                         "byRef": false,
                         "unpack": false
@@ -155,9 +136,9 @@
                                 "startLine": 38,
                                 "endLine": 38,
                                 "kind": 1,
-                                "rawValue": "'product'"
+                                "rawValue": "'token_type'"
                             },
-                            "value": "product"
+                            "value": "token_type"
                         },
                         "byRef": false,
                         "unpack": false
@@ -175,6 +156,26 @@
                                 "startLine": 39,
                                 "endLine": 39,
                                 "kind": 1,
+                                "rawValue": "'product'"
+                            },
+                            "value": "product"
+                        },
+                        "byRef": false,
+                        "unpack": false
+                    },
+                    {
+                        "nodeType": "Expr_ArrayItem",
+                        "attributes": {
+                            "startLine": 40,
+                            "endLine": 40
+                        },
+                        "key": null,
+                        "value": {
+                            "nodeType": "Scalar_String",
+                            "attributes": {
+                                "startLine": 40,
+                                "endLine": 40,
+                                "kind": 1,
                                 "rawValue": "'expires_at'"
                             },
                             "value": "expires_at"
@@ -186,11 +187,12 @@
             },
             "errors": [],
             "is_read_only": false,
-            "is_write_only": false
+            "is_write_only": false,
+            "is_intersection_type": false
         },
-        "dates": {
-            "name": "dates",
-            "line": 47,
+        "casts": {
+            "name": "casts",
+            "line": 48,
             "short_desc": "The attributes that should be mutated to dates.",
             "long_desc": "",
             "hint": [
@@ -205,27 +207,36 @@
             "default": {
                 "nodeType": "Expr_Array",
                 "attributes": {
-                    "startLine": 47,
-                    "endLine": 50,
+                    "startLine": 48,
+                    "endLine": 53,
                     "kind": 2
                 },
                 "items": [
                     {
                         "nodeType": "Expr_ArrayItem",
                         "attributes": {
-                            "startLine": 48,
-                            "endLine": 48
+                            "startLine": 49,
+                            "endLine": 49
                         },
-                        "key": null,
+                        "key": {
+                            "nodeType": "Scalar_String",
+                            "attributes": {
+                                "startLine": 49,
+                                "endLine": 49,
+                                "kind": 1,
+                                "rawValue": "'created_at'"
+                            },
+                            "value": "created_at"
+                        },
                         "value": {
                             "nodeType": "Scalar_String",
                             "attributes": {
-                                "startLine": 48,
-                                "endLine": 48,
+                                "startLine": 49,
+                                "endLine": 49,
                                 "kind": 1,
-                                "rawValue": "'expires_at'"
+                                "rawValue": "'datetime'"
                             },
-                            "value": "expires_at"
+                            "value": "datetime"
                         },
                         "byRef": false,
                         "unpack": false
@@ -233,19 +244,86 @@
                     {
                         "nodeType": "Expr_ArrayItem",
                         "attributes": {
-                            "startLine": 49,
-                            "endLine": 49
+                            "startLine": 50,
+                            "endLine": 50
                         },
-                        "key": null,
+                        "key": {
+                            "nodeType": "Scalar_String",
+                            "attributes": {
+                                "startLine": 50,
+                                "endLine": 50,
+                                "kind": 1,
+                                "rawValue": "'updated_at'"
+                            },
+                            "value": "updated_at"
+                        },
                         "value": {
                             "nodeType": "Scalar_String",
                             "attributes": {
-                                "startLine": 49,
-                                "endLine": 49,
+                                "startLine": 50,
+                                "endLine": 50,
+                                "kind": 1,
+                                "rawValue": "'datetime'"
+                            },
+                            "value": "datetime"
+                        },
+                        "byRef": false,
+                        "unpack": false
+                    },
+                    {
+                        "nodeType": "Expr_ArrayItem",
+                        "attributes": {
+                            "startLine": 51,
+                            "endLine": 51
+                        },
+                        "key": {
+                            "nodeType": "Scalar_String",
+                            "attributes": {
+                                "startLine": 51,
+                                "endLine": 51,
+                                "kind": 1,
+                                "rawValue": "'expires_at'"
+                            },
+                            "value": "expires_at"
+                        },
+                        "value": {
+                            "nodeType": "Scalar_String",
+                            "attributes": {
+                                "startLine": 51,
+                                "endLine": 51,
+                                "kind": 1,
+                                "rawValue": "'datetime'"
+                            },
+                            "value": "datetime"
+                        },
+                        "byRef": false,
+                        "unpack": false
+                    },
+                    {
+                        "nodeType": "Expr_ArrayItem",
+                        "attributes": {
+                            "startLine": 52,
+                            "endLine": 52
+                        },
+                        "key": {
+                            "nodeType": "Scalar_String",
+                            "attributes": {
+                                "startLine": 52,
+                                "endLine": 52,
                                 "kind": 1,
                                 "rawValue": "'deleted_at'"
                             },
                             "value": "deleted_at"
+                        },
+                        "value": {
+                            "nodeType": "Scalar_String",
+                            "attributes": {
+                                "startLine": 52,
+                                "endLine": 52,
+                                "kind": 1,
+                                "rawValue": "'datetime'"
+                            },
+                            "value": "datetime"
                         },
                         "byRef": false,
                         "unpack": false
@@ -254,13 +332,14 @@
             },
             "errors": [],
             "is_read_only": false,
-            "is_write_only": false
+            "is_write_only": false,
+            "is_intersection_type": false
         }
     },
     "methods": {
         "newFactory": {
             "name": "newFactory",
-            "line": 57,
+            "line": 60,
             "short_desc": "Create a new factory instance for the model.",
             "long_desc": "",
             "hint": [
@@ -274,6 +353,7 @@
             "see": [],
             "modifiers": 9,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": []

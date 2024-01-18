@@ -46,7 +46,8 @@
             "default": null,
             "errors": [],
             "is_read_only": false,
-            "is_write_only": false
+            "is_write_only": false,
+            "is_intersection_type": false
         },
         "product": {
             "name": "product",
@@ -65,7 +66,8 @@
             "default": null,
             "errors": [],
             "is_read_only": false,
-            "is_write_only": false
+            "is_write_only": false,
+            "is_intersection_type": false
         },
         "signature": {
             "name": "signature",
@@ -93,7 +95,8 @@
             },
             "errors": [],
             "is_read_only": false,
-            "is_write_only": false
+            "is_write_only": false,
+            "is_intersection_type": false
         },
         "description": {
             "name": "description",
@@ -121,7 +124,8 @@
             },
             "errors": [],
             "is_read_only": false,
-            "is_write_only": false
+            "is_write_only": false,
+            "is_intersection_type": false
         }
     },
     "methods": {
@@ -136,6 +140,7 @@
             "see": [],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": {
@@ -155,7 +160,8 @@
                     "default": null,
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 }
             }
         },
@@ -175,6 +181,7 @@
             "see": [],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [
                 [
                     "\\GuzzleHttp\\Exception\\GuzzleException",
@@ -200,6 +207,7 @@
             "see": [],
             "modifiers": 2,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [
                 [
                     "\\Exception",
@@ -225,6 +233,7 @@
             "see": [],
             "modifiers": 2,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": []
@@ -252,6 +261,7 @@
             "see": [],
             "modifiers": 2,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [
                 [
                     "\\GuzzleHttp\\Exception\\GuzzleException",
@@ -276,7 +286,8 @@
                     "default": null,
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 },
                 "providerCallbackHost": {
                     "name": "providerCallbackHost",
@@ -294,7 +305,8 @@
                     "default": null,
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 }
             }
         }

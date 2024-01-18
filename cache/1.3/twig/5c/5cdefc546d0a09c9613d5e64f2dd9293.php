@@ -13,7 +13,7 @@ use Twig\Source;
 use Twig\Template;
 
 /* traits.twig */
-class __TwigTemplate_b969d266dba7ec650a2e52e66cce3b8c extends Template
+class __TwigTemplate_be76bdc399d41620d07134cbaed628e1 extends Template
 {
     private $source;
     private $macros = [];
@@ -112,16 +112,25 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("Traits");
 ";
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function getTemplateName()
     {
         return "traits.twig";
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function isTraitable()
     {
         return false;
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function getDebugInfo()
     {
         return array (  111 => 24,  105 => 23,  98 => 19,  92 => 16,  88 => 14,  85 => 13,  81 => 12,  75 => 8,  71 => 7,  67 => 6,  60 => 4,  51 => 3,  46 => 1,  44 => 2,  37 => 1,);

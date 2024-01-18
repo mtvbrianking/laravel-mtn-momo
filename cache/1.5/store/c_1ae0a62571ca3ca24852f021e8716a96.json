@@ -49,7 +49,8 @@
             "default": null,
             "errors": [],
             "is_read_only": false,
-            "is_write_only": false
+            "is_write_only": false,
+            "is_intersection_type": false
         },
         "client": {
             "name": "client",
@@ -68,7 +69,8 @@
             "default": null,
             "errors": [],
             "is_read_only": false,
-            "is_write_only": false
+            "is_write_only": false,
+            "is_intersection_type": false
         },
         "baseUri": {
             "name": "baseUri",
@@ -87,7 +89,8 @@
             "default": null,
             "errors": [],
             "is_read_only": false,
-            "is_write_only": false
+            "is_write_only": false,
+            "is_intersection_type": false
         },
         "tokenUri": {
             "name": "tokenUri",
@@ -106,7 +109,8 @@
             "default": null,
             "errors": [],
             "is_read_only": false,
-            "is_write_only": false
+            "is_write_only": false,
+            "is_intersection_type": false
         },
         "subscriptionKey": {
             "name": "subscriptionKey",
@@ -125,7 +129,8 @@
             "default": null,
             "errors": [],
             "is_read_only": false,
-            "is_write_only": false
+            "is_write_only": false,
+            "is_intersection_type": false
         },
         "clientId": {
             "name": "clientId",
@@ -144,7 +149,8 @@
             "default": null,
             "errors": [],
             "is_read_only": false,
-            "is_write_only": false
+            "is_write_only": false,
+            "is_intersection_type": false
         },
         "clientSecret": {
             "name": "clientSecret",
@@ -163,7 +169,8 @@
             "default": null,
             "errors": [],
             "is_read_only": false,
-            "is_write_only": false
+            "is_write_only": false,
+            "is_intersection_type": false
         },
         "clientRedirectUri": {
             "name": "clientRedirectUri",
@@ -182,7 +189,8 @@
             "default": null,
             "errors": [],
             "is_read_only": false,
-            "is_write_only": false
+            "is_write_only": false,
+            "is_intersection_type": false
         },
         "currency": {
             "name": "currency",
@@ -201,7 +209,8 @@
             "default": null,
             "errors": [],
             "is_read_only": false,
-            "is_write_only": false
+            "is_write_only": false,
+            "is_intersection_type": false
         },
         "environment": {
             "name": "environment",
@@ -220,7 +229,8 @@
             "default": null,
             "errors": [],
             "is_read_only": false,
-            "is_write_only": false
+            "is_write_only": false,
+            "is_intersection_type": false
         },
         "partyIdType": {
             "name": "partyIdType",
@@ -239,7 +249,8 @@
             "default": null,
             "errors": [],
             "is_read_only": false,
-            "is_write_only": false
+            "is_write_only": false,
+            "is_intersection_type": false
         },
         "logFile": {
             "name": "logFile",
@@ -258,7 +269,8 @@
             "default": null,
             "errors": [],
             "is_read_only": false,
-            "is_write_only": false
+            "is_write_only": false,
+            "is_intersection_type": false
         }
     },
     "methods": {
@@ -278,6 +290,7 @@
             "see": [],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": []
@@ -293,6 +306,7 @@
             "see": [],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": {
@@ -312,7 +326,8 @@
                     "default": null,
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 }
             }
         },
@@ -332,6 +347,7 @@
             "see": [],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": []
@@ -347,6 +363,7 @@
             "see": [],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": {
@@ -366,7 +383,8 @@
                     "default": null,
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 }
             }
         },
@@ -386,6 +404,7 @@
             "see": [],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": []
@@ -401,6 +420,7 @@
             "see": [],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": {
@@ -420,7 +440,8 @@
                     "default": null,
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 }
             }
         },
@@ -440,6 +461,7 @@
             "see": [],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": []
@@ -455,6 +477,7 @@
             "see": [],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": {
@@ -474,7 +497,8 @@
                     "default": null,
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 }
             }
         },
@@ -494,6 +518,7 @@
             "see": [],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": []
@@ -509,6 +534,7 @@
             "see": [],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": {
@@ -528,7 +554,8 @@
                     "default": null,
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 }
             }
         },
@@ -548,6 +575,7 @@
             "see": [],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": []
@@ -563,6 +591,7 @@
             "see": [],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": {
@@ -582,7 +611,8 @@
                     "default": null,
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 }
             }
         },
@@ -602,6 +632,7 @@
             "see": [],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": []
@@ -617,6 +648,7 @@
             "see": [],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": {
@@ -636,7 +668,8 @@
                     "default": null,
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 }
             }
         },
@@ -656,6 +689,7 @@
             "see": [],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": []
@@ -671,6 +705,7 @@
             "see": [],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": {
@@ -690,7 +725,8 @@
                     "default": null,
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 }
             }
         },
@@ -710,6 +746,7 @@
             "see": [],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": []
@@ -725,6 +762,7 @@
             "see": [],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": {
@@ -744,7 +782,8 @@
                     "default": null,
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 }
             }
         },
@@ -764,6 +803,7 @@
             "see": [],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": []
@@ -779,6 +819,7 @@
             "see": [],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": {
@@ -798,7 +839,8 @@
                     "default": null,
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 }
             }
         },
@@ -818,6 +860,7 @@
             "see": [],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": []
@@ -833,6 +876,7 @@
             "see": [],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": {
@@ -852,7 +896,8 @@
                     "default": null,
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 }
             }
         },
@@ -867,6 +912,7 @@
             "see": [],
             "modifiers": 1,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [
                 [
                     "\\Exception",
@@ -891,7 +937,8 @@
                     "default": "[]",
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 },
                 "middleware": {
                     "name": "middleware",
@@ -909,7 +956,8 @@
                     "default": "[]",
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 },
                 "client": {
                     "name": "client",
@@ -927,7 +975,8 @@
                     "default": "null",
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 }
             }
         },
@@ -947,6 +996,7 @@
             "see": [],
             "modifiers": 17,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [],
             "errors": [],
             "parameters": []
@@ -967,6 +1017,7 @@
             "see": [],
             "modifiers": 2,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [
                 [
                     "\\Exception",
@@ -999,6 +1050,7 @@
             "see": [],
             "modifiers": 2,
             "is_by_ref": "",
+            "is_intersection_type": false,
             "exceptions": [
                 [
                     "\\Exception",
@@ -1023,7 +1075,8 @@
                     "default": null,
                     "variadic": false,
                     "is_by_ref": false,
-                    "is_read_only": false
+                    "is_read_only": false,
+                    "is_intersection_type": false
                 }
             }
         }

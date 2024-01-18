@@ -13,7 +13,7 @@ use Twig\Source;
 use Twig\Template;
 
 /* interfaces.twig */
-class __TwigTemplate_81dc85b9ff84bd0959719a74811162b4 extends Template
+class __TwigTemplate_1361696871f9a8dcdb1f28d4ad7bc90c extends Template
 {
     private $source;
     private $macros = [];
@@ -82,16 +82,25 @@ echo \Wdes\phpI18nL10n\Launcher::getPlugin()->gettext("Interfaces");
 ";
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function getTemplateName()
     {
         return "interfaces.twig";
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function isTraitable()
     {
         return false;
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function getDebugInfo()
     {
         return array (  80 => 11,  75 => 8,  71 => 7,  67 => 6,  60 => 4,  51 => 3,  46 => 1,  44 => 2,  37 => 1,);
