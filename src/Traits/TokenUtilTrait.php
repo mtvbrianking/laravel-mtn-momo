@@ -6,6 +6,8 @@
 
 namespace Bmatovu\MtnMomo\Traits;
 
+use Carbon\Carbon;
+
 /**
  * Token model utilities.
  */
@@ -71,7 +73,9 @@ trait TokenUtilTrait
         if (is_null($this->expires_at)) {
             return false;
         }
+        $now = Carbon::now();
+        $expiresAt = Carbon::parse($this->expires_at);
 
-        return $this->expires_at->isPast();
+        return $now->isAfter($expiresAt);
     }
 }
