@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Token.
  */
@@ -44,9 +45,11 @@ class Token extends BaseModel implements TokenInterface
      *
      * @var array
      */
-    protected $dates = [
-        'expires_at',
-        'deleted_at',
+    protected $casts = [
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+        'expires_at' => 'datetime',
+        'deleted_at' => 'datetime',
     ];
 
     /**
