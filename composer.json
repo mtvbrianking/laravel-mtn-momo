@@ -20,25 +20,25 @@
     }
   ],
   "require": {
-    "php": "^7.3|^8.0",
+    "php": "^8.1",
     "ext-json": "*",
     "bmatovu/oauth-negotiator": "^2.0",
     "guzzlehttp/guzzle": "^7.5",
-    "illuminate/console": "^8.0|^9.0|^10.0",
-    "illuminate/container": "^8.0|^9.0|^10.0",
-    "illuminate/contracts": "^8.0|^9.0|^10.0",
-    "illuminate/database": "^8.0|^9.0|^10.0",
-    "illuminate/support": "^8.0|^9.0|^10.0",
-    "nesbot/carbon": "^2.62.1",
+    "illuminate/console": "^10.0|^11.0|^12.0",
+    "illuminate/container": "^10.0|^11.0|^12.0",
+    "illuminate/contracts": "^10.0|^11.0|^12.0",
+    "illuminate/database": "^10.0|^11.0|^12.0",
+    "illuminate/support": "^10.0|^11.0|^12.0",
+    "nesbot/carbon": "^2.3|^3.0",
     "ramsey/uuid": "^4.7"
   },
   "require-dev": {
     "code-lts/doctum": "^5.5",
     "friendsofphp/php-cs-fixer": "^3.14",
-    "laravel/framework": "^10.0",
+    "laravel/framework": "^10.0|^11.0|^12.0",
     "mockery/mockery": "^1.5",
-    "orchestra/testbench": "^8.0",
-    "phpunit/phpunit": "^9.3|^10.0"
+    "orchestra/testbench": "^9.0|^10.0|^11.0",
+    "phpunit/phpunit": "^10.0|^11.0|^12.0"
   },
   "suggest": {
     "monolog/monolog": "For more comprehensive logging."

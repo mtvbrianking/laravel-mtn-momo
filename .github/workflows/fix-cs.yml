@@ -1,14 +1,25 @@
 name: fix-cs
 
-on: [workflow_dispatch, pull_request]
+on:
+  workflow_dispatch:
+  # push:
+  #   branches: [ master ]
 
 jobs:
   code-style:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        php: [^8.0]
+    name: CS PHP ^8.0
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
 
       - name: Fix style
         uses: docker://oskarstark/php-cs-fixer-ga

@@ -12,18 +12,22 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php: [8.0, 8.1]
-        laravel: [^8.0, ^9.0, ^10.0]
+        php: [8.4, 8.3, 8.2, 8.1]
+        laravel: [^12.0, ^11.0, ^10.0]
         include:
+          - laravel: ^12.0
+            testbench: ^10.0
+          - laravel: ^11.0
+            testbench: ^9.0
           - laravel: ^10.0
             testbench: ^8.0
-          - laravel: ^9.0
-            testbench: ^7.0
-          - laravel: ^8.0
-            testbench: ^6.0
         exclude:
+          - laravel: ^12.0
+            php: 8.1
+          - laravel: ^11.0
+            php: 8.1
           - laravel: ^10.0
-            php: 8.0
+            php: 8.4
     name: Tests P${{ matrix.php }} - L${{ matrix.laravel }} - T${{ matrix.testbench }}
     steps:
       - name: Checkout code
@@ -38,7 +42,7 @@ jobs:
           coverage: pcov
 
       - name: Cache dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.composer/cache/files
           key: dependencies-laravel-${{ matrix.laravel }}-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
@@ -65,30 +69,3 @@ jobs:
         with:
           name: coverage
           path: coverage.clover
-
-  coverage:
-    needs: tests
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: true
-      matrix:
-        php: [7.3]
-    name: Coverage P${{ matrix.php }}
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ matrix.php }}
-
-      - name: Retrieve code coverage report
-        uses: actions/download-artifact@v3
-        with:
-          name: coverage
-
-      - name: Upload code coverage report
-        run: |
-          wget https://scrutinizer-ci.com/ocular.phar
-          php ocular.phar code-coverage:upload --format=php-clover coverage.clover

@@ -1,12 +1,10 @@
 name: gen-docs
 
 on:
-  push:
-    tags:
-      - "*"
-
-# on:
-#   workflow_dispatch:
+  workflow_dispatch:
+  # push:
+  #   tags:
+  #     - '*'
 
 jobs:
   docs:
@@ -14,18 +12,18 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php: [8.0]
+        php: [^8.0]
     name: Docs P${{ matrix.php }}
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
           persist-credentials: false
 
       - name: Cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.composer/cache/files
           key: dependencies-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
@@ -33,8 +31,12 @@ jobs:
       - name: Composer
         run: composer update --prefer-dist --no-interaction --no-progress
 
+      - name: Download
+        run: wget --quiet --show-progress --no-clobber https://github.com/code-lts/doctum/releases/download/v5.5.4/doctum.phar
+
       - name: Generate
-        run: vendor/bin/doctum.php update doctum.php -v
+        run: |
+          php doctum.phar update doctum.php
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.7.1
